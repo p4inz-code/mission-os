@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Mission OS Discussions
+    url: https://github.com/p4inz-code/mission-os/discussions
+    about: Ask questions and discuss ideas here.
