@@ -1,0 +1,10 @@
+name: Documentation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Documentation workflow placeholder."

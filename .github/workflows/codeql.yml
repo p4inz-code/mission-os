@@ -1,0 +1,10 @@
+name: CodeQL
+
+on:
+  workflow_dispatch:
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "CodeQL will be enabled once code exists."
