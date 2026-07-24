@@ -1,240 +1,153 @@
-<div align="center">
-
 # Mission OS
 
-### Privacy-first. Security-first. Portable.
+> A privacy-first, security-focused Linux operating system built on Debian Stable.
 
-*A modern Linux operating system built for people who value privacy, security, portability, and complete control over their computing.*
-
-> **Built on Debian Stable • KDE Plasma • USB-first • Offline-first • Free & Open Source**
-
-**Status:** 🚧 Active Development
-
-</div>
+![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)
+![Platform](https://img.shields.io/badge/Platform-Linux-success.svg)
+![Base](https://img.shields.io/badge/Base-Debian%20Stable-red.svg)
+![Desktop](https://img.shields.io/badge/Desktop-KDE%20Plasma-1f6feb.svg)
+![Status](https://img.shields.io/badge/Status-Active%20Development-orange.svg)
 
 ---
 
-## Why Mission OS?
+## Overview
 
-Mission OS is a Linux-based operating system designed around a simple belief:
+Mission OS is an open-source Linux operating system designed around four core principles:
 
-> **Your computer should belong to you.**
+- Privacy by default
+- Security by design
+- Offline-first reliability
+- USB-first portability
 
-Modern operating systems often ask users to compromise between usability, privacy, portability, and security.
+Built on Debian Stable and powered by KDE Plasma, Mission OS aims to provide a modern desktop experience that is fast, predictable, and easy to trust.
 
-Mission OS aims to remove those compromises by combining trusted open-source technologies with a carefully designed desktop experience that is fast, consistent, secure, and easy to use.
+The project is intended for developers, students, researchers, security professionals, journalists, and anyone who values ownership of their computing environment.
 
-Mission OS is **not** a Windows replacement.
-
-It is an operating system people intentionally choose whenever privacy, security, reliability, or portability matter most.
-
----
-
-# Highlights
-
-- 🔒 Privacy-first by default
-- 🛡️ Security-focused architecture
-- 💾 USB-first portable operating system
-- 🌐 Offline-first experience
-- 🎨 Modern and consistent desktop
-- ⚡ Lightweight and responsive
-- 🧰 Curated built-in utilities
-- 📖 Documentation-first development
-- ❤️ Free and Open Source
+Mission OS is **not** a Windows replacement or a penetration testing distribution. It is a carefully designed desktop operating system focused on everyday usability without compromising privacy or security.
 
 ---
 
-# Core Principles
+## Core Principles
 
 ### Privacy First
 
-Privacy is treated as a core design requirement. Users remain in control of their data, with transparent system behavior and sensible defaults.
+Mission OS minimizes unnecessary data collection, respects user choice, and keeps the user in control.
 
-### Security First
+### Security by Design
 
-Mission OS focuses on secure defaults, trusted software sources, defensive engineering, and understandable security features.
-
-### Portable by Design
-
-Run Mission OS from a USB drive, an external SSD, or a traditional installation while keeping a familiar and reliable workspace.
+Security is considered throughout the system architecture rather than being added afterwards.
 
 ### Offline First
 
-Essential functionality should continue working without an internet connection whenever possible.
+Core functionality should remain available even without an internet connection whenever practical.
+
+### USB First
+
+Mission OS is designed to run reliably from portable storage while also supporting traditional installations.
 
 ---
 
-# Built With
+## Planned Features
 
-| Foundation | Technology |
-|------------|------------|
-| Base Distribution | Debian Stable |
-| Desktop Environment | KDE Plasma |
-| Display Server | Wayland |
-| Package Management | APT + Flatpak |
-| License | GPL-3.0 |
-
----
-
-# Mission Applications
-
-Version 1 is planned to include:
-
+- Debian Stable foundation
+- KDE Plasma desktop
+- Wayland-first experience
+- Mission Installer
 - Mission Hub
 - Mission Settings
 - Mission Store
 - Mission Update
-- Mission Recovery
-- Mission Diagnostics
-- Mission Driver Manager
 - Privacy Center
 - Security Center
-- Mission File Manager
-
-All applications share the same design language and user experience.
-
----
-
-# Intended Audience
-
-Mission OS is built for:
-
-- Developers
-- Students
-- Security professionals
-- Privacy-conscious users
-- Researchers
-- Journalists
-- Digital investigators
-- Open-source enthusiasts
-- IT professionals
+- Recovery Center
+- Diagnostics
+- Driver Manager
+- File Manager
+- Dark and Light themes
+- High-DPI support
+- Accessibility-first design
+- Modern, consistent desktop experience
 
 ---
 
-# Project Status
+## Project Status
 
-Mission OS is currently progressing through:
+Mission OS is currently in active development.
 
-- ✅ Product planning
-- ✅ System architecture
-- ✅ Documentation
-- ✅ Design system
-- 🚧 User interface design
-- ⏳ Core implementation
-- ⏳ Internal testing
-- ⏳ Public Beta
-- ⏳ Stable Version 1.0
+The project has completed its architectural planning phase and is progressing through a production-quality UI and UX design process before implementation begins.
 
-Quality is prioritized over release dates.
+Current focus:
 
----
-
-# Repository Structure
-
-```text
-mission-os/
-├── architecture/
-├── design/
-├── docs/
-├── prompts/
-├── .github/
-├── LICENSE
-└── README.md
-```
-
----
-
-# Documentation
-
-The repository includes detailed documentation covering:
-
-- Product vision
 - Architecture
+- Design System
+- User Interface Specification
+- Documentation
+- Development Planning
+
+Implementation will begin after the design foundation is finalized.
+
+---
+
+## Roadmap
+
+- Complete UI Design Sprint
+- Core implementation
+- Internal Alpha
+- Public Beta
+- Version 1.0
+
+---
+
+## Documentation
+
+Project documentation is organized under the `docs/` directory.
+
+Key sections include:
+
+- Vision
+- Architecture
+- Design
 - Engineering
-- Design system
-- User experience
-- Accessibility
-- Development workflow
-- Security
-- Quality assurance
-
-Every major decision is documented before implementation.
+- User Experience
+- Product Planning
+- Quality Assurance
+- Reference Specifications
 
 ---
 
-# Roadmap
+## Contributing
 
-Current priorities:
-
-- Complete UI design sprint
-- Build core Mission applications
-- Implement system services
-- Internal testing
-- Public beta
-- Stable v1.0
-
----
-
-# Contributing
-
-Contributions are welcome.
-
-Whether you improve documentation, report issues, review designs, or contribute code, every contribution helps improve Mission OS.
+Community contributions are welcome.
 
 Please read:
 
-- `CONTRIBUTING.md`
-- `CODE_OF_CONDUCT.md`
-- `SECURITY.md`
-- `STYLE_GUIDE.md`
+- CONTRIBUTING.md
+- CODE_OF_CONDUCT.md
+- STYLE_GUIDE.md
 
-before contributing.
-
----
-
-# Security
-
-If you discover a security vulnerability, please report it responsibly following the process described in `SECURITY.md`.
-
-Please avoid opening public issues for security-sensitive reports.
+before submitting issues or pull requests.
 
 ---
 
-# License
+## Security
 
-Mission OS is released under the **GNU General Public License v3.0 (GPL-3.0)**.
+If you discover a security vulnerability, please report it responsibly.
 
-See the `LICENSE` file for details.
+See:
 
----
+- SECURITY.md
+- SECURITY_CONTACT.md
 
-# Acknowledgements
-
-Mission OS builds upon outstanding open-source projects including:
-
-- Debian
-- Linux
-- KDE Plasma
-- Qt
-- Wayland
-- GNU
-- Mesa
-- PipeWire
-- Flatpak
-- NetworkManager
-
-Their work makes Mission OS possible.
+for reporting instructions.
 
 ---
 
-<div align="center">
+## License
 
-### Mission OS
+Mission OS is released under the GNU General Public License v3.0.
 
-**Privacy-first. Security-first. Portable.**
+See the LICENSE file for details.
 
-*Built in the open. Designed with care.*
+---
 
-⭐ Star the repository to follow development.
-
-</div>
+Mission OS is developed with an emphasis on long-term maintainability, transparency, accessibility, and engineering quality.
