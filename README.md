@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src="https://github.com/p4inz-code/mission-os/blob/main/assets/banner.png?raw=true" alt="Mission OS Banner" width="100%">
+</p>
+
 # Mission OS
 
 > A privacy-first, security-focused Linux operating system built on Debian Stable.
