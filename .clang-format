@@ -1,0 +1,70 @@
+# Mission OS — clang-format Configuration
+#
+# Compatible with the Mission OS Coding Standards (MOS-ENG-CS-001).
+# Applies to all C and C++ source files in the repository.
+
+BasedOnStyle: LLVM
+
+# ── Language ────────────────────────────────────────────────────────
+Language: Cpp
+Standard: c++20
+
+# ── Indentation ─────────────────────────────────────────────────────
+IndentWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 4
+AccessModifierOffset: -4
+
+# ── Line breaks ─────────────────────────────────────────────────────
+ColumnLimit: 100
+MaxEmptyLinesToKeep: 2
+ReflowComments: true
+
+# ── Brace placement ─────────────────────────────────────────────────
+BreakBeforeBraces: Allman
+BreakConstructorInitializers: BeforeComma
+ConstructorInitializerIndentWidth: 4
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+
+# ── Namespace ───────────────────────────────────────────────────────
+FixNamespaceComments: true
+NamespaceIndentation: None
+
+# ── Pointers / References ───────────────────────────────────────────
+PointerAlignment: Left
+ReferenceAlignment: Left
+DerivePointerAlignment: false
+
+# ── Includes ────────────────────────────────────────────────────────
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<.*\.h>'
+    Priority: 1
+  - Regex: '^<.*>'
+    Priority: 2
+  - Regex: '^"'
+    Priority: 3
+SortIncludes: true
+
+# ── Spacing ─────────────────────────────────────────────────────────
+SpacesBeforeTrailingComments: 1
+SpaceAfterTemplateKeyword: true
+SpaceAfterCStyleCast: false
+SpaceInEmptyParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpacesInAngles: false
+
+# ── Alignment ───────────────────────────────────────────────────────
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignEscapedNewlines: Left
+AlignOperands: Align
+AlignTrailingComments: true
+PenaltyReturnTypeOnItsOwnLine: 1000
+
+# ── Comments ────────────────────────────────────────────────────────
+CommentPragmas: '^ (NOLINT|TODO|FIXME|SAFETY|HACK):'

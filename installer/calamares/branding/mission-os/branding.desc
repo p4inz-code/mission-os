@@ -1,0 +1,32 @@
+# Mission OS — Calamares Branding Descriptor
+#
+# Defines the visual identity of the Mission OS installer.
+
+componentName: mission-os
+name: Mission OS
+version: 0.1.0-nightly
+shortProductName: Mission OS
+versionedName: Mission OS 0.1.0 Nightly
+shortVersionedName: Mission OS Nightly
+bootloaderEntryName: Mission OS
+productUrl: https://mission-os.org
+supportUrl: https://github.com/p4inz-code/mission-os
+releaseNotesUrl: https://github.com/p4inz-code/mission-os/releases
+image: "calamares-logo.svg"  # Mission OS branding icon
+
+strings:
+    productName:         Mission OS
+    shortProductName:    Mission OS
+    version:             0.1.0
+    shortVersion:        0.1.0-nightly
+    versionLabel:        Nightly
+    bootloaderEntryName: Mission OS
+    productUrl:          https://mission-os.org
+    supportUrl:          https://github.com/p4inz-code/mission-os
+    releaseNotesUrl:     https://github.com/p4inz-code/mission-os/releases
+
+style:
+    sidebarBackground:   "#131519"
+    sidebarText:         "#ced2d9"
+    sidebarTextSelect:   "#ffffff"
+    sidebarHighlight:    "#625cb8"

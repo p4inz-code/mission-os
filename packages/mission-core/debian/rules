@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Export Rust flags
+export CARGO_HOME = $(CURDIR)/debian/cargo-home
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	# No configure step needed — cargo handles build configuration
+
+override_dh_auto_build:
+	# Build mission-core as cdylib + lib
+	cd $(CURDIR)/../../src/libraries/core && \
+		CARGO_TARGET_DIR="$(CURDIR)/debian/cargo-target" \
+		cargo build --release --lib
+
+override_dh_auto_test:
+	cd $(CURDIR)/../../src/libraries/core && \
+		CARGO_TARGET_DIR="$(CURDIR)/debian/cargo-target" \
+		cargo test --lib
+
+override_dh_install:
+	# Install shared library
+	install -d $(CURDIR)/debian/mission-core-dev/usr/lib/mission
+	install -m 644 $(CURDIR)/debian/cargo-target/release/libmission_core.so \
+		$(CURDIR)/debian/mission-core-dev/usr/lib/mission/
+
+	# Install development headers (stub — headers generated in future release)
+	install -d $(CURDIR)/debian/mission-core-dev/usr/include/mission

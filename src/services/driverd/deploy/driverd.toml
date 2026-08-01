@@ -1,0 +1,29 @@
+# mission-driverd default configuration
+#
+# This file is installed to /etc/mission/driverd.toml
+# Configuration is loaded on service start.
+
+dbus_name = "org.mission.Driver1"
+
+[audit]
+enabled = true
+max_size_bytes = 10485760
+max_files = 5
+syslog_forward = false
+
+[inventory]
+scan_interval_secs = 300
+auto_detect_on_start = true
+
+[legacy_sources]
+enabled_sources = ["mission"]
+allow_unsigned_drivers = false
+
+[package_store]
+store_path = "/var/cache/mission/driverd/packages"
+max_package_size_bytes = 1000000000
+
+[verification]
+key_store_path = "/etc/mission/driverd/trusted-keys"
+require_signature = true
+allow_unsigned = false

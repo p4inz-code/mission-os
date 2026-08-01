@@ -1,0 +1,72 @@
+[Color Scheme: mission-graphite]
+# Mission OS — Dark Graphite / Slate Color Scheme
+#
+# Design language: Dark graphite/slate foundation with restrained
+# violet/cool-blue accents. Premium modern engineering aesthetic.
+#
+# Explicitly NOT:
+#   - Kali Linux (green-terminal, dark hacker)
+#   - Cyberpunk (neon, excessive glow)
+#   - Gaming (RGB, saturated colors)
+
+[General]
+BackgroundColor=19,21,25
+ForegroundColor=206,210,217
+AlternateBackground=23,26,32
+AlternateForeground=206,210,217
+SelectionBackground=98,92,184
+SelectionForeground=255,255,255
+InactiveSelectionBackground=40,42,52
+InactiveSelectionForeground=180,185,195
+
+[Colors:Button]
+BackgroundColor=30,33,40
+ForegroundColor=206,210,217
+AlternateBackground=35,38,45
+AlternateForeground=206,210,217
+DecorationHover=98,92,184
+DecorationFocus=110,105,200
+
+[Colors:Selection]
+BackgroundColor=98,92,184
+ForegroundColor=255,255,255
+AlternateBackground=85,78,168
+AlternateForeground=255,255,255
+
+[Colors:Tooltip]
+BackgroundColor=30,33,40
+ForegroundColor=206,210,217
+
+[Colors:View]
+BackgroundColor=19,21,25
+ForegroundColor=206,210,217
+AlternateBackground=23,26,32
+AlternateForeground=206,210,217
+SelectionBackground=98,92,184
+SelectionForeground=255,255,255
+
+[Colors:Window]
+BackgroundColor=23,26,32
+ForegroundColor=206,210,217
+AlternateBackground=28,31,38
+AlternateForeground=206,210,217
+SelectionBackground=98,92,184
+SelectionForeground=255,255,255
+
+[Colors:Decoration]
+HoverColor=98,92,184
+FocusColor=110,105,200
+ActiveColor=98,92,184
+InactiveColor=40,42,52
+
+[Colors:Header]
+BackgroundColor=23,26,32
+ForegroundColor=206,210,217
+AlternateBackground=28,31,38
+AlternateForeground=206,210,217
+
+# ── Accent Colors ───────────────────────────────────────────────
+[Colors:Accent]
+AccentColor=98,92,184
+AccentComplementary=150,140,220
+AccentTriadic=70,65,140

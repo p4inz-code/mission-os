@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+export CARGO_HOME = $(CURDIR)/debian/cargo-home
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	cd $(CURDIR)/../../src/libraries/crypto && \
+		CARGO_TARGET_DIR="$(CURDIR)/debian/cargo-target" \
+		cargo build --release --lib
+
+override_dh_auto_test:
+	cd $(CURDIR)/../../src/libraries/crypto && \
+		CARGO_TARGET_DIR="$(CURDIR)/debian/cargo-target" \
+		cargo test --lib
+
+override_dh_install:
+	install -d $(CURDIR)/debian/mission-crypto-dev/usr/lib/mission
+	install -m 644 $(CURDIR)/debian/cargo-target/release/libmission_crypto.so \
+		$(CURDIR)/debian/mission-crypto-dev/usr/lib/mission/
+	install -d $(CURDIR)/debian/mission-crypto-dev/usr/include/mission

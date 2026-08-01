@@ -1,0 +1,46 @@
+[Mission OS KDE Plasma Desktop Configuration]
+# Default desktop settings for Mission OS Nightly
+# Installed to /etc/skel/.config/ via first-boot or includes.chroot
+
+[KDE]
+LookAndFeelPackage=org.mission.desktop
+Theme=Breeze
+ColorScheme=mission-graphite
+Font=Noto Sans,10,-1,5,50,0,0,0,0,0
+
+[KWin]
+CompositingEnabled=true
+OpenGLIsUnsafe=false
+MaxFPS=60
+ScaleMethod=Smooth
+AnimationDuration=150
+
+[Keyboard]
+RepeatRate=25
+RepeatDelay=600
+
+[Mouse]
+AccelerationProfile=0
+PointerAcceleration=1.0
+PointerAccelerationThreshold=4
+
+[Power]
+PowerButtonAction=1  # Suspend
+LidAction=1          # Suspend on lid close
+DimDisplay=true
+DimDisplayIdle=180   # 3 minutes
+DisplayPowerDown=600 # 10 minutes
+Sleep=900           # 15 minutes
+
+[Sound]
+Volume=75
+Muted=false
+
+[Notifications]
+ShowNotifications=false
+Popups=false
+
+[ScreenLock]
+Enabled=true
+Timeout=300  # 5 minutes
+AutoLock=true

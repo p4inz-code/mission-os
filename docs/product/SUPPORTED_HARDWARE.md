@@ -13,8 +13,7 @@ Future consideration
 ## Boot
 
 - UEFI (Primary)
-
-Legacy BIOS support may be considered separately.
+- BIOS (GRUB2 — supported, validated alongside UEFI)
 
 ---
 

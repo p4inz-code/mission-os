@@ -1,0 +1,32 @@
+# Mission OS — Input Device Configuration
+# Installed to /etc/xdg/kcminputrc
+
+[Keyboard]
+KeyboardRepeating=true
+NumLock=0
+RepeatDelay=600
+RepeatRate=25
+
+[Mouse]
+AccelerationProfile=0
+PointerAcceleration=1.0
+PointerAccelerationThreshold=4
+MouseButtonMapping=RightHanded
+X11LibInputSupport=true
+
+[Touchpad]
+AccelerationProfile=0
+CursorEnable=true
+DisableOnKeyboardActivity=true
+DragLockEnable=false
+DragStartCoasting=false
+LeftHanded=false
+NaturalScroll=false
+PointerAcceleration=0.267
+PointerAccelerationThreshold=0
+ScrollEdge=true
+ScrollTwoFinger=true
+TapButton1=1
+TapButton2=3
+TapButton3=2
+TapToClick=true

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Mission OS
+Name[en]=Mission OS
+Comment=Premium dark graphite wallpaper with violet accent
+Comment[en]=Premium dark graphite wallpaper with violet accent
+X-KDE-PluginInfo-Name=mission-os-wallpaper
+X-KDE-PluginInfo-Author=Mission OS Team
+X-KDE-PluginInfo-License=MIT
+X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-Category=Wallpaper
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-PluginInfo-Website=https://mission-os.org
+X-KDE-ServiceTypes=Plasma/Wallpaper
+X-KDE-FormFactors=desktop

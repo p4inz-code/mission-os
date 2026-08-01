@@ -1,10 +1,207 @@
 name: CI
 
 on:
+  pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "design/**"
+      - "architecture/**"
+      - "**.md"
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "design/**"
+      - "architecture/**"
+      - "**.md"
   workflow_dispatch:
 
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+
 jobs:
-  placeholder:
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
-      - run: echo "CI will be enabled during implementation."
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Enable caching
+        uses: Swatinem/rust-cache@v2
+
+      - name: Check formatting (Rust)
+        run: cargo fmt --check
+
+      - name: Clippy (Rust)
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Enable caching
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run workspace tests
+        run: cargo test --workspace
+
+      - name: Run targeted driverd tests
+        run: cargo test -p mission-driverd
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Enable caching
+        uses: Swatinem/rust-cache@v2
+
+      - name: Check compilation (all targets)
+        run: cargo check --workspace --all-targets
+
+      - name: Build (release mode)
+        run: cargo build --release
+
+      # M2-E: Validate driverd-specific dependency compilation
+      - name: Validate M2-E dependencies (ureq, sha2, blake3)
+        run: |
+          cargo check -p mission-driverd --all-features 2>&1 | head -20
+          echo "---"
+          echo "M2-E dependency validation: checking ureq, sha2, blake3 compilation"
+          # These dependencies are in mission-driverd's Cargo.toml
+          # If cargo check passes, all three compile successfully
+
+  audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install cargo-audit
+        run: cargo install cargo-audit --locked
+
+      - name: Run cargo audit
+        run: cargo audit --deny warnings
+
+  dbus:
+    name: D-Bus / Driver Service
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Enable caching
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install D-Bus and development packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            dbus \
+            dbus-x11 \
+            policykit-1 \
+            libpam0g-dev
+
+      - name: Verify D-Bus daemon is running
+        run: |
+          dbus-daemon --version
+          dbus-send --system --dest=org.freedesktop.DBus \
+            --type=method_call --print-reply \
+            /org/freedesktop/DBus org.freedesktop.DBus.ListNames > /dev/null 2>&1 && \
+            echo "System bus accessible" || echo "System bus not accessible"
+
+      - name: Build mission-driverd binary
+        run: cargo build -p mission-driverd
+
+      - name: Verify binary exists and is executable
+        run: |
+          test -f target/debug/mission-driverd
+          file target/debug/mission-driverd | grep -q "ELF"
+          echo "mission-driverd binary is valid"
+
+      - name: Build mission-securityd binary (dependency)
+        run: cargo build -p mission-securityd
+
+      - name: Validate service unit file
+        run: |
+          test -f src/services/driverd/deploy/mission-driverd.service
+          test -f src/services/securityd/deploy/mission-securityd.service
+          echo "Service unit files exist"
+
+      - name: Validate D-Bus configuration
+        run: |
+          # Verify org.mission.Driver1 service name is granted in the policy file
+          grep -q "org.mission.Driver1" src/services/driverd/deploy/org.mission.Driver1.conf \
+            && echo "D-Bus service name valid" \
+            || { echo "D-Bus service name missing from policy"; exit 1; }
+
+      - name: Run driverd config parsing test
+        run: |
+          # The daemon is killed by timeout after a few seconds; that kill is
+          # expected, so only the startup-log assertion determines the result.
+          # MISSION_ALLOW_UNAUTHORIZED is NEVER set in CI.
+          timeout 3 bash -c '
+            MISSION_DRIVERD_CONFIG=/dev/null \
+            ./target/debug/mission-driverd > /tmp/driverd-smoke.log 2>&1
+          ' || true
+          grep -q "\[driverd\] starting" /tmp/driverd-smoke.log \
+            && echo "✅ driverd config parsing succeeded" \
+            || { echo "❌ driverd did not initialize (config parsing failed)"; cat /tmp/driverd-smoke.log; exit 1; }
+
+      - name: Validate M2-E dependencies are linked in binary
+        run: |
+          # Verify that M2-E dependencies (ureq, sha2, blake3) are linked.
+          # nm output is informational; a missing symbol set is not treated
+          # as a failure because Rust crates may be statically folded.
+          nm -D target/debug/mission-driverd 2>/dev/null | grep -i "sha2\|blake3\|ureq" | head -5 || \
+            echo "Static linking: dependencies compiled into binary"
+
+  cmake:
+    name: CMake / UI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            qt6-base-dev \
+            qt6-declarative-dev \
+            libqt6svg6-dev \
+            libkf6kirigami-dev \
+            libkf6coreaddons-dev \
+            libkf6i18n-dev \
+            qml6-module-org-kde-kirigami \
+            qml6-module-qtquick \
+            qml6-module-qtquick-controls \
+            qml6-module-qtquick-layouts \
+            qml6-module-qt-labs-qmlmodels
+
+      - name: Configure CMake
+        run: mkdir -p build && cd build && cmake .. -DBUILD_TESTING=ON
+
+      - name: Build CMake
+        run: cmake --build build

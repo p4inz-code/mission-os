@@ -1,0 +1,43 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+export CARGO_HOME = $(CURDIR)/debian/cargo-home
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	cd $(CURDIR)/../../src/services/securityd && \
+		CARGO_TARGET_DIR="$(CURDIR)/debian/cargo-target" \
+		cargo build --release --bin mission-securityd
+
+override_dh_auto_test:
+	cd $(CURDIR)/../../src/services/securityd && \
+		CARGO_TARGET_DIR="$(CURDIR)/debian/cargo-target" \
+		cargo test
+
+override_dh_install:
+	# Install binary
+	install -d $(CURDIR)/debian/mission-securityd/usr/lib/mission
+	install -m 755 $(CURDIR)/debian/cargo-target/release/mission-securityd \
+		$(CURDIR)/debian/mission-securityd/usr/lib/mission/
+
+	# Install systemd unit (from service deploy/ dir)
+	install -d $(CURDIR)/debian/mission-securityd/usr/lib/systemd/system
+	install -m 644 $(CURDIR)/../../src/services/securityd/deploy/mission-securityd.service \
+		$(CURDIR)/debian/mission-securityd/usr/lib/systemd/system/
+
+	# Install D-Bus configuration (from service deploy/ dir)
+	install -d $(CURDIR)/debian/mission-securityd/usr/share/dbus-1/system.d
+	install -m 644 $(CURDIR)/../../src/services/securityd/deploy/org.mission.Security1.conf \
+		$(CURDIR)/debian/mission-securityd/usr/share/dbus-1/system.d/
+
+	# Install PolKit policy (from service deploy/ dir)
+	install -d $(CURDIR)/debian/mission-securityd/usr/share/polkit-1/actions
+	install -m 644 $(CURDIR)/../../src/services/securityd/deploy/org.mission.security.policy \
+		$(CURDIR)/debian/mission-securityd/usr/share/polkit-1/actions/
+
+	# Install default configuration (from service deploy/ dir)
+	install -d $(CURDIR)/debian/mission-securityd/etc/mission
+	install -m 644 $(CURDIR)/../../src/services/securityd/deploy/securityd.toml \
+		$(CURDIR)/debian/mission-securityd/etc/mission/

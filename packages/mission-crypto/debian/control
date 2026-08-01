@@ -1,0 +1,27 @@
+Source: mission-crypto
+Section: libs
+Priority: optional
+Maintainer: Mission OS Contributors <devel@mission-os.org>
+Build-Depends: debhelper-compat (= 13),
+               cargo,
+               rustc,
+               libssl-dev,
+               pkg-config
+Standards-Version: 4.7.0
+Homepage: https://mission-os.org
+Vcs-Browser: https://github.com/p4inz-code/mission-os
+Vcs-Git: https://github.com/p4inz-code/mission-os.git
+Rules-Requires-Root: no
+
+Package: mission-crypto-dev
+Architecture: any
+Section: libdevel
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         mission-core-dev (= ${binary:Version})
+Description: Mission OS cryptographic shared library (development files)
+ mission-crypto provides key generation, hashing, signing/verification,
+ secure memory handling, and random number generation for all privileged
+ Mission OS services.
+ .
+ This package contains the development headers and shared library.

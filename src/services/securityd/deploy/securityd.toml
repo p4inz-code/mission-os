@@ -1,0 +1,14 @@
+# mission-securityd default configuration
+#
+# This file is installed to /etc/mission/securityd.toml
+# Configuration is loaded on service start.
+
+dbus_name = "org.mission.Security1"
+default_firewall_profile = "public"
+firewall_enabled = true
+
+[audit]
+enabled = true
+max_size_bytes = 10485760
+max_files = 5
+syslog_forward = false

@@ -1,0 +1,41 @@
+# mission-first-boot systemd service unit
+#
+# Runs the first-boot initialization script on the first boot
+# of a Mission OS system (live or installed).
+#
+# The service:
+# - Is idempotent (uses a state marker to prevent re-execution)
+# - Runs once at boot before multi-user.target
+# - Does not block boot if it fails (optional service)
+# - Is disabled after successful completion
+#
+# Security:
+# - Runs as root (requires system configuration access)
+# - No secrets are handled
+# - No network access required
+
+[Unit]
+Description=Mission OS First-Boot Initialization
+Documentation=https://docs.mission-os.org/first-boot
+# Network target NOT required — first-boot does not need network access.
+# NetworkManager is started only if nmcli is available (guarded in script).
+# This ensures offline-first boot works correctly.
+#
+# The service is a ConditionPathExists guard: it only runs if
+# /var/lib/mission/first-boot-complete does NOT exist, making it
+# naturally idempotent without network dependencies.
+After=systemd-journald.service
+Before=display-manager.service
+ConditionPathExists=!/var/lib/mission/first-boot-complete
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/mission/mission-first-boot.sh
+User=root
+Group=root
+RemainAfterExit=yes
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

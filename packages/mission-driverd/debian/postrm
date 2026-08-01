@@ -1,0 +1,23 @@
+#!/bin/sh
+# postrm script for mission-driverd
+
+set -e
+
+case "$1" in
+    remove|purge|disappear)
+        if command -v deb-systemd-helper >/dev/null 2>&1; then
+            deb-systemd-helper disable mission-driverd.service >/dev/null 2>&1 || true
+            deb-systemd-helper purge mission-driverd.service >/dev/null 2>&1 || true
+        fi
+        ;;
+
+    upgrade|failed-upgrade)
+        ;;
+
+    *)
+        echo "postrm called with unknown argument '$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

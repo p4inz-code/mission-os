@@ -1,0 +1,12 @@
+# Mission OS — Calamares Module Descriptor
+#
+# This module runs after the main installation to apply
+# Mission OS-specific configuration.
+
+type: job
+name: mission-os
+interface: python
+script: main.py
+required: false  # Non-fatal — installation succeeds without this module
+emergency: false
+nobaseprefix: true

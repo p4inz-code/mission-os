@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+export CARGO_HOME = $(CURDIR)/debian/cargo-home
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	cd $(CURDIR)/../../src/services/driverd && \
+		CARGO_TARGET_DIR="$(CURDIR)/debian/cargo-target" \
+		cargo build --release --bin mission-driverd
+
+override_dh_auto_test:
+	cd $(CURDIR)/../../src/services/driverd && \
+		CARGO_TARGET_DIR="$(CURDIR)/debian/cargo-target" \
+		cargo test
+
+override_dh_install:
+	# Install binary
+	install -d $(CURDIR)/debian/mission-driverd/usr/lib/mission
+	install -m 755 $(CURDIR)/debian/cargo-target/release/mission-driverd \
+		$(CURDIR)/debian/mission-driverd/usr/lib/mission/
+
+	# Install systemd unit (from service source root)
+	install -d $(CURDIR)/debian/mission-driverd/usr/lib/systemd/system
+	install -m 644 $(CURDIR)/../../src/services/driverd/deploy/mission-driverd.service \
+		$(CURDIR)/debian/mission-driverd/usr/lib/systemd/system/
+
+	# Install D-Bus configuration (from service source root)
+	install -d $(CURDIR)/debian/mission-driverd/usr/share/dbus-1/system.d
+	install -m 644 $(CURDIR)/../../src/services/driverd/deploy/org.mission.Driver1.conf \
+		$(CURDIR)/debian/mission-driverd/usr/share/dbus-1/system.d/
+
+	# Install PolKit policy (from deploy/ subdirectory)
+	install -d $(CURDIR)/debian/mission-driverd/usr/share/polkit-1/actions
+	install -m 644 $(CURDIR)/../../src/services/driverd/deploy/org.mission.driver.policy \
+		$(CURDIR)/debian/mission-driverd/usr/share/polkit-1/actions/
+
+	# Install default configuration (from deploy/ subdirectory)
+	install -d $(CURDIR)/debian/mission-driverd/etc/mission
+	install -m 644 $(CURDIR)/../../src/services/driverd/deploy/driverd.toml \
+		$(CURDIR)/debian/mission-driverd/etc/mission/
+
+	# Create cache directory
+	install -d $(CURDIR)/debian/mission-driverd/var/cache/mission/drivers
+	install -d $(CURDIR)/debian/mission-driverd/var/cache/mission/drivers/partials

@@ -1,0 +1,24 @@
+#!/bin/sh
+# postrm script for mission-securityd
+
+set -e
+
+case "$1" in
+    remove|purge|disappear)
+        # Disable and stop service on removal
+        if command -v deb-systemd-helper >/dev/null 2>&1; then
+            deb-systemd-helper disable mission-securityd.service >/dev/null 2>&1 || true
+            deb-systemd-helper purge mission-securityd.service >/dev/null 2>&1 || true
+        fi
+        ;;
+
+    upgrade|failed-upgrade)
+        ;;
+
+    *)
+        echo "postrm called with unknown argument '$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

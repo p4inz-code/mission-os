@@ -1,0 +1,75 @@
+# mission-securityd systemd service unit
+#
+# Per MOS-ENG-SEC-001 §6.1 and MOS-ENG-MOD-001 §3.4:
+# - Type=dbus: service registers on D-Bus system bus
+# - BusName=org.mission.Security1: well-known D-Bus name
+# - User=root: requires CAP_NET_ADMIN for nftables operations
+# - NoNewPrivileges=yes: prevent privilege escalation
+#
+# ## Capability Justification
+#
+# CAP_NET_ADMIN (required):
+#   The service manages nftables firewall rules. CAP_NET_ADMIN is the
+#   minimum Linux capability required for netfilter/nftables operations.
+#   This is bounded — no broader CAP_SYS_ADMIN is granted.
+#
+# ## Security Hardening
+#
+# - ProtectSystem=strict: read-only /usr and /etc (config is pre-loaded)
+# - ProtectHome=yes: no access to home directories
+# - PrivateTmp=yes: temporary files isolated
+# - RestrictAddressFamilies=AF_NETLINK AF_UNIX: only netlink (nftables) + unix sockets
+# - No network access to the internet (no AF_INET/AF_INET6)
+# - CapabilityBoundingSet=CAP_NET_ADMIN: exactly one capability
+# - ProtectKernelModules=yes: securityd does not load kernel modules
+#
+# ## Startup Order (per RUNTIME_ARCHITECTURE §3.1)
+#   systemd-journald -> systemd-udevd -> mission-securityd -> mission-driverd
+#
+# ## Restart Policy
+#   Critical service: 5 restarts in 60 seconds then enter failed state.
+#   This prevents boot loops while still recovering from transient failures.
+
+[Unit]
+Description=Mission OS Security Policy Daemon
+Documentation=https://docs.mission-os.org/security
+After=network.target systemd-journald.service systemd-udevd.service
+Wants=systemd-udevd.service
+Requires=systemd-journald.service
+# Start-limit policy — these are [Unit] keys, NOT [Service] keys:
+# 5 restarts in 60s then enter failed state. Prevents boot loops while
+# still recovering from transient failures.
+StartLimitBurst=5
+StartLimitIntervalSec=60s
+
+[Service]
+Type=dbus
+BusName=org.mission.Security1
+ExecStart=/usr/lib/mission/mission-securityd
+User=root
+Group=root
+# Only nftables capability — no broader privileges
+CapabilityBoundingSet=CAP_NET_ADMIN
+AmbientCapabilities=CAP_NET_ADMIN
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ProtectProc=invisible
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictAddressFamilies=AF_NETLINK AF_UNIX
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+# Resource limits
+MemoryMax=128M
+MemoryHigh=64M
+TasksMax=32
+# Restart policy — critical service
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

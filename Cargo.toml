@@ -1,0 +1,68 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "src/libraries/core",
+    "src/libraries/crypto",
+    "src/services/securityd",
+    "src/services/driverd",
+    "tests/mission_integration",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-only"
+repository = "https://github.com/p4inz-code/mission-os"
+authors = ["Mission OS Contributors"]
+
+[workspace.dependencies]
+# mission-core re-exported for workspace crates
+mission-core = { path = "src/libraries/core" }
+mission-crypto = { path = "src/libraries/crypto" }
+
+# Pre-approved dependencies (DEPENDENCY_POLICY.md §8.4)
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+toml = "0.8"
+
+# Architecturally required for config (TOML parsing):
+# toml is a well-known, actively maintained crate with serde integration.
+# Licensed MIT/Apache-2.0 (GPL-3.0 compatible).
+# See DEPENDENCY_POLICY.md §8.4 — engineering team lead approval level.
+
+# Cryptography dependencies (M1-B.2)
+# sha2 & blake3 are pre-approved in DEPENDENCY_POLICY.md §8.4
+sha2 = "0.10"
+blake3 = "1"
+# ed25519-dalek: well-known, audited Ed25519 implementation (MIT/Apache-2.0)
+ed25519-dalek = { version = "2", features = ["digest"] }
+# getrandom: minimal OS CSPRNG wrapper, widely audited (MIT/Apache-2.0)
+getrandom = "0.3"
+# zeroize: secure memory zeroing, used by ed25519-dalek (MIT/Apache-2.0)
+zeroize = { version = "1", features = ["derive"] }
+# libc: platform FFI for mlock/munlock in secure_memory (MIT/Apache-2.0)
+libc = "0.2"
+
+# D-Bus integration (M2-B)
+# zbus is pre-approved in DEPENDENCY_POLICY.md §8.4 (zbus, D-Bus Rust implementation)
+# Used by mission-securityd for system D-Bus integration
+zbus = { version = "4", features = ["tokio"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
+futures-util = "0.3"
+
+# HTTP client for driver package acquisition (M2-E)
+# ureq is a minimal, pure-Rust HTTP/HTTPS client with rustls TLS.
+# License: MIT/Apache-2.0 (GPL-3.0 compatible)
+# Required for: HTTPS download of driver packages from remote sources
+# Alternatives considered: reqwest (heavier, more deps), minreq (native-tls only)
+# Pre-approved per DEPENDENCY_POLICY.md §4.2: well-known, maintained Rust crate
+ureq = { version = "2", features = ["tls"] }
+
+[profile.release]
+opt-level = 2
+debug = false
+lto = "thin"
+strip = "symbols"
+codegen-units = 1

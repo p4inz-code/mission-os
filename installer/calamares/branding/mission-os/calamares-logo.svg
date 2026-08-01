@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- Mission OS Calamares Installer Icon -->
+  <!-- Dark graphite shield with violet/cool-blue accent -->
+  <defs>
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2128;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#131519;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#625cb8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7b72d0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shield shape -->
+  <path d="M128 16 L224 56 L224 128 C224 184 178 228 128 244 C78 228 32 184 32 128 L32 56 Z"
+        fill="url(#shield-grad)" stroke="#2a2d36" stroke-width="2"/>
+
+  <!-- Accent chevron (M logo simplified) -->
+  <path d="M96 104 L128 72 L160 104 L148 116 L128 96 L108 116 Z"
+        fill="url(#accent-grad)" style="transform:translate(0, 8px);"/>
+
+  <!-- Shield highlight -->
+  <path d="M128 24 L216 60 L216 128 C216 180 174 222 128 236 C82 222 40 180 40 128 L40 60 Z"
+        fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+</svg>

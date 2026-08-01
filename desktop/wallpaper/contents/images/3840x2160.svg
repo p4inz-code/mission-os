@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3840 2160" width="3840" height="2160">
+  <!-- Mission OS Default Wallpaper -->
+  <!-- Dark graphite/slate gradient with subtle violet geometric accent -->
+  <!-- Design language: premium, minimal, calm, professional -->
+  <!-- Explicitly NOT: cyberpunk, hacker, Kali-style, green-terminal -->
+
+  <defs>
+    <!-- Main background gradient: dark graphite to deep slate -->
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%" fx="50%" fy="30%">
+      <stop offset="0%" style="stop-color:#1a1c23;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#16181e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#101216;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Subtle accent glow (violet/cool-blue) -->
+    <radialGradient id="accent-glow" cx="85%" cy="15%" r="40%">
+      <stop offset="0%" style="stop-color:#625cb8;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#625cb8;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Secondary accent glow -->
+    <radialGradient id="accent-glow-2" cx="15%" cy="85%" r="35%">
+      <stop offset="0%" style="stop-color:#7b72d0;stop-opacity:0.04" />
+      <stop offset="100%" style="stop-color:#7b72d0;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Subtle grid pattern -->
+    <pattern id="grid" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M 120 0 L 0 0 0 120" fill="none" stroke="rgba(255,255,255,0.015)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="3840" height="2160" fill="url(#bg-grad)"/>
+
+  <!-- Accent glows -->
+  <rect width="3840" height="2160" fill="url(#accent-glow)"/>
+  <rect width="3840" height="2160" fill="url(#accent-glow-2)"/>
+
+  <!-- Subtle grid overlay -->
+  <rect width="3840" height="2160" fill="url(#grid)"/>
+
+  <!-- Bottom-edge accent line (very subtle) -->
+  <!-- A thin violet line near the bottom, visually grounding the composition -->
+  <rect x="0" y="2156" width="3840" height="1.5" fill="#625cb8" opacity="0.3"/>
+
+  <!-- Right-side accent geometric element -->
+  <!-- Subtle vertical line, offset from right edge -->
+  <rect x="3780" y="0" width="1" height="2160" fill="#625cb8" opacity="0.08"/>
+
+  <!-- Top-left accent corner mark -->
+  <!-- Small geometric detail -->
+  <rect x="60" y="60" width="40" height="1" fill="#625cb8" opacity="0.15"/>
+  <rect x="60" y="60" width="1" height="40" fill="#625cb8" opacity="0.15"/>
+
+  <!-- Subtle horizontal divider lines -->
+  <line x1="0" y1="1080" x2="3840" y2="1080" stroke="rgba(255,255,255,0.012)" stroke-width="0.5"/>
+</svg>

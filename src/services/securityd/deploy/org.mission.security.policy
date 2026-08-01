@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+
+<!--
+  PolKit authorization policy for mission-securityd.
+
+  Per MOS-ENG-IPC-001 §5.1 and MOS-ENG-SEC-001:
+  - All privileged D-Bus methods require PolKit authorization
+  - Read-only actions (view*) require no authentication
+  - Configuration actions require admin authentication
+  - Admin keep is used for session-level caching (5 min)
+
+  Action IDs: org.mission.security.*
+
+  Installation: /usr/share/polkit-1/actions/org.mission.security.policy
+-->
+
+<policyconfig>
+  <vendor>Mission OS</vendor>
+  <vendor_url>https://mission-os.org</vendor_url>
+  <icon_name>mission-security</icon_name>
+
+  <!-- View Firewall Status -->
+  <action id="org.mission.security.view-firewall-status">
+    <description>View firewall status and rules</description>
+    <message>Authentication is required to view firewall status</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Configure Firewall -->
+  <action id="org.mission.security.configure-firewall">
+    <description>Modify firewall configuration</description>
+    <message>Authentication is required to modify firewall settings</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.admin.default">true</annotate>
+  </action>
+
+  <!-- View Audit Log -->
+  <action id="org.mission.security.view-audit-log">
+    <description>View security audit logs</description>
+    <message>Authentication is required to view audit logs</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Export Audit Log -->
+  <action id="org.mission.security.export-audit-log">
+    <description>Export or forward audit logs</description>
+    <message>Authentication is required to export audit logs</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Change Security Policy -->
+  <action id="org.mission.security.change-policy">
+    <description>Change security policy settings</description>
+    <message>Authentication is required to change security policy</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.admin.default">true</annotate>
+  </action>
+
+  <!-- Manage Certificates -->
+  <action id="org.mission.security.manage-certificates">
+    <description>Manage certificate trust store</description>
+    <message>Authentication is required to manage certificates</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <!-- View Secure Boot Status -->
+  <action id="org.mission.security.view-secure-boot">
+    <description>View Secure Boot status</description>
+    <message>Authentication is required to view Secure Boot status</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Configure Secure Boot -->
+  <action id="org.mission.security.configure-secure-boot">
+    <description>Modify Secure Boot configuration</description>
+    <message>Authentication is required to modify Secure Boot settings</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.admin.default">true</annotate>
+  </action>
+
+  <!-- View Sandbox Status -->
+  <action id="org.mission.security.view-sandbox-status">
+    <description>View sandbox/MAC policy status</description>
+    <message>Authentication is required to view sandbox status</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Configure Sandbox -->
+  <action id="org.mission.security.configure-sandbox">
+    <description>Modify sandbox/MAC policy</description>
+    <message>Authentication is required to modify sandbox settings</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.admin.default">true</annotate>
+  </action>
+</policyconfig>

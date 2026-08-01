@@ -1,0 +1,17 @@
+# Mission OS — Konsole Terminal Configuration
+# Installed to /etc/xdg/konsolerc
+
+[General]
+ApplicationTitle=$USER: $SHELL
+ShowTerminalSizeOnZoom=false
+UseSingleProcess=true
+
+[Desktop Entry]
+DefaultProfile=MissionOS.profile
+
+[MainWindow]
+MenuBar=Disabled
+TabBarVisibility=AlwaysShowTabBar
+
+[Settings]
+ColorScheme=mission-graphite

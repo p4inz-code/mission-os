@@ -1,0 +1,30 @@
+Source: mission-securityd
+Section: admin
+Priority: optional
+Maintainer: Mission OS Contributors <devel@mission-os.org>
+Build-Depends: debhelper-compat (= 13),
+               cargo,
+               rustc,
+               libssl-dev,
+               pkg-config
+Standards-Version: 4.7.0
+Homepage: https://mission-os.org
+Vcs-Browser: https://github.com/p4inz-code/mission-os
+Vcs-Git: https://github.com/p4inz-code/mission-os.git
+Rules-Requires-Root: no
+
+Package: mission-securityd
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         mission-core-dev (= ${binary:Version}),
+         dbus,
+         policykit-1,
+         nftables
+Description: Mission OS system security policy daemon
+ mission-securityd manages firewall configuration (nftables backend),
+ security event auditing, PolKit authorization for security operations,
+ and audit log management.
+ .
+ This package contains the system security daemon, D-Bus configuration,
+ and PolKit policy files.

@@ -1,0 +1,41 @@
+# Mission OS — KDE Plasma Global Settings
+# Installed to /etc/xdg/kdeglobals (system-wide defaults)
+# Applied on first login for every user.
+#
+# Design: dark graphite/slate with restrained violet/cool-blue accents.
+# Premium modern engineering aesthetic (Apple/Linear/Proton-level).
+
+[General]
+ColorScheme=mission-graphite
+Name=Breeze
+WidgetStyle=Breeze
+font=Noto Sans,10,-1,5,50,0,0,0,0,0
+smallestReadableFont=Noto Sans,8,-1,5,50,0,0,0,0,0
+fixed=Hack,10,-1,5,400,0,0,0,0,0
+shadeSortColumn=true
+TerminalApplication=konsole
+TerminalService=org.kde.konsole
+
+[Icons]
+Theme=breeze-dark
+
+[KDE]
+LookAndFeelPackage=org.kde.breezedark.desktop
+widgetStyle=Breeze
+
+[Locale]
+Country=us
+Language=en_US
+
+[Paths]
+
+[SM]
+excludeApps=
+
+[TabBox]
+
+[Toolbar style]
+ToolButtonStyle=TextBesideIcon
+
+[WM]
+activeFont=Noto Sans,10,-1,5,50,0,0,0,0,0

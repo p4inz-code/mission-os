@@ -1,0 +1,62 @@
+# ── Rust (Cargo) ─────────────────────────────────────────────────────
+target/
+# Cargo.lock is deliberately TRACKED (not ignored):
+#   - `cargo audit` in CI requires a lockfile on a fresh clone
+#   - ENGINEERING_GATES requires reproducible builds
+#   - Workspace contains binaries (securityd, driverd)
+
+# ── CMake (generated files only) ────────────────────────────────────
+# NOTE: `build/` is the CMake output dir (Makefile CMAKE_BUILD_DIR) AND
+# the home of the tracked build scripts (build-nightly.sh, validate-iso.sh,
+# qemu-boot-test.sh, ...). Only generated content below is ignored.
+build/*
+!build/*.sh
+!build/mission-first-boot.service
+!build/live-build/
+# Generated live-build content (created by lb config / lb build) stays ignored
+build/live-build/config/
+build/live-build/chroot/
+build/live-build/cache/
+build/live-build/binary*
+build/live-build/*.log
+build/live-build/*.img
+# ...but the hand-authored auto/config IS tracked
+!build/live-build/auto/
+!build/live-build/auto/config
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+cmake_install.cmake
+*.cmake
+!CMakeLists.txt
+!*.cmake.in
+
+# ── IDE / Editor ────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.vs/
+
+# ── OS ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Python ──────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# ── Build artifacts ─────────────────────────────────────────────────
+*.o
+*.so
+*.dylib
+*.dll
+*.exe
+*.a
+*.lib
+*.d

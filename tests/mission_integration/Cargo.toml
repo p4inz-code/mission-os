@@ -1,0 +1,10 @@
+[package]
+name = "mission-integration-tests"
+version.workspace = true
+edition.workspace = true
+description = "Workspace integration tests for Mission OS"
+publish = false
+
+[dependencies]
+mission-core.workspace = true
+mission-crypto.workspace = true

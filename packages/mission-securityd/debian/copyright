@@ -1,0 +1,16 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: mission-securityd
+Upstream-Contact: Mission OS Contributors <devel@mission-os.org>
+Source: https://github.com/p4inz-code/mission-os
+
+Files: *
+Copyright: 2026 Mission OS Contributors
+License: GPL-3.0-only
+
+License: GPL-3.0-only
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, version 3 of the License.
+ .
+ On Debian systems, the full text of the GNU General Public License
+ version 3 can be found in the file `/usr/share/common-licenses/GPL-3'.

@@ -1,0 +1,25 @@
+[package]
+name = "mission-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Mission OS foundational shared library"
+
+[lib]
+name = "mission_core"
+# Build as both shared library (for system deployment) and rlib (for workspace tests)
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+toml.workspace = true
+
+[dev-dependencies]
+
+[lints]
+rust.missing_docs = "warn"
+rust.unreachable_pub = "warn"

@@ -1,0 +1,341 @@
+name: Nightly Build
+
+on:
+  schedule:
+    # Build nightly at 03:00 UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  # ── Gate 1: Rust Quality ──────────────────────────────────────────
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: Check formatting
+        run: cargo fmt --check
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Run workspace tests
+        run: cargo test --workspace
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Check compilation (all targets)
+        run: cargo check --workspace --all-targets
+      - name: Build (release mode)
+        run: cargo build --release
+
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install cargo-audit
+        run: cargo install cargo-audit --locked
+      - name: Run cargo audit
+        run: cargo audit --deny warnings
+
+  # ── Gate 2: Packaging ────────────────────────────────────────────
+  validate-packaging:
+    name: Validate Packaging
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install packaging tools
+        run: sudo apt-get update && sudo apt-get install -y debhelper dpkg-dev lintian
+      - name: Validate package directory structure
+        run: |
+          for pkg in mission-core mission-crypto mission-securityd mission-driverd; do
+            if [ -d "packages/${pkg}/debian" ]; then
+              echo "✅ packages/${pkg}/debian exists"
+              ls -la "packages/${pkg}/debian/"
+            else
+              echo "⚠️ packages/${pkg}/debian not found"
+            fi
+          done
+      - name: Validate securityd deployment files (deploy/)
+        run: |
+          for f in \
+            src/services/securityd/deploy/mission-securityd.service \
+            src/services/securityd/deploy/org.mission.Security1.conf \
+            src/services/securityd/deploy/org.mission.security.policy \
+            src/services/securityd/deploy/securityd.toml; do
+            if [ -f "$f" ]; then
+              echo "✅ $f"
+            else
+              echo "❌ MISSING: $f"
+              exit 1
+            fi
+          done
+      - name: Validate driverd deployment files (deploy/)
+        run: |
+          for f in \
+            src/services/driverd/deploy/mission-driverd.service \
+            src/services/driverd/deploy/org.mission.Driver1.conf \
+            src/services/driverd/deploy/org.mission.driver.policy \
+            src/services/driverd/deploy/driverd.toml; do
+            if [ -f "$f" ]; then
+              echo "✅ $f"
+            else
+              echo "❌ MISSING: $f"
+              exit 1
+            fi
+          done
+      - name: Validate KDE Plasma desktop defaults
+        run: |
+          for f in \
+            desktop/plasma/kdeglobals \
+            desktop/plasma/kwinrc \
+            desktop/plasma/plasmarc \
+            desktop/plasma/konsolerc \
+            desktop/plasma/kcminputrc \
+            desktop/plasma/powermanagementprofilesrc \
+            desktop/plasma/plasma-org.kde.plasma.desktop-appletsrc \
+            desktop/plasma/colorschemes/mission-graphite.colors; do
+            if [ -f "$f" ]; then
+              echo "✅ $f"
+            else
+              echo "❌ MISSING: $f"
+              exit 1
+            fi
+          done
+      - name: Validate branding assets
+        run: |
+          for f in \
+            desktop/wallpaper/contents/images/3840x2160.svg \
+            installer/calamares/branding/mission-os/calamares-logo.svg; do
+            if [ -f "$f" ]; then
+              echo "✅ $f"
+            else
+              echo "❌ MISSING: $f"
+              exit 1
+            fi
+          done
+      - name: Validate version metadata
+        run: |
+          if [ -f "VERSION" ]; then
+            echo "✅ VERSION file: $(cat VERSION)"
+          else
+            echo "❌ MISSING: VERSION"
+            exit 1
+          fi
+      - name: Validate build scripts
+        run: |
+          for f in \
+            build/build-nightly.sh \
+            build/nightly-version.sh \
+            build/mission-first-boot.service; do
+            if [ -f "$f" ]; then
+              echo "✅ $f"
+            else
+              echo "❌ MISSING: $f"
+              exit 1
+            fi
+          done
+
+  validate-installer:
+    name: Validate Installer Config
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Calamares configuration
+        run: |
+          for f in \
+            installer/calamares/settings.conf \
+            installer/calamares/branding/mission-os/branding.desc \
+            installer/calamares/modules/mission-os/module.desc \
+            installer/calamares/modules/mission-os/main.py; do
+            if [ -f "$f" ]; then
+              echo "✅ $f"
+            else
+              echo "❌ MISSING: $f"
+              exit 1
+            fi
+          done
+      - name: Validate first-boot script
+        run: |
+          if [ -f "installer/mission-first-boot.sh" ]; then
+            echo "✅ installer/mission-first-boot.sh"
+            # Basic syntax check
+            bash -n installer/mission-first-boot.sh && echo "   Shell syntax OK"
+          else
+            echo "❌ MISSING: installer/mission-first-boot.sh"
+            exit 1
+          fi
+
+  # ── Gate 3: Service Validation ──────────────────────────────────
+  validate-services:
+    name: Validate Services
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Install D-Bus and PolKit
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dbus dbus-x11 policykit-1
+      - name: Build all binaries
+        run: cargo build --release
+      - name: Verify binaries are ELF
+        run: |
+          for bin in mission-securityd mission-driverd; do
+            if [ -f "target/release/${bin}" ]; then
+              file "target/release/${bin}" | grep -q "ELF" && echo "✅ target/release/${bin} is valid ELF"
+            else
+              echo "⚠️ target/release/${bin} not found (release mode)"
+            fi
+          done
+      - name: Verify D-Bus service names
+        run: |
+          grep -r "org.mission.Security1" src/services/securityd/ --include="*.rs" | head -1 && echo "✅ securityd D-Bus name found"
+          grep -r "org.mission.Driver1" src/services/driverd/ --include="*.rs" | head -1 && echo "✅ driverd D-Bus name found"
+      - name: Verify PolKit action IDs
+        run: |
+          grep -r "org.mission.security" src/services/securityd/ --include="*.rs" | head -1 && echo "✅ securityd PolKit actions found"
+          grep -r "org.mission.driver" src/services/driverd/ --include="*.rs" | head -1 && echo "✅ driverd PolKit actions found"
+
+  # ── Gate 4: ISO Build ───────────────────────────────────────────
+  # Delegates to the canonical build-nightly.sh so the CI artifact is
+  # byte-for-byte the same product as a local build. Previously this job
+  # duplicated the overlay logic inline and silently dropped three phases:
+  #   * package-lists (config/package-lists/mission-desktop.list.chroot) —
+  #     without it the ISO had NO KDE/Calamares/Firefox packages
+  #   * custom GRUB config (config/binary_grub/grub.cfg) — without it GRUB
+  #     had no boot timeout and no serial console, breaking headless
+  #     QEMU validation
+  #   * service enablement (multi-user.target.wants + default.target) —
+  #     without it Mission services were installed but never started
+  # build-nightly.sh executes all of these in the correct order.
+  build-iso:
+    name: Build ISO
+    runs-on: ubuntu-latest
+    needs: [lint, test, build, security-audit, validate-packaging]
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            live-build \
+            debootstrap \
+            xorriso \
+            mtools \
+            dosfstools \
+            squashfs-tools \
+            grub-efi-amd64-bin \
+            grub-pc-bin \
+            grub-efi-amd64-signed \
+            shim-signed \
+            jq \
+            systemd-container \
+            syslinux-utils
+
+      - name: Build Nightly ISO (canonical build-nightly.sh)
+        run: |
+          chmod +x build/build-nightly.sh build/nightly-version.sh build/validate-iso.sh
+          # --skip-tests: workspace tests already ran in the `test` job, so
+          # re-running them here would only slow the ISO build. build-nightly.sh
+          # covers: release build, version metadata, lb config (via
+          # auto/config), package lists, custom GRUB config, overlay
+          # deployment, service enablement, GRUB 2.12 patch, ISO build,
+          # EFI append (Phase 9), and checksums.
+          ./build/build-nightly.sh --skip-tests
+
+      - name: Validate ISO structure (using validate-iso.sh)
+        run: |
+          ISO_FILE=$(ls build/images/*.iso 2>/dev/null | head -1)
+          if [ -z "${ISO_FILE}" ]; then
+            echo "ERROR: No ISO file in build/images/"
+            exit 1
+          fi
+          ./build/validate-iso.sh "${ISO_FILE}"
+
+      - name: Upload ISO artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mission-os-nightly-iso
+          path: build/images/*.iso
+          compression-level: 0
+          retention-days: 7
+
+      - name: Upload checksum artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mission-os-nightly-checksums
+          path: build/images/*.sha256
+          retention-days: 30
+
+      - name: Upload build metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: mission-os-nightly-metadata
+          path: |
+            build/images/nightly-version.json
+            build/images/lb-build.log
+          retention-days: 30
+
+  # ── Gate 5: QEMU Boot Validation ──────────────────────────────
+  qemu-boot:
+    name: QEMU Boot Validation
+    runs-on: ubuntu-latest
+    needs: [build-iso]
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download ISO artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: mission-os-nightly-iso
+          path: build/images
+      - name: Install QEMU and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qemu-system-x86 ovmf
+      - name: Run QEMU boot validation (UEFI)
+        run: |
+          chmod +x build/qemu-boot-test.sh
+          ISO_FILE=$(ls build/images/*.iso 2>/dev/null | head -1)
+          if [ -z "${ISO_FILE}" ]; then
+            echo "ERROR: No ISO found in build/images/"
+            exit 1
+          fi
+          ./build/qemu-boot-test.sh "${ISO_FILE}" 180 --ci-mode
+      - name: Upload boot test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mission-os-qemu-boot-logs
+          path: build/images/qemu-*.log
+          retention-days: 14

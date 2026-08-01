@@ -1,0 +1,35 @@
+# Mission OS — Power Management Configuration
+# Installed to /etc/xdg/powermanagementprofilesrc
+
+[AC][Display]
+DimDisplay=true
+DimDisplayIdle=180
+DisplayBrightness=100
+DisplayPowerDown=600
+IdleTimeout=900
+
+[AC][SuspendSession]
+SuspendThenHibernate=false
+SuspendType=1
+
+[Battery][Display]
+DimDisplay=true
+DimDisplayIdle=120
+DisplayBrightness=75
+DisplayPowerDown=300
+IdleTimeout=600
+
+[Battery][SuspendSession]
+SuspendThenHibernate=true
+SuspendType=1
+
+[LowBattery][Display]
+DimDisplay=true
+DimDisplayIdle=60
+DisplayBrightness=50
+DisplayPowerDown=120
+IdleTimeout=180
+
+[LowBattery][SuspendSession]
+SuspendThenHibernate=true
+SuspendType=3

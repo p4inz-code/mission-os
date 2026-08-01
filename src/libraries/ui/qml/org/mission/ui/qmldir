@@ -1,0 +1,12 @@
+module org.mission.ui
+plugin missionuiplugin
+
+singleton Colors 1.0 Colors.qml
+singleton Typography 1.0 Typography.qml
+singleton Spacing 1.0 Spacing.qml
+singleton Radii 1.0 Radii.qml
+singleton Elevation 1.0 Elevation.qml
+singleton Motion 1.0 Motion.qml
+singleton MissionTheme 1.0 MissionTheme.qml
+MissionWindow 1.0 MissionWindow.qml
+MissionPage 1.0 MissionPage.qml

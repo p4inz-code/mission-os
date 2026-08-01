@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+
+<!--
+  PolKit authorization policy for mission-driverd.
+
+  Per MOS-ENG-IPC-001 §5.1:
+  - All privileged D-Bus methods require PolKit authorization
+  - Read-only actions (view/list/query) require no authentication
+  - Install/update/remove actions require admin authentication
+
+  Action IDs: org.mission.driver.*
+
+  Installation: /usr/share/polkit-1/actions/org.mission.driver.policy
+-->
+
+<policyconfig>
+  <vendor>Mission OS</vendor>
+  <vendor_url>https://mission-os.org</vendor_url>
+  <icon_name>mission-driver</icon_name>
+
+  <!-- View Status -->
+  <action id="org.mission.driver.view-status">
+    <description>View driver service status</description>
+    <message>Authentication is required to view driver status</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <!-- List Drivers -->
+  <action id="org.mission.driver.list-drivers">
+    <description>List all drivers in inventory</description>
+    <message>Authentication is required to list drivers</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Query Driver -->
+  <action id="org.mission.driver.query-driver">
+    <description>Query detailed driver information</description>
+    <message>Authentication is required to query driver information</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Check Compatibility -->
+  <action id="org.mission.driver.check-compatibility">
+    <description>Check driver compatibility with hardware</description>
+    <message>Authentication is required to check driver compatibility</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Install Driver -->
+  <action id="org.mission.driver.install-driver">
+    <description>Install a driver on the system</description>
+    <message>Authentication is required to install a driver</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.admin.default">true</annotate>
+  </action>
+
+  <!-- Update Driver -->
+  <action id="org.mission.driver.update-driver">
+    <description>Update an installed driver</description>
+    <message>Authentication is required to update a driver</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.admin.default">true</annotate>
+  </action>
+
+  <!-- Remove Driver -->
+  <action id="org.mission.driver.remove-driver">
+    <description>Remove a driver from the system</description>
+    <message>Authentication is required to remove a driver</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.admin.default">true</annotate>
+  </action>
+
+  <!-- Configure Sources -->
+  <action id="org.mission.driver.configure-sources">
+    <description>Configure driver sources and repositories</description>
+    <message>Authentication is required to configure driver sources</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <!-- Scan Hardware -->
+  <action id="org.mission.driver.scan-hardware">
+    <description>Trigger hardware inventory scan</description>
+    <message>Authentication is required to scan hardware</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+</policyconfig>

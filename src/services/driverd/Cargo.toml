@@ -1,0 +1,38 @@
+[package]
+name = "mission-driverd"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Mission OS hardware driver management daemon"
+
+[lib]
+name = "mission_driverd"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mission-driverd"
+path = "src/main.rs"
+
+[dependencies]
+mission-core.workspace = true
+mission-crypto.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+toml.workspace = true
+zbus.workspace = true
+tokio.workspace = true
+futures-util.workspace = true
+libc.workspace = true
+
+# zvariant is re-exported from zbus; needed for PolKit integration
+zvariant = { version = "4", features = [] }
+
+# HTTPS driver package acquisition (M2-E)
+ureq.workspace = true
+
+# Cryptographic digests for package integrity verification (M2-E)
+sha2.workspace = true
+blake3.workspace = true

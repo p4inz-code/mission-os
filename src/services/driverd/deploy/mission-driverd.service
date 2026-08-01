@@ -1,0 +1,73 @@
+# mission-driverd systemd service unit
+#
+# Per MOS-ENG-RUNTIME-001 §5.1 and MOS-ENG-MOD-001 §3.6:
+# - Type=dbus: service registers on D-Bus system bus
+# - BusName=org.mission.Driver1: well-known D-Bus name
+# - User=root: system service privilege level
+# - NoNewPrivileges=yes: prevent privilege escalation
+#
+# ## Capability Justification (M2-D Real Backend)
+#
+# CAP_SYS_MODULE (required):
+#   The execution engine uses init_module/delete_module syscalls
+#   (via safe libc wrappers in kmod.rs) to load and unload kernel
+#   modules during driver install/update/remove operations.
+#   This is the minimum capability required — no broader CAP_SYS_ADMIN.
+#
+# ## Security Hardening Notes
+#
+# ProtectKernelModules=no is required because the daemon MUST load
+# and unload kernel modules via init_module/delete_module syscalls.
+# The alternative (shelling out to modprobe/rmmod) would violate
+# the architecture's "no shell execution" policy.
+#
+# The CAP_SYS_MODULE capability is bounded: the service gets exactly
+# the kernel-module-loading capability and nothing broader. Combined
+# with NoNewPrivileges=yes, this prevents the service from escalating
+# to full root even if compromised.
+#
+# Service startup order (per RUNTIME_ARCHITECTURE §3.1):
+#   systemd-udevd -> mission-securityd -> mission-driverd -> mission-updated
+
+[Unit]
+Description=Mission OS Hardware Driver Management Service
+Documentation=https://docs.mission-os.org/drivers
+After=network.target systemd-journald.service systemd-udevd.service
+Wants=systemd-udevd.service
+Requires=systemd-journald.service
+# Start-limit policy — [Unit] keys, NOT [Service] keys:
+# 3 restarts in 30s then enter failed state.
+StartLimitBurst=3
+StartLimitIntervalSec=30s
+
+[Service]
+Type=dbus
+BusName=org.mission.Driver1
+ExecStart=/usr/lib/mission/mission-driverd
+User=root
+Group=root
+# Only the kernel module loading capability — no broader privileges
+CapabilityBoundingSet=CAP_SYS_MODULE
+AmbientCapabilities=CAP_SYS_MODULE
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+# Required: kmod.rs uses init_module/delete_module syscalls directly
+# Setting this to "yes" would silently block all module operations
+ProtectKernelModules=no
+ProtectControlGroups=yes
+ProtectProc=invisible
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service @module
+# Resource limits
+MemoryMax=256M
+MemoryHigh=128M
+TasksMax=64
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

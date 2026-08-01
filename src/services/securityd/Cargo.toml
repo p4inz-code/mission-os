@@ -1,0 +1,30 @@
+[package]
+name = "mission-securityd"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Mission OS system security policy daemon"
+
+[lib]
+name = "mission_securityd"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mission-securityd"
+path = "src/main.rs"
+
+[dependencies]
+mission-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+toml.workspace = true
+zbus.workspace = true
+tokio.workspace = true
+futures-util.workspace = true
+
+# mission-crypto is a declared dependency per MODULE_MAP.md §3.4,
+# but not yet used in M2-A. It will be imported for audit log
+# integrity hashing in a later M2 phase.

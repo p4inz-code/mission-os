@@ -1,0 +1,10 @@
+# Mission OS — Plasma Shell Configuration
+# Installed to /etc/xdg/plasmarc
+
+[Theme]
+name=breeze-dark
+
+[Wallpaper]
+wallpaperPlugin=org.kde.image
+
+[ScreenScaleFactors]

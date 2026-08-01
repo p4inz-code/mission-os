@@ -1,0 +1,32 @@
+Source: mission-driverd
+Section: admin
+Priority: optional
+Maintainer: Mission OS Contributors <devel@mission-os.org>
+Build-Depends: debhelper-compat (= 13),
+               cargo,
+               rustc,
+               libssl-dev,
+               pkg-config
+Standards-Version: 4.7.0
+Homepage: https://mission-os.org
+Vcs-Browser: https://github.com/p4inz-code/mission-os
+Vcs-Git: https://github.com/p4inz-code/mission-os.git
+Rules-Requires-Root: no
+
+Package: mission-driverd
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         mission-core-dev (= ${binary:Version}),
+         mission-crypto-dev (= ${binary:Version}),
+         dbus,
+         policykit-1,
+         kmod,
+         udev
+Description: Mission OS hardware driver management daemon
+ mission-driverd manages hardware detection, driver discovery and inventory,
+ driver matching and compatibility checking, driver install/update/remove
+ operations, and driver signature verification.
+ .
+ This package contains the driver management daemon, D-Bus configuration,
+ and PolKit policy files.

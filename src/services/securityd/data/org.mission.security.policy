@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+
+  <!--
+    PolKit authorization policy for mission-securityd.
+
+    Action namespace: org.mission.security.*
+
+    Authorization levels:
+      auth_admin_keep     — system changes, cached for session
+      auth_self_keep      — user-scoped settings, cached for session
+      no                  — read-only, no authorization needed
+  -->
+
+  <vendor>Mission OS</vendor>
+  <vendor_url>https://mission-os.org</vendor_url>
+
+  <action id="org.mission.security.view-firewall-status">
+    <description>View firewall status and rules</description>
+    <message>Authentication is required to view the firewall status</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.mission.security.configure-firewall">
+    <description>Modify firewall configuration</description>
+    <message>Authentication is required to modify firewall settings</message>
+    <defaults>
+      <allow_any>auth_admin_keep</allow_any>
+      <allow_inactive>auth_admin_keep</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.mission.security.view-audit-log">
+    <description>View security audit logs</description>
+    <message>Authentication is required to view audit logs</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.mission.security.export-audit-log">
+    <description>Export or forward audit logs</description>
+    <message>Authentication is required to export audit logs</message>
+    <defaults>
+      <allow_any>auth_admin_keep</allow_any>
+      <allow_inactive>auth_admin_keep</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.mission.security.change-policy">
+    <description>Change security policy settings</description>
+    <message>Authentication is required to change security policies</message>
+    <defaults>
+      <allow_any>auth_admin_keep</allow_any>
+      <allow_inactive>auth_admin_keep</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.mission.security.manage-certificates">
+    <description>Manage certificate trust store</description>
+    <message>Authentication is required to manage certificates</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.mission.security.view-secure-boot">
+    <description>View Secure Boot status</description>
+    <message>Authentication is required to view Secure Boot status</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.mission.security.configure-secure-boot">
+    <description>Modify Secure Boot configuration</description>
+    <message>Authentication is required to modify Secure Boot settings</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.mission.security.view-sandbox-status">
+    <description>View sandbox/MAC policy status</description>
+    <message>Authentication is required to view sandbox status</message>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.mission.security.configure-sandbox">
+    <description>Modify sandbox/MAC policy</description>
+    <message>Authentication is required to modify sandbox policies</message>
+    <defaults>
+      <allow_any>auth_admin_keep</allow_any>
+      <allow_inactive>auth_admin_keep</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+  </action>
+
+</policyconfig>
