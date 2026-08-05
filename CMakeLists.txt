@@ -21,6 +21,11 @@ project(mission-os
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(BUILD_TESTING "Build tests" ON)
 
+# ── Test infrastructure ─────────────────────────────────────────────
+# Enables CTest (add_test / ctest) and honors BUILD_TESTING.
+# Must be included before any subdirectory that registers tests.
+include(CTest)
+
 # ── C++ Standard ────────────────────────────────────────────────────
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

@@ -10,3 +10,22 @@ singleton Motion 1.0 Motion.qml
 singleton MissionTheme 1.0 MissionTheme.qml
 MissionWindow 1.0 MissionWindow.qml
 MissionPage 1.0 MissionPage.qml
+MissionButton 1.0 MissionButton.qml
+MissionMenuItem 1.0 MissionMenuItem.qml
+InstallerWelcome 1.0 InstallerWelcome.qml
+LanguageSelection 1.0 LanguageSelection.qml
+KeyboardSelection 1.0 KeyboardSelection.qml
+NetworkSelection 1.0 NetworkSelection.qml
+PrivacySetup 1.0 PrivacySetup.qml
+DiskSelection 1.0 DiskSelection.qml
+PartitionManager 1.0 PartitionManager.qml
+UserAccount 1.0 UserAccount.qml
+Encryption 1.0 Encryption.qml
+Summary 1.0 Summary.qml
+Installation 1.0 Installation.qml
+Completion 1.0 Completion.qml
+SecurityOptions 1.0 SecurityOptions.qml
+FirstBootWelcome 1.0 FirstBootWelcome.qml
+WorkspaceConfirmation 1.0 WorkspaceConfirmation.qml
+AccountConnections 1.0 AccountConnections.qml
+SystemReady 1.0 SystemReady.qml

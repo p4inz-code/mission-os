@@ -50,6 +50,11 @@ Settings Home
 | MOS-INS-010 | Summary |
 | MOS-INS-011 | Installation |
 | MOS-INS-012 | Completion |
+| MOS-INS-013 | Security Options |
+| MOS-INS-014 | First Boot Welcome |
+| MOS-INS-015 | Workspace Confirmation |
+| MOS-INS-016 | Optional Account Connections |
+| MOS-INS-017 | System Ready |
 
 ---
 

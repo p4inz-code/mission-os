@@ -34,7 +34,7 @@ Item {
 
     // ── Token Value Validation ─────────────────────────────────────
     // Validate that key token values are accessible and reasonable
-    readonly property bool primaryColorValid:   Colors.primary === "#2563EB"
+    readonly property bool primaryColorValid:   Qt.colorEqual(Colors.primary, "#2563EB")
     readonly property bool spacingExists:       Spacing.paddingPage > 0
     readonly property bool typographyExists:    Typography.title.size > 0
     readonly property bool radiiExists:         Radii.card > 0
@@ -66,16 +66,16 @@ Item {
 
         // Light theme (default)
         MissionTheme.darkMode = false
-        var lightBackground = MissionTheme.background === Colors.background
-        var lightText       = MissionTheme.textPrimary === Colors.textPrimary
-        var lightSurface    = MissionTheme.surface === Colors.surface
+        var lightBackground = Qt.colorEqual(MissionTheme.background, Colors.background)
+        var lightText       = Qt.colorEqual(MissionTheme.textPrimary, Colors.textPrimary)
+        var lightSurface    = Qt.colorEqual(MissionTheme.surface, Colors.surface)
 
         // Dark theme
         MissionTheme.darkMode = true
-        var darkBackground  = MissionTheme.background === Colors.darkBackground
-        var darkText        = MissionTheme.textPrimary === Colors.darkTextPrimary
-        var darkSurface     = MissionTheme.surface === Colors.darkSurface
-        var focusRingValid  = MissionTheme.focusRing !== undefined
+        var darkBackground  = Qt.colorEqual(MissionTheme.background, Colors.darkBackground)
+        var darkText        = Qt.colorEqual(MissionTheme.textPrimary, Colors.darkTextPrimary)
+        var darkSurface     = Qt.colorEqual(MissionTheme.surface, Colors.darkSurface)
+        var focusRingValid  = Qt.colorEqual(MissionTheme.focusRing, Colors.focusRing)
 
         // Restore default theme mode
         MissionTheme.darkMode = false

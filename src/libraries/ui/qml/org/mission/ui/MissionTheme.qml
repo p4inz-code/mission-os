@@ -43,16 +43,16 @@ QtObject {
     readonly property color primaryLight:         Colors.primaryLight
     readonly property color primaryDark:          Colors.primaryDark
     readonly property color primaryContainer:     Colors.primaryContainer
-    readonly property color onPrimary:            Colors.onPrimary
-    readonly property color onPrimaryContainer:   Colors.onPrimaryContainer
+    readonly property color contentOnPrimary:            Colors.contentOnPrimary
+    readonly property color contentOnPrimaryContainer:   Colors.contentOnPrimaryContainer
 
     // ── Secondary ──────────────────────────────────────────────────
     readonly property color secondary:            Colors.secondary
     readonly property color secondaryLight:       Colors.secondaryLight
     readonly property color secondaryDark:        Colors.secondaryDark
     readonly property color secondaryContainer:   Colors.secondaryContainer
-    readonly property color onSecondary:          Colors.onSecondary
-    readonly property color onSecondaryContainer: Colors.onSecondaryContainer
+    readonly property color contentOnSecondary:          Colors.contentOnSecondary
+    readonly property color contentOnSecondaryContainer: Colors.contentOnSecondaryContainer
 
     // ── Semantic Colors ────────────────────────────────────────────
     readonly property color success:              Colors.success
@@ -61,6 +61,12 @@ QtObject {
     readonly property color warningLight:         Colors.warningLight
     readonly property color error:                Colors.error
     readonly property color errorLight:           Colors.errorLight
+    // Content-on-semantic tokens. MissionButton's Destructive variant
+    // renders its label with MissionTheme.contentOnError; without this
+    // forwarding the variant's text color binding would resolve to
+    // undefined (audit finding: Colors exposes contentOnError but
+    // MissionTheme did not forward it).
+    readonly property color contentOnError:       Colors.contentOnError
 
     // ── Focus Ring ─────────────────────────────────────────────────
     readonly property color focusRing:            Colors.focusRing

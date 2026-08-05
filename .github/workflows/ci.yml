@@ -179,7 +179,10 @@ jobs:
 
   cmake:
     name: CMake / UI
-    runs-on: ubuntu-latest
+    # Mission UI requires KDE Frameworks 6 (Kirigami). Ubuntu only ships
+    # KF6 on 26.04 (as libkirigami-dev); ubuntu-latest is still 24.04
+    # where KF6 is not packaged, so this job runs on ubuntu-26.04.
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v4
 
@@ -190,11 +193,13 @@ jobs:
             cmake \
             qt6-base-dev \
             qt6-declarative-dev \
+            qt6-declarative-dev-tools \
             libqt6svg6-dev \
-            libkf6kirigami-dev \
+            libkirigami-dev \
             libkf6coreaddons-dev \
             libkf6i18n-dev \
             qml6-module-org-kde-kirigami \
+            qml6-module-qttest \
             qml6-module-qtquick \
             qml6-module-qtquick-controls \
             qml6-module-qtquick-layouts \
@@ -205,3 +210,47 @@ jobs:
 
       - name: Build CMake
         run: cmake --build build
+
+      - name: Verify QML test tooling is present
+        run: |
+          # qmltestrunner is required so the runtime smoke test actually runs.
+          command -v qmltestrunner || [ -x /usr/lib/qt6/bin/qmltestrunner ] || {
+            echo "❌ qmltestrunner missing (qt6-declarative-dev-tools)"
+            exit 1
+          }
+          # qmlsc is optional: Ubuntu does not ship it, so mission-ui-qmlsc
+          # reports an explicit SKIPPED instead of a silent pass.
+          if command -v qmlsc || [ -x /usr/lib/qt6/bin/qmlsc ]; then
+            echo "qmlsc available — static QML verification will run"
+          else
+            echo "qmlsc not shipped by this distro — mission-ui-qmlsc reports SKIPPED (explicit, not silent)"
+          fi
+
+      - name: Run CTest (Mission UI tests)
+        run: |
+          cd build
+          ctest --output-on-failure --no-tests=error
+
+      - name: Assert Mission UI tests registered and executed
+        run: |
+          cd build
+          # All Mission UI tests must be registered — never silently absent.
+          # Note: ctest -N right-aligns the test number ("Test  #1" vs
+          # "Test #10"), so the count pattern must accept any number of
+          # spaces before "#" — "Test #" (one space) only matches
+          # two-digit numbers and would undercount.
+          count=$(ctest -N -R "mission-ui-(qmlsc|smoke|installer-welcome|installer-language|installer-keyboard|installer-network|installer-privacy|installer-disk|installer-partition|installer-user|installer-encryption|installer-summary|installer-installation|installer-completion|installer-security|installer-firstboot|installer-workspace|installer-accounts|installer-systemready)" 2>/dev/null | grep -c "Test *#" || true)
+          if [ "$count" -ne 19 ]; then
+            echo "❌ expected 19 Mission UI tests, found ${count}"
+            ctest -N -R mission-ui
+            exit 1
+          fi
+          # The runtime tests must actually run (never skip) in CI.
+          for t in mission-ui-smoke mission-ui-installer-welcome mission-ui-installer-language mission-ui-installer-keyboard mission-ui-installer-network mission-ui-installer-privacy mission-ui-installer-disk mission-ui-installer-partition mission-ui-installer-user mission-ui-installer-encryption mission-ui-installer-summary mission-ui-installer-installation mission-ui-installer-completion mission-ui-installer-security mission-ui-installer-firstboot mission-ui-installer-workspace mission-ui-installer-accounts mission-ui-installer-systemready; do
+            out=$(ctest -R "$t" --output-on-failure 2>&1)
+            echo "$out"
+            if echo "$out" | grep -qiE "skip"; then
+              echo "❌ $t was SKIPPED — Mission UI runtime validation did not run"
+              exit 1
+            fi
+          done

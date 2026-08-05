@@ -31,11 +31,33 @@ QtObject {
     readonly property int dialogExit:             durationFaster  // 100ms
 
     // ── Easing Curves ──────────────────────────────────────────────
-    readonly property EasingCurve easingStandard:  EasingCurve { type: Easing.BezierSpline;  bezierCurve: [0.4, 0.0, 0.2, 1.0] }
-    readonly property EasingCurve easingDecelerate: EasingCurve { type: Easing.BezierSpline; bezierCurve: [0.0, 0.0, 0.2, 1.0] }
-    readonly property EasingCurve easingAccelerate: EasingCurve { type: Easing.BezierSpline; bezierCurve: [0.4, 0.0, 1.0, 1.0] }
-    readonly property EasingCurve easingSharp:     EasingCurve { type: Easing.BezierSpline;  bezierCurve: [0.4, 0.0, 0.6, 1.0] }
-    readonly property EasingCurve easingLinear:    Easing.Linear
-    readonly property EasingCurve easingOutBack:   Easing.OutBack
-    readonly property EasingCurve easingOutCubic:  Easing.OutCubic
+    // Exposed as nested QtObjects carrying the Easing enum type plus
+    // optional bezier control points — the same pattern Typography.qml
+    // uses for its roles. The QML EasingCurve value type is not
+    // available in all Qt 6.10 toolchains, so it is not used here.
+    readonly property QtObject easingStandard: QtObject {
+        readonly property int type: Easing.BezierSpline
+        readonly property var bezierCurve: [0.4, 0.0, 0.2, 1.0]
+    }
+    readonly property QtObject easingDecelerate: QtObject {
+        readonly property int type: Easing.BezierSpline
+        readonly property var bezierCurve: [0.0, 0.0, 0.2, 1.0]
+    }
+    readonly property QtObject easingAccelerate: QtObject {
+        readonly property int type: Easing.BezierSpline
+        readonly property var bezierCurve: [0.4, 0.0, 1.0, 1.0]
+    }
+    readonly property QtObject easingSharp: QtObject {
+        readonly property int type: Easing.BezierSpline
+        readonly property var bezierCurve: [0.4, 0.0, 0.6, 1.0]
+    }
+    readonly property QtObject easingLinear: QtObject {
+        readonly property int type: Easing.Linear
+    }
+    readonly property QtObject easingOutBack: QtObject {
+        readonly property int type: Easing.OutBack
+    }
+    readonly property QtObject easingOutCubic: QtObject {
+        readonly property int type: Easing.OutCubic
+    }
 }

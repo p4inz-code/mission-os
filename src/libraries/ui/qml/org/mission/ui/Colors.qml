@@ -17,45 +17,50 @@ pragma Singleton
 import QtQuick
 
 QtObject {
+    // QML reserves property names starting with "on" + an uppercase
+    // letter for signal handlers, so the Material-style "on-<surface>"
+    // content tokens are exposed as "contentOn<surface>"
+    // (e.g. onPrimary → contentOnPrimary). Values are unchanged.
+
     // ── Primary Brand Colors ───────────────────────────────────────
     readonly property color primary:              "#2563EB"   // Blue 600
     readonly property color primaryLight:         "#3B82F6"   // Blue 500
     readonly property color primaryDark:          "#1D4ED8"   // Blue 700
     readonly property color primaryContainer:     "#DBEAFE"   // Blue 100
-    readonly property color onPrimary:            "#FFFFFF"
-    readonly property color onPrimaryContainer:   "#1E3A5F"
+    readonly property color contentOnPrimary:            "#FFFFFF"
+    readonly property color contentOnPrimaryContainer:   "#1E3A5F"
 
     // ── Secondary / Accent ─────────────────────────────────────────
     readonly property color secondary:            "#7C3AED"   // Violet 600
     readonly property color secondaryLight:       "#8B5CF6"   // Violet 500
     readonly property color secondaryDark:        "#6D28D9"   // Violet 700
     readonly property color secondaryContainer:   "#EDE9FE"   // Violet 100
-    readonly property color onSecondary:          "#FFFFFF"
-    readonly property color onSecondaryContainer: "#3B0764"
+    readonly property color contentOnSecondary:          "#FFFFFF"
+    readonly property color contentOnSecondaryContainer: "#3B0764"
 
     // ── Success / Positive ─────────────────────────────────────────
     readonly property color success:              "#16A34A"   // Green 600
     readonly property color successLight:         "#22C55E"   // Green 500
     readonly property color successDark:          "#15803D"   // Green 700
     readonly property color successContainer:     "#DCFCE7"   // Green 100
-    readonly property color onSuccess:            "#FFFFFF"
-    readonly property color onSuccessContainer:   "#14532D"
+    readonly property color contentOnSuccess:            "#FFFFFF"
+    readonly property color contentOnSuccessContainer:   "#14532D"
 
     // ── Warning / Caution ──────────────────────────────────────────
     readonly property color warning:              "#D97706"   // Amber 600
     readonly property color warningLight:         "#F59E0B"   // Amber 500
     readonly property color warningDark:          "#B45309"   // Amber 700
     readonly property color warningContainer:     "#FEF3C7"   // Amber 100
-    readonly property color onWarning:            "#FFFFFF"
-    readonly property color onWarningContainer:   "#78350F"
+    readonly property color contentOnWarning:            "#FFFFFF"
+    readonly property color contentOnWarningContainer:   "#78350F"
 
     // ── Error / Destructive ────────────────────────────────────────
     readonly property color error:                "#DC2626"   // Red 600
     readonly property color errorLight:           "#EF4444"   // Red 500
     readonly property color errorDark:            "#B91C1C"   // Red 700
     readonly property color errorContainer:       "#FEE2E2"   // Red 100
-    readonly property color onError:              "#FFFFFF"
-    readonly property color onErrorContainer:     "#7F1D1D"
+    readonly property color contentOnError:              "#FFFFFF"
+    readonly property color contentOnErrorContainer:     "#7F1D1D"
 
     // ── Neutral / Surface (Light) ──────────────────────────────────
     readonly property color background:           "#F8FAFC"   // Slate 50
