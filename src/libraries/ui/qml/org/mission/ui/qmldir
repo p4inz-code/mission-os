@@ -29,3 +29,5 @@ FirstBootWelcome 1.0 FirstBootWelcome.qml
 WorkspaceConfirmation 1.0 WorkspaceConfirmation.qml
 AccountConnections 1.0 AccountConnections.qml
 SystemReady 1.0 SystemReady.qml
+LockScreen 1.0 LockScreen.qml
+Login 1.0 Login.qml

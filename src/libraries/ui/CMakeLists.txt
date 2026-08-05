@@ -95,6 +95,8 @@ set(MISSION_UI_QML_FILES
     qml/org/mission/ui/WorkspaceConfirmation.qml
     qml/org/mission/ui/AccountConnections.qml
     qml/org/mission/ui/SystemReady.qml
+    qml/org/mission/ui/LockScreen.qml
+    qml/org/mission/ui/Login.qml
 )
 
 # ── QML Resources ───────────────────────────────────────────────────
@@ -428,6 +430,28 @@ if(BUILD_TESTING)
             LABELS "mission-ui;qml;runtime"
             ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
         )
+
+        # MOS-LCK-001 Lock Screen runtime test.
+        add_test(NAME mission-ui-lock
+            COMMAND "${MISSION_UI_QML_RUNNER}"
+                    -import "${MISSION_UI_TEST_IMPORT_PATH}"
+                    -input "${CMAKE_CURRENT_SOURCE_DIR}/tests/tst_lock_screen.qml"
+        )
+        set_tests_properties(mission-ui-lock PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
+        )
+
+        # MOS-LCK-002 Login runtime test.
+        add_test(NAME mission-ui-login
+            COMMAND "${MISSION_UI_QML_RUNNER}"
+                    -import "${MISSION_UI_TEST_IMPORT_PATH}"
+                    -input "${CMAKE_CURRENT_SOURCE_DIR}/tests/tst_login.qml"
+        )
+        set_tests_properties(mission-ui-login PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
+        )
     else()
         add_test(NAME mission-ui-smoke
             COMMAND ${CMAKE_COMMAND} -E echo
@@ -587,6 +611,24 @@ if(BUILD_TESTING)
                 "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
         )
         set_tests_properties(mission-ui-installer-systemready PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            SKIP_RETURN_CODE 0
+        )
+
+        add_test(NAME mission-ui-lock
+            COMMAND ${CMAKE_COMMAND} -E echo
+                "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
+        )
+        set_tests_properties(mission-ui-lock PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            SKIP_RETURN_CODE 0
+        )
+
+        add_test(NAME mission-ui-login
+            COMMAND ${CMAKE_COMMAND} -E echo
+                "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
+        )
+        set_tests_properties(mission-ui-login PROPERTIES
             LABELS "mission-ui;qml;runtime"
             SKIP_RETURN_CODE 0
         )
