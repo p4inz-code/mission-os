@@ -32,3 +32,4 @@ SystemReady 1.0 SystemReady.qml
 LockScreen 1.0 LockScreen.qml
 Login 1.0 Login.qml
 PinEntry 1.0 PinEntry.qml
+RecoveryLogin 1.0 RecoveryLogin.qml
