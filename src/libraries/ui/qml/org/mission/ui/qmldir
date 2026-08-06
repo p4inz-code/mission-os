@@ -35,3 +35,4 @@ PinEntry 1.0 PinEntry.qml
 RecoveryLogin 1.0 RecoveryLogin.qml
 Desktop 1.0 Desktop.qml
 WorkspaceSwitcher 1.0 WorkspaceSwitcher.qml
+Notifications 1.0 Notifications.qml
