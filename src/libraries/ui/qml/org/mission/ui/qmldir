@@ -31,3 +31,4 @@ AccountConnections 1.0 AccountConnections.qml
 SystemReady 1.0 SystemReady.qml
 LockScreen 1.0 LockScreen.qml
 Login 1.0 Login.qml
+PinEntry 1.0 PinEntry.qml
