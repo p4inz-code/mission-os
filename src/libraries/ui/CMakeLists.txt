@@ -100,6 +100,7 @@ set(MISSION_UI_QML_FILES
     qml/org/mission/ui/PinEntry.qml
     qml/org/mission/ui/RecoveryLogin.qml
     qml/org/mission/ui/Desktop.qml
+    qml/org/mission/ui/WorkspaceSwitcher.qml
 )
 
 # ── QML Resources ───────────────────────────────────────────────────
@@ -488,6 +489,17 @@ if(BUILD_TESTING)
             LABELS "mission-ui;qml;runtime"
             ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
         )
+
+        # MOS-DES-002 Workspace Switcher runtime test.
+        add_test(NAME mission-ui-workspaces
+            COMMAND "${MISSION_UI_QML_RUNNER}"
+                    -import "${MISSION_UI_TEST_IMPORT_PATH}"
+                    -input "${CMAKE_CURRENT_SOURCE_DIR}/tests/tst_workspace_switcher.qml"
+        )
+        set_tests_properties(mission-ui-workspaces PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
+        )
     else()
         add_test(NAME mission-ui-smoke
             COMMAND ${CMAKE_COMMAND} -E echo
@@ -692,6 +704,15 @@ if(BUILD_TESTING)
                 "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
         )
         set_tests_properties(mission-ui-desktop PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            SKIP_RETURN_CODE 0
+        )
+
+        add_test(NAME mission-ui-workspaces
+            COMMAND ${CMAKE_COMMAND} -E echo
+                "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
+        )
+        set_tests_properties(mission-ui-workspaces PROPERTIES
             LABELS "mission-ui;qml;runtime"
             SKIP_RETURN_CODE 0
         )
