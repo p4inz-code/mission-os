@@ -239,14 +239,14 @@ jobs:
           # "Test #10"), so the count pattern must accept any number of
           # spaces before "#" — and it must require the number so the
           # "Test project <dir>" header line never inflates the count.
-          count=$(ctest -N -R "mission-ui-(qmlsc|smoke|desktop|workspaces|notifications|quick-settings|search|calendar|recovery|pin|login|lock|installer-welcome|installer-language|installer-keyboard|installer-network|installer-privacy|installer-disk|installer-partition|installer-user|installer-encryption|installer-summary|installer-installation|installer-completion|installer-security|installer-firstboot|installer-workspace|installer-accounts|installer-systemready)" 2>/dev/null | grep -cE "Test +#[0-9]+:" || true)
-          if [ "$count" -ne 29 ]; then
-            echo "❌ expected 29 Mission UI tests, found ${count}"
+          count=$(ctest -N -R "mission-ui-(qmlsc|smoke|desktop|workspaces|notifications|quick-settings|search|calendar|clipboard|recovery|pin|login|lock|installer-welcome|installer-language|installer-keyboard|installer-network|installer-privacy|installer-disk|installer-partition|installer-user|installer-encryption|installer-summary|installer-installation|installer-completion|installer-security|installer-firstboot|installer-workspace|installer-accounts|installer-systemready)" 2>/dev/null | grep -cE "Test +#[0-9]+:" || true)
+          if [ "$count" -ne 30 ]; then
+            echo "❌ expected 30 Mission UI tests, found ${count}"
             ctest -N -R mission-ui
             exit 1
           fi
           # The runtime tests must actually run (never skip) in CI.
-          for t in mission-ui-smoke mission-ui-workspaces mission-ui-desktop mission-ui-notifications mission-ui-quick-settings mission-ui-search mission-ui-calendar mission-ui-recovery mission-ui-pin mission-ui-login mission-ui-lock mission-ui-installer-welcome mission-ui-installer-language mission-ui-installer-keyboard mission-ui-installer-network mission-ui-installer-privacy mission-ui-installer-disk mission-ui-installer-partition mission-ui-installer-user mission-ui-installer-encryption mission-ui-installer-summary mission-ui-installer-installation mission-ui-installer-completion mission-ui-installer-security mission-ui-installer-firstboot mission-ui-installer-workspace mission-ui-installer-accounts mission-ui-installer-systemready; do
+          for t in mission-ui-smoke mission-ui-workspaces mission-ui-desktop mission-ui-notifications mission-ui-quick-settings mission-ui-search mission-ui-calendar mission-ui-clipboard mission-ui-recovery mission-ui-pin mission-ui-login mission-ui-lock mission-ui-installer-welcome mission-ui-installer-language mission-ui-installer-keyboard mission-ui-installer-network mission-ui-installer-privacy mission-ui-installer-disk mission-ui-installer-partition mission-ui-installer-user mission-ui-installer-encryption mission-ui-installer-summary mission-ui-installer-installation mission-ui-installer-completion mission-ui-installer-security mission-ui-installer-firstboot mission-ui-installer-workspace mission-ui-installer-accounts mission-ui-installer-systemready; do
             out=$(ctest -R "$t" --output-on-failure 2>&1)
             echo "$out"
             if echo "$out" | grep -qiE "skip"; then
