@@ -46,3 +46,6 @@ MissionHubSearch 1.0 MissionHubSearch.qml
 MissionHubApplications 1.0 MissionHubApplications.qml
 MissionHubUpdates 1.0 MissionHubUpdates.qml
 MissionHubSecurity 1.0 MissionHubSecurity.qml
+MissionHubPrivacy 1.0 MissionHubPrivacy.qml
+MissionHubRecovery 1.0 MissionHubRecovery.qml
+MissionHubDiagnostics 1.0 MissionHubDiagnostics.qml
