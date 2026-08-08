@@ -109,6 +109,9 @@ set(MISSION_UI_QML_FILES
     qml/org/mission/ui/SystemTray.qml
     qml/org/mission/ui/MissionHubDashboard.qml
     qml/org/mission/ui/MissionHubSearch.qml
+    qml/org/mission/ui/MissionHubApplications.qml
+    qml/org/mission/ui/MissionHubUpdates.qml
+    qml/org/mission/ui/MissionHubSecurity.qml
 )
 
 # ── QML Resources ───────────────────────────────────────────────────
@@ -596,6 +599,39 @@ if(BUILD_TESTING)
             LABELS "mission-ui;qml;runtime"
             ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
         )
+
+        # MOS-HUB-003 Mission Hub Applications runtime test.
+        add_test(NAME mission-ui-hub-applications
+            COMMAND "${MISSION_UI_QML_RUNNER}"
+                    -import "${MISSION_UI_TEST_IMPORT_PATH}"
+                    -input "${CMAKE_CURRENT_SOURCE_DIR}/tests/tst_mission_hub_applications.qml"
+        )
+        set_tests_properties(mission-ui-hub-applications PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
+        )
+
+        # MOS-HUB-004 Mission Hub Updates runtime test.
+        add_test(NAME mission-ui-hub-updates
+            COMMAND "${MISSION_UI_QML_RUNNER}"
+                    -import "${MISSION_UI_TEST_IMPORT_PATH}"
+                    -input "${CMAKE_CURRENT_SOURCE_DIR}/tests/tst_mission_hub_updates.qml"
+        )
+        set_tests_properties(mission-ui-hub-updates PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
+        )
+
+        # MOS-HUB-005 Mission Hub Security runtime test.
+        add_test(NAME mission-ui-hub-security
+            COMMAND "${MISSION_UI_QML_RUNNER}"
+                    -import "${MISSION_UI_TEST_IMPORT_PATH}"
+                    -input "${CMAKE_CURRENT_SOURCE_DIR}/tests/tst_mission_hub_security.qml"
+        )
+        set_tests_properties(mission-ui-hub-security PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
+        )
     else()
         add_test(NAME mission-ui-smoke
             COMMAND ${CMAKE_COMMAND} -E echo
@@ -881,6 +917,33 @@ if(BUILD_TESTING)
                 "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
         )
         set_tests_properties(mission-ui-hub-search PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            SKIP_RETURN_CODE 0
+        )
+
+        add_test(NAME mission-ui-hub-applications
+            COMMAND ${CMAKE_COMMAND} -E echo
+                "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
+        )
+        set_tests_properties(mission-ui-hub-applications PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            SKIP_RETURN_CODE 0
+        )
+
+        add_test(NAME mission-ui-hub-updates
+            COMMAND ${CMAKE_COMMAND} -E echo
+                "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
+        )
+        set_tests_properties(mission-ui-hub-updates PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            SKIP_RETURN_CODE 0
+        )
+
+        add_test(NAME mission-ui-hub-security
+            COMMAND ${CMAKE_COMMAND} -E echo
+                "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
+        )
+        set_tests_properties(mission-ui-hub-security PROPERTIES
             LABELS "mission-ui;qml;runtime"
             SKIP_RETURN_CODE 0
         )

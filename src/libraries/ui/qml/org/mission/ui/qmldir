@@ -43,3 +43,6 @@ ClipboardHistory 1.0 ClipboardHistory.qml
 SystemTray 1.0 SystemTray.qml
 MissionHubDashboard 1.0 MissionHubDashboard.qml
 MissionHubSearch 1.0 MissionHubSearch.qml
+MissionHubApplications 1.0 MissionHubApplications.qml
+MissionHubUpdates 1.0 MissionHubUpdates.qml
+MissionHubSecurity 1.0 MissionHubSecurity.qml
