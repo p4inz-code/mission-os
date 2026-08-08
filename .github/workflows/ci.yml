@@ -230,6 +230,11 @@ jobs:
         run: |
           cd build
           ctest --output-on-failure --no-tests=error
+          # mission-ui-qmlsc verifies EVERY production component (the
+          # drift guard in src/libraries/ui/CMakeLists.txt enforces the
+          # registered list == on-disk components at configure time, so
+          # new QML cannot silently escape verification).
+          echo "Production QML components registered: $(grep -cE '^[[:space:]]*qml/org/mission/ui/[A-Za-z0-9]+\.qml$' ../src/libraries/ui/CMakeLists.txt)"
 
       - name: Assert Mission UI tests registered and executed
         run: |

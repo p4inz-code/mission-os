@@ -89,11 +89,12 @@ FocusScope {
     /// here — the host owns the model).
     property var tiles: []
 
-    /// Volume level 0-100 (host-driven; rendered by the Volume slider)
-    property int volume: 50
+    /// Volume level 0-100 (host-driven; rendered by the Volume slider).
+    /// -1 = unknown: slider disabled, label "—" until host supplies it.
+    property int volume: -1
     /// Brightness level 0-100 (host-driven; rendered by the Brightness
-    /// slider)
-    property int brightness: 80
+    /// slider). -1 = unknown until the host supplies the real level.
+    property int brightness: -1
 
     /// Reduced motion (accessibility)
     property bool reducedMotion: false
@@ -126,11 +127,11 @@ FocusScope {
     // a no-op whenever the slider already matches. No feedback loop —
     // programmatic value writes never emit `moved`.
     onVolumeChanged: {
-        if (Math.abs(volumeSlider.value - root.volume) > 0.01)
+        if (root.volume >= 0 && Math.abs(volumeSlider.value - root.volume) > 0.01)
             volumeSlider.value = root.volume
     }
     onBrightnessChanged: {
-        if (Math.abs(brightnessSlider.value - root.brightness) > 0.01)
+        if (root.brightness >= 0 && Math.abs(brightnessSlider.value - root.brightness) > 0.01)
             brightnessSlider.value = root.brightness
     }
 
@@ -394,6 +395,7 @@ FocusScope {
                 Slider {
                     id: volumeSlider
                     objectName: "qsVolume"
+                    enabled: root.volume >= 0
                     Layout.fillWidth: true
                     Layout.preferredHeight: Spacing.minimumTouchTarget
                     from: 0
@@ -402,7 +404,8 @@ FocusScope {
                     // Host-driven level; `moved` fires only on user
                     // interaction (never on programmatic value changes),
                     // so the host's volume property stays authoritative.
-                    value: root.volume
+                    // -1 (unknown) maps to 0 so the slider stays in range.
+                    value: root.volume >= 0 ? root.volume : 0
                     onMoved: root.volumeLevelChanged(Math.round(volumeSlider.value))
 
                     // Token-styled groove + fill
@@ -453,7 +456,7 @@ FocusScope {
                 Label {
                     id: volumeValueLabel
                     objectName: "qsVolumeValue"
-                    text: qsTr("%1%").arg(Math.round(volumeSlider.value))
+                    text: root.volume >= 0 ? qsTr("%1%").arg(Math.round(volumeSlider.value)) : "—"
                     Layout.minimumWidth: 40
                     horizontalAlignment: Text.AlignRight
                     font.pixelSize: Typography.caption.size
@@ -481,12 +484,13 @@ FocusScope {
                 Slider {
                     id: brightnessSlider
                     objectName: "qsBrightness"
+                    enabled: root.brightness >= 0
                     Layout.fillWidth: true
                     Layout.preferredHeight: Spacing.minimumTouchTarget
                     from: 0
                     to: 100
                     stepSize: 1
-                    value: root.brightness
+                    value: root.brightness >= 0 ? root.brightness : 0
                     onMoved: root.brightnessLevelChanged(Math.round(brightnessSlider.value))
 
                     background: Rectangle {
@@ -535,7 +539,7 @@ FocusScope {
                 Label {
                     id: brightnessValueLabel
                     objectName: "qsBrightnessValue"
-                    text: qsTr("%1%").arg(Math.round(brightnessSlider.value))
+                    text: root.brightness >= 0 ? qsTr("%1%").arg(Math.round(brightnessSlider.value)) : "—"
                     Layout.minimumWidth: 40
                     horizontalAlignment: Text.AlignRight
                     font.pixelSize: Typography.caption.size

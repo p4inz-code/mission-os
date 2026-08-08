@@ -474,7 +474,7 @@ FocusScope {
                                     color: MissionTheme.textPrimary
                                 }
                                 Label {
-                                    text: qsTr("Mission OS installs fully without an internet connection. Partition planning works locally.")
+                                    text: qsTr("This step works without an internet connection. Partition planning works locally.")
                                     font.pixelSize: Typography.bodySmall.size
                                     color: MissionTheme.textSecondary
                                     wrapMode: Text.Wrap

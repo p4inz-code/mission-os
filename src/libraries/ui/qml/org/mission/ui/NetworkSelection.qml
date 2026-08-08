@@ -458,7 +458,7 @@ FocusScope {
                                     color: MissionTheme.textPrimary
                                 }
                                 Label {
-                                    text: qsTr("Mission OS installs fully without an internet connection. All required packages are included on the installation media.")
+                                    text: qsTr("This step works without an internet connection. Choosing a connection is optional.")
                                     font.pixelSize: Typography.bodySmall.size
                                     color: MissionTheme.textSecondary
                                     wrapMode: Text.Wrap
@@ -654,7 +654,7 @@ FocusScope {
                     }
 
                     Label {
-                        text: qsTr("Mission OS installs fully without an internet connection — all required packages are on the installation media. Choose a connection only if you need updates or drivers during installation.")
+                        text: qsTr("This step works without an internet connection. Choose a connection only if you need updates or drivers during installation.")
                         width: parent.width
                         font.pixelSize: Typography.bodySmall.size
                         color: MissionTheme.textSecondary

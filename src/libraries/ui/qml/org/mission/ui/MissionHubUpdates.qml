@@ -82,10 +82,10 @@ FocusScope {
     property bool reducedMotion: false
 
     /// Current installed version
-    property string currentVersion: "0.1.0"
+    property string currentVersion: ""
 
     /// Latest available version
-    property string latestVersion: "0.1.0"
+    property string latestVersion: ""
 
     /// Whether a reboot is required after updates
     property bool rebootRequired: false
@@ -139,8 +139,16 @@ FocusScope {
     /// Whether there are pending updates
     readonly property bool hasPendingUpdates: root.pendingCount > 0
 
-    /// Whether the current version is up to date
-    readonly property bool isUpToDate: root.currentVersion === root.latestVersion && !root.hasPendingUpdates
+    /// Whether the host has supplied version information (both fields
+    /// set). Empty defaults mean "unknown" — never "up to date".
+    readonly property bool versionKnown: root.currentVersion.length > 0 &&
+                                         root.latestVersion.length > 0
+
+    /// Whether the current version is up to date — only when the host
+    /// actually reports both versions (never derived from empty defaults)
+    readonly property bool isUpToDate: root.versionKnown &&
+                                       root.currentVersion === root.latestVersion &&
+                                       !root.hasPendingUpdates
 
     /// Number of navigation items
     readonly property int navCount: root.navigationItems.length
@@ -217,6 +225,7 @@ FocusScope {
     property alias offlineBanner: offlineBanner
     property alias emptyHint: emptyHint
     property alias rebootBanner: rebootBanner
+    property alias statusBadge: statusBadge
 
     // ══════════════════════════════════════════════════════════════
     // Background
@@ -604,7 +613,7 @@ FocusScope {
                                     color: MissionTheme.textSecondary
                                 }
                                 Label {
-                                    text: root.currentVersion
+                                    text: root.currentVersion.length > 0 ? root.currentVersion : "—"
                                     font.pixelSize: Typography.bodyLarge.size
                                     font.weight: Typography.weightSemibold
                                     color: MissionTheme.textPrimary
@@ -621,7 +630,7 @@ FocusScope {
                                     color: MissionTheme.textSecondary
                                 }
                                 Label {
-                                    text: root.latestVersion
+                                    text: root.latestVersion.length > 0 ? root.latestVersion : "—"
                                     font.pixelSize: Typography.bodyLarge.size
                                     font.weight: Typography.weightSemibold
                                     color: root.isUpToDate ? MissionTheme.success : MissionTheme.primary
@@ -637,14 +646,23 @@ FocusScope {
                                 Layout.preferredWidth: statusBadge.implicitWidth + Spacing.paddingMedium * 2
                                 Layout.preferredHeight: Spacing.minimumTouchTarget
                                 radius: Radii.chip
-                                color: root.isUpToDate ? MissionTheme.success : MissionTheme.warning
+                                color: root.hasPendingUpdates ? MissionTheme.warning
+                                     : (root.isUpToDate ? MissionTheme.success
+                                                        : MissionTheme.textTertiary)
                                 Label {
                                     id: statusBadge
                                     anchors.centerIn: parent
-                                    text: root.isUpToDate ? qsTr("Up to date") : qsTr("%1 pending").arg(root.pendingCount)
+                                    text: root.hasPendingUpdates ? qsTr("%1 pending").arg(root.pendingCount)
+                                         : (root.isUpToDate ? qsTr("Up to date")
+                                                            : qsTr("Unknown"))
                                     font.pixelSize: Typography.bodySmall.size
                                     font.weight: Typography.weightSemibold
-                                    color: MissionTheme.contentOnPrimary
+                                    // contentOnPrimary pairs with the colored chips
+                                    // (warning/success); textPrimary keeps the neutral
+                                    // "Unknown" chip (textTertiary bg) readable
+                                    color: root.hasPendingUpdates || root.isUpToDate
+                                         ? MissionTheme.contentOnPrimary
+                                         : MissionTheme.textPrimary
                                 }
                             }
                         }

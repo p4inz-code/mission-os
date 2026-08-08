@@ -127,16 +127,20 @@ FocusScope {
     /// When true, a 30s timer keeps the clock text current
     property bool clockRunning: true
 
-    /// Network status label (e.g. "Connected" / "Offline") — host-driven
-    property string networkStatusText: qsTr("Connected")
+    /// Network status label ("Connected" / "Offline") — host-driven;
+    /// empty (default) renders neutral until the host supplies state
+    property string networkStatusText: ""
     /// Whether the network is up (drives the status dot color; the dot
-    /// is never the only indicator — the label always carries the text)
-    property bool networkConnected: true
+    /// is never the only indicator — the label always carries the text).
+    /// Default false = neutral (no fabricated "connected" claim)
+    property bool networkConnected: false
 
-    /// Battery status label (e.g. "100%") — host-driven
-    property string batteryStatusText: "100%"
-    /// Battery level 0-100 (drives the fill width + semantic color)
-    property int batteryLevel: 100
+    /// Battery status label (e.g. "10%") — host-driven; empty (default)
+    /// renders neutral until the host supplies state (FABRICATION-9)
+    property string batteryStatusText: ""
+    /// Battery level 0-100 (drives the fill width + semantic color);
+    /// -1 = unknown (fill hidden) until the host supplies state
+    property int batteryLevel: -1
 
     // ── Signals (host wiring) ──────────────────────────────────────
     /// User requested the Mission Menu (launcher) — host-driven
@@ -440,6 +444,7 @@ FocusScope {
 
                         Rectangle {
                             id: batteryFill
+                            visible: root.batteryLevel >= 0
                             anchors {
                                 left: parent.left
                                 top: parent.top

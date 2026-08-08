@@ -650,7 +650,7 @@ FocusScope {
                                     color: MissionTheme.textPrimary
                                 }
                                 Label {
-                                    text: qsTr("Mission OS installs fully without an internet connection. Your account is local to this device — no online account is required.")
+                                    text: qsTr("This step works without an internet connection. Your account is local to this device — no online account is required.")
                                     font.pixelSize: Typography.bodySmall.size
                                     color: MissionTheme.textSecondary
                                     wrapMode: Text.Wrap

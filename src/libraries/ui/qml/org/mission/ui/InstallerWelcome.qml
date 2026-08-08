@@ -459,7 +459,7 @@ FocusScope {
                         }
                     }
 
-                    // Offline (informational — installation works offline)
+                    // Offline (informational — no online service required for this step)
                     Rectangle {
                         id: offlineBanner
                         visible: root.screenState === "offline"
@@ -489,7 +489,7 @@ FocusScope {
                                     color: MissionTheme.textPrimary
                                 }
                                 Label {
-                                    text: qsTr("Mission OS installs fully without an internet connection. No account or telemetry is required.")
+                                    text: qsTr("No account or telemetry is required, and this step works without an internet connection.")
                                     font.pixelSize: Typography.bodySmall.size
                                     color: MissionTheme.textSecondary
                                     wrapMode: Text.Wrap

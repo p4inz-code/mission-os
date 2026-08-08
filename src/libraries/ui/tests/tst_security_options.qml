@@ -128,13 +128,17 @@ TestCase {
         // Encryption read-back: default "No encryption"
         compare(screen.encryptionLabel, "No encryption")
 
-        // Secure Boot: available, OFF by default
-        verify(screen.secureBootSupported)
+        // Secure Boot: capability UNKNOWN (null) until the host reports
+        // it — never fabricated as supported (FABRICATION-9 regression).
+        // OFF by default and the toggle is disabled while unknown.
+        verify(screen.secureBootSupported === null)
         compare(screen.secureBootEnabled, false)
+        verify(!getToggle(screen, 1).enabled, "Secure Boot toggle must be disabled while support is unknown")
 
-        // TPM: available, OFF by default
-        verify(screen.tpmSupported)
+        // TPM: capability UNKNOWN (null) until the host reports it
+        verify(screen.tpmSupported === null)
         compare(screen.tpmEnabled, false)
+        verify(!getToggle(screen, 2).enabled, "TPM toggle must be disabled while support is unknown")
 
         // Auto updates: ON by default (security-by-default)
         compare(screen.autoUpdatesEnabled, true)
@@ -450,6 +454,29 @@ TestCase {
         toggle = getToggle(screen, 2) // TPM
         verify(toggle !== null)
         verify(!toggle.enabled, "TPM toggle must be disabled when unsupported")
+
+        screen.destroy()
+    }
+
+    // ── Host capability: explicit true/false/unknown states ────────
+    function test_hostCapabilityStates() {
+        var screen = createScreen()
+
+        // Host explicitly reports support → toggles enabled
+        screen.secureBootSupported = true
+        screen.tpmSupported = true
+        verify(screen.secureBootSupported === true)
+        verify(screen.tpmSupported === true)
+        verify(getToggle(screen, 1).enabled, "Secure Boot toggle must enable when supported")
+        verify(getToggle(screen, 2).enabled, "TPM toggle must enable when supported")
+
+        // Host explicitly reports no support → toggles disabled
+        screen.secureBootSupported = false
+        screen.tpmSupported = false
+        verify(screen.secureBootSupported === false)
+        verify(screen.tpmSupported === false)
+        verify(!getToggle(screen, 1).enabled, "Secure Boot toggle must disable when unsupported")
+        verify(!getToggle(screen, 2).enabled, "TPM toggle must disable when unsupported")
 
         screen.destroy()
     }

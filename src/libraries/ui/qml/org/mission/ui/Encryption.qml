@@ -485,7 +485,7 @@ FocusScope {
                         }
                     }
 
-                    // Offline (informational — installation works offline)
+                    // Offline (informational — no online service required for this step)
                     Rectangle {
                         id: offlineBanner
                         visible: root.screenState === "offline"
@@ -514,7 +514,7 @@ FocusScope {
                                     color: MissionTheme.textPrimary
                                 }
                                 Label {
-                                    text: qsTr("Mission OS installs fully without an internet connection. Encryption is configured locally on this device.")
+                                    text: qsTr("This step works without an internet connection. Encryption is configured locally on this device.")
                                     font.pixelSize: Typography.bodySmall.size
                                     color: MissionTheme.textSecondary
                                     wrapMode: Text.Wrap

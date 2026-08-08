@@ -43,8 +43,8 @@
 //     { id, label?, status?, level? }. `label` is displayed and falls
 //     back to the id (same contract as QuickSettings tiles). `status`
 //     is the host's human-readable state text (e.g. "Connected",
-//     "100%", "Up to date", "Idle") and is the primary state
-//     indicator. `level` ∈ "ok" | "warning" | "critical" (defaults to
+//     "78%", "Idle" — purely illustrative host text, never a UI
+//     default) and is the primary state indicator. `level` ∈ "ok" | "warning" | "critical" (defaults to
 //     "ok" when absent — defensive, like Notifications' level default)
 //     drives the semantic status dot.
 //   - Color is never the only indicator: the level text tag (OK /

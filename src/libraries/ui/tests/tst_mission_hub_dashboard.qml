@@ -183,7 +183,12 @@ TestCase {
 
     // ── Card activation emits signals ──────────────────────────────
     function test_cardActivation() {
-        var screen = createScreen("screenState: 'normal'")
+        // Host-provided cards (host-driven; no static fixture)
+        var screen = createScreen(
+            "screenState: 'normal'; dashboardCards: [" +
+            "{ id: 'privacy', label: 'Privacy', status: 'Protected', level: 'ok' }," +
+            "{ id: 'security', label: 'Security', status: 'Secure', level: 'ok' }" +
+            "]")
         wait(100)
         var spy = Qt.createQmlObject(
             "import QtTest; import org.mission.ui 1.0; SignalSpy { signalName: 'cardActivated' }",
@@ -336,7 +341,18 @@ TestCase {
 
     // ── Reduced motion does not break rendering ────────────────────
     function test_reducedMotion() {
-        var screen = createScreen("screenState: 'normal'")
+        // Host-provided cards so rendering under reduced motion is exercised
+        var screen = createScreen(
+            "screenState: 'normal'; dashboardCards: [" +
+            "{ id: 'privacy', label: 'Privacy', status: 'Protected', level: 'ok' }," +
+            "{ id: 'security', label: 'Security', status: 'Secure', level: 'ok' }," +
+            "{ id: 'storage', label: 'Storage', status: '72% free', level: 'ok' }," +
+            "{ id: 'updates', label: 'Updates', status: 'Up to date', level: 'ok' }," +
+            "{ id: 'recovery', label: 'Recovery', status: 'Ready', level: 'ok' }," +
+            "{ id: 'diagnostics', label: 'Diagnostics', status: 'Healthy', level: 'ok' }," +
+            "{ id: 'drivers', label: 'Drivers', status: 'Up to date', level: 'ok' }," +
+            "{ id: 'network', label: 'Network', status: 'Connected', level: 'ok' }" +
+            "]")
         screen.reducedMotion = true
         verify(screen.cardRepeater.count === 8)
         verify(screen.navRepeater.count === 11)

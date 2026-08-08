@@ -119,6 +119,28 @@ set(MISSION_UI_QML_FILES
     qml/org/mission/ui/MissionHubStorage.qml
 )
 
+# ── QML drift guard ────────────────────────────────────────────────
+# Every production component on disk must be registered above (and every
+# registered component must exist). SmokeTest.qml is a test artifact,
+# not a registered production type, so it is excluded from the count.
+# Runs at configure time so newly added production QML cannot silently
+# escape module registration or qmlsc verification.
+file(GLOB MISSION_UI_QML_ON_DISK
+    LIST_DIRECTORIES false
+    "${CMAKE_CURRENT_SOURCE_DIR}/qml/org/mission/ui/*.qml"
+)
+list(FILTER MISSION_UI_QML_ON_DISK EXCLUDE REGEX "SmokeTest\\.qml$")
+list(LENGTH MISSION_UI_QML_FILES MISSION_UI_QML_LISTED_COUNT)
+list(LENGTH MISSION_UI_QML_ON_DISK MISSION_UI_QML_DISK_COUNT)
+if(NOT MISSION_UI_QML_LISTED_COUNT EQUAL MISSION_UI_QML_DISK_COUNT)
+    message(FATAL_ERROR
+        "Mission UI QML drift: ${MISSION_UI_QML_LISTED_COUNT} components "
+        "registered in MISSION_UI_QML_FILES but ${MISSION_UI_QML_DISK_COUNT} "
+        "production .qml files exist in qml/org/mission/ui/ (SmokeTest.qml "
+        "excluded). Add new components to MISSION_UI_QML_FILES."
+    )
+endif()
+
 # ── QML Resources ───────────────────────────────────────────────────
 # mission-ui is a library module: NO_RESOURCE_TARGET_PATH is not valid
 # for a non-executable backing target (Qt6QmlMacros FATAL_ERROR on
@@ -220,10 +242,23 @@ if(BUILD_TESTING)
         qt6_find_qmlsc()
     endif()
     if(TARGET Qt6::qmlsc)
+        # Static verification of EVERY production component (not just
+        # SmokeTest). The drift guard above keeps the registered list in
+        # lockstep with the on-disk components, so newly added QML cannot
+        # silently escape qmlsc verification.
+        set(MISSION_UI_QMLSC_FILES)
+        foreach(_qml IN LISTS MISSION_UI_QML_FILES)
+            list(APPEND MISSION_UI_QMLSC_FILES
+                "${CMAKE_CURRENT_SOURCE_DIR}/${_qml}"
+            )
+        endforeach()
+        list(APPEND MISSION_UI_QMLSC_FILES
+            "${CMAKE_CURRENT_SOURCE_DIR}/qml/org/mission/ui/SmokeTest.qml"
+        )
         add_test(NAME mission-ui-qmlsc
             COMMAND Qt6::qmlsc --verify
                     --import-path "${MISSION_UI_TEST_IMPORT_PATH}"
-                    "${CMAKE_CURRENT_SOURCE_DIR}/qml/org/mission/ui/SmokeTest.qml"
+                    ${MISSION_UI_QMLSC_FILES}
         )
         set_tests_properties(mission-ui-qmlsc PROPERTIES
             LABELS "mission-ui;qml;static"

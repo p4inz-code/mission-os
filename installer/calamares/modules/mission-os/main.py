@@ -5,7 +5,8 @@
 # Calamares installation completes.
 #
 # Tasks:
-#   1. Install Mission OS packages from local repository
+#   1. (NOT IMPLEMENTED) Install Mission OS packages from local repository —
+#      no local-repository wiring exists; see docs/development/KNOWN_ISSUES.md
 #   2. Apply Mission OS branding (hostname, os-release, motd)
 #   3. Enable Mission OS systemd services
 #   4. Apply kernel sysctl hardening

@@ -503,7 +503,7 @@ FocusScope {
                                     color: MissionTheme.textPrimary
                                 }
                                 Label {
-                                    text: qsTr("Mission OS installs fully without an internet connection. Privacy settings are stored locally and can be changed at any time.")
+                                    text: qsTr("This step works without an internet connection. Privacy settings are stored locally and can be changed at any time.")
                                     font.pixelSize: Typography.bodySmall.size
                                     color: MissionTheme.textSecondary
                                     wrapMode: Text.Wrap

@@ -148,8 +148,9 @@ TestCase {
         compare(screen.accessibilityButton.variant, MissionButton.Variant.Secondary)
         // Wireframe components: user avatar + status indicators present
         verify(screen.avatarPreview.visible)
-        verify(screen.networkStatusLabel.text.length > 0)
-        verify(screen.batteryStatusLabel.text.length > 0)
+        // Status indicators present but NEUTRAL until host data (FABRICATION-9)
+        verify(screen.networkStatusLabel.text.length === 0)
+        verify(screen.batteryStatusLabel.text.length === 0)
         // Multi-account systems show the chooser with one chip per user
         verify(screen.showAccountChooser)
         verify(screen.accountChooserRow.visible)
@@ -531,6 +532,19 @@ TestCase {
         screen.batteryLevel = 80
         verify(Qt.colorEqual(screen.batteryFill.color, MissionTheme.success))
 
+        screen.destroy()
+    }
+
+    // ── Host-absent defaults are neutral (FABRICATION-9 regression) ─
+    function test_hostAbsentDefaultsNeutral() {
+        var screen = createScreen()
+        compare(screen.batteryStatusText, "")
+        compare(screen.networkStatusText, "")
+        verify(!screen.networkConnected)
+        verify(screen.batteryLevel < 0)
+        verify(!screen.batteryFill.visible, "battery fill must be hidden when the level is unknown")
+        compare(screen.batteryStatusLabel.text, "")
+        compare(screen.networkStatusLabel.text, "")
         screen.destroy()
     }
 

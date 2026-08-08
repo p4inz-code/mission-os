@@ -88,12 +88,13 @@ FocusScope {
     property string encryptionLabel: "No encryption"
 
     /// Whether the detected hardware supports Secure Boot integration
-    /// (host-fed; the Secure Boot toggle is only interactive when true)
-    property bool secureBootSupported: true
+    /// (host-fed; null = unknown — the Secure Boot toggle stays
+    /// disabled until the host reports support)
+    property var secureBootSupported: null
 
-    /// Whether the detected hardware has a TPM (host-fed; the TPM
-    /// toggle is only interactive when true)
-    property bool tpmSupported: true
+    /// Whether the detected hardware has a TPM (host-fed; null =
+    /// unknown — the TPM toggle stays disabled until the host reports)
+    property var tpmSupported: null
 
     /// Whether Secure Boot integration is enabled (interactive toggle)
     property bool secureBootEnabled: false
@@ -504,7 +505,7 @@ FocusScope {
                                     color: MissionTheme.textPrimary
                                 }
                                 Label {
-                                    text: qsTr("Mission OS installs fully without an internet connection. Security features are configured locally on this device.")
+                                    text: qsTr("This step works without an internet connection. Security features are configured locally on this device.")
                                     font.pixelSize: Typography.bodySmall.size
                                     color: MissionTheme.textSecondary
                                     wrapMode: Text.Wrap
@@ -603,7 +604,10 @@ FocusScope {
                                 if (modelData.code === "recoverymedia") return root.recoveryMediaEnabled
                                 return false
                             }
-                            property bool isAvailable: {
+                            // var (not bool) so null (capability unknown) is
+                            // preserved and distinguishable from false
+                            // (capability explicitly unsupported)
+                            property var isAvailable: {
                                 if (modelData.code === "secureboot") return root.secureBootSupported
                                 if (modelData.code === "tpm") return root.tpmSupported
                                 return true
@@ -654,6 +658,22 @@ FocusScope {
                                             visible: isInteractive
                                             enabled: isAvailable
                                             checked: isEnabled
+                                            // Single Accessible.description: composes the row
+                                            // explanation with the capability status so an
+                                            // unknown capability is never announced as supported
+                                            // (FABRICATION-9)
+                                            Accessible.description: {
+                                                var suffix = ""
+                                                if (modelData.code === "secureboot" || modelData.code === "tpm") {
+                                                    if (isAvailable === false)
+                                                        suffix = qsTr("Not supported on this system")
+                                                    else if (isAvailable !== true)
+                                                        suffix = qsTr("Support status unknown")
+                                                }
+                                                return suffix.length > 0
+                                                    ? modelData.explanation + " " + suffix
+                                                    : modelData.explanation
+                                            }
                                             anchors.centerIn: parent
                                             Layout.preferredHeight: Spacing.minimumTouchTarget
                                             Layout.preferredWidth: 64
@@ -725,7 +745,6 @@ FocusScope {
 
                                             Accessible.role: Accessible.CheckBox
                                             Accessible.name: modelData.label
-                                            Accessible.description: modelData.explanation
                                             Accessible.checked: toggleControl.checked
                                         }
 

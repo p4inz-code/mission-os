@@ -532,7 +532,7 @@ FocusScope {
                     }
                 }
 
-                // Offline (informational — installation works offline)
+                // Offline (informational — no online service required for this step)
                 Rectangle {
                     id: offlineBanner
                     visible: root.screenState === "offline"
@@ -562,7 +562,7 @@ FocusScope {
                                 color: MissionTheme.textPrimary
                             }
                             Label {
-                                text: qsTr("Mission OS installs fully without an internet connection. The full language catalog is included on the installation media.")
+                                text: qsTr("This step works without an internet connection. The full language catalog is included on the installation media.")
                                 font.pixelSize: Typography.bodySmall.size
                                 color: MissionTheme.textSecondary
                                 wrapMode: Text.Wrap

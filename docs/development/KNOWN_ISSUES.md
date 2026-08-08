@@ -6,7 +6,7 @@
 
 1. **UEFI/BIOS boot runtime-validated, but re-verification requires Linux** — RC6 closed both gates (QEMU UEFI/OVMF 4/4 PASS, QEMU BIOS 4/4 PASS) on a Linux build host. Re-running them still requires Linux/WSL with QEMU + ovmf; a Windows host cannot reproduce them.
 
-2. **Calamares installer flow not runtime-validated** — The ISO boots to the login prompt, but the install flow itself (partitioning → users → mission-os module → bootloader) has never been executed. This is a Beta blocker.
+2. **Calamares installer flow not runtime-validated** — The ISO boots to the login prompt, but the install flow itself (partitioning → users → mission-os module → bootloader) has never been executed. Offline installation is ALSO not established: the exec sequence includes a built-in Calamares `packages` step with no local-repository wiring in this repository. This is a Beta blocker.
 
 3. **cargo-audit requires Cargo.lock in CI** — CI runs `cargo audit --deny warnings` (installed via `cargo install`), and `Cargo.lock` is now tracked (RC6 fix) so the audit job works on a fresh clone. Without the lockfile the audit job fails; do not re-ignore it.
 
@@ -28,7 +28,7 @@
 
 10. **Wallpaper SVG requires verification** — The wallpaper SVG file exists but has not been visually verified to match design specifications.
 
-11. **mission-ui is CANDIDATE, not complete** — Design tokens and base QML components exist (Colors, Typography, Spacing, Radii, Elevation, Motion, MissionTheme, MissionWindow, MissionPage, SmokeTest + Qt6/CMake build), but the module has zero tests and has not been runtime-validated in a desktop session. Do not mark it IMPLEMENTED.
+11. **mission-ui is CANDIDATE, not complete** — The module now ships 50 production QML components (+ SmokeTest test artifact) and 40 QtTest suites (82 CTest registrations; host-absent defaults are neutral — no fabricated status data), but it has not been runtime-validated in a desktop session and no host integration exists for the Mission Hub / Diagnostics / Recovery screens (UI surface + signal contract only). Do not mark it IMPLEMENTED.
 
 ### Consistency / Repo Hygiene (found in RC6 audit)
 
@@ -46,7 +46,7 @@
 
 17. **18 of 25 architecture modules not implemented for Stable** — Implemented: MOS-MOD-001 (core), 002 (crypto), 004 (securityd), 006 (driverd). Partial/foundation: 021 (installer/Calamares), 023 (network/NetworkManager). CANDIDATE: 003 (mission-ui). All other modules (18) are deferred to Beta/Stable. See 25-MODULE-AUDIT.md.
 
-18. **All Mission applications deferred** — Hub, Settings, Privacy/Security Centers, File Manager, Store, Workspaces, etc. are deferred to Beta phase.
+18. **All Mission applications deferred (host side)** — Mission Hub, Settings, Privacy/Security Centers, File Manager, Store, Workspaces, etc. have no host implementation; the Mission Hub / Diagnostics / Recovery QML screens exist as UI surfaces with signal contracts only. Host integration is deferred to Beta phase.
 
 19. **No update mechanism** — mission-updated (MOS-MOD-005) is deferred. Architecture is defined but no implementation exists.
 

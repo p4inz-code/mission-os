@@ -473,7 +473,8 @@ FocusScope {
                     radius: Radii.card; color: MissionTheme.surface
                     border.color: MissionTheme.outlineVariant; border.width: 1
                     RowLayout {
-                        id: overviewRow; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingLarge }; spacing: Spacing.gapLarge
+                        id: overviewRow; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingLarge }
+                        spacing: Spacing.gapLarge
                         Column { spacing: Spacing.gapTiny
                             Label { text: qsTr("Connected"); font.pixelSize: Typography.caption.size; color: MissionTheme.textSecondary }
                             Label { text: String(root.connectedCount); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary }

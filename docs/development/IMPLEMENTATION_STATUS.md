@@ -9,9 +9,9 @@
 | M2: Core System Services | **IMPLEMENTED** | 100% | mission-securityd (62 tests), mission-driverd (345 tests) |
 | M3: Desktop Environment Integration | **IMPLEMENTED** | 100% | KDE defaults, wallpaper, themes, overlay — config files, boot-present but desktop session NOT runtime-validated |
 | M4: Installer + ISO Build | **IMPLEMENTED** | 100% | live-build, Calamares, EFI fallback — ISO boots (RC6); Calamares install flow NOT runtime-validated |
-| M5: Mission Applications (Part 1) | Deferred post-Nightly | 0% | Planned for Beta |
+| M5: Mission Applications (Part 1) | CANDIDATE (UI surface) | ~5% | Mission Hub QML screens exist (UI surface + signal contract); host integration deferred to Beta |
 | M6: Security + Privacy Architecture | **IMPLEMENTED** | 100% | D-Bus, PolKit, sysctl, capability bounding — config files, boot-present but not functionally runtime-validated |
-| M7: Recovery + Diagnostics | Not Started | 0% | Planned for Beta |
+| M7: Recovery + Diagnostics | CANDIDATE (UI surface) | ~5% | Diagnostics/Recovery QML screens exist (UI surface + signal contract); no host implementation — Beta |
 | M8: Mission Applications (Part 2) | Deferred post-Nightly | 0% | Planned for Beta |
 | M9: Integration + Polish | **IMPLEMENTED** (Nightly) | ~95% | ISO fixes, CI, validation scripts — CI-validated AND boot runtime-validated (RC6) |
 | M10: Nightly Release | **CANDIDATE** | ~90% | RC6 runtime gates GREEN: validate-iso 15/15, QEMU BIOS 4/4, QEMU UEFI 4/4 |
@@ -39,11 +39,11 @@ Executed on a Linux build host (not reproducible on Windows/WSL without QEMU + o
 |-------|-----------|--------|-------|-----------|-------|
 | mission-core | MOS-MOD-001 | **IMPLEMENTED** | 131 | cargo test ✅ | Logging, config, errors, IPC, paths, sysinfo |
 | mission-crypto | MOS-MOD-002 | **IMPLEMENTED** | 79 | cargo test ✅ | Keygen, signing, hash, RNG, secure memory |
-| mission-ui | MOS-MOD-003 | **CANDIDATE** | 0 | ❌ | Design tokens + QML components exist (Colors, Typography, Spacing, Radii, Elevation, Motion, MissionTheme, MissionWindow, MissionPage, SmokeTest) + CMake/Qt6 build; NOT runtime-validated; no tests — Beta |
+| mission-ui | MOS-MOD-003 | **CANDIDATE** | 50 comps / 40 suites | ❌ | 50 production QML components (+ SmokeTest test artifact) + 40 QtTest suites (82 CTest registrations incl. explicit skips); NOT runtime-validated in a desktop session; host-absent defaults are neutral (no fabricated status); no host integration yet — Beta |
 | mission-securityd | MOS-MOD-004 | **IMPLEMENTED** | 62 | cargo test ✅ | Firewall, audit, D-Bus, PolKit |
 | mission-driverd | MOS-MOD-006 | **IMPLEMENTED** | 345 | cargo test ✅ | hwdetect, inventory, execution, cache, verif. |
 
-`cargo test --workspace`: **622 tests passing, 0 failed, 4 ignored** (re-confirmed 2026-08-01: core 131, crypto 79, securityd 62, driverd 345, integration 5)
+`cargo test --workspace`: **623 `#[test]` functions counted mechanically in source today** (core 132, crypto 79, securityd 62, driverd 345, integration 5); the 2026-08-01 Linux-host run reported 622 passing / 0 failed / 4 ignored — counts have drifted since that report, so re-run requires the Linux build host
 
 ## Component Status — Services
 
@@ -64,7 +64,7 @@ Executed on a Linux build host (not reproducible on Windows/WSL without QEMU + o
 | Application | Module ID | Status | Progress | Notes |
 |-------------|-----------|--------|----------|-------|
 | Mission Installer | MOS-MOD-021 | **IMPLEMENTED** | ~90% | Calamares config + branding exists; runtime validation pending |
-| Mission Hub | MOS-MOD-012 | Deferred | 0% | Beta |
+| Mission Hub | MOS-MOD-012 | CANDIDATE (UI surface) | ~5% | QML screens exist (UI surface + signal contract); host integration deferred — Beta |
 | Mission Settings | MOS-MOD-013 | Deferred | 0% | Beta |
 | Privacy Center | MOS-MOD-014 | Deferred | 0% | Beta |
 | Security Center | MOS-MOD-015 | Deferred | 0% | Beta |

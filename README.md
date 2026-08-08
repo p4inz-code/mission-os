@@ -104,11 +104,11 @@ Mission OS is designed to run reliably from portable storage while also supporti
 
 ## Project Status
 
-**Current status: Release Candidate (RC6) — CANDIDATE for the planned UI/design sprint.**
+**Current status: Release Candidate (RC6) base — UI component library implemented; not yet Beta.**
 
 The RC6 milestone is complete and validated, with all release gates GREEN:
 
-- **Static validation:** formatting, clippy, workspace tests (**622 passing**), and `cargo audit` all pass.
+- **Static validation:** formatting, clippy, workspace tests (**623 `#[test]` functions counted mechanically from source**: core 132, crypto 79, securityd 62, driverd 345, integration 5; execution requires the Linux build host), and `cargo audit` all pass.
 - **Runtime validation:** ISO structure (15/15 checks), QEMU BIOS boot (4/4), and QEMU UEFI/OVMF boot (4/4) pass on a Linux build host.
 - **Reference artifact:** the nightly ISO `0.1.0-nightly.20260730` is the validated release artifact.
 
@@ -116,16 +116,16 @@ Implemented so far:
 
 - Shared libraries: mission-core, mission-crypto
 - Core services: mission-securityd, mission-driverd (boot-level runtime-validated)
-- KDE Plasma integration, installer, and ISO build pipeline
+- KDE Plasma integration (config authored; desktop session NOT runtime-validated), installer, and ISO build pipeline
 
-The project is **not yet a Beta release**. The next major phase is the planned **full UI/UX design and implementation sprint**, after which Beta preparation (Calamares install flow, installed-system boot, desktop session validation) begins.
+The project is **not yet a Beta release**. The post-RC6 UI/UX sprint is complete: the mission-ui library ships **50 production QML components (+ SmokeTest test artifact) and 40 QtTest suites (82 CTest registrations)**. Beta preparation (Calamares install flow, installed-system boot, desktop session validation) is still pending. Mission Hub, Diagnostics and Recovery screens are UI surfaces with signal contracts — no host integration exists yet, and offline installation is not yet validated.
 
 ---
 
 ## Roadmap
 
 - ✅ RC6 (Release Candidate) — release gates GREEN, validated
-- ⏳ UI/UX design & implementation sprint (next planned phase)
+- ✅ UI/UX design & implementation sprint (50 production QML components + SmokeTest, 40 QtTest suites)
 - ⏳ Beta preparation (installer flow, installed-boot, desktop session validation)
 - ⏳ Public Beta
 - ⏳ Version 1.0

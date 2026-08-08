@@ -143,6 +143,7 @@ TestCase {
             "{ id: 'app1', name: 'Terminal', status: 'installed', category: 'development' }," +
             "{ id: 'app2', name: 'Calculator', status: 'available', category: 'utilities' }" +
             "]")
+        wait(100)  // let the Flow chip layout settle before clicking
         verify(screen.categoryRepeater.count === 6)
         compare(screen.selectedCategoryId, "all")
         // Select "development" category (index 3: all=0, system=1, productivity=2, development=3)

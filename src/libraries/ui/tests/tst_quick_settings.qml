@@ -234,6 +234,19 @@ TestCase {
         screen.destroy()
     }
 
+    // ── Host-absent: volume/brightness are UNKNOWN, not fake values ─
+    function test_hostAbsentLevelsNeutral() {
+        var screen = createScreen()
+        wait(100)
+        compare(screen.volume, -1)
+        compare(screen.brightness, -1)
+        compare(screen.volumeValueLabel.text, "—")
+        compare(screen.brightnessValueLabel.text, "—")
+        verify(!screen.volumeSlider.enabled, "volume slider must be disabled while level is unknown")
+        verify(!screen.brightnessSlider.enabled, "brightness slider must be disabled while level is unknown")
+        screen.destroy()
+    }
+
     // ── Empty tiles degrade gracefully ─────────────────────────────
     function test_emptyTiles() {
         var screen = createScreen()

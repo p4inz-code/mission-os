@@ -175,7 +175,8 @@ FocusScope {
         id: headerBar; objectName: "hubHeader"
         anchors { left: parent.left; right: parent.right; top: parent.top }
         height: Spacing.headerHeight; color: MissionTheme.surface; z: 2
-        Rectangle { anchors { left: parent.left; right: parent.right; bottom: parent.bottom }; height: 1; color: MissionTheme.outline }
+        Rectangle { anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+        height: 1; color: MissionTheme.outline }
         RowLayout {
             anchors.fill: parent; anchors.leftMargin: Spacing.paddingPage; anchors.rightMargin: Spacing.paddingPage; spacing: Spacing.gapMedium
             Rectangle {
@@ -205,10 +206,12 @@ FocusScope {
         id: sidebar; objectName: "hubSidebar"
         anchors { left: parent.left; top: headerBar.bottom; bottom: parent.bottom }
         width: root.sidebarExpanded ? Spacing.sidebarWidth : 56; color: MissionTheme.surface; z: 1
-        Rectangle { anchors { right: parent.right; top: parent.top; bottom: parent.bottom }; width: 1; color: MissionTheme.outline }
+        Rectangle { anchors { right: parent.right; top: parent.top; bottom: parent.bottom }
+        width: 1; color: MissionTheme.outline }
         Behavior on width { enabled: !root.reducedMotion; animation: NumberAnimation { duration: Motion.durationFast } }
         Column {
-            anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.gapSmall }; spacing: Spacing.gapTiny
+            anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.gapSmall }
+            spacing: Spacing.gapTiny
             Repeater {
                 id: navRepeater; model: root.navigationItems
                 delegate: Rectangle {
@@ -246,16 +249,23 @@ FocusScope {
         Column { id: contentColumn; width: mainContent.width; spacing: Spacing.gapLarge
 
             // Loading
-            RowLayout { id: loadingIndicator; objectName: "hubLoading"; visible: root.screenState === "loading"; width: parent.width; spacing: Spacing.gapMedium; Item { width: Spacing.paddingPage; height: 1 }; Label { text: qsTr("Loading recovery information…"); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary }; Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 4; radius: 2; color: MissionTheme.surfaceDim; Rectangle { width: 96; height: 4; radius: 2; color: MissionTheme.primary; x: -96; NumberAnimation on x { running: root.screenState === "loading" && !root.reducedMotion; from: -96; to: loadingIndicator.width; duration: Motion.durationSlow; loops: Animation.Infinite } } } }
+            RowLayout { id: loadingIndicator; objectName: "hubLoading"; visible: root.screenState === "loading"; width: parent.width; spacing: Spacing.gapMedium; Item { width: Spacing.paddingPage; height: 1 }
+            Label { text: qsTr("Loading recovery information…"); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary }
+            Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 4; radius: 2; color: MissionTheme.surfaceDim; Rectangle { width: 96; height: 4; radius: 2; color: MissionTheme.primary; x: -96; NumberAnimation on x { running: root.screenState === "loading" && !root.reducedMotion; from: -96; to: loadingIndicator.width; duration: Motion.durationSlow; loops: Animation.Infinite } } } }
 
             // Error
-            Rectangle { id: errorBanner; objectName: "hubError"; visible: root.screenState === "error"; width: parent.width - Spacing.paddingPage * 2; anchors.leftMargin: Spacing.paddingPage; height: errorLayout.implicitHeight + Spacing.paddingMedium * 2; radius: Radii.card; color: Colors.errorContainer; RowLayout { id: errorLayout; anchors.fill: parent; anchors.margins: Spacing.paddingMedium; spacing: Spacing.gapMedium; Rectangle { Layout.preferredWidth: 12; Layout.preferredHeight: 12; radius: 6; color: MissionTheme.error }; ColumnLayout { Layout.fillWidth: true; spacing: Spacing.gapTiny; Label { text: qsTr("Could not load recovery information"); font.weight: Typography.weightSemibold; color: Colors.contentOnErrorContainer }; Label { text: qsTr("Recovery status could not be loaded. Check your system and try again."); font.pixelSize: Typography.bodySmall.size; color: Colors.contentOnErrorContainer; wrapMode: Text.Wrap; Layout.fillWidth: true } } } }
+            Rectangle { id: errorBanner; objectName: "hubError"; visible: root.screenState === "error"; width: parent.width - Spacing.paddingPage * 2; anchors.leftMargin: Spacing.paddingPage; height: errorLayout.implicitHeight + Spacing.paddingMedium * 2; radius: Radii.card; color: Colors.errorContainer; RowLayout { id: errorLayout; anchors.fill: parent; anchors.margins: Spacing.paddingMedium; spacing: Spacing.gapMedium; Rectangle { Layout.preferredWidth: 12; Layout.preferredHeight: 12; radius: 6; color: MissionTheme.error }
+            ColumnLayout { Layout.fillWidth: true; spacing: Spacing.gapTiny; Label { text: qsTr("Could not load recovery information"); font.weight: Typography.weightSemibold; color: Colors.contentOnErrorContainer }
+            Label { text: qsTr("Recovery status could not be loaded. Check your system and try again."); font.pixelSize: Typography.bodySmall.size; color: Colors.contentOnErrorContainer; wrapMode: Text.Wrap; Layout.fillWidth: true } } } }
 
             // Offline
-            Rectangle { id: offlineBanner; objectName: "hubOffline"; visible: root.screenState === "offline"; width: parent.width - Spacing.paddingPage * 2; anchors.leftMargin: Spacing.paddingPage; height: offlineLayout.implicitHeight + Spacing.paddingMedium * 2; radius: Radii.card; color: MissionTheme.surfaceVariant; RowLayout { id: offlineLayout; anchors.fill: parent; anchors.margins: Spacing.paddingMedium; spacing: Spacing.gapMedium; Rectangle { Layout.preferredWidth: 12; Layout.preferredHeight: 12; radius: 6; color: MissionTheme.textSecondary }; ColumnLayout { Layout.fillWidth: true; spacing: Spacing.gapTiny; Label { text: qsTr("You're offline"); font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary }; Label { text: qsTr("Local recovery status is still available. Some features may require an internet connection."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; wrapMode: Text.Wrap; Layout.fillWidth: true } } } }
+            Rectangle { id: offlineBanner; objectName: "hubOffline"; visible: root.screenState === "offline"; width: parent.width - Spacing.paddingPage * 2; anchors.leftMargin: Spacing.paddingPage; height: offlineLayout.implicitHeight + Spacing.paddingMedium * 2; radius: Radii.card; color: MissionTheme.surfaceVariant; RowLayout { id: offlineLayout; anchors.fill: parent; anchors.margins: Spacing.paddingMedium; spacing: Spacing.gapMedium; Rectangle { Layout.preferredWidth: 12; Layout.preferredHeight: 12; radius: 6; color: MissionTheme.textSecondary }
+            ColumnLayout { Layout.fillWidth: true; spacing: Spacing.gapTiny; Label { text: qsTr("You're offline"); font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary }
+            Label { text: qsTr("Local recovery status is still available. Some features may require an internet connection."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; wrapMode: Text.Wrap; Layout.fillWidth: true } } } }
 
             // Empty
-            Column { id: emptyHint; objectName: "hubEmpty"; visible: root.screenState === "empty"; width: parent.width; spacing: Spacing.gapSmall; Label { width: parent.width; text: qsTr("No recovery information available"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary; wrapMode: Text.WordWrap; Accessible.role: Accessible.StaticText; Accessible.name: text }; Label { width: parent.width; text: qsTr("Recovery status will appear here once the host provides data."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; wrapMode: Text.WordWrap; Accessible.role: Accessible.StaticText; Accessible.name: text } }
+            Column { id: emptyHint; objectName: "hubEmpty"; visible: root.screenState === "empty"; width: parent.width; spacing: Spacing.gapSmall; Label { width: parent.width; text: qsTr("No recovery information available"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary; wrapMode: Text.WordWrap; Accessible.role: Accessible.StaticText; Accessible.name: text }
+            Label { width: parent.width; text: qsTr("Recovery status will appear here once the host provides data."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; wrapMode: Text.WordWrap; Accessible.role: Accessible.StaticText; Accessible.name: text } }
 
             // ══════════════════════════════════════════════════════
             // Normal content
@@ -283,7 +293,8 @@ FocusScope {
                                 ]
                                 delegate: Column {
                                     required property var modelData; spacing: Spacing.gapTiny
-                                    Row { spacing: Spacing.gapSmall; Rectangle { width: 8; height: 8; radius: 4; color: root.statusColor(root.recoveryStatus[modelData.key]); anchors.verticalCenter: parent.verticalCenter }; Label { text: modelData.label; font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary } }
+                                    Row { spacing: Spacing.gapSmall; Rectangle { width: 8; height: 8; radius: 4; color: root.statusColor(root.recoveryStatus[modelData.key]); anchors.verticalCenter: parent.verticalCenter }
+                                    Label { text: modelData.label; font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary } }
                                     Label { text: root.statusLabel(root.recoveryStatus[modelData.key]); font.pixelSize: Typography.caption.size; color: root.statusColor(root.recoveryStatus[modelData.key]) }
                                     Accessible.role: Accessible.StaticText; Accessible.name: qsTr("%1: %2").arg(modelData.label).arg(root.statusLabel(root.recoveryStatus[modelData.key]))
                                 }
@@ -299,11 +310,15 @@ FocusScope {
                         width: parent.width - Spacing.paddingPage * 2; anchors.leftMargin: Spacing.paddingPage
                         height: backupCol.implicitHeight + Spacing.paddingLarge * 2
                         radius: Radii.card; color: MissionTheme.surface; border.color: MissionTheme.outlineVariant; border.width: 1
-                        Column { id: backupCol; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingLarge }; spacing: Spacing.gapSmall
+                        Column { id: backupCol; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingLarge }
+                        spacing: Spacing.gapSmall
                             Row { spacing: Spacing.gapMedium
-                                Column { spacing: Spacing.gapTiny; Label { text: qsTr("Latest Backup"); font.pixelSize: Typography.caption.size; color: MissionTheme.textSecondary }; Label { text: root.recoveryStatus.latestBackup !== undefined && String(root.recoveryStatus.latestBackup).length > 0 ? String(root.recoveryStatus.latestBackup) : qsTr("None"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary } }
-                                Column { visible: root.recoveryStatus.backupDestination !== undefined && String(root.recoveryStatus.backupDestination).length > 0; spacing: Spacing.gapTiny; Label { text: qsTr("Destination"); font.pixelSize: Typography.caption.size; color: MissionTheme.textSecondary }; Label { text: root.recoveryStatus.backupDestination !== undefined ? String(root.recoveryStatus.backupDestination) : ""; font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary } }
-                                Column { visible: root.recoveryStatus.backupSize !== undefined && String(root.recoveryStatus.backupSize).length > 0; spacing: Spacing.gapTiny; Label { text: qsTr("Size"); font.pixelSize: Typography.caption.size; color: MissionTheme.textSecondary }; Label { text: root.recoveryStatus.backupSize !== undefined ? String(root.recoveryStatus.backupSize) : ""; font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary } }
+                                Column { spacing: Spacing.gapTiny; Label { text: qsTr("Latest Backup"); font.pixelSize: Typography.caption.size; color: MissionTheme.textSecondary }
+                                Label { text: root.recoveryStatus.latestBackup !== undefined && String(root.recoveryStatus.latestBackup).length > 0 ? String(root.recoveryStatus.latestBackup) : qsTr("None"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary } }
+                                Column { visible: root.recoveryStatus.backupDestination !== undefined && String(root.recoveryStatus.backupDestination).length > 0; spacing: Spacing.gapTiny; Label { text: qsTr("Destination"); font.pixelSize: Typography.caption.size; color: MissionTheme.textSecondary }
+                                Label { text: root.recoveryStatus.backupDestination !== undefined ? String(root.recoveryStatus.backupDestination) : ""; font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary } }
+                                Column { visible: root.recoveryStatus.backupSize !== undefined && String(root.recoveryStatus.backupSize).length > 0; spacing: Spacing.gapTiny; Label { text: qsTr("Size"); font.pixelSize: Typography.caption.size; color: MissionTheme.textSecondary }
+                                Label { text: root.recoveryStatus.backupSize !== undefined ? String(root.recoveryStatus.backupSize) : ""; font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary } }
                             }
                             MissionButton { variant: MissionButton.Variant.Secondary; text: qsTr("Create Backup"); onClicked: root.backupRequested() }
                         }
@@ -314,7 +329,8 @@ FocusScope {
                 Column { width: parent.width; spacing: Spacing.gapMedium
                     Label { text: qsTr("Recovery Options"); font.pixelSize: Typography.subtitle.size; font.weight: Typography.subtitle.weight; color: MissionTheme.textPrimary; anchors.leftMargin: Spacing.paddingPage; Accessible.role: Accessible.Heading; Accessible.name: text }
 
-                    Column { visible: root.optionCount === 0; width: parent.width; spacing: Spacing.gapSmall; Label { width: parent.width; text: qsTr("No recovery options available"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary; anchors.leftMargin: Spacing.paddingPage }; Label { width: parent.width; text: qsTr("Recovery options will appear here once the host provides data."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; anchors.leftMargin: Spacing.paddingPage } }
+                    Column { visible: root.optionCount === 0; width: parent.width; spacing: Spacing.gapSmall; Label { width: parent.width; text: qsTr("No recovery options available"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary; anchors.leftMargin: Spacing.paddingPage }
+                    Label { width: parent.width; text: qsTr("Recovery options will appear here once the host provides data."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; anchors.leftMargin: Spacing.paddingPage } }
 
                     Repeater {
                         id: optionRepeater; model: root.recoveryOptions
@@ -330,7 +346,8 @@ FocusScope {
                             Rectangle { anchors.fill: parent; anchors.margins: -2; radius: Radii.card + 2; color: "transparent"; border.color: MissionTheme.focusRing; border.width: 2; visible: optRow.activeFocus }
                             MouseArea { id: optMouse; anchors.fill: parent; hoverEnabled: true; onClicked: { optRow.forceActiveFocus(); root.optionActivated(String(modelData.id)) } }
                             RowLayout {
-                                id: optContent; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingMedium }; spacing: Spacing.gapMedium
+                                id: optContent; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingMedium }
+                                spacing: Spacing.gapMedium
                                 Rectangle { visible: modelData.destructive === true; Layout.preferredWidth: 8; Layout.preferredHeight: 8; radius: 4; color: MissionTheme.error }
                                 Column { Layout.fillWidth: true; spacing: Spacing.gapTiny
                                     Label { text: modelData.name !== undefined ? String(modelData.name) : String(modelData.id); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary; elide: Text.ElideRight; width: parent.width }

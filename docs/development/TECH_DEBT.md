@@ -24,7 +24,7 @@
 
 9. **No AppArmor/SELinux profile** — The security architecture defines MAC as a layer, but no implementation exists. This is a Beta blocker.
 
-10. **mission-ui lacks tests and runtime validation** — Design tokens + base QML components exist (CANDIDATE), but zero tests and no desktop-session validation. Do not mark IMPLEMENTED; first step is a smoke test in a live Plasma session.
+10. **mission-ui lacks runtime validation and host integration** — 50 production QML components + 40 QtTest suites (82 CTest registrations) exist (CANDIDATE), but no desktop-session runtime validation and no host integration for the Mission Hub / Diagnostics / Recovery screens (UI surface + signal contract only). Do not mark IMPLEMENTED; first step is a live Plasma session validation.
 
 ### New (RC6 audit)
 

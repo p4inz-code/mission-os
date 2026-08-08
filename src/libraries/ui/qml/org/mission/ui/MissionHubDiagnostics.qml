@@ -212,7 +212,8 @@ FocusScope {
         id: headerBar; objectName: "hubHeader"
         anchors { left: parent.left; right: parent.right; top: parent.top }
         height: Spacing.headerHeight; color: MissionTheme.surface; z: 2
-        Rectangle { anchors { left: parent.left; right: parent.right; bottom: parent.bottom }; height: 1; color: MissionTheme.outline }
+        Rectangle { anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+        height: 1; color: MissionTheme.outline }
         RowLayout {
             anchors.fill: parent; anchors.leftMargin: Spacing.paddingPage; anchors.rightMargin: Spacing.paddingPage; spacing: Spacing.gapMedium
             Rectangle {
@@ -242,10 +243,12 @@ FocusScope {
         id: sidebar; objectName: "hubSidebar"
         anchors { left: parent.left; top: headerBar.bottom; bottom: parent.bottom }
         width: root.sidebarExpanded ? Spacing.sidebarWidth : 56; color: MissionTheme.surface; z: 1
-        Rectangle { anchors { right: parent.right; top: parent.top; bottom: parent.bottom }; width: 1; color: MissionTheme.outline }
+        Rectangle { anchors { right: parent.right; top: parent.top; bottom: parent.bottom }
+        width: 1; color: MissionTheme.outline }
         Behavior on width { enabled: !root.reducedMotion; animation: NumberAnimation { duration: Motion.durationFast } }
         Column {
-            anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.gapSmall }; spacing: Spacing.gapTiny
+            anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.gapSmall }
+            spacing: Spacing.gapTiny
             Repeater {
                 id: navRepeater; model: root.navigationItems
                 delegate: Rectangle {
@@ -283,16 +286,23 @@ FocusScope {
         Column { id: contentColumn; width: mainContent.width; spacing: Spacing.gapLarge
 
             // Loading
-            RowLayout { id: loadingIndicator; objectName: "hubLoading"; visible: root.screenState === "loading"; width: parent.width; spacing: Spacing.gapMedium; Item { width: Spacing.paddingPage; height: 1 }; Label { text: qsTr("Running diagnostics…"); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary }; Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 4; radius: 2; color: MissionTheme.surfaceDim; Rectangle { width: 96; height: 4; radius: 2; color: MissionTheme.primary; x: -96; NumberAnimation on x { running: root.screenState === "loading" && !root.reducedMotion; from: -96; to: loadingIndicator.width; duration: Motion.durationSlow; loops: Animation.Infinite } } } }
+            RowLayout { id: loadingIndicator; objectName: "hubLoading"; visible: root.screenState === "loading"; width: parent.width; spacing: Spacing.gapMedium; Item { width: Spacing.paddingPage; height: 1 }
+            Label { text: qsTr("Running diagnostics…"); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary }
+            Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 4; radius: 2; color: MissionTheme.surfaceDim; Rectangle { width: 96; height: 4; radius: 2; color: MissionTheme.primary; x: -96; NumberAnimation on x { running: root.screenState === "loading" && !root.reducedMotion; from: -96; to: loadingIndicator.width; duration: Motion.durationSlow; loops: Animation.Infinite } } } }
 
             // Error
-            Rectangle { id: errorBanner; objectName: "hubError"; visible: root.screenState === "error"; width: parent.width - Spacing.paddingPage * 2; anchors.leftMargin: Spacing.paddingPage; height: errorLayout.implicitHeight + Spacing.paddingMedium * 2; radius: Radii.card; color: Colors.errorContainer; RowLayout { id: errorLayout; anchors.fill: parent; anchors.margins: Spacing.paddingMedium; spacing: Spacing.gapMedium; Rectangle { Layout.preferredWidth: 12; Layout.preferredHeight: 12; radius: 6; color: MissionTheme.error }; ColumnLayout { Layout.fillWidth: true; spacing: Spacing.gapTiny; Label { text: qsTr("Could not load diagnostics"); font.weight: Typography.weightSemibold; color: Colors.contentOnErrorContainer }; Label { text: qsTr("Diagnostics information could not be loaded. Check your system and try again."); font.pixelSize: Typography.bodySmall.size; color: Colors.contentOnErrorContainer; wrapMode: Text.Wrap; Layout.fillWidth: true } } } }
+            Rectangle { id: errorBanner; objectName: "hubError"; visible: root.screenState === "error"; width: parent.width - Spacing.paddingPage * 2; anchors.leftMargin: Spacing.paddingPage; height: errorLayout.implicitHeight + Spacing.paddingMedium * 2; radius: Radii.card; color: Colors.errorContainer; RowLayout { id: errorLayout; anchors.fill: parent; anchors.margins: Spacing.paddingMedium; spacing: Spacing.gapMedium; Rectangle { Layout.preferredWidth: 12; Layout.preferredHeight: 12; radius: 6; color: MissionTheme.error }
+            ColumnLayout { Layout.fillWidth: true; spacing: Spacing.gapTiny; Label { text: qsTr("Could not load diagnostics"); font.weight: Typography.weightSemibold; color: Colors.contentOnErrorContainer }
+            Label { text: qsTr("Diagnostics information could not be loaded. Check your system and try again."); font.pixelSize: Typography.bodySmall.size; color: Colors.contentOnErrorContainer; wrapMode: Text.Wrap; Layout.fillWidth: true } } } }
 
             // Offline
-            Rectangle { id: offlineBanner; objectName: "hubOffline"; visible: root.screenState === "offline"; width: parent.width - Spacing.paddingPage * 2; anchors.leftMargin: Spacing.paddingPage; height: offlineLayout.implicitHeight + Spacing.paddingMedium * 2; radius: Radii.card; color: MissionTheme.surfaceVariant; RowLayout { id: offlineLayout; anchors.fill: parent; anchors.margins: Spacing.paddingMedium; spacing: Spacing.gapMedium; Rectangle { Layout.preferredWidth: 12; Layout.preferredHeight: 12; radius: 6; color: MissionTheme.textSecondary }; ColumnLayout { Layout.fillWidth: true; spacing: Spacing.gapTiny; Label { text: qsTr("You're offline"); font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary }; Label { text: qsTr("Previous diagnostics results are available. Running new diagnostics requires a system connection."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; wrapMode: Text.Wrap; Layout.fillWidth: true } } } }
+            Rectangle { id: offlineBanner; objectName: "hubOffline"; visible: root.screenState === "offline"; width: parent.width - Spacing.paddingPage * 2; anchors.leftMargin: Spacing.paddingPage; height: offlineLayout.implicitHeight + Spacing.paddingMedium * 2; radius: Radii.card; color: MissionTheme.surfaceVariant; RowLayout { id: offlineLayout; anchors.fill: parent; anchors.margins: Spacing.paddingMedium; spacing: Spacing.gapMedium; Rectangle { Layout.preferredWidth: 12; Layout.preferredHeight: 12; radius: 6; color: MissionTheme.textSecondary }
+            ColumnLayout { Layout.fillWidth: true; spacing: Spacing.gapTiny; Label { text: qsTr("You're offline"); font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary }
+            Label { text: qsTr("Previous diagnostics results are available. Running new diagnostics requires a system connection."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; wrapMode: Text.Wrap; Layout.fillWidth: true } } } }
 
             // Empty
-            Column { id: emptyHint; objectName: "hubEmpty"; visible: root.screenState === "empty"; width: parent.width; spacing: Spacing.gapSmall; Label { width: parent.width; text: qsTr("No diagnostics information available"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary; wrapMode: Text.WordWrap; Accessible.role: Accessible.StaticText; Accessible.name: text }; Label { width: parent.width; text: qsTr("Diagnostics results will appear here once the host provides data."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; wrapMode: Text.WordWrap; Accessible.role: Accessible.StaticText; Accessible.name: text } }
+            Column { id: emptyHint; objectName: "hubEmpty"; visible: root.screenState === "empty"; width: parent.width; spacing: Spacing.gapSmall; Label { width: parent.width; text: qsTr("No diagnostics information available"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary; wrapMode: Text.WordWrap; Accessible.role: Accessible.StaticText; Accessible.name: text }
+            Label { width: parent.width; text: qsTr("Diagnostics results will appear here once the host provides data."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; wrapMode: Text.WordWrap; Accessible.role: Accessible.StaticText; Accessible.name: text } }
 
             // ══════════════════════════════════════════════════════
             // Normal content
@@ -307,7 +317,8 @@ FocusScope {
                     height: overviewRow.implicitHeight + Spacing.paddingLarge * 2
                     radius: Radii.card; color: MissionTheme.surface; border.color: MissionTheme.outlineVariant; border.width: 1
                     RowLayout {
-                        id: overviewRow; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingLarge }; spacing: Spacing.gapLarge
+                        id: overviewRow; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingLarge }
+                        spacing: Spacing.gapLarge
                         Column { spacing: Spacing.gapTiny
                             Label { text: qsTr("Last Scan"); font.pixelSize: Typography.caption.size; color: MissionTheme.textSecondary }
                             Label { text: root.diagnosticsOverview.lastScan !== undefined && String(root.diagnosticsOverview.lastScan).length > 0 ? String(root.diagnosticsOverview.lastScan) : qsTr("Never"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary }
@@ -336,7 +347,8 @@ FocusScope {
                 Column { width: parent.width; spacing: Spacing.gapMedium
                     Label { text: qsTr("Results"); font.pixelSize: Typography.subtitle.size; font.weight: Typography.subtitle.weight; color: MissionTheme.textPrimary; anchors.leftMargin: Spacing.paddingPage; Accessible.role: Accessible.Heading; Accessible.name: text }
 
-                    Column { visible: root.resultCount === 0; width: parent.width; spacing: Spacing.gapSmall; Label { width: parent.width; text: qsTr("No diagnostic results yet"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary; anchors.leftMargin: Spacing.paddingPage }; Label { width: parent.width; text: qsTr("Run diagnostics to check your system hardware and software."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; anchors.leftMargin: Spacing.paddingPage } }
+                    Column { visible: root.resultCount === 0; width: parent.width; spacing: Spacing.gapSmall; Label { width: parent.width; text: qsTr("No diagnostic results yet"); font.pixelSize: Typography.body.size; font.weight: Typography.weightSemibold; color: MissionTheme.textPrimary; anchors.leftMargin: Spacing.paddingPage }
+                    Label { width: parent.width; text: qsTr("Run diagnostics to check your system hardware and software."); font.pixelSize: Typography.bodySmall.size; color: MissionTheme.textSecondary; anchors.leftMargin: Spacing.paddingPage } }
 
                     Repeater {
                         id: resultRepeater; model: root.diagnosticResults
@@ -352,7 +364,8 @@ FocusScope {
                             Rectangle { anchors.fill: parent; anchors.margins: -2; radius: Radii.card + 2; color: "transparent"; border.color: MissionTheme.focusRing; border.width: 2; visible: resRow.activeFocus }
                             MouseArea { id: resMouse; anchors.fill: parent; hoverEnabled: true; onClicked: { resRow.forceActiveFocus(); root.resultActivated(String(modelData.id)) } }
                             RowLayout {
-                                id: resContent; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingMedium }; spacing: Spacing.gapMedium
+                                id: resContent; anchors { left: parent.left; right: parent.right; top: parent.top; margins: Spacing.paddingMedium }
+                                spacing: Spacing.gapMedium
                                 Rectangle { Layout.preferredWidth: 8; Layout.preferredHeight: 8; radius: 4; color: root.statusColor(modelData.status) }
                                 Column { Layout.fillWidth: true; spacing: Spacing.gapTiny
                                     Row { spacing: Spacing.gapSmall

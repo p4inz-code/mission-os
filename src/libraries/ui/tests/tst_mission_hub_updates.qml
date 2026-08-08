@@ -329,11 +329,56 @@ TestCase {
         screen.destroy()
     }
 
-    // ── No pending updates message ─────────────────────────────────
+    // ── No pending updates: status is UNKNOWN, never fabricated ────
+    // The previous default (currentVersion == latestVersion == "0.1.0")
+    // made isUpToDate true with no host data — this regression locks
+    // the neutral behavior (FABRICATION-9).
     function test_noPendingUpdates() {
         var screen = createScreen("screenState: 'normal'")
         verify(!screen.hasPendingUpdates)
-        verify(screen.isUpToDate || screen.currentVersion === screen.latestVersion)
+        verify(!screen.versionKnown)
+        verify(!screen.isUpToDate)
+        compare(screen.statusBadge.text, "Unknown")
+        screen.destroy()
+    }
+
+    // ── Host-absent: versions empty, status neutral ────────────────
+    function test_hostAbsentStatusNeutral() {
+        var screen = createScreen("screenState: 'normal'")
+        compare(screen.currentVersion, "")
+        compare(screen.latestVersion, "")
+        verify(!screen.versionKnown)
+        verify(!screen.isUpToDate)
+        compare(screen.statusBadge.text, "Unknown")
+        screen.destroy()
+    }
+
+    // ── Loading state: status stays neutral ────────────────────────
+    function test_loadingStatusNeutral() {
+        var screen = createScreen("screenState: 'loading'")
+        verify(screen.loadingIndicator.visible)
+        compare(screen.statusBadge.text, "Unknown")
+        screen.destroy()
+    }
+
+    // ── Valid host data: explicitly up to date renders correctly ───
+    function test_hostReportedUpToDate() {
+        var screen = createScreen(
+            "screenState: 'normal'; currentVersion: '1.0.0'; latestVersion: '1.0.0'")
+        verify(screen.versionKnown)
+        verify(screen.isUpToDate)
+        compare(screen.statusBadge.text, "Up to date")
+        screen.destroy()
+    }
+
+    // ── Valid host data: pending updates render as pending ─────────
+    function test_hostReportedPending() {
+        var screen = createScreen(
+            "screenState: 'normal'; currentVersion: '1.0.0'; latestVersion: '1.1.0'; " +
+            "pendingUpdates: [{ id: 'u1', name: 'Kernel', version: '1.1.0' }]")
+        verify(screen.versionKnown)
+        verify(!screen.isUpToDate)
+        verify(screen.hasPendingUpdates)
         screen.destroy()
     }
 

@@ -317,6 +317,21 @@ TestCase {
         screen.destroy()
     }
 
+    // ── Host-absent defaults are neutral (FABRICATION-9 regression) ─
+    // The battery/network indicators must never fabricate "100%" or
+    // "Connected" before the host supplies real state.
+    function test_hostAbsentDefaultsNeutral() {
+        var screen = createScreen()
+        compare(screen.batteryStatusText, "")
+        compare(screen.networkStatusText, "")
+        verify(!screen.networkConnected)
+        verify(screen.batteryLevel < 0)
+        verify(!screen.batteryFill.visible, "battery fill must be hidden when the level is unknown")
+        compare(screen.batteryStatusLabel.text, "")
+        compare(screen.networkStatusLabel.text, "")
+        screen.destroy()
+    }
+
     // ── Clock: seeded at load, host-pinnable ───────────────────────
     function test_clockHostPin() {
         var screen = createScreen()
