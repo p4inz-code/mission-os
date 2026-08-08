@@ -95,20 +95,13 @@ FocusScope {
 
     /// System health score: { score (0-100), label, level }
     /// level ∈ "excellent" | "good" | "attention" | "critical"
-    property var healthScore: ({ score: 85, label: "Good", level: "good" })
+    /// Default empty — host-fed only; no fabricated health claims (FABRICATION-8)
+    property var healthScore: ({})
 
     /// Dashboard cards: [{ id, label, description?, status?, level?, icon? }]
     /// level ∈ "ok" | "warning" | "critical"
-    property var dashboardCards: [
-        { id: "privacy",   label: "Privacy",   status: "Protected",     level: "ok" },
-        { id: "security",  label: "Security",  status: "Secure",        level: "ok" },
-        { id: "updates",   label: "Updates",   status: "Up to date",    level: "ok" },
-        { id: "recovery",  label: "Recovery",  status: "Configured",    level: "ok" },
-        { id: "storage",   label: "Storage",   status: "72% free",      level: "ok" },
-        { id: "devices",   label: "Devices",   status: "3 connected",   level: "ok" },
-        { id: "network",   label: "Network",   status: "Connected",     level: "ok" },
-        { id: "health",    label: "System Health", status: "Good",      level: "ok" }
-    ]
+    /// Default empty — host-fed only; no fabricated status cards (FABRICATION-8)
+    property var dashboardCards: []
 
     /// Quick actions: [{ id, label, icon? }]
     property var quickActions: [
@@ -163,9 +156,10 @@ FocusScope {
     /// Level → token color for dashboard cards
     function cardLevelColor(level) {
         switch (String(level)) {
+        case "ok":       return MissionTheme.success
         case "warning":  return MissionTheme.warning
         case "critical": return MissionTheme.error
-        default:         return MissionTheme.success
+        default:         return MissionTheme.textTertiary
         }
     }
 
@@ -176,7 +170,7 @@ FocusScope {
         case "good":      return qsTr("Good")
         case "attention": return qsTr("Attention Required")
         case "critical":  return qsTr("Critical")
-        default:          return qsTr("Good")
+        default:          return qsTr("Unknown")
         }
     }
 
@@ -187,7 +181,7 @@ FocusScope {
         case "good":      return MissionTheme.primary
         case "attention": return MissionTheme.warning
         case "critical":  return MissionTheme.error
-        default:          return MissionTheme.primary
+        default:          return MissionTheme.textTertiary
         }
     }
 

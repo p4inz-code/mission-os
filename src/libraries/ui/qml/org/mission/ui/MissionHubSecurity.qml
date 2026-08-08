@@ -117,17 +117,8 @@ FocusScope {
     /// secureBoot/tpm/encryption/firewall/appSandboxing ∈ bool | null
     /// lastScan ∈ string (date) | null
     /// activeProtection ∈ number (count) | null
-    property var securityOverview: ({
-        score: 85,
-        level: "good",
-        secureBoot: true,
-        tpm: true,
-        encryption: true,
-        firewall: true,
-        lastScan: null,
-        appSandboxing: true,
-        activeProtection: 3
-    })
+    /// Default empty — host-fed only; no fabricated security claims (FABRICATION-8)
+    property var securityOverview: ({})
 
     /// Security recommendations: [{ id, title, description, severity?, actionLabel? }]
     /// severity ∈ "info" | "warning" | "critical"
@@ -275,6 +266,7 @@ FocusScope {
     property alias errorBanner: errorBanner
     property alias offlineBanner: offlineBanner
     property alias emptyHint: emptyHint
+    property alias scoreValue: scoreValue
 
     // ══════════════════════════════════════════════════════════════
     // Background

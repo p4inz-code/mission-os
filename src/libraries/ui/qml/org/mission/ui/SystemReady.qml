@@ -112,11 +112,8 @@ FocusScope {
     /// privacy state. Default values are UNSPECIFIED by the reference
     /// and are least-assumption fixtures (see header interpretation
     /// notes).
-    property var systemStatus: [
-        { code: "recovery", label: "Recovery configured", value: "Configured" },
-        { code: "security", label: "Security status",     value: "Protected" },
-        { code: "privacy",  label: "Privacy status",      value: "Privacy by default" }
-    ]
+    /// Default empty — host-fed only; no fabricated status claims (FABRICATION-8)
+    property var systemStatus: []
 
     /// Number of system status rows (all are shown)
     property int statusCount: root.systemStatus.length

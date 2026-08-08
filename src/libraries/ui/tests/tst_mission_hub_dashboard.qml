@@ -69,7 +69,26 @@ TestCase {
         verify(screen.mainContent !== null)
         compare(screen.titleLabel.text, "Mission Hub")
         verify(screen.navRepeater.count > 0)
-        verify(screen.cardRepeater.count > 0)
+        // Neutral defaults: no fabricated status cards or health claims (FABRICATION-8)
+        verify(screen.cardRepeater.count === 0)
+        compare(screen.healthScoreValue.text, "—")
+        screen.destroy()
+    }
+
+    // ── Neutral defaults: no fabricated health/status (FABRICATION-8) ──
+    function test_neutralDefaults() {
+        var screen = createScreen("screenState: 'normal'")
+        // No fabricated cards and no fabricated health score appear
+        compare(screen.dashboardCards.length, 0)
+        verify(screen.cardRepeater.count === 0)
+        compare(screen.healthScoreValue.text, "—")
+        // Unknown levels render as neutral text/color — never "Good"/green
+        compare(screen.healthLevelLabel(undefined), "Unknown")
+        verify(Qt.colorEqual(screen.healthLevelColor(undefined), MissionTheme.textTertiary))
+        verify(Qt.colorEqual(screen.cardLevelColor(undefined), MissionTheme.textTertiary))
+        // The documented "ok" level still maps to success green for
+        // valid host-provided cards (FABRICATION-8 regression guard)
+        verify(Qt.colorEqual(screen.cardLevelColor("ok"), MissionTheme.success))
         screen.destroy()
     }
 
@@ -115,8 +134,14 @@ TestCase {
 
     // ── Dashboard cards render from host model ─────────────────────
     function test_cardsRender() {
-        var screen = createScreen("screenState: 'normal'")
-        verify(screen.cardRepeater.count === 8)
+        // Host-provided cards render; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; dashboardCards: [" +
+            "{ id: 'privacy', label: 'Privacy', status: 'Protected', level: 'ok' }," +
+            "{ id: 'security', label: 'Security', status: 'Secure', level: 'ok' }," +
+            "{ id: 'storage', label: 'Storage', status: '72% free', level: 'ok' }" +
+            "]")
+        verify(screen.cardRepeater.count === 3)
         var card0 = screen.cardRepeater.itemAt(0)
         verify(card0 !== null)
         verify(card0.visible)
@@ -258,7 +283,8 @@ TestCase {
 
     // ── Accessibility roles and names ──────────────────────────────
     function test_accessibilityRoles() {
-        var screen = createScreen("screenState: 'normal'")
+        var screen = createScreen(
+            "screenState: 'normal'; dashboardCards: [{ id: 'privacy', label: 'Privacy', status: 'Protected' }]")
         // Title is a heading
         verify(screen.titleLabel.Accessible.role === Accessible.Heading)
         verify(screen.titleLabel.Accessible.name.length > 0)

@@ -82,32 +82,8 @@ FocusScope {
     /// shown. Example: Samsung 990 Pro (2 TB) instead of /dev/nvme0n1").
     /// Static fixture; the host service (storage daemon) supplies the
     /// real detected drives when diskSelectionRequested fires.
-    property var diskOptions: [
-        { label: "Samsung 990 Pro (2 TB)",
-          device: "nvme0n1",
-          interface: "NVMe",
-          health: "Good",
-          os: "None detected",
-          available: "1.8 TB free" },
-        { label: "Seagate BarraCuda (1 TB)",
-          device: "sda",
-          interface: "SATA",
-          health: "Good",
-          os: "Windows 11",
-          available: "512 GB free" },
-        { label: "SanDisk Ultra Fit (128 GB)",
-          device: "sdb",
-          interface: "USB",
-          health: "Good",
-          os: "Mission OS Live",
-          available: "96 GB free" },
-        { label: "WD Blue (512 GB)",
-          device: "sdc",
-          interface: "SATA",
-          health: "Warning",
-          os: "None detected",
-          available: "480 GB free" }
-    ]
+    /// Default empty — host-fed only; no fabricated drive catalog (FABRICATION-8)
+    property var diskOptions: []
 
     /// Index of the selected destination disk within `diskOptions`
     /// (-1 = nothing selected; no preselection on load — installing

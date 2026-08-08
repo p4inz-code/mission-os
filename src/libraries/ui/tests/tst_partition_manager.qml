@@ -80,9 +80,10 @@ TestCase {
         verify(Qt.colorEqual(screen.headingColor, Colors.textPrimary))
         verify(screen.headingLabel.text.length > 0)
         verify(screen.continueButton.text.length > 0)
-        // The full partition plan must be populated (MOS-INS-007)
-        compare(screen.partitionCount, 5)
-        compare(screen.destructiveCount, 2)
+        // Neutral default: no fabricated partition plan (FABRICATION-8);
+        // the host provides partitionOptions.
+        compare(screen.partitionCount, 0)
+        compare(screen.destructiveCount, 0)
         // Step context: Partition Manager is installer step 7 of 12
         compare(screen.step, 7)
         compare(screen.totalSteps, 17)
@@ -143,7 +144,7 @@ TestCase {
         var screen = createScreen()
         verify(screen.continueButton !== null)
         verify(screen.backButton !== null)
-        verify(screen.partitionRows.count === 5)
+        verify(screen.partitionRows.count === 0)
         verify(screen.continueButton.visible)
         verify(screen.continueButton.enabled)
         // Back is enabled on step 7 (Partition Manager is the seventh step)
@@ -159,7 +160,15 @@ TestCase {
     // mount point, proposed change, destructive flag; the plan includes
     // a boot partition and a recovery partition.
     function test_partitionCatalog() {
-        var screen = createScreen()
+        // Host-provided plan renders; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; partitionOptions: [" +
+            "{ name: 'EFI System Partition', label: 'nvme0n1p1', size: '512 MB', filesystem: 'FAT32', mountPoint: '/boot/efi', boot: true, recovery: false, change: 'Create', destructive: false }," +
+            "{ name: 'Boot', label: 'nvme0n1p2', size: '1 GB', filesystem: 'ext4', mountPoint: '/boot', boot: false, recovery: false, change: 'Create', destructive: false }," +
+            "{ name: 'Root', label: 'nvme0n1p3', size: '40 GB', filesystem: 'ext4', mountPoint: '/', boot: false, recovery: false, change: 'Format', destructive: true }," +
+            "{ name: 'Home', label: 'nvme0n1p4', size: '1.3 TB', filesystem: 'ext4', mountPoint: '/home', boot: false, recovery: false, change: 'Format', destructive: true }," +
+            "{ name: 'Recovery', label: 'nvme0n1p5', size: '16 GB', filesystem: 'ext4', mountPoint: '/recovery', boot: false, recovery: true, change: 'Create', destructive: false }" +
+            "]")
         var expectedNames = ["EFI System Partition", "Boot", "Root", "Home", "Recovery"]
         var expectedMounts = ["/boot/efi", "/boot", "/", "/home", "/recovery"]
         var expectedChanges = ["Create", "Create", "Format", "Format", "Create"]
@@ -184,7 +193,12 @@ TestCase {
 
     // ── Every partition exposes all required display fields ────────
     function test_partitionFields() {
-        var screen = createScreen()
+        // Host-provided plan; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; partitionOptions: [" +
+            "{ name: 'EFI System Partition', label: 'nvme0n1p1', size: '512 MB', filesystem: 'FAT32', mountPoint: '/boot/efi', boot: true, recovery: false, change: 'Create', destructive: false }," +
+            "{ name: 'Root', label: 'nvme0n1p3', size: '40 GB', filesystem: 'ext4', mountPoint: '/', boot: false, recovery: false, change: 'Format', destructive: true }" +
+            "]")
         for (var i = 0; i < screen.partitionOptions.length; ++i) {
             var p = screen.partitionOptions[i]
             verify(p.name.length > 0, "partition " + i + " must have a name")
@@ -203,7 +217,12 @@ TestCase {
     // highlighted." Real rendering behavior: destructive rows use the
     // error container background; non-destructive rows use the surface.
     function test_destructiveHighlight() {
-        var screen = createScreen()
+        // Host-provided plan; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; partitionOptions: [" +
+            "{ name: 'Boot', label: 'nvme0n1p2', size: '1 GB', filesystem: 'ext4', mountPoint: '/boot', boot: false, recovery: false, change: 'Create', destructive: false }," +
+            "{ name: 'Root', label: 'nvme0n1p3', size: '40 GB', filesystem: 'ext4', mountPoint: '/', boot: false, recovery: false, change: 'Format', destructive: true }" +
+            "]")
         MissionTheme.darkMode = false
         for (var i = 0; i < screen.partitionOptions.length; ++i) {
             var row = screen.partitionRows.itemAt(i)
@@ -236,7 +255,12 @@ TestCase {
     // Reference Screen 07 displays the boot partition and the recovery
     // partition; the badges are the visual role indicators.
     function test_bootAndRecoveryBadges() {
-        var screen = createScreen()
+        // Host-provided plan; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; partitionOptions: [" +
+            "{ name: 'EFI System Partition', label: 'nvme0n1p1', size: '512 MB', filesystem: 'FAT32', mountPoint: '/boot/efi', boot: true, recovery: false, change: 'Create', destructive: false }," +
+            "{ name: 'Recovery', label: 'nvme0n1p5', size: '16 GB', filesystem: 'ext4', mountPoint: '/recovery', boot: false, recovery: true, change: 'Create', destructive: false }" +
+            "]")
         for (var i = 0; i < screen.partitionOptions.length; ++i) {
             var row = screen.partitionRows.itemAt(i)
             compare(row.bootBadge.visible, screen.partitionOptions[i].boot,
@@ -488,7 +512,15 @@ TestCase {
 
     // ── Reduced motion does not break rendering ────────────────────
     function test_reducedMotion() {
-        var screen = createScreen()
+        // Host-provided plan; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; partitionOptions: [" +
+            "{ name: 'EFI System Partition', label: 'nvme0n1p1', size: '512 MB', filesystem: 'FAT32', mountPoint: '/boot/efi', boot: true, recovery: false, change: 'Create', destructive: false }," +
+            "{ name: 'Boot', label: 'nvme0n1p2', size: '1 GB', filesystem: 'ext4', mountPoint: '/boot', boot: false, recovery: false, change: 'Create', destructive: false }," +
+            "{ name: 'Root', label: 'nvme0n1p3', size: '40 GB', filesystem: 'ext4', mountPoint: '/', boot: false, recovery: false, change: 'Format', destructive: true }," +
+            "{ name: 'Home', label: 'nvme0n1p4', size: '1.3 TB', filesystem: 'ext4', mountPoint: '/home', boot: false, recovery: false, change: 'Format', destructive: true }," +
+            "{ name: 'Recovery', label: 'nvme0n1p5', size: '16 GB', filesystem: 'ext4', mountPoint: '/recovery', boot: false, recovery: true, change: 'Create', destructive: false }" +
+            "]")
         screen.reducedMotion = true
         screen.screenState = "loading"
         verify(screen.loadingIndicator.visible)

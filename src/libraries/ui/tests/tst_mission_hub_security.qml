@@ -40,6 +40,26 @@ TestCase {
         screen.destroy()
     }
 
+    // ── Neutral defaults: no fabricated security claims (FABRICATION-8) ──
+    function test_neutralSecurityDefaults() {
+        var screen = createScreen("screenState: 'normal'")
+        // No fabricated overview values appear with an absent host
+        verify(screen.securityOverview.score === undefined)
+        verify(screen.securityOverview.secureBoot === undefined)
+        verify(screen.securityOverview.tpm === undefined)
+        verify(screen.securityOverview.encryption === undefined)
+        verify(screen.securityOverview.firewall === undefined)
+        verify(screen.securityOverview.appSandboxing === undefined)
+        verify(screen.securityOverview.activeProtection === undefined)
+        // Unknown values render as neutral text — never "Enabled"/"Good"
+        compare(screen.statusLabel(undefined), "Unknown")
+        compare(screen.levelLabel(undefined), "Unknown")
+        verify(Qt.colorEqual(screen.statusColor(undefined), MissionTheme.textSecondary))
+        // The rendered score is a neutral placeholder, not a fabricated number
+        compare(screen.scoreValue.text, "—")
+        screen.destroy()
+    }
+
     // ── MissionTheme light/dark rendering bindings ─────────────────
     function test_themeLightAndDark() {
         var screen = createScreen("screenState: 'normal'")

@@ -77,8 +77,10 @@ TestCase {
         verify(Qt.colorEqual(screen.headingColor, Colors.textPrimary))
         verify(screen.headingLabel.text.length > 0)
         verify(screen.continueButton.text.length > 0)
-        // The full drive catalog must be populated (MOS-INS-006)
-        compare(screen.diskOptions.length, 4)
+        // Neutral default: no fabricated drive catalog (FABRICATION-8);
+        // the host provides diskOptions. MOS-INS-006 display fields are
+        // verified against host-provided data in test_diskCatalog.
+        compare(screen.diskOptions.length, 0)
         // Default values: no destination disk preselected on load
         compare(screen.selectedDiskIndex, -1)
         compare(screen.selectedDiskLabel, "")
@@ -149,7 +151,14 @@ TestCase {
 
     // ── Drive catalog: codes + Screen 06 fields ────────────────────
     function test_diskCatalog() {
-        var screen = createScreen()
+        // Host-provided catalog renders; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [" +
+            "{ label: 'Samsung 990 Pro (2 TB)', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None detected', available: '1.8 TB free' }," +
+            "{ label: 'Seagate BarraCuda (1 TB)', device: 'sda', interface: 'SATA', health: 'Good', os: 'Windows 11', available: '512 GB free' }," +
+            "{ label: 'SanDisk Ultra Fit (128 GB)', device: 'sdb', interface: 'USB', health: 'Good', os: 'Mission OS Live', available: '96 GB free' }," +
+            "{ label: 'WD Blue (512 GB)', device: 'sdc', interface: 'SATA', health: 'Warning', os: 'None detected', available: '480 GB free' }" +
+            "]")
         var expectedDevices = ["nvme0n1", "sda", "sdb", "sdc"]
         var expectedLabels = ["Samsung 990 Pro (2 TB)", "Seagate BarraCuda (1 TB)",
                               "SanDisk Ultra Fit (128 GB)", "WD Blue (512 GB)"]
@@ -165,7 +174,11 @@ TestCase {
     // friendly name, interface, health status, existing operating
     // systems, available space (device name is secondary info only).
     function test_diskFields() {
-        var screen = createScreen()
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [" +
+            "{ label: 'Samsung 990 Pro (2 TB)', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None detected', available: '1.8 TB free' }," +
+            "{ label: 'Seagate BarraCuda (1 TB)', device: 'sda', interface: 'SATA', health: 'Good', os: 'Windows 11', available: '512 GB free' }" +
+            "]")
         for (var i = 0; i < screen.diskOptions.length; ++i) {
             var disk = screen.diskOptions[i]
             verify(disk.label.length > 0, "disk " + i + " must have a friendly name")
@@ -182,7 +195,11 @@ TestCase {
 
     // ── Every disk selection emits its device name ─────────────────
     function test_diskSelection() {
-        var screen = createScreen()
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [" +
+            "{ label: 'A', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None', available: '1 TB' }," +
+            "{ label: 'B', device: 'sda', interface: 'SATA', health: 'Good', os: 'None', available: '1 TB' }" +
+            "]")
         var spy = Qt.createQmlObject(
             "import QtTest; import org.mission.ui 1.0; SignalSpy { signalName: 'diskSelectionRequested' }",
             screen, "diskSpy")
@@ -210,7 +227,9 @@ TestCase {
     // be chosen before Continue can fire (real behavior, not object
     // existence).
     function test_actionSignals() {
-        var screen = createScreen()
+        // Host-provided disks; no fabricated catalog (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [{ label: 'A', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None', available: '1 TB' }]")
         var spies = []
         var spyNames = ["continueRequested", "backRequested", "retryRequested"]
         for (var i = 0; i < spyNames.length; ++i) {
@@ -245,7 +264,9 @@ TestCase {
 
     // ── Required state transitions ─────────────────────────────────
     function test_stateTransitions() {
-        var screen = createScreen()
+        // Host-provided disks; no fabricated catalog (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [{ label: 'A', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None', available: '1 TB' }]")
         // empty (default): no banner, Continue disabled (no disk yet)
         verify(!screen.loadingIndicator.visible)
         verify(!screen.errorBanner.visible)
@@ -319,7 +340,9 @@ TestCase {
     // ── Continue must not advance until a disk is chosen, and never
     //    while loading/error ────────────────────────────────────────
     function test_continueBlocking() {
-        var screen = createScreen()
+        // Host-provided disks; no fabricated catalog (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [{ label: 'A', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None', available: '1 TB' }]")
         wait(100) // let the hosted window activate so key events reach it
         var spy = Qt.createQmlObject(
             "import QtTest; import org.mission.ui 1.0; SignalSpy { signalName: 'continueRequested' }",
@@ -372,7 +395,9 @@ TestCase {
     // the Tab chain until a destination disk is selected — that is the
     // correct behavior for a validation-gated primary action.
     function test_keyboardFocus() {
-        var screen = createScreen()
+        // Host-provided disks; no fabricated catalog (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [{ label: 'A', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None', available: '1 TB' }]")
         wait(100) // let the hosted window activate so Tab reaches the controls
         var hostWindow = _hostWindows[_hostWindows.length - 1]
 
@@ -410,7 +435,13 @@ TestCase {
 
     // ── Arrow keys move the list; Enter/Space select ───────────────
     function test_listKeyboardSelection() {
-        var screen = createScreen()
+        // Host-provided disks; no fabricated catalog (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [" +
+            "{ label: 'Samsung 990 Pro (2 TB)', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None detected', available: '1.8 TB free' }," +
+            "{ label: 'Seagate BarraCuda (1 TB)', device: 'sda', interface: 'SATA', health: 'Good', os: 'Windows 11', available: '512 GB free' }," +
+            "{ label: 'SanDisk Ultra Fit (128 GB)', device: 'sdb', interface: 'USB', health: 'Good', os: 'Mission OS Live', available: '96 GB free' }" +
+            "]")
         wait(100)
         var spy = Qt.createQmlObject(
             "import QtTest; import org.mission.ui 1.0; SignalSpy { signalName: 'diskSelectionRequested' }",
@@ -439,7 +470,9 @@ TestCase {
 
     // ── Shift+Tab walks the focus chain backward ──────────────────
     function test_shiftTabNavigatesBackward() {
-        var screen = createScreen()
+        // Host-provided disks; no fabricated catalog (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [{ label: 'A', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None', available: '1 TB' }]")
         wait(100)
         screen.selectDisk(0) // Continue must be enabled to hold focus
         var hostWindow = _hostWindows[_hostWindows.length - 1]
@@ -469,7 +502,9 @@ TestCase {
 
     // ── Escape navigates back ──────────────────────────────────────
     function test_escapeNavigatesBack() {
-        var screen = createScreen()
+        // Host-provided disks; no fabricated catalog (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [{ label: 'A', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None', available: '1 TB' }]")
         wait(100)
         var spy = Qt.createQmlObject(
             "import QtTest; import org.mission.ui 1.0; SignalSpy { signalName: 'backRequested' }",
@@ -530,7 +565,9 @@ TestCase {
 
     // ── Reduced motion does not break rendering ────────────────────
     function test_reducedMotion() {
-        var screen = createScreen()
+        // Host-provided disks; no fabricated catalog (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; diskOptions: [{ label: 'A', device: 'nvme0n1', interface: 'NVMe', health: 'Good', os: 'None', available: '1 TB' }]")
         screen.reducedMotion = true
         screen.screenState = "loading"
         verify(screen.loadingIndicator.visible)

@@ -109,11 +109,12 @@ TestCase {
         // Step context: System Ready is the final installer step, 17 of 17
         compare(screen.step, 17)
         compare(screen.totalSteps, 17)
-        // The three read-only status rows exist (reference display items 2–4)
-        compare(screen.statusCount, 3)
-        compare(screen.statusList.count, 3)
-        verify(screen.statusList.height > 0,
-               "status list must render with positive height")
+        // Neutral default: no fabricated status claims (FABRICATION-8);
+        // the host provides systemStatus. An empty fixture renders at
+        // zero height without error.
+        compare(screen.statusCount, 0)
+        compare(screen.statusList.count, 0)
+        compare(screen.statusList.height, 0)
         // The three open actions (items 5–7) and the primary Finish
         // action (item 8) are present; Back is available (step 17 > 1).
         verify(screen.missionHubButton.enabled)
@@ -135,7 +136,13 @@ TestCase {
     // row may be invented or omitted. The values are least-assumption
     // host-fed fixtures (documented interpretation in SystemReady.qml).
     function test_statusMatchesReference() {
-        var screen = createScreen()
+        // Host-provided status rows; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; systemStatus: [" +
+            "{ code: 'recovery', label: 'Recovery configured', value: 'Configured' }," +
+            "{ code: 'security', label: 'Security status', value: 'Protected' }," +
+            "{ code: 'privacy', label: 'Privacy status', value: 'Privacy by default' }" +
+            "]")
         var expected = [
             ["recovery", "Recovery configured", "Configured"],
             ["security", "Security status",     "Protected"],
@@ -238,7 +245,13 @@ TestCase {
     // (genuine behavior — the screen must display the real state per
     // reference § "Screen 19").
     function test_hostStatusReplacement() {
-        var screen = createScreen()
+        // Host-provided status rows; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; systemStatus: [" +
+            "{ code: 'recovery', label: 'Recovery configured', value: 'Configured' }," +
+            "{ code: 'security', label: 'Security status', value: 'Protected' }," +
+            "{ code: 'privacy', label: 'Privacy status', value: 'Privacy by default' }" +
+            "]")
         compare(screen.statusCount, 3)
         compare(screen.statusList.height, 3 * 44 + 2 * 4)
 
@@ -642,7 +655,13 @@ TestCase {
 
     // ── Accessibility roles / names ────────────────────────────────
     function test_accessibility() {
-        var screen = createScreen()
+        // Host-provided status rows; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; systemStatus: [" +
+            "{ code: 'recovery', label: 'Recovery configured', value: 'Configured' }," +
+            "{ code: 'security', label: 'Security status', value: 'Protected' }," +
+            "{ code: 'privacy', label: 'Privacy status', value: 'Privacy by default' }" +
+            "]")
         screen.screenState = "error"
 
         // Heading is announced as a heading with a name
@@ -725,7 +744,13 @@ TestCase {
     // ── 1024×768 (implementation target): every status row renders
     //    in the viewport and every control is reachable ─────────────
     function test_usableAt1024x768() {
-        var screen = createScreen() // 1024×768
+        // Host-provided status rows; no fabricated defaults (FABRICATION-8)
+        var screen = createScreen(
+            "screenState: 'normal'; systemStatus: [" +
+            "{ code: 'recovery', label: 'Recovery configured', value: 'Configured' }," +
+            "{ code: 'security', label: 'Security status', value: 'Protected' }," +
+            "{ code: 'privacy', label: 'Privacy status', value: 'Privacy by default' }" +
+            "]") // 1024×768
         wait(100)
         for (var i = 0; i < 3; ++i) {
             var item = screen.statusList.itemAtIndex(i)
@@ -749,6 +774,13 @@ TestCase {
     // ── 480×768 compact: screen usable, controls reachable ─────────
     function test_usableAt480x768() {
         var screen = createScreenAt(480, 768)
+        // Host-fed status rows via the documented replacement pattern
+        // (no fabricated defaults; FABRICATION-8)
+        screen.systemStatus = [
+            { code: "recovery", label: "Recovery configured", value: "Configured" },
+            { code: "security", label: "Security status",     value: "Protected" },
+            { code: "privacy",  label: "Privacy status",      value: "Privacy by default" }
+        ]
         wait(100)
         verify(screen.compactLayout)
         verify(!screen.helpPanel.visible)

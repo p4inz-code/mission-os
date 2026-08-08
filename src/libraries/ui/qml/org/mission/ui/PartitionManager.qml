@@ -82,8 +82,9 @@ FocusScope {
 
     /// Friendly name of the destination disk whose plan is being
     /// reviewed ("clearly identify affected disks" — installer
-    /// philosophy). Host wiring sets this from Disk Selection.
-    property string diskLabel: "Samsung 990 Pro (2 TB)"
+    /// philosophy). Host wiring sets this from Disk Selection;
+    /// never a fabricated default (FABRICATION-8).
+    property string diskLabel: ""
 
     /// The proposed partition plan for the destination disk. Each entry:
     /// { name, label, size, filesystem, mountPoint, boot, recovery,
@@ -92,53 +93,8 @@ FocusScope {
     /// mount point, and boot/recovery roles per reference Screen 07.
     /// Destructive entries (e.g. "Format") are rendered highlighted.
     /// Static fixture; the host storage service supplies the real plan.
-    property var partitionOptions: [
-        { name: "EFI System Partition",
-          label: "nvme0n1p1",
-          size: "512 MB",
-          filesystem: "FAT32",
-          mountPoint: "/boot/efi",
-          boot: true,
-          recovery: false,
-          change: "Create",
-          destructive: false },
-        { name: "Boot",
-          label: "nvme0n1p2",
-          size: "1 GB",
-          filesystem: "ext4",
-          mountPoint: "/boot",
-          boot: false,
-          recovery: false,
-          change: "Create",
-          destructive: false },
-        { name: "Root",
-          label: "nvme0n1p3",
-          size: "40 GB",
-          filesystem: "ext4",
-          mountPoint: "/",
-          boot: false,
-          recovery: false,
-          change: "Format",
-          destructive: true },
-        { name: "Home",
-          label: "nvme0n1p4",
-          size: "1.3 TB",
-          filesystem: "ext4",
-          mountPoint: "/home",
-          boot: false,
-          recovery: false,
-          change: "Format",
-          destructive: true },
-        { name: "Recovery",
-          label: "nvme0n1p5",
-          size: "16 GB",
-          filesystem: "ext4",
-          mountPoint: "/recovery",
-          boot: false,
-          recovery: true,
-          change: "Create",
-          destructive: false }
-    ]
+    /// Default empty — host-fed only; no fabricated partition plan (FABRICATION-8)
+    property var partitionOptions: []
 
     /// Number of partitions in the plan (all are shown)
     property int partitionCount: root.partitionOptions.length
