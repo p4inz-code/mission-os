@@ -40,3 +40,4 @@ QuickSettings 1.0 QuickSettings.qml
 Search 1.0 Search.qml
 Calendar 1.0 Calendar.qml
 ClipboardHistory 1.0 ClipboardHistory.qml
+SystemTray 1.0 SystemTray.qml
