@@ -115,6 +115,8 @@ set(MISSION_UI_QML_FILES
     qml/org/mission/ui/MissionHubPrivacy.qml
     qml/org/mission/ui/MissionHubRecovery.qml
     qml/org/mission/ui/MissionHubDiagnostics.qml
+    qml/org/mission/ui/MissionHubDevices.qml
+    qml/org/mission/ui/MissionHubStorage.qml
 )
 
 # ── QML Resources ───────────────────────────────────────────────────
@@ -668,6 +670,28 @@ if(BUILD_TESTING)
             LABELS "mission-ui;qml;runtime"
             ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
         )
+
+        # MOS-HUB-009 Mission Hub Devices runtime test.
+        add_test(NAME mission-ui-hub-devices
+            COMMAND "${MISSION_UI_QML_RUNNER}"
+                    -import "${MISSION_UI_TEST_IMPORT_PATH}"
+                    -input "${CMAKE_CURRENT_SOURCE_DIR}/tests/tst_mission_hub_devices.qml"
+        )
+        set_tests_properties(mission-ui-hub-devices PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
+        )
+
+        # MOS-HUB-010 Mission Hub Storage runtime test.
+        add_test(NAME mission-ui-hub-storage
+            COMMAND "${MISSION_UI_QML_RUNNER}"
+                    -import "${MISSION_UI_TEST_IMPORT_PATH}"
+                    -input "${CMAKE_CURRENT_SOURCE_DIR}/tests/tst_mission_hub_storage.qml"
+        )
+        set_tests_properties(mission-ui-hub-storage PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            ENVIRONMENT "QT_QML_IMPORT_PATH=${MISSION_UI_TEST_IMPORT_PATH};QT_QPA_PLATFORM=offscreen"
+        )
     else()
         add_test(NAME mission-ui-smoke
             COMMAND ${CMAKE_COMMAND} -E echo
@@ -1007,6 +1031,24 @@ if(BUILD_TESTING)
                 "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
         )
         set_tests_properties(mission-ui-hub-diagnostics PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            SKIP_RETURN_CODE 0
+        )
+
+        add_test(NAME mission-ui-hub-devices
+            COMMAND ${CMAKE_COMMAND} -E echo
+                "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
+        )
+        set_tests_properties(mission-ui-hub-devices PROPERTIES
+            LABELS "mission-ui;qml;runtime"
+            SKIP_RETURN_CODE 0
+        )
+
+        add_test(NAME mission-ui-hub-storage
+            COMMAND ${CMAKE_COMMAND} -E echo
+                "SKIPPED: qmltestrunner not found — install qt6-declarative-dev-tools to enable the Mission UI runtime smoke test"
+        )
+        set_tests_properties(mission-ui-hub-storage PROPERTIES
             LABELS "mission-ui;qml;runtime"
             SKIP_RETURN_CODE 0
         )
