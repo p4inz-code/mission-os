@@ -17,6 +17,9 @@
     syslinux-utils
   # syslinux-utils provides isohybrid, required by live-build to produce
   # a hybrid ISO (BIOS+UEFI bootable from USB).
+  # The offline local repository (build-nightly.sh Phase 2b) additionally needs:
+  sudo apt install debhelper
+  # dpkg-buildpackage, dpkg-scanpackages and dh come with dpkg-dev/debhelper.
   ```
 
 ### Build Rust Components
@@ -35,12 +38,22 @@ cargo build -p mission-driverd
 ### Build Nightly ISO (Linux only)
 
 ```bash
-# Full Nightly ISO build (builds Rust + generates Debian live ISO)
+# Full Nightly ISO build (builds Rust + builds the offline local package
+# repository + generates the Debian live ISO)
 ./build/build-nightly.sh
 
 # Skip tests for faster iteration
 ./build/build-nightly.sh --skip-tests
+
+# Reuse an already-built local repository instead of rebuilding it
+./build/build-nightly.sh --skip-repo
 ```
+
+The four Mission OS `.deb` packages are built by `installer/build-local-repo.sh`
+(Phase 2b) and staged into the ISO at `/opt/mission/repo`, where the Calamares
+`mission-repo` → `packages` modules install them fully offline. The installed
+system is cleaned of live-session leftovers (Calamares, autologin, saved
+Plasma session) by the `mission-cleanup` module.
 
 ### Test
 
@@ -122,10 +135,17 @@ mission-os/
 │   ├── validate-iso.sh     # ISO validation (15 checks)
 │   ├── qemu-boot-test.sh   # QEMU boot test (BIOS + UEFI)
 │   ├── nightly-version.sh  # Version metadata generator
-│   └── mission-first-boot.service
+│   ├── mission-first-boot.service
+│   ├── offline-install-test.sh  # Offline install validation (QEMU, -net none)
+│   ├── resume-install.sh   # Offline install resume (boot-chain + cleanup)
+│   ├── launch-install-vm.sh / p15-*.py / p15-verify.sh / p15-validate-final-iso.sh
+│   │                       # P15/P16 verification harness + evidence
+│   └── p15-p16-report.md   # Installed-system boot + offline install evidence report
 ├── installer/
 │   ├── mission-first-boot.sh
+│   ├── build-local-repo.sh # Builds the offline .deb repository
 │   └── calamares/          # Calamares branding + modules
+│       └── modules/        # mission-os, mission-repo, mission-cleanup, packages.conf
 ├── desktop/
 │   ├── plasma/             # KDE Plasma configuration
 │   ├── sddm/               # SDDM display manager
@@ -158,7 +178,7 @@ Mission OS uses GitHub Actions for continuous integration.
 
 ## Current Status
 
-**Phase:** RC6 — runtime gates GREEN (2026-07-30). Static validation re-confirmed 2026-08-01.
+**Phase:** OPEN BETA (2026-08-09). The beta ISO is `build/images/mission-os-0.1.0-nightly.20260730-amd64.hybrid.iso` (SHA256 `a772f14d…`), rebuilt and statically re-validated on 2026-08-09; see `docs/development/BETA_RELEASE_REPORT.md`.
 
 **RC6 Gate Evidence:**
 - `validate-iso.sh`: **15/15 PASS** on `build/images/mission-os-0.1.0-nightly.20260730-amd64.hybrid.iso`
@@ -173,9 +193,9 @@ Mission OS uses GitHub Actions for continuous integration.
 | mission-crypto | IMPLEMENTED (boot runtime-validated RC6) | 79 unit tests + doc-tests |
 | mission-securityd | IMPLEMENTED (boot runtime-validated RC6) | 62 unit tests |
 | mission-driverd | IMPLEMENTED (boot runtime-validated RC6) | 345 unit tests + integration |
-| mission-ui | CANDIDATE (no tests, no runtime validation) | 0 |
-| Debian Packaging | IMPLEMENTED | 4 crates packaged |
-| KDE Plasma Integration | IMPLEMENTED (config; desktop session NOT runtime-validated) | Desktop defaults, themes, wallpaper |
+| mission-ui | CANDIDATE (50 QML components + SmokeTest, 40 QtTest suites; not runtime-validated in a session) | 50 comps / 40 suites |
+| Debian Packaging | IMPLEMENTED | 4 crates packaged into the ISO offline repo |
+| KDE Plasma Integration | IMPLEMENTED (config; installed-system desktop smoke-validated P15/P16) | Desktop defaults, themes, wallpaper |
 | ISO Generation | IMPLEMENTED + runtime-validated (RC6) | live-build + EFI fallback |
 | CI Pipeline | IMPLEMENTED + CI-VALIDATED | 9 CI jobs (nightly.yml) |
 
@@ -188,7 +208,7 @@ Mission OS uses GitHub Actions for continuous integration.
 - Update mechanism
 - Accessibility infrastructure
 
-**Remaining RC runtime gaps (Beta blockers):** Calamares install flow, installed-system boot, functional D-Bus/PolKit interaction, SDDM/Plasma/Wayland desktop session, network, audio/display/input, shutdown/reboot cycle. See `docs/development/RC6-REPORT.md`.
+**Current runtime state (2026-08-09, P15/P16):** installed-system boot, offline install, first-boot initialization and the installed desktop session are now validated (see `build/p15-p16-report.md`). **Remaining (beta-phase):** Calamares graphical install flow (never executed), functional D-Bus/PolKit interaction, live-ISO desktop session, network/audio/display/input and shutdown/reboot cycles, and real-hardware validation — see `docs/development/BETA_RELEASE_REPORT.md`. The final beta ISO (rebuilt 2026-08-09 15:22, SHA256 `a772f14d…`) includes the installer-cleanup changes (`mission-cleanup`, offline-safe `packages.conf`) and passed the static audit.
 
 ---
 

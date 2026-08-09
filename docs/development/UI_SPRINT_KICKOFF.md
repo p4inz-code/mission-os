@@ -26,6 +26,13 @@
 **Implementation status — mission-ui (`src/libraries/ui/`, module `org.mission.ui`):**
 - ✅ **Implemented (design tokens):** `Colors`, `Typography`, `Spacing`, `Radii`, `Elevation`, `Motion` (QML singletons), `MissionTheme` (light/dark via `darkMode`), `MissionWindow` (Kirigami.ApplicationWindow wrapper), `MissionPage` (page/surface container), `SmokeTest`, `qmldir`, C++ plugin + CMake build.
 - ⚠️ **Status: CANDIDATE** (per RC6-REPORT): **0 tests**, not runtime-validated, CI `cmake` job exists (installs Qt6/KF6, configures + builds) but end-to-end green not yet proven.
+
+> **Update (2026-08-09):** The UI sprint described below COMPLETED after this brief was
+> written. mission-ui now ships **50 production QML components (+ SmokeTest test
+> artifact) and 40 QtTest suites (82 CTest registrations)**, with host-absent
+> defaults neutral (no fabricated data — see commit `b07f061`). It remains
+> **CANDIDATE**: not runtime-validated in a live Plasma session and with no host
+> integration for the Mission Hub / Diagnostics / Recovery screens.
 - Next step per RC6-REPORT §7.4: mission-ui CANDIDATE → **implemented** (QML smoke tests, CI cmake job, live Plasma/Wayland validation).
 
 ---

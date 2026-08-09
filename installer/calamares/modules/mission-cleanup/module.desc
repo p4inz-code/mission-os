@@ -1,0 +1,19 @@
+# Mission OS — Calamares Module Descriptor
+#
+# Runs late in the exec phase (after the `packages` step) to remove
+# live-environment leftovers from the installed system so the first boot
+# lands on a clean SDDM login prompt (see P15/P16 Finding 2):
+#
+#   1. Uninstalls the Calamares installer packages (offline-safe: dpkg
+#      removal needs no repository or network).
+#   2. Removes /etc/calamares and Calamares autostart entries.
+#   3. Strips SDDM autologin from the target configuration.
+#   4. Removes saved Plasma sessions carried over from the live rootfs.
+
+type: job
+name: mission-cleanup
+interface: python
+script: main.py
+required: false  # Non-fatal — a leftover warning is better than a failed install
+emergency: false
+nobaseprefix: true

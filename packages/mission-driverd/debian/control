@@ -20,7 +20,7 @@ Depends: ${misc:Depends},
          mission-core-dev (= ${binary:Version}),
          mission-crypto-dev (= ${binary:Version}),
          dbus,
-         policykit-1,
+         polkitd,
          kmod,
          udev
 Description: Mission OS hardware driver management daemon

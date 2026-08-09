@@ -1,7 +1,6 @@
 # Mission OS — 25-Module Audit
 
-**Date:** August 1, 2026  
-**Status:** RC6 — runtime gates GREEN (validate-iso 15/15, QEMU BIOS 4/4, QEMU UEFI 4/4)
+**Date:** August 1, 2026 (updated 2026-08-09 for P15/P16) — **Status:** RC6 runtime gates GREEN (validate-iso 15/15, QEMU BIOS 4/4, QEMU UEFI 4/4); P15/P16 closed installed-system boot, offline install and first-boot (see `build/p15-p16-report.md` / IMPLEMENTATION_STATUS.md)
 
 ---
 
@@ -367,7 +366,7 @@ Modules 001/002/004/006 are present in the RC6 ISO and their services start duri
 | **Dependencies** | Calamares, mission-ui |
 | **Blockers** | Custom installer not yet Architected; Calamares may suffice for RC/Stable |
 | **Deferred** | Custom mission-installer application is Stable/post-Stone |
-| **Runtime Validated** | ❌ — Calamares config is packaged in the RC6 ISO, but the install flow has never been executed |
+| **Runtime Validated** | ⚠️ Partially — the OFFLINE install path (partition → repo staging → package install → bootloader) was executed and validated with networking disabled (P15/P16, `build/offline-install-test.sh`), and the installed system booted with all 4 Mission packages + polkitd. The Calamares GRAPHICAL install flow itself has never been executed |
 
 ---
 
@@ -475,7 +474,7 @@ Modules 001/002/004/006 are present in the RC6 ISO and their services start duri
 | 002 mission-crypto | ✅ Implemented | Runtime validation |
 | 004 mission-securityd | ✅ Implemented | Runtime validation + PolKit TODO audit |
 | 006 mission-driverd | ✅ Implemented | Runtime validation |
-| 021 mission-installer | ⚠️ Partial | Calamares runtime validation |
+| 021 mission-installer | ⚠️ Partial | Offline install path validated (P15/P16); Calamares GUI flow runtime validation remains |
 | 023 mission-network | ⚠️ Foundation | NetworkManager coverage validation |
 
 ---

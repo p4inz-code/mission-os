@@ -6,6 +6,17 @@
 
 **Status:** Planning
 
+> **Reality check (2026-08-09):** This document is the aspirational specification
+> for the future Mission OS installer experience. The **shipped** Nightly/
+> Beta installer is **Calamares** (`installer/calamares/`), which covers a subset
+> of these flows: welcome, locale, keyboard, partitioning, user creation,
+> summary, offline package installation (`mission-repo` + `packages` modules),
+> bootloader, and installed-system cleanup (`mission-cleanup`). Features in this
+> spec that Calamares does not provide today (workspace profiles, FDE, platform
+> presets, recovery media, …) are NOT implemented and must not be assumed to
+> exist in the current ISO. See `docs/development/IMPLEMENTATION_STATUS.md` for
+> the actual installed-installer state.
+
 ---
 
 # Purpose

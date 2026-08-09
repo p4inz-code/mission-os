@@ -5,15 +5,21 @@
 # Calamares installation completes.
 #
 # Tasks:
-#   1. (NOT IMPLEMENTED) Install Mission OS packages from local repository —
-#      no local-repository wiring exists; see docs/development/KNOWN_ISSUES.md
-#   2. Apply Mission OS branding (hostname, os-release, motd)
-#   3. Enable Mission OS systemd services
-#   4. Apply kernel sysctl hardening
-#   5. Configure first-boot state
-#   6. Mark installation as complete
+#   1. Enable Mission OS systemd services
+#   2. Apply Mission OS branding (hostname, version)
+#   3. Apply system defaults (sysctl hardening)
+#   4. Mark first-boot for pending completion
 #
-# This module is called by Calamares after partition/filesystem setup.
+# Mission OS package installation is NOT done here — it is handled by the
+# `mission-repo` + `packages` steps (see installer/calamares/modules/), and
+# live-environment cleanup by the `mission-cleanup` step.
+#
+# This module is a Calamares Python job: the target root is read from
+# libcalamares global storage (`rootMountPoint`) and target commands run
+# through `libcalamares.utils.target_env_call()` so they execute inside the
+# target chroot. For standalone functional testing (no Calamares runtime),
+# the CALAMARES_ROOT environment variable and subprocess-with-cwd fallback
+# are used instead.
 #
 # Security:
 #   - No secrets are stored in plaintext
@@ -25,31 +31,59 @@ import shutil
 import subprocess
 import sys
 
+try:
+    import libcalamares
+    HAVE_LIBCALAMARES = True
+except ImportError:
+    HAVE_LIBCALAMARES = False
+
+
+def _root_mount_point():
+    """Return the target root mount point (Calamares global storage, or the
+    CALAMARES_ROOT env var when running the standalone test harness)."""
+    if HAVE_LIBCALAMARES:
+        rmp = libcalamares.globalstorage.value("rootMountPoint")
+        if rmp:
+            return rmp
+    return os.environ.get("CALAMARES_ROOT", "/target")
+
+
+def _target_env_call(cmd):
+    """Run a command inside the target chroot (Calamares API), or with
+    cwd=root in the standalone harness. Returns the exit code."""
+    if HAVE_LIBCALAMARES:
+        return libcalamares.utils.target_env_call(cmd)
+    try:
+        return subprocess.run(cmd, cwd=_root_mount_point(), capture_output=True).returncode
+    except OSError as e:
+        print(f"[mission-os] WARNING: cannot run {cmd[0]}: {e}", file=sys.stderr)
+        return 127
+
 
 def run():
     """Main entry point called by Calamares."""
     print("[mission-os] Applying Mission OS post-install configuration...")
 
-    root_mount_point = os.environ.get("CALAMARES_ROOT", "/target")
+    root = _root_mount_point()
 
-    if not os.path.isdir(root_mount_point):
-        print(f"[mission-os] WARNING: Root mount point {root_mount_point} not found, skipping")
+    if not os.path.isdir(root):
+        print(f"[mission-os] WARNING: Root mount point {root} not found, skipping")
         return None
 
     try:
         # Phase 1: Enable Mission OS services
-        _enable_services(root_mount_point)
+        _enable_services(root)
 
         # Phase 2: Apply branding
-        _apply_branding(root_mount_point)
+        _apply_branding(root)
 
         # Phase 3: Apply system defaults
-        _apply_defaults(root_mount_point)
+        _apply_defaults(root)
 
         # Phase 4: Mark first-boot for pending completion
-        _mark_first_boot_pending(root_mount_point)
+        _mark_first_boot_pending(root)
 
-        print("[mission-os] ✅ Mission OS post-install complete")
+        print("[mission-os] Mission OS post-install complete")
     except Exception as e:
         print(f"[mission-os] ERROR: {e}", file=sys.stderr)
         # Non-fatal — installer can succeed without this module
@@ -65,12 +99,10 @@ def _enable_services(root):
         service_file = os.path.join(root, "usr", "lib", "systemd", "system", f"{svc}.service")
         if os.path.isfile(service_file):
             print(f"[mission-os]   Enabling {svc}...")
-            subprocess.run(
-                ["systemctl", "enable", f"{svc}.service"],
-                cwd=root,
-                capture_output=True,
-                check=False,
-            )
+            rc = _target_env_call(["systemctl", "enable", f"{svc}.service"])
+            if rc != 0:
+                print(f"[mission-os]   WARNING: systemctl enable {svc} returned {rc}",
+                      file=sys.stderr)
         else:
             print(f"[mission-os]   Skipping {svc} — service file not found")
 

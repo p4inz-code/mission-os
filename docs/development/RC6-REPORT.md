@@ -1,5 +1,14 @@
 # RC6 Release Report — Mission OS Nightly
 
+> **Update (2026-08-09):** This is a point-in-time record of the RC6 cycle. Parts
+> are superseded by the P15/P16 phase — installed-system boot, offline install
+> and first-boot initialization are now runtime-validated (see
+> `build/p15-p16-report.md` and `docs/development/IMPLEMENTATION_STATUS.md`),
+> and the offline local-repository wiring described as missing in §1/§5 now
+> exists (`mission-repo` / `packages` / `mission-cleanup` modules). The Calamares
+> GRAPHICAL install flow, functional D-Bus/PolKit interaction and live-ISO
+> desktop session remain unvalidated.
+
 **Date:** August 1, 2026
 **Cycle:** RC6 (convergence after the Nightly ISO release)
 **Version:** 0.1.0-nightly.20260730

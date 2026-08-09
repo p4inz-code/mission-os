@@ -1,32 +1,46 @@
 # Mission OS — Calamares Branding Descriptor
 #
 # Defines the visual identity of the Mission OS installer.
+# Schema follows the Calamares reference branding.desc
+# (usr/share/calamares/branding/default/branding.desc).
+#
+# NOTE: `slideshow` (and its QML file show.qml) is REQUIRED — Calamares
+# aborts at startup with "key not found: slideshow" if it is missing.
 
 componentName: mission-os
-name: Mission OS
-version: 0.1.0-nightly
-shortProductName: Mission OS
-versionedName: Mission OS 0.1.0 Nightly
-shortVersionedName: Mission OS Nightly
-bootloaderEntryName: Mission OS
-productUrl: https://mission-os.org
-supportUrl: https://github.com/p4inz-code/mission-os
-releaseNotesUrl: https://github.com/p4inz-code/mission-os/releases
-image: "calamares-logo.svg"  # Mission OS branding icon
+
+welcomeStyleCalamares: false
+welcomeExpandingLogo: true
+
+windowExpanding: normal
+windowSize: 800px,580px
+windowPlacement: center
+
+sidebar: widget
+navigation: widget
 
 strings:
     productName:         Mission OS
     shortProductName:    Mission OS
     version:             0.1.0
-    shortVersion:        0.1.0-nightly
-    versionLabel:        Nightly
+    shortVersion:        0.1.0
+    versionedName:       Mission OS 0.1.0 Nightly
+    shortVersionedName:  Mission OS Nightly
     bootloaderEntryName: Mission OS
     productUrl:          https://mission-os.org
     supportUrl:          https://github.com/p4inz-code/mission-os
     releaseNotesUrl:     https://github.com/p4inz-code/mission-os/releases
 
+images:
+    productIcon:         "calamares-logo.svg"
+    productLogo:         "calamares-logo.svg"
+    productWelcome:      "calamares-logo.svg"
+
 style:
-    sidebarBackground:   "#131519"
-    sidebarText:         "#ced2d9"
-    sidebarTextSelect:   "#ffffff"
-    sidebarHighlight:    "#625cb8"
+    SidebarBackground:        "#131519"
+    SidebarText:              "#ced2d9"
+    SidebarTextCurrent:       "#ffffff"
+    SidebarBackgroundCurrent: "#625cb8"
+
+slideshow:               "show.qml"
+slideshowAPI: 2

@@ -2,6 +2,10 @@
 
 This document describes how Mission OS releases are planned and published.
 
+> **Current release: OPEN BETA (2026-08-09)** — `mission-os-0.1.0-nightly.20260730-amd64.hybrid.iso`,
+> SHA256 `a772f14d5e4cd26c12ae54bd4ff7f1f6111618c6a3a9a5e77af133e1b3c0f7ef`. See
+> `docs/development/BETA_RELEASE_REPORT.md` for the full release report and tester workflow.
+
 ---
 
 # Release Philosophy

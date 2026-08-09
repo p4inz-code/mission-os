@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use Mission OS in your research or work, please cite it as follows."
+title: "Mission OS"
+version: "0.1.0-nightly.20260730 (open beta)"
+date-released: "2026-08-09"
+authors:
+  - family-names: "Patil"
+    given-names: "Atharva"
+    alias: "P4inz"
+    website: "https://github.com/p4inz-code"
+keywords:
+  - operating system
+  - linux
+  - privacy
+  - security
+  - debian
+license: "GPL-3.0-or-later"
+repository-code: "https://github.com/p4inz-code/mission-os"
+abstract: "Mission OS is a privacy-first, security-focused Linux operating system built on Debian Stable, powered by KDE Plasma, and designed around offline-first reliability and USB-first portability."

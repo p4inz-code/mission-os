@@ -1,0 +1,13 @@
+# Mission OS — Calamares Module Descriptor
+#
+# This module runs during the exec phase (before the `packages` step) to
+# stage the Mission OS local package repository into the target system so
+# the packages module can install Mission OS packages offline.
+
+type: job
+name: mission-repo
+interface: python
+script: main.py
+required: false  # Non-fatal — the packages step reports failure if absent
+emergency: false
+nobaseprefix: true

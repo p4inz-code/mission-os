@@ -1,0 +1,108 @@
+#!/bin/bash
+# Mission OS — live-build auto/config
+#
+# This script configures live-build to produce a bootable Mission OS Nightly ISO.
+# It is called by `lb config` automatically when present at auto/config.
+#
+# IMPORTANT: This script calls `lb config noauto` with the `noauto` flag to
+# PREVENT infinite recursion (lb config -> auto/config -> lb config -> ...).
+#
+# Target: UEFI-bootable Debian Stable KDE Plasma live ISO with Mission OS services.
+#
+# Usage (standalone):
+#   cd build/live-build && lb config && sudo lb build
+#
+# Dependencies (Debian Bookworm):
+#   sudo apt install live-build debootstrap xorriso mtools dosfstools \
+#     squashfs-tools grub-efi-amd64-bin grub-pc-bin grub-common
+#
+# Security:
+#   - No secrets embedded in configuration
+#   - MISSION_ALLOW_UNAUTHORIZED is NOT set in this configuration
+#   - Default firewall profile is "public" (deny incoming)
+#   - No development bypasses enabled
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BUILD_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+PROJECT_ROOT="$(cd "${BUILD_DIR}/../.." && pwd)"
+
+# ── Version Metadata ─────────────────────────────────────────────
+VERSION_FILE="${PROJECT_ROOT}/VERSION"
+if [[ -f "${VERSION_FILE}" ]]; then
+    MISSION_VERSION="$(cat "${VERSION_FILE}" | tr -d '[:space:]')"
+else
+    MISSION_VERSION="0.1.0-nightly"
+fi
+
+# ── Security Check ──────────────────────────────────────────────
+# Ensure MISSION_ALLOW_UNAUTHORIZED is not set in build environment
+if [[ -n "${MISSION_ALLOW_UNAUTHORIZED:-}" ]]; then
+    echo "ERROR: MISSION_ALLOW_UNAUTHORIZED is set in build environment!" >&2
+    echo "This must be unset for Nightly/Production builds." >&2
+    exit 1
+fi
+
+# ── live-build Configuration ────────────────────────────────────
+# Use 'noauto' to prevent infinite recursion:
+#   lb config  → calls auto/config (this script)
+#   this script → calls lb config noauto (skips auto/config)
+#
+# --bootloader grub2:
+#   Generates BOTH BIOS GRUB (i386-pc) and UEFI GRUB (x86_64-efi)
+#   boot entries in the ISO. Requires grub-efi-amd64-bin on the host.
+#
+# --iso-volume: ISO-9660 volume ID is limited to 32 bytes. The full
+# versioned label is carried in --iso-application below; the volume ID
+# must stay short. (Comments must NOT appear inside the continued
+# argument list below — they would swallow the remaining options.)
+#
+lb config noauto \
+    --distribution stable \
+    --architectures amd64 \
+    --archive-areas "main contrib non-free non-free-firmware" \
+    --binary-images iso-hybrid \
+    --bootloader grub2 \
+    --debian-installer false \
+    --bootappend-live "boot=live components quiet splash console=ttyS0,115200n8 mission.version=${MISSION_VERSION}" \
+    --bootappend-install "quiet" \
+    --hdd-label "MISSION_OS" \
+    --iso-application "Mission OS ${MISSION_VERSION}" \
+    --iso-preparer "Mission OS Contributors" \
+    --iso-publisher "Mission OS" \
+    --iso-volume "MISSION_OS" \
+    --linux-flavours "amd64" \
+    --linux-packages "linux-image" \
+    --firmware-chroot false \
+    --firmware-binary false \
+    --memtest none \
+    --mode debian \
+    --cache false \
+    --mirror-bootstrap "http://deb.debian.org/debian/" \
+    --mirror-binary "http://deb.debian.org/debian/" \
+    --mirror-chroot "http://deb.debian.org/debian/" \
+    --parent-archive-areas "main contrib non-free non-free-firmware" \
+    --security false \
+    --initsystem systemd \
+    --apt-indices false \
+    --zsync false \
+    "$@"
+
+# ── Why --cache false ────────────────────────────────────────────
+# live-build 3.0~a57 on Debian trixie (usr-is-merged) leaves the chroot
+# WITHOUT a working /usr/sbin/start-stop-daemon after lb_chroot_dpkg
+# cleanup, so lb build's trailing chrooted apt "Saving caches" step fails
+# with "dpkg: error: 1 expected program not found in PATH" and exits 100
+# AFTER the ISO is already written — aborting build-nightly.sh before
+# Phase 8 (ISO move / EFI append / checksums). The same missing binary can
+# also break chrooted apt in other binary-stage steps (e.g. lb_binary_iso
+# installing genisoimage/mtools/syslinux). The apt cache is destroyed
+# by `lb clean --purge` at the start of every build anyway, so saving it
+# provides no value. Disabling it removes the failing step without
+# affecting the ISO or any validation gate. See KNOWN_ISSUES.md.
+#
+# NOTE: comments must never be placed inside the continued argument list
+# above — a `#` there would swallow every remaining option.
+
+echo "✅ live-build configured via auto/config (version: ${MISSION_VERSION})"

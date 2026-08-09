@@ -60,3 +60,14 @@ venv/
 *.a
 *.lib
 *.d
+# ── Temporary / session-specific evidence ──────────────────
+# .tmp-visual-audit/ is the scratch visual-audit working directory. It is
+# preserved on disk but must never be committed.
+.tmp-visual-audit/
+# P15/P16 installed-system verification evidence is trackable (report, harness,
+# boot-chain configs) so a later commit includes it.
+!build/p15-p16-report.md
+!build/p15-run.py
+!build/p15-mon.py
+!build/p15-grub.cfg
+!build/p15-esp-grub.cfg

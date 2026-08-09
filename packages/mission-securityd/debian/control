@@ -19,7 +19,7 @@ Depends: ${misc:Depends},
          ${shlibs:Depends},
          mission-core-dev (= ${binary:Version}),
          dbus,
-         policykit-1,
+         polkitd,
          nftables
 Description: Mission OS system security policy daemon
  mission-securityd manages firewall configuration (nftables backend),
