@@ -283,7 +283,7 @@ jobs:
           ./build/validate-iso.sh "${ISO_FILE}"
 
       - name: Upload ISO artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: mission-os-nightly-iso
           path: build/images/*.iso
@@ -291,14 +291,14 @@ jobs:
           retention-days: 7
 
       - name: Upload checksum artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: mission-os-nightly-checksums
           path: build/images/*.sha256
           retention-days: 30
 
       - name: Upload build metadata
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: mission-os-nightly-metadata
           path: |
@@ -334,7 +334,7 @@ jobs:
           ./build/qemu-boot-test.sh "${ISO_FILE}" 180 --ci-mode
       - name: Upload boot test logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: mission-os-qemu-boot-logs
           path: build/images/qemu-*.log
