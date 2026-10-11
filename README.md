@@ -29,7 +29,7 @@ The project is intended for developers, students, researchers, security professi
 
 Mission OS is **not** a Windows replacement or a penetration testing distribution. It is a carefully designed desktop operating system focused on everyday usability without compromising privacy or security.
 
-**Mission OS is created by Atharva Patil (P4inz) under Northbyte Studios.**
+**Mission OS is created by Atharva Patil (P4inz) under P4inz Interactive Labs.**
 
 ---
 

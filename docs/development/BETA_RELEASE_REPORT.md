@@ -16,7 +16,7 @@
 | Sidecar checksum | `.sha256` sidecar matches the recomputed hash (verified) |
 | Repository | `https://github.com/p4inz-code/mission-os` |
 | License | GPL-3.0 |
-| Identity | Mission OS — created by Atharva Patil (P4inz), Northbyte Studios |
+| Identity | Mission OS — created by Atharva Patil (P4inz), P4inz Interactive Labs |
 
 ## USB suitability
 

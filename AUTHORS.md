@@ -4,7 +4,7 @@ Mission OS is an open-source project built through community collaboration.
 
 ## Founder
 
-**Atharva Patil (P4inz)** — Northbyte Studios
+**Atharva Patil (P4inz)** — P4inz Interactive Labs
 
 - Project Creator
 - Product Vision
