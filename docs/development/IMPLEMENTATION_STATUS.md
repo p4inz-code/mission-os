@@ -117,15 +117,15 @@ Installed-System boot + offline install were validated on a Linux/WSL QEMU host;
 ## Gaps requiring linux/WSL runtime validation
 
 **CLOSED at RC6 (2026-07-30):**
-- ~~ISO build execution~~ (validate-iso 15/15)
-- ~~BIOS QEMU boot test~~ (4/4)
-- ~~UEFI QEMU boot test (OVMF)~~ (4/4)
+- ~~ISO build execution~~ ✅ (validate-iso 15/15)
+- ~~BIOS QEMU boot test~~ ✅ (4/4)
+- ~~UEFI QEMU boot test (OVMF)~~ ✅ (4/4)
 
 **CLOSED at P15/P16 (2026-08-09):**
-- ~~Installed OS boot + second boot~~ (see p15-p16-report.md)
-- ~~Offline install (packages from local repo, network disabled)~~ (offline-install-test.sh)
-- ~~Desktop session (SDDM, Plasma, Wayland)~~ smoke-validated on the installed system; full session validation on real hardware pending
-- ~~First-boot initialization~~ (journal + state-file evidence)
+- ~~Installed OS boot + second boot~~ ✅ (see p15-p16-report.md)
+- ~~Offline install (packages from local repo, network disabled)~~ ✅ (offline-install-test.sh)
+- ~~Desktop session (SDDM, Plasma, Wayland)~~ ✅ smoke-validated on the installed system; full session validation on real hardware pending
+- ~~First-boot initialization~~ ✅ (journal + state-file evidence)
 
 **Still OPEN (beta-phase work items, tracked, not silent):**
 - Calamares GRAPHICAL install flow (install from the live ISO's GUI installer, never executed)

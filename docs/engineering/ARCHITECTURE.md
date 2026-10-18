@@ -121,7 +121,7 @@ Core functionality must never require network access. Network-dependent features
 | Code Analysis | clippy, rustfmt | IMPLEMENTED |
 | Container Runtime | Podman (future) | Proposed |
 
-### 3.3 Decisions made since initial architecture draft
+### 3.3 Decisions made since initial architecture Draft
 
 The following decisions from the initial draft have been resolved:
 

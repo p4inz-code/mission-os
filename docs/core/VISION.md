@@ -33,7 +33,7 @@ Instead, it seeks to become a platform that users confidently rely upon for thei
 
 ---
 
-# Why mission OS exists
+# Why Mission OS exists
 
 Modern operating systems often force users to choose between simplicity, privacy, security, and control.
 

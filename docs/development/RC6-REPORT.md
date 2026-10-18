@@ -61,14 +61,14 @@ Source: `docs/development/25-MODULE-AUDIT.md` (synced with MODULE_MAP.md).
 | 004 | mission-securityd | IMPLEMENTED | Yes | Yes | 62 tests; boot-level runtime-validated (RC6); PolKit TODO at authz.rs:196 |
 | 005 | mission-updated | deferred | No | Yes | Architecture only — Beta |
 | 006 | mission-driverd | IMPLEMENTED | Yes | Yes | 345 tests; boot-level runtime-validated (RC6) |
-| 007 | mission-privileged | deferred | | Yes | Workaround: direct service PolKit — Beta |
+| 007 | mission-privileged | deferred | Partial | Yes | Workaround: direct service PolKit — Beta |
 | 008–010 | settingsd / privacyd / sessiond | deferred | No | Yes | Beta |
 | 011–020 | Store, Hub, Settings, Privacy/Security Centers, Recovery, Diagnostics, File Manager, Update/Driver Managers | deferred | No | (018, 025 optional) | Beta / post-Stable |
 | 021 | mission-installer | PARTIAL | Yes | Yes | Calamares + branding packaged in RC6 ISO; install flow NOT executed |
 | 022 | mission-recovery-env | deferred | No | Yes | Beta |
 | 023 | mission-network | FOUNDATION | Yes | Yes | NetworkManager + plasma-nm in package list; custom service Beta |
 | 024 | mission-accessibility | deferred | No | Yes | KDE baseline; Beta/Stable |
-| 025 | mission-workspaces | deferred | No | | KDE virtual desktops suffice |
+| 025 | mission-workspaces | deferred | No | Partial | KDE virtual desktops suffice |
 
 **Implement count:** 4 fully implemented (001, 002, 004, 006) + 2 partial/foundation (021, 023) + 1 candidate (003). 18 not implemented.
 
@@ -76,20 +76,20 @@ Source: `docs/development/25-MODULE-AUDIT.md` (synced with MODULE_MAP.md).
 
 ## 4. 8-Lens Review Scores (derived)
 
-> **Derivation note:** the repository contains no canonical "8-lens" framework as of RC6. Per project decision, these 8 lenses are derived from the repository's own review artifacts (docs/qa/UI_CHECKLIST.md, SECURITY_CHECKLIST.md, PERFORMANCE_CHECKLIST.md, docs/developer/ACCESSIBILITY_CHECKLIST.md, docs/engineering/ENGINEERING_GATES.md, docs/qa/RELEASE_CHECKLIST.md, docs/engineering/TESTING_STRATEGY.md, docs/core/PRINCIPLES.md). Scores use the ENGINEERING_GATES model (//) and RC6 evidence. Treat as a derived working artifact, not an approved formal gate.
+⚠️ ✅ > **Derivation note:** the repository contains no canonical "8-lens" framework as of RC6. Per project decision, these 8 lenses are derived from the repository's own review artifacts (docs/qa/UI_CHECKLIST.md, SECURITY_CHECKLIST.md, PERFORMANCE_CHECKLIST.md, docs/developer/ACCESSIBILITY_CHECKLIST.md, docs/engineering/ENGINEERING_GATES.md, docs/qa/RELEASE_CHECKLIST.md, docs/engineering/TESTING_STRATEGY.md, docs/core/PRINCIPLES.md). Scores use the ENGINEERING_GATES model (//❌ ) and RC6 evidence. Treat as a derived working artifact, not an approved formal gate.
 
 | Lens | Source artifact | Score | RC6 evidence / rationale |
 |------|-----------------|-------|--------------------------|
-| 1. Security | SECURITY_CHECKLIST.md | | Fail-closed authz, D-Bus/PolKit policy, systemd sandboxing, sysctl hardening, cargo audit clean; NOT functionally runtime-validated; securityd PolKit TODO; no AppArmor/SELinux |
-| 2. Privacy | PRINCIPLES.md, mission-environment/sysctl | | No telemetry, hardened defaults, offline-first; no runtime evidence; privacyd deferred |
+| 1. Security | SECURITY_CHECKLIST.md | Partial | Fail-closed authz, D-Bus/PolKit policy, systemd sandboxing, sysctl hardening, cargo audit clean; NOT functionally runtime-validated; securityd PolKit TODO; no AppArmor/SELinux |
+| 2. Privacy | PRINCIPLES.md, mission-environment/sysctl | Partial | No telemetry, hardened defaults, offline-first; no runtime evidence; privacyd deferred |
 | 3. Accessibility | ACCESSIBILITY_CHECKLIST.md | No | No runtime UI to validate; KDE a11y baseline only; mission-ui accessibility wrappers CANDIDATE |
-| 4. Performance | PERFORMANCE_CHECKLIST.md | | Boot reaches login in QEMU (2 vCPU/2 GB), no benchmarks, no target gates met/measured |
-| 5. UI/Design consistency | UI_CHECKLIST.md, design tokens | | Design tokens + base QML components exist; no visual/runtime validation; SDDM/GRUB/icon themes missing |
-| 6. Architecture & Engineering | ENGINEERING_GATES.md | | 25-module map consistent, deps comply, no unsafe in core, 622 tests green; module audit shows 18/25 deferred; gates not all passable yet |
-| 7. Documentation | AUDIT_REPORT.md, doc freeze | | RC6 sync applied (IMPLEMENTATION_STATUS, KNOWN_ISSUES, TECH_DEBT, 25-MODULE-AUDIT, BUILD.md); repo-wide audit performed; remaining drift tracked |
-| 8. QA / Testing & Release readiness | RELEASE_CHECKLIST.md, TESTING_STRATEGY.md | | Runtime gates green; static green; installer/desktop/session runtime + hardware matrix pending → not Beta-ready |
+| 4. Performance | PERFORMANCE_CHECKLIST.md | Partial | Boot reaches login in QEMU (2 vCPU/2 GB), no benchmarks, no target gates met/measured |
+| 5. UI/Design consistency | UI_CHECKLIST.md, design tokens | Partial | Design tokens + base QML components exist; no visual/runtime validation; SDDM/GRUB/icon themes missing |
+| 6. Architecture & Engineering | ENGINEERING_GATES.md | Partial | 25-module map consistent, deps comply, no unsafe in core, 622 tests green; module audit shows 18/25 deferred; gates not all passable yet |
+| 7. Documentation | AUDIT_REPORT.md, doc freeze | Partial | RC6 sync applied (IMPLEMENTATION_STATUS, KNOWN_ISSUES, TECH_DEBT, 25-MODULE-AUDIT, BUILD.md); repo-wide audit performed; remaining drift tracked |
+| 8. QA / Testing & Release readiness | RELEASE_CHECKLIST.md, TESTING_STRATEGY.md | Partial | Runtime gates green; static green; installer/desktop/session runtime + hardware matrix pending → not Beta-ready |
 
-**Overall:** Conditional, safe to proceed to the UI/design sprint; NOT sufficient for Beta.
+**Overall:** ⚠️ Conditional, safe to proceed to the UI/design sprint; NOT sufficient for Beta.
 
 ---
 

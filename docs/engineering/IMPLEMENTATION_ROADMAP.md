@@ -248,7 +248,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 5: mission applications (part 1)
+### Milestone 5: Mission applications (part 1)
 
 **Goal:** Implement core Mission applications.
 
@@ -324,7 +324,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 8: mission applications (part 2)
+### Milestone 8: Mission applications (part 2)
 
 **Goal:** Implement remaining Mission applications.
 

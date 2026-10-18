@@ -444,7 +444,7 @@ Modules 001/002/004/006 are present in the RC6 ISO and their services start duri
 | 004 | mission-securityd | Yes | Yes | Yes | M2 |
 | 005 | mission-updated | No | No | Yes | M6 |
 | 006 | mission-driverd | Yes | Yes | Yes | M2 |
-| 007 | mission-privileged | No | | Yes | M6 |
+| 007 | mission-privileged | No | Partial | Yes | M6 |
 | 008 | mission-settingsd | No | No | Yes | M5 |
 | 009 | mission-privacyd | No | No | Yes | M6 |
 | 010 | mission-sessiond | No | No | Yes | M6 |
@@ -455,14 +455,14 @@ Modules 001/002/004/006 are present in the RC6 ISO and their services start duri
 | 015 | mission-security-center | No | No | Yes | M6 |
 | 016 | mission-recovery-center | No | No | Yes | M7 |
 | 017 | mission-diagnostics | No | No | Yes | M7 |
-| 018 | mission-file-manager | No | No | | M8 |
+| 018 | mission-file-manager | No | No | Partial | M8 |
 | 019 | mission-update-manager | No | No | Yes | M8 |
 | 020 | mission-driver-manager | No | No | Yes | M8 |
-| 021 | mission-installer | | Yes | Yes | M4 |
+| 021 | mission-installer | Partial | Yes | Yes | M4 |
 | 022 | mission-recovery-env | No | No | Yes | M7 |
-| 023 | mission-network | | Yes | Yes | M5 |
+| 023 | mission-network | Partial | Yes | Yes | M5 |
 | 024 | mission-accessibility | No | No | Yes | M8 |
-| 025 | mission-workspaces | No | No | | M8 |
+| 025 | mission-workspaces | No | No | Partial | M8 |
 
 ---
 

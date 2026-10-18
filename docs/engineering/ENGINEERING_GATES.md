@@ -220,7 +220,7 @@ Each gate is scored:
 | Conditional | Non-blocking issues documented, accepted with maintainer approval |
 | Fail | Blocking issues exist, gate not passed |
 
-A milestone or release requires on all mandatory checks and on at most 3 non-blocking items with maintainer approval.
+A milestone or release requires ✅ on all mandatory checks and ⚠️ on at most 3 non-blocking items with maintainer approval.
 
 ---
 

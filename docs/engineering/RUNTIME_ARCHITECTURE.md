@@ -233,7 +233,7 @@ systemd resource control for all Mission services:
 
 ## 6. Desktop session integration
 
-### 6.1 KDE plasma integration
+### 6.1 KDE Plasma integration
 
 Mission OS session management:
 - Uses `startplasma-wayland` as session entry
@@ -241,7 +241,7 @@ Mission OS session management:
 - Custom Mission OS QML components loaded via Plasma plugin system
 - Mission OS wallpaper and theme applied on session start
 
-### 6.2 Mission OS plasma extensions
+### 6.2 Mission OS Plasma extensions
 
 - `org.mission.plasma.panel`: Mission OS panel layout
 - `org.mission.plasma.quick-settings`: Quick settings menu

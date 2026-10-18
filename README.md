@@ -16,18 +16,18 @@
 
 ## Overview
 
-Mission OS is an open-source Linux operating system designed around four core principles:
+Mission OS is an open-source Linux operating system built around four principles:
 
 - Privacy by default
 - Security by design
 - Offline-first reliability
 - USB-first portability
 
-Built on Debian Stable and powered by KDE Plasma, Mission OS aims to provide a modern desktop experience that is fast, predictable, and easy to trust.
+It is built on Debian Stable with KDE Plasma, and the goal is a modern desktop that is fast, predictable and easy to trust.
 
-The project is intended for developers, students, researchers, security professionals, journalists, and anyone who values ownership of their computing environment.
+It is meant for developers, students, researchers, security professionals, journalists and anyone who wants to own their computing environment.
 
-Mission OS is **not** a Windows replacement or a penetration testing distribution. It is a carefully designed desktop operating system focused on everyday usability without compromising privacy or security.
+Mission OS is not a Windows replacement or a penetration testing distribution. It is a desktop operating system for everyday use that does not give up privacy or security to get there.
 
 **Mission OS is created by Atharva Patil (P4inz) under P4inz Interactive Labs.**
 
@@ -54,15 +54,15 @@ Mission OS minimizes unnecessary data collection, respects user choice, and keep
 
 ### Security by design
 
-Security is considered throughout the system architecture rather than being added afterwards. Layered security: D-Bus fail-closed, PolKit authorization, systemd sandboxing, capability bounding, kernel hardening.
+Security is part of the architecture from the start, not something added afterwards. The layers are D-Bus fail-closed, PolKit authorization, systemd sandboxing, capability bounding and kernel hardening.
 
 ### Offline first
 
-Core functionality should remain available even without an internet connection whenever practical.
+Core functionality should keep working without an internet connection wherever that is practical.
 
 ### USB first
 
-Mission OS is designed to run reliably from portable storage while also supporting traditional installations.
+Mission OS runs reliably from portable storage and also supports a traditional installation.
 
 ---
 
@@ -198,9 +198,9 @@ Security issues: see [`SECURITY.md`](SECURITY.md) and [`SECURITY_CONTACT.md`](SE
 - Pre-hardware repository audit + installer cleanup (2026-08-09)
 - Final beta ISO rebuilt + statically validated (2026-08-09)
 - Official Open Beta released (2026-08-09): public testing
-- ⏳ Real-hardware testing across the hardware matrix
-- ⏳ Beta hardening + fixes from tester feedback
-- ⏳ Version 1.0 (Stable)
+- Planned: real-hardware testing across the hardware matrix
+- Planned: beta hardening and fixes from tester feedback
+- Planned: version 1.0 (Stable)
 
 ---
 

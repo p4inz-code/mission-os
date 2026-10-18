@@ -1,4 +1,4 @@
-# Contributing to mission OS
+# Contributing to Mission OS
 
 Thank you for your interest in contributing to Mission OS.
 

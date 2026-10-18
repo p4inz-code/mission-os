@@ -286,7 +286,7 @@ Recommended for:
 
 ---
 
-## Install mission OS
+## Install Mission OS
 
 Installs Mission OS permanently.
 

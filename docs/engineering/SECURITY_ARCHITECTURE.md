@@ -312,7 +312,7 @@ Scope (pending ADR on technology choice):
 
 ## 11. Security guarantees
 
-### 11.1 What mission OS guarantees
+### 11.1 What Mission OS guarantees
 
 1. Full disk encryption: Data at rest is encrypted with LUKS2
 2. Verified boot chain: Bootloader and kernel are signed
@@ -322,7 +322,7 @@ Scope (pending ADR on technology choice):
 6. Firewall: Incoming connections blocked by default
 7. Audit logs: Security-relevant events are logged
 
-### 11.2 What mission OS cannot Guarantee
+### 11.2 What Mission OS cannot Guarantee
 
 1. Protection against kernel zero-day exploits
 2. Immunity to hardware-level attacks (JTAG, bus sniffing, cold boot)

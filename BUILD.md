@@ -1,4 +1,4 @@
-# Building mission OS
+# Building Mission OS
 
 ## Quick start
 

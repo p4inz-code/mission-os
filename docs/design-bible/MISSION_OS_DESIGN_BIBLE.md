@@ -201,7 +201,7 @@ Users should receive clear feedback for every significant action.
 
 ---
 
-# 15. Things mission OS never does
+# 15. Things Mission OS never does
 
 Mission OS avoids:
 

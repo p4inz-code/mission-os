@@ -1,4 +1,4 @@
-# Contributing to mission OS
+# Contributing to Mission OS
 
 **Document ID:** MOS-DEV-010
 
