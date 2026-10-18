@@ -1,10 +1,10 @@
-# Mission OS Roadmap
+# Mission OS roadmap
 
-> **Note:** This document describes the product-level roadmap. For the engineering execution plan with detailed milestones, see `docs/engineering/IMPLEMENTATION_ROADMAP.md` (M1–M12). For the high-level vision roadmap, see `docs/core/ROADMAP.md` (Phase 0–10).
+> **Note:** This document describes the product-level roadmap. For the engineering execution plan with detailed milestones, see `docs/engineering/IMPLEMENTATION_ROADMAP.md` (M1–M12). For the high-level vision roadmap, see `docs/core/ROADMAP.md` (Phase 0-10).
 
 ---
 
-## Mapping: Product Phases ↔ Engineering Milestones
+## Mapping: product phases ↔ engineering milestones
 
 The product roadmap (phases below) and the engineering implementation roadmap (M1–M12 in `docs/engineering/IMPLEMENTATION_ROADMAP.md`) describe the same journey at different levels of detail.
 
@@ -19,7 +19,7 @@ The product roadmap (phases below) and the engineering implementation roadmap (M
 
 ---
 
-## Phase 1 — Documentation ✅
+## Phase 1: documentation
 
 - Repository Architecture
 - Security Documentation
@@ -36,7 +36,7 @@ The product roadmap (phases below) and the engineering implementation roadmap (M
 
 ---
 
-## Phase 2 — Core Platform
+## Phase 2: core platform
 
 - Base Linux integration
 - Live USB environment
@@ -47,7 +47,7 @@ The product roadmap (phases below) and the engineering implementation roadmap (M
 
 ---
 
-## Phase 3 — Desktop Experience
+## Phase 3: desktop experience
 
 - Installer
 - Lock Screen
@@ -60,7 +60,7 @@ The product roadmap (phases below) and the engineering implementation roadmap (M
 
 ---
 
-## Phase 4 — Security
+## Phase 4: security
 
 - Privacy Center
 - Security Center
@@ -71,7 +71,7 @@ The product roadmap (phases below) and the engineering implementation roadmap (M
 
 ---
 
-## Phase 5 — Ecosystem
+## Phase 5: ecosystem
 
 - Mission Store
 - Plugin system
@@ -81,7 +81,7 @@ The product roadmap (phases below) and the engineering implementation roadmap (M
 
 ---
 
-## Phase 6 — Stable Release
+## Phase 6: stable release
 
 - Release Candidate
 - Security Audit

@@ -1,4 +1,4 @@
-# Design Language
+# Design language
 
 **Document ID:** MOS-DESIGN-001  
 **Status:** Draft v1.0
@@ -26,7 +26,7 @@ A user should immediately recognize a Mission OS application because every inter
 
 ---
 
-# Design Goals
+# Design goals
 
 Mission OS interfaces should be:
 
@@ -45,7 +45,7 @@ The interface should help users complete work rather than compete for their atte
 
 ---
 
-# Visual Philosophy
+# Visual philosophy
 
 Mission OS avoids unnecessary visual noise.
 
@@ -79,7 +79,7 @@ Common actions should always behave consistently across applications.
 
 ---
 
-# Progressive Disclosure
+# Progressive disclosure
 
 Simple tasks should remain simple.
 
@@ -89,7 +89,7 @@ Complexity should be revealed only when users request it.
 
 ---
 
-# Calm Computing
+# Calm computing
 
 Mission OS should reduce stress rather than create it.
 
@@ -106,7 +106,7 @@ The interface should remain calm during both normal operation and error recovery
 
 ---
 
-# Honest Communication
+# Honest communication
 
 Every message shown to the user should explain:
 
@@ -156,7 +156,7 @@ Users should always have the option to reduce or disable animations.
 
 ---
 
-# Color Philosophy
+# Color philosophy
 
 Color communicates meaning.
 
@@ -199,7 +199,7 @@ Icons should support labels rather than replace them whenever practical.
 
 ---
 
-# Error Experience
+# Error experience
 
 Errors should help users recover.
 
@@ -218,7 +218,7 @@ Users should never encounter unexplained failures.
 
 ---
 
-# Recovery Experience
+# Recovery experience
 
 Mission OS treats recovery as a first-class experience.
 
@@ -233,7 +233,7 @@ The operating system should always attempt repair before recommending reinstalla
 
 ---
 
-# Documentation Integration
+# Documentation integration
 
 Interfaces should connect directly to documentation whenever appropriate.
 
@@ -243,7 +243,7 @@ Documentation links should reference the official Mission OS documentation.
 
 ---
 
-# Cross-Platform Familiarity
+# Cross-Platform familiarity
 
 Mission OS maintains its own identity while easing adoption for users coming from other platforms.
 
@@ -257,7 +257,7 @@ These presets improve usability without compromising the Mission OS experience.
 
 ---
 
-# Future Design System
+# Future design system
 
 This document establishes the philosophy.
 
@@ -275,7 +275,7 @@ Future documentation will define:
 
 ---
 
-# Design Language Statement
+# Design language statement
 
 > **Mission OS should feel calm, trustworthy, predictable, and professional. Every visual element, interaction, and animation should help users understand the system, remain in control, and accomplish their work with confidence.**
 

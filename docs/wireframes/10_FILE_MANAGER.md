@@ -1,4 +1,4 @@
-# File Manager Wireframe
+# File manager wireframe
 
 **Document ID:** MOS-WF-010
 
@@ -63,7 +63,7 @@ Status Bar
 
 ---
 
-# UX Rules
+# UX rules
 
 Support drag & drop, multi-select, keyboard shortcuts, and context menus.
 

@@ -23,7 +23,7 @@ Mission OS values reliability over release frequency.
 
 ---
 
-# Development Philosophy
+# Development philosophy
 
 Mission OS follows incremental development.
 
@@ -39,7 +39,7 @@ Major milestones should include:
 
 ---
 
-# Phase 0 — Foundation
+# Phase 0: foundation
 
 ## Objectives
 
@@ -61,7 +61,7 @@ Deliverables include:
 
 ---
 
-# Phase 1 — Architecture
+# Phase 1: architecture
 
 ## Objectives
 
@@ -81,7 +81,7 @@ Deliverables include:
 
 ---
 
-# Phase 2 — Product Specification
+# Phase 2: product specification
 
 Define every major subsystem before implementation begins.
 
@@ -107,7 +107,7 @@ Each application should receive its own functional specification.
 
 ---
 
-# Phase 3 — Design System
+# Phase 3: design system
 
 Develop a complete visual system.
 
@@ -127,7 +127,7 @@ Deliverables:
 
 ---
 
-# Phase 4 — Core Platform
+# Phase 4: core platform
 
 Build the operating system foundation.
 
@@ -144,7 +144,7 @@ Includes:
 
 ---
 
-# Phase 5 — Mission Applications
+# Phase 5: mission applications
 
 Develop native Mission OS applications.
 
@@ -164,7 +164,7 @@ Applications should share a unified design language and component library.
 
 ---
 
-# Phase 6 — Security & Privacy
+# Phase 6: security & privacy
 
 Strengthen system protections.
 
@@ -182,7 +182,7 @@ Focus areas include:
 
 ---
 
-# Phase 7 — Testing
+# Phase 7: testing
 
 Comprehensive validation across supported hardware.
 
@@ -203,7 +203,7 @@ No release should bypass mandatory testing.
 
 ---
 
-# Phase 8 — Documentation
+# Phase 8: documentation
 
 Expand documentation into a complete knowledge base.
 
@@ -225,7 +225,7 @@ Documentation is maintained alongside the codebase.
 
 ---
 
-# Phase 9 — Public Beta
+# Phase 9: public beta
 
 Objectives:
 
@@ -240,7 +240,7 @@ Feedback should prioritize quality improvements over feature requests.
 
 ---
 
-# Phase 10 — Stable Release
+# Phase 10: stable release
 
 Mission OS reaches its first stable public release after satisfying all quality gates.
 
@@ -256,7 +256,7 @@ Requirements include:
 
 ---
 
-# Long-Term Direction
+# Long-Term direction
 
 Future versions of Mission OS should continue improving:
 
@@ -273,7 +273,7 @@ Growth should remain sustainable.
 
 ---
 
-# Guiding Principle
+# Guiding principle
 
 Mission OS should never release unfinished work simply to meet an artificial deadline.
 

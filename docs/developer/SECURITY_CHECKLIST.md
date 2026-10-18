@@ -1,4 +1,4 @@
-# Mission OS Security Checklist
+# Mission OS security checklist
 
 **Document ID:** MOS-DEV-007
 
@@ -25,7 +25,7 @@ Defines mandatory security verification before any feature is merged.
 
 ---
 
-# Data Protection
+# Data protection
 
 - Sensitive data encrypted
 - Secrets never stored in source code
@@ -33,7 +33,7 @@ Defines mandatory security verification before any feature is merged.
 
 ---
 
-# Input Validation
+# Input validation
 
 - All user input validated
 - Injection attacks prevented
@@ -70,6 +70,6 @@ Every feature requires security review before merge.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 All checklist items pass successfully.

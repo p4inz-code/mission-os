@@ -1,4 +1,4 @@
-# Mission OS Module Map
+# Mission OS module map
 
 **Document ID:** MOS-ENG-MOD-001
 **Version:** 1.0
@@ -15,7 +15,7 @@ Modules are the canonical building blocks. No implementation may introduce a mod
 
 ---
 
-## 2. Module Index
+## 2. Module index
 
 | ID | Module | Type | Privilege |
 |----|--------|------|-----------|
@@ -47,7 +47,7 @@ Modules are the canonical building blocks. No implementation may introduce a mod
 
 ---
 
-## 3. Module Definitions
+## 3. Module definitions
 
 ### 3.1 MOS-MOD-001: mission-core
 
@@ -75,7 +75,7 @@ Modules are the canonical building blocks. No implementation may introduce a mod
 **Data Ownership:** None (no persistent state)
 
 **Public Interfaces:**
-- `libmission_core.so` — C API with versioned symbols
+- `libmission_core.so`: C API with versioned symbols
 - Header files: `<mission/core.h>`
 
 **Testing Requirements:**
@@ -112,7 +112,7 @@ Modules are the canonical building blocks. No implementation may introduce a mod
 **Data Ownership:** None
 
 **Public Interfaces:**
-- `libmission_crypto.so` — C API
+- `libmission_crypto.so`: C API
 - Header files: `<mission/crypto.h>`
 
 **Testing Requirements:**
@@ -487,7 +487,7 @@ Modules are the canonical building blocks. No implementation may introduce a mod
 
 **Purpose:** System recovery operations.
 
-**Type:** Application (User) — also available in recovery environment
+**Type:** Application (User), also available in recovery environment
 
 **Dependencies:** mission-ui, mission-core, mission-privileged
 
@@ -547,7 +547,7 @@ Modules are the canonical building blocks. No implementation may introduce a mod
 
 **Purpose:** System installation from ISO.
 
-**Type:** Application (System, temporary) — runs with elevated privileges during installation
+**Type:** Application (System, temporary), runs with elevated privileges during installation
 
 **Dependencies:** mission-ui, mission-core, mission-crypto, mission-driverd, calamares or custom installer
 
@@ -576,7 +576,7 @@ Modules are the canonical building blocks. No implementation may introduce a mod
 **Dependencies:** mission-ui, mission-core, NetworkManager
 
 **Components:**
-- `mission-networkd` (user service) — D-Bus: `org.mission.Network1`
+- `mission-networkd` (user service): D-Bus: `org.mission.Network1`
 - Network Manager application
 
 **Testing Requirements:** Connection management, VPN tests, captive portal detection
@@ -592,7 +592,7 @@ Modules are the canonical building blocks. No implementation may introduce a mod
 **Dependencies:** mission-ui, mission-core, at-spi2, speech-dispatcher, orca
 
 **Components:**
-- `mission-accessibilityd` (user service) — D-Bus: `org.mission.Accessibility1`
+- `mission-accessibilityd` (user service): D-Bus: `org.mission.Accessibility1`
 - Accessibility Settings application
 
 **Testing Requirements:** Screen reader tests, keyboard navigation, high contrast validation
@@ -613,7 +613,7 @@ Modules are the canonical building blocks. No implementation may introduce a mod
 
 ---
 
-## 4. Dependency Graph (Simplified)
+## 4. Dependency graph (simplified)
 
 ```
 mission-core (no dependencies)
@@ -646,13 +646,13 @@ mission-ui (depends on Qt/KF)
 
 ---
 
-## 5. Module Lifecycle Rules
+## 5. Module lifecycle rules
 
-1. **No module may be introduced without an entry in this document.**
-2. **Module dependencies must not create cycles.**
-3. **Shared libraries (mission-core, mission-crypto, mission-ui) must maintain backward compatibility within a major version.**
-4. **System services must declare explicit systemd unit dependencies.**
-5. **Application modules must not import system service internals.**
+1. No module may be introduced without an entry in this document.
+2. Module dependencies must not create cycles.
+3. Shared libraries (mission-core, mission-crypto, mission-ui) must maintain backward compatibility within a major version.
+4. System services must declare explicit systemd unit dependencies.
+5. Application modules must not import system service internals.
 
 ---
 

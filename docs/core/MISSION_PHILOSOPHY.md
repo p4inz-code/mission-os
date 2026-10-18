@@ -1,4 +1,4 @@
-# Mission Philosophy
+# Mission philosophy
 
 **Document ID:** MOS-PHIL-001  
 **Status:** Draft v1.0  
@@ -24,7 +24,7 @@ Whenever uncertainty exists, this document should guide decision making.
 
 ---
 
-# Users First
+# Users first
 
 Mission OS is designed for people.
 
@@ -40,7 +40,7 @@ If a feature increases complexity without meaningful value, it should be reconsi
 
 ---
 
-# Trust Is Earned
+# Trust is earned
 
 Users trust an operating system with:
 
@@ -65,7 +65,7 @@ Once lost, trust is difficult to regain.
 
 ---
 
-# Privacy Is A Right
+# Privacy is A right
 
 Privacy should not require expertise.
 
@@ -84,7 +84,7 @@ Privacy should be the default rather than an optional enhancement.
 
 ---
 
-# Security Through Engineering
+# Security through engineering
 
 Security is not a feature.
 
@@ -104,7 +104,7 @@ Mission OS values:
 
 ---
 
-# Simplicity Without Limitation
+# Simplicity without limitation
 
 Mission OS should appear simple while remaining powerful.
 
@@ -116,7 +116,7 @@ Complexity should remain behind the interface unless explicitly requested.
 
 ---
 
-# Documentation Is A Feature
+# Documentation is A feature
 
 Documentation is part of the product.
 
@@ -135,7 +135,7 @@ Users should rarely need external forums to understand Mission OS.
 
 ---
 
-# Recovery Before Reinstallation
+# Recovery before reinstallation
 
 Computers fail.
 
@@ -159,7 +159,7 @@ without reinstalling the operating system.
 
 ---
 
-# Explain Everything
+# Explain everything
 
 Mission OS should never leave users wondering.
 
@@ -175,7 +175,7 @@ Technical information should remain available without overwhelming beginners.
 
 ---
 
-# Accessibility By Design
+# Accessibility by design
 
 Accessibility is not an optional feature.
 
@@ -191,7 +191,7 @@ Every major feature should be evaluated with accessibility in mind from the begi
 
 ---
 
-# Community Over Ego
+# Community over ego
 
 Mission OS exists because of open source.
 
@@ -203,7 +203,7 @@ Engineering decisions should be supported by evidence rather than personal prefe
 
 ---
 
-# Long-Term Thinking
+# Long-Term thinking
 
 Mission OS is intended to evolve over many years.
 
@@ -235,7 +235,7 @@ Every release should move closer to that goal.
 
 ---
 
-# Philosophy Statement
+# Philosophy statement
 
 > **Mission OS exists to create technology that respects people. Every engineering decision should increase trust, reduce unnecessary complexity, strengthen privacy, improve security, and leave users more confident than before they interacted with the system.**
 

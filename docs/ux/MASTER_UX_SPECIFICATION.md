@@ -1,4 +1,4 @@
-# Mission OS Master UX Specification
+# Mission OS master UX specification
 
 **Document ID:** MOS-UX-001
 
@@ -16,7 +16,7 @@ All wireframe documents reference this specification.
 
 ---
 
-# 2. UX Principles
+# 2. UX principles
 
 Mission OS is designed to be:
 
@@ -33,7 +33,7 @@ Users should never need to guess how an interface behaves.
 
 ---
 
-# 3. Global Layout Structure
+# 3. Global layout structure
 
 Every major application follows this structure:
 
@@ -51,7 +51,7 @@ Applications should never invent alternative layouts unless explicitly justified
 
 ---
 
-# 4. Navigation Rules
+# 4. Navigation rules
 
 Primary navigation remains stable.
 
@@ -67,7 +67,7 @@ Maximum recommended navigation depth: four levels.
 
 ---
 
-# 5. Window Anatomy
+# 5. Window anatomy
 
 Standard window:
 
@@ -89,7 +89,7 @@ Every window supports:
 
 ---
 
-# 6. Grid System
+# 6. Grid system
 
 Mission OS uses a consistent layout grid.
 
@@ -99,7 +99,7 @@ Content should never appear visually misaligned.
 
 ---
 
-# 7. Spacing Rules
+# 7. Spacing rules
 
 Whitespace communicates hierarchy.
 
@@ -109,7 +109,7 @@ Only spacing values defined in the design system may be used.
 
 ---
 
-# 8. Typography Rules
+# 8. Typography rules
 
 Typography hierarchy:
 
@@ -125,7 +125,7 @@ Text should never rely solely on size for hierarchy; weight and spacing also con
 
 ---
 
-# 9. Color Usage
+# 9. Color usage
 
 Colors communicate semantic meaning.
 
@@ -139,7 +139,7 @@ Support:
 
 ---
 
-# 10. Component Behavior
+# 10. Component behavior
 
 Buttons:
 
@@ -165,7 +165,7 @@ Cards:
 
 ---
 
-# 11. Keyboard Navigation
+# 11. Keyboard navigation
 
 Every interactive element supports:
 
@@ -196,7 +196,7 @@ Support:
 
 ---
 
-# 13. Loading States
+# 13. Loading states
 
 Loading should use:
 
@@ -208,7 +208,7 @@ Avoid blocking the interface unnecessarily.
 
 ---
 
-# 14. Empty States
+# 14. Empty states
 
 Every empty state includes:
 
@@ -219,7 +219,7 @@ Every empty state includes:
 
 ---
 
-# 15. Error States
+# 15. Error states
 
 Every error screen provides:
 
@@ -230,7 +230,7 @@ Every error screen provides:
 
 ---
 
-# 16. Responsive Rules
+# 16. Responsive rules
 
 Layouts adapt through reflow, not redesign.
 
@@ -276,7 +276,7 @@ Every permission includes:
 
 ---
 
-# 20. UX Review Checklist
+# 20. UX review checklist
 
 Every screen must be reviewed for:
 
@@ -291,7 +291,7 @@ Every screen must be reviewed for:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Every future wireframe and UI design must comply with this specification.
 

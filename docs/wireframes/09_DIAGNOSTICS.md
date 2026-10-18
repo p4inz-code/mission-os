@@ -1,4 +1,4 @@
-# Diagnostics Wireframe
+# Diagnostics wireframe
 
 **Document ID:** MOS-WF-009
 
@@ -69,7 +69,7 @@ Reports
 
 ---
 
-# UX Rules
+# UX rules
 
 Diagnostics should present:
 

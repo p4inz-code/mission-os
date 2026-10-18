@@ -1,4 +1,4 @@
-# Mission OS Testing Guidelines
+# Mission OS testing guidelines
 
 **Document ID:** MOS-DEV-008
 
@@ -8,7 +8,7 @@ Defines testing requirements for Mission OS.
 
 ---
 
-# Test Types
+# Test types
 
 - Unit Tests
 - Integration Tests
@@ -28,7 +28,7 @@ Every feature should include:
 
 ---
 
-# Regression Testing
+# Regression testing
 
 Existing functionality must continue working after every change.
 
@@ -40,7 +40,7 @@ Automated tests are preferred whenever practical.
 
 ---
 
-# Manual Testing
+# Manual testing
 
 Verify:
 
@@ -51,12 +51,12 @@ Verify:
 
 ---
 
-# Bug Verification
+# Bug verification
 
 Every fixed bug must include a verification test.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 No feature is complete without successful testing.

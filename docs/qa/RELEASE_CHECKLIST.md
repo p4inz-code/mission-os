@@ -1,4 +1,4 @@
-# Release Checklist
+# Release checklist
 
 ## Repository
 
@@ -42,7 +42,7 @@
 - [ ] Package metadata correct.
 - [ ] File permissions verified.
 
-## Final Validation
+## Final validation
 
 - [ ] Smoke test completed.
 - [ ] Release approved.
@@ -51,6 +51,6 @@
 
 Status:
 
-PASS ☐
+PASS
 
-FAIL ☐
+FAIL

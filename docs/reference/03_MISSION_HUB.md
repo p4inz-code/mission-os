@@ -1,4 +1,4 @@
-# Mission Hub
+# Mission hub
 
 **Document ID:** MOS-HUB-001
 
@@ -33,7 +33,7 @@ Mission Hub shall:
 
 ---
 
-# 3. Design Principles
+# 3. Design principles
 
 Mission Hub should be:
 
@@ -77,7 +77,7 @@ Failure of one module must not affect others.
 
 ---
 
-# 5. Home Dashboard
+# 5. Home dashboard
 
 The Dashboard provides an immediate overview of system health.
 
@@ -99,7 +99,7 @@ Displayed information includes:
 
 ---
 
-# 6. Health Score
+# 6. Health score
 
 Mission Hub calculates an overall health score.
 
@@ -124,7 +124,7 @@ The score should explain *why* it changed.
 
 ---
 
-# 7. Quick Actions
+# 7. Quick actions
 
 Frequently used actions appear at the top.
 
@@ -202,7 +202,7 @@ Notifications should link directly to the relevant page.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Mission Hub provides a unified, discoverable and reliable entry point for all core operating system management functions.
 
@@ -212,7 +212,7 @@ Mission Hub provides a unified, discoverable and reliable entry point for all co
 
 ---
 
-# Section 2 — System Monitoring & Management
+# Section 2: system monitoring & management
 
 Mission Hub continuously monitors important operating system components.
 
@@ -220,7 +220,7 @@ Monitoring should consume minimal system resources.
 
 ---
 
-# System Overview
+# System overview
 
 Displays:
 
@@ -238,7 +238,7 @@ Information should be exportable.
 
 ---
 
-# Resource Monitoring
+# Resource monitoring
 
 Mission Hub provides live graphs for:
 
@@ -257,7 +257,7 @@ Users may select:
 
 ---
 
-# Storage Manager
+# Storage manager
 
 Displays:
 
@@ -276,7 +276,7 @@ Warnings include:
 
 ---
 
-# Device Manager
+# Device manager
 
 Displays connected:
 
@@ -297,7 +297,7 @@ Users may:
 
 ---
 
-# Update Summary
+# Update summary
 
 Mission Hub displays:
 
@@ -311,7 +311,7 @@ Updates link directly to Update Manager.
 
 ---
 
-# Driver Summary
+# Driver summary
 
 Shows:
 
@@ -324,7 +324,7 @@ No drivers are automatically installed without user approval unless automatic up
 
 ---
 
-# Recovery Summary
+# Recovery summary
 
 Displays:
 
@@ -337,7 +337,7 @@ Users should immediately know whether recovery is possible.
 
 ---
 
-# Diagnostics Summary
+# Diagnostics summary
 
 Shows:
 
@@ -350,7 +350,7 @@ Users may launch diagnostics directly.
 
 ---
 
-# System Logs
+# System logs
 
 Mission Hub provides simplified log viewing.
 
@@ -367,7 +367,7 @@ Advanced logs remain available for expert users.
 
 ---
 
-# Performance Targets
+# Performance targets
 
 Mission Hub should:
 
@@ -380,7 +380,7 @@ Monitoring should adapt automatically on battery-powered devices.
 
 ---
 
-# Acceptance Criteria
+# Acceptance criteria
 
 Mission Hub monitoring is complete when:
 
@@ -395,7 +395,7 @@ Mission Hub monitoring is complete when:
 
 ---
 
-# Section 3 — Security & Privacy Integration
+# Section 3: security & privacy integration
 
 Mission Hub acts as the central security dashboard for Mission OS.
 
@@ -405,7 +405,7 @@ Users should immediately understand whether their system is secure.
 
 ---
 
-# Security Dashboard
+# Security dashboard
 
 Displays:
 
@@ -424,7 +424,7 @@ Every status indicator links directly to detailed information.
 
 ---
 
-# Security Score
+# Security score
 
 Mission OS calculates a dynamic Security Score.
 
@@ -454,7 +454,7 @@ Every deduction must explain:
 
 ---
 
-# Threat Center
+# Threat center
 
 Displays recent security events.
 
@@ -477,7 +477,7 @@ Each event includes:
 
 ---
 
-# Security Recommendations
+# Security recommendations
 
 Mission Hub recommends improvements without using fear-based messaging.
 
@@ -494,7 +494,7 @@ Recommendations are prioritized by impact.
 
 ---
 
-# Privacy Dashboard
+# Privacy dashboard
 
 Mission Hub provides complete visibility into privacy settings.
 
@@ -507,7 +507,7 @@ Users should always know:
 
 ---
 
-# Privacy Status
+# Privacy status
 
 Displays:
 
@@ -524,7 +524,7 @@ Mission OS defaults to the most privacy-preserving configuration compatible with
 
 ---
 
-# Permission Manager
+# Permission manager
 
 Displays application permissions for:
 
@@ -549,7 +549,7 @@ Permission changes apply immediately.
 
 ---
 
-# Activity Indicators
+# Activity indicators
 
 Mission Hub displays live indicators whenever:
 
@@ -562,7 +562,7 @@ Selecting an indicator reveals the responsible application.
 
 ---
 
-# Privacy Reports
+# Privacy reports
 
 Users may generate reports showing:
 
@@ -576,7 +576,7 @@ Reports should never contain personal content.
 
 ---
 
-# Section 4 — Recovery, Diagnostics & Maintenance
+# Section 4: recovery, diagnostics & maintenance
 
 Mission Hub centralizes system maintenance.
 
@@ -589,7 +589,7 @@ Every maintenance action should explain:
 
 ---
 
-# Recovery Center Integration
+# Recovery center integration
 
 Mission Hub provides direct access to:
 
@@ -604,7 +604,7 @@ Users should never need terminal commands for common recovery tasks.
 
 ---
 
-# Backup Overview
+# Backup overview
 
 Displays:
 
@@ -623,7 +623,7 @@ Users may:
 
 ---
 
-# Diagnostics Center
+# Diagnostics center
 
 Mission Hub performs diagnostics for:
 
@@ -647,7 +647,7 @@ Every failure includes recommended actions.
 
 ---
 
-# Maintenance Center
+# Maintenance center
 
 Routine maintenance includes:
 
@@ -676,7 +676,7 @@ Users may pause scheduled tasks while travelling or on battery power.
 
 ---
 
-# Emergency Mode
+# Emergency mode
 
 If Mission OS detects serious problems, Mission Hub enters Emergency Mode.
 
@@ -692,7 +692,7 @@ Emergency Mode prioritizes recovery actions over cosmetic interface elements.
 
 ---
 
-# Export Center
+# Export center
 
 Users may export:
 
@@ -711,7 +711,7 @@ Supported formats:
 
 ---
 
-# Performance Requirements
+# Performance requirements
 
 Mission Hub shall:
 
@@ -722,7 +722,7 @@ Mission Hub shall:
 
 ---
 
-# Acceptance Criteria
+# Acceptance criteria
 
 Mission Hub is considered complete when:
 
@@ -736,7 +736,7 @@ Mission Hub is considered complete when:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Mission Hub is complete when it functions as the trusted operational control center of Mission OS, providing unified visibility, management, recovery, security, privacy, and maintenance without requiring terminal usage for standard administrative tasks.
 

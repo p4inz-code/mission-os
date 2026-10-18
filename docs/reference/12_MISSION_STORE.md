@@ -1,4 +1,4 @@
-# Mission OS Store
+# Mission OS store
 
 **Document ID:** MOS-STORE-001
 
@@ -14,11 +14,11 @@ Its primary objective is to provide a secure, privacy-first, trustworthy and use
 
 Mission Store is not an advertising platform.
 
-Applications are ranked by quality and trust—not sponsorship.
+Applications are ranked by quality and trust, not sponsorship.
 
 ---
 
-# 2. Design Principles
+# 2. Design principles
 
 Mission Store follows:
 
@@ -106,7 +106,7 @@ Supports filters:
 
 ---
 
-# 7. Application Pages
+# 7. Application pages
 
 Every application page displays:
 
@@ -127,7 +127,7 @@ Every application page displays:
 
 ---
 
-# 8. Trust Levels
+# 8. Trust levels
 
 Applications are classified as:
 
@@ -195,15 +195,15 @@ Supports:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Mission Store provides a secure and transparent application ecosystem without advertising or hidden tracking.
 
 ---
 
-# Section 2 — Security, Developers & Package Management
+# Section 2: security, developers & package management
 
-## Package Verification
+## Package verification
 
 Every package verifies:
 
@@ -248,7 +248,7 @@ Dependency conflicts are reported clearly.
 
 ---
 
-## Developer Profiles
+## Developer profiles
 
 Developer pages display:
 
@@ -275,7 +275,7 @@ Reviews are never sold or promoted.
 
 ---
 
-## Open Source Support
+## Open source support
 
 Applications may display:
 
@@ -288,7 +288,7 @@ Mission Store promotes transparency.
 
 ---
 
-## Offline Installation
+## Offline installation
 
 Supports installing packages from:
 
@@ -301,7 +301,7 @@ Verification remains mandatory.
 
 ---
 
-## Enterprise Repositories
+## Enterprise repositories
 
 Organizations may define:
 
@@ -347,7 +347,7 @@ Targets:
 
 ---
 
-## Edge Cases
+## Edge cases
 
 Handles:
 
@@ -360,7 +360,7 @@ Handles:
 
 ---
 
-## Future Features
+## Future features
 
 - reproducible build verification
 - package reputation scoring
@@ -370,7 +370,7 @@ Handles:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Mission Store passes when:
 

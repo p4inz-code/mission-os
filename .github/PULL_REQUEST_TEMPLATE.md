@@ -1,10 +1,10 @@
-# Pull Request
+# Pull request
 
 ## Summary
 
 <!-- Describe the change -->
 
-## Type of Change
+## Type of change
 
 - [ ] Feature
 - [ ] Bug Fix

@@ -1,4 +1,4 @@
-# Mission OS Dependency Policy
+# Mission OS dependency policy
 
 **Document ID:** MOS-ENG-DEP-001
 **Version:** 1.0
@@ -13,33 +13,33 @@ This document defines the rules for managing dependencies in Mission OS.
 
 ---
 
-## 2. Dependency Principles
+## 2. Dependency principles
 
-1. **Minimal dependencies.** Every dependency must justify its inclusion.
-2. **Trusted sources only.** Dependencies must come from trusted repositories.
-3. **Review all new dependencies.** Every new dependency requires explicit approval.
-4. **Pin all dependencies.** Builds must be reproducible.
-5. **Audit regularly.** Dependencies are scanned for vulnerabilities.
-6. **License compatibility.** All dependencies must be license-compatible with GPL-3.0.
+1. Minimal dependencies. Every dependency must justify its inclusion.
+2. Trusted sources only. Dependencies must come from trusted repositories.
+3. Review all new dependencies. Every new dependency requires explicit approval.
+4. Pin all dependencies. Builds must be reproducible.
+5. Audit regularly. Dependencies are scanned for vulnerabilities.
+6. License compatibility. All dependencies must be license-compatible with GPL-3.0.
 
 ---
 
-## 3. Dependency Categories
+## 3. Dependency categories
 
-### 3.1 Base System Dependencies
+### 3.1 Base system dependencies
 
 Dependencies from Debian Stable repositories. These are trusted and do not require additional review beyond what Debian provides.
 
 Examples: glibc, libsystemd, libpam, coreutils, util-linux.
 
-### 3.2 Mission OS Internal Dependencies
+### 3.2 Mission OS internal dependencies
 
 Dependencies between Mission OS modules:
 - Must follow the module dependency graph defined in MODULE_MAP.md
 - Must not create circular dependencies
 - Versioned library interface (semantic versioning)
 
-### 3.3 Third-Party Library Dependencies
+### 3.3 Third-Party library dependencies
 
 Libraries not part of Debian Stable:
 - Require project-level review before adoption
@@ -48,14 +48,14 @@ Libraries not part of Debian Stable:
 - Must be license-compatible
 - Must be pinned to specific versions
 
-### 3.4 Build-Time Dependencies
+### 3.4 Build-Time dependencies
 
 Tools required only during build:
 - Documented in BUILD.md
 - Included in CI environment
 - Version-pinned
 
-### 3.5 Runtime Dependencies
+### 3.5 Runtime dependencies
 
 Libraries required at runtime:
 - Explicitly declared in package metadata
@@ -64,9 +64,9 @@ Libraries required at runtime:
 
 ---
 
-## 4. Dependency Review Process
+## 4. Dependency review process
 
-### 4.1 New Dependency Checklist
+### 4.1 New dependency checklist
 
 Before adding any new dependency:
 - [ ] What problem does this dependency solve?
@@ -79,7 +79,7 @@ Before adding any new dependency:
 - [ ] Is there a smaller alternative?
 - [ ] Has the source code been reviewed?
 
-### 4.2 Approval Levels
+### 4.2 Approval levels
 
 | Dependency Type | Approval Required |
 |---------------|-------------------|
@@ -90,7 +90,7 @@ Before adding any new dependency:
 | New runtime dependency | Project maintainer + review |
 | New build dependency | Engineering team lead |
 
-### 4.3 Dependency Addition Workflow
+### 4.3 Dependency addition workflow
 
 ```
 Proposal → Review → Approval → Addition to pin file → CI verification
@@ -98,7 +98,7 @@ Proposal → Review → Approval → Addition to pin file → CI verification
 
 ---
 
-## 5. Dependency Management
+## 5. Dependency management
 
 ### 5.1 Rust
 
@@ -121,7 +121,7 @@ Proposal → Review → Approval → Addition to pin file → CI verification
 
 ---
 
-## 6. Vulnerability Management
+## 6. Vulnerability management
 
 ### 6.1 Scanning
 
@@ -131,7 +131,7 @@ Proposal → Review → Approval → Addition to pin file → CI verification
 - GitHub Dependabot for dependency update PRs
 - `snyk` or equivalent for license compliance
 
-### 6.2 Response to Vulnerabilities
+### 6.2 Response to vulnerabilities
 
 | Severity | Response Time | Action |
 |----------|--------------|--------|
@@ -155,14 +155,14 @@ Compatible licenses:
 - CC0 (public domain equivalent)
 
 Incompatible licenses (must not be used):
-- AGPL-3.0 (network interaction — requires project-level exception)
+- AGPL-3.0 (network interaction: requires project-level exception)
 - Proprietary licenses (must not be used in core components)
-- SSPL (MongoDB license — not GPL-compatible)
+- SSPL (MongoDB license: not GPL-compatible)
 - Creative Commons Non-Commercial (not open source)
 
 ---
 
-## 8. Approved Dependencies (Baseline)
+## 8. Approved dependencies (baseline)
 
 ### 8.1 System Libraries (from Debian Stable)
 - glibc
@@ -175,7 +175,7 @@ Incompatible licenses (must not be used):
 - libbluetooth
 - libpci, libusb
 
-### 8.2 UI Framework
+### 8.2 UI framework
 - Qt 6 (qtbase, qtdeclarative, qtsvg, qtwayland)
 - KDE Frameworks (kconfig, kcoreaddons, ki18n, kirigami)
 - Plasma Framework (plasma-workspace)
@@ -188,7 +188,7 @@ Incompatible licenses (must not be used):
 
 ### 8.4 Rust Crates (pre-approved)
 - serde + serde_json (serialization)
-- tokio (async runtime — for services)
+- tokio (async runtime: for services)
 - thiserror + anyhow (error handling)
 - tracing (structured logging)
 - zbus (D-Bus Rust implementation)
@@ -197,18 +197,18 @@ Incompatible licenses (must not be used):
 
 ---
 
-## 9. Forbidden Patterns
+## 9. Forbidden patterns
 
-1. **No JavaScript/Node.js runtime as a dependency.** Mission OS does not ship Node.js.
-2. **No Python as a runtime dependency** for system services (Python is acceptable for tooling).
-3. **No untrusted PPAs or external repositories.**
-4. **No dependencies that force a non-GPL-compatible license on the project.**
-5. **No dependencies with known unpatched CVEs** (waiver required).
-6. **No git clones during build** (all dependencies must be cached/pinned).
+1. No JavaScript/Node.js runtime as a dependency. Mission OS does not ship Node.js.
+2. No Python as a runtime dependency for system services (Python is acceptable for tooling).
+3. No untrusted PPAs or external repositories.
+4. No dependencies that force a non-GPL-compatible license on the project.
+5. No dependencies with known unpatched CVEs (waiver required).
+6. No git clones during build (all dependencies must be cached/pinned).
 
 ---
 
-## 10. Code Audit for Dependencies
+## 10. Code audit for dependencies
 
 All third-party dependencies that are:
 - Not from Debian Stable

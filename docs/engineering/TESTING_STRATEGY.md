@@ -1,4 +1,4 @@
-# Mission OS Testing Strategy
+# Mission OS testing strategy
 
 **Document ID:** MOS-ENG-TEST-001
 **Version:** 1.0
@@ -13,7 +13,7 @@ This document defines the complete testing strategy for Mission OS, specifying w
 
 ---
 
-## 2. Testing Pyramid
+## 2. Testing pyramid
 
 ```
           ┌──────────┐
@@ -33,9 +33,9 @@ This document defines the complete testing strategy for Mission OS, specifying w
 
 ---
 
-## 3. Test Types
+## 3. Test types
 
-### 3.1 Unit Tests
+### 3.1 Unit tests
 
 **Scope:** Individual functions, data structures, pure logic
 
@@ -61,7 +61,7 @@ This document defines the complete testing strategy for Mission OS, specifying w
 - Code coverage > 60% for other components
 - No regressions allowed before merge
 
-### 3.2 Component Tests
+### 3.2 Component tests
 
 **Scope:** Individual services tested in isolation
 
@@ -82,7 +82,7 @@ This document defines the complete testing strategy for Mission OS, specifying w
 - Every service state tested
 - Service recovery from crash tested
 
-### 3.3 Integration Tests
+### 3.3 Integration tests
 
 **Scope:** Multiple services interacting
 
@@ -104,7 +104,7 @@ This document defines the complete testing strategy for Mission OS, specifying w
 - Failure injection: simulate network loss, disk full, service crash
 - Authorization bypass attempts tested
 
-### 3.4 End-to-End Tests
+### 3.4 End-to-End tests
 
 **Scope:** Full system scenarios in virtual machine
 
@@ -133,7 +133,7 @@ This document defines the complete testing strategy for Mission OS, specifying w
 - Full test suite at Release Preview stage
 - Test on multiple hardware profiles (2GB RAM, 4GB RAM, 8GB RAM)
 
-### 3.5 Security Tests
+### 3.5 Security tests
 
 **Scope:** Security properties and vulnerability discovery
 
@@ -155,7 +155,7 @@ This document defines the complete testing strategy for Mission OS, specifying w
 - All dependencies scanned for known CVEs
 - Fuzz testing for all input-parsing code paths
 
-### 3.6 Performance Tests
+### 3.6 Performance tests
 
 **Scope:** System responsiveness and resource usage
 
@@ -182,7 +182,7 @@ This document defines the complete testing strategy for Mission OS, specifying w
 | Idle memory (desktop) | < 1.5 GB |
 | Idle CPU | < 2% |
 
-### 3.7 Accessibility Tests
+### 3.7 Accessibility tests
 
 **Scope:** WCAG compliance and assistive technology compatibility
 
@@ -205,7 +205,7 @@ This document defines the complete testing strategy for Mission OS, specifying w
 - WCAG 2.2 AA compliance for all standard interfaces
 - WCAG 2.2 AAA for critical interfaces (Security Center, Privacy Center, Recovery)
 
-### 3.8 Stress Tests
+### 3.8 Stress tests
 
 **Scope:** System behavior under extreme conditions
 
@@ -230,9 +230,9 @@ This document defines the complete testing strategy for Mission OS, specifying w
 
 ---
 
-## 4. Testing Infrastructure
+## 4. Testing infrastructure
 
-### 4.1 CI Integration
+### 4.1 CI integration
 
 All tests integrated into GitHub Actions:
 
@@ -243,7 +243,7 @@ Nightly: Full suite except E2E (<60 min)
 Pre-release: Full suite including E2E in VM (<4 hours)
 ```
 
-### 4.2 Test Environment
+### 4.2 Test environment
 
 - System tests run in QEMU/KVM virtual machines
 - CI runners: GitHub-hosted for basic tests, self-hosted for VM tests
@@ -260,9 +260,9 @@ Pre-release: Full suite including E2E in VM (<4 hours)
 
 ---
 
-## 5. Test Requirements by Milestone
+## 5. Test requirements by milestone
 
-### 5.1 Milestone Completion
+### 5.1 Milestone completion
 
 At milestone completion:
 - All unit tests pass
@@ -288,7 +288,7 @@ At milestone completion:
 - Security: penetration testing complete
 - Performance: all targets met
 
-### 5.4 Release Candidate
+### 5.4 Release candidate
 
 - Full test suite passes
 - E2E tests complete on all target hardware profiles
@@ -306,9 +306,9 @@ At milestone completion:
 
 ---
 
-## 6. Test Documentation
+## 6. Test documentation
 
-### 6.1 Test Plan Structure
+### 6.1 Test plan structure
 
 Every module defines:
 ```
@@ -320,7 +320,7 @@ module_name/
 └── fixtures/                 → Test data/fixtures
 ```
 
-### 6.2 Bug Verification
+### 6.2 Bug verification
 
 Every fixed bug includes:
 - Regression test that reproduces the original bug
@@ -329,16 +329,16 @@ Every fixed bug includes:
 
 ---
 
-## 7. Testing Principles
+## 7. Testing principles
 
-1. **Test the behavior, not the implementation.**
-2. **Test failure paths as thoroughly as success paths.**
-3. **Tests must be deterministic.** No flaky tests allowed.
-4. **Test at the right level of the pyramid.**
-5. **Module mocks are acceptable for isolation; integration tests verify real interactions.**
-6. **Performance tests are automated and regression-checked.**
-7. **Security tests are part of the CI pipeline, not an afterthought.**
-8. **Accessibility tests are mandatory, not optional.**
+1. Test the behavior, not the implementation.
+2. Test failure paths as thoroughly as success paths.
+3. Tests must be deterministic. No flaky tests allowed.
+4. Test at the right level of the pyramid.
+5. Module mocks are acceptable for isolation; integration tests verify real interactions.
+6. Performance tests are automated and regression-checked.
+7. Security tests are part of the CI pipeline, not an afterthought.
+8. Accessibility tests are mandatory, not optional.
 
 ---
 

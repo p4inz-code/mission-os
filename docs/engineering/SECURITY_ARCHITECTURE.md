@@ -1,4 +1,4 @@
-# Mission OS Security Architecture
+# Mission OS security architecture
 
 **Document ID:** MOS-ENG-SEC-001
 **Version:** 1.0
@@ -11,11 +11,11 @@
 
 This document defines the complete security model of Mission OS.
 
-Distinctions between **Privacy**, **Security**, **Anonymity**, and **Compartmentalization** are maintained throughout. These terms are not interchangeable, and the architecture treats each separately.
+Distinctions between **Privacy**, Security, Anonymity, and Compartmentalization are maintained throughout. These terms are not interchangeable, and the architecture treats each separately.
 
 ---
 
-## 2. Threat Model
+## 2. Threat model
 
 ### 2.1 Assumptions
 
@@ -26,7 +26,7 @@ Distinctions between **Privacy**, **Security**, **Anonymity**, and **Compartment
 - Physical access to the device may be lost (encryption primary defense)
 - The user may be using a compromised computer (portable mode)
 
-### 2.2 Threats Considered
+### 2.2 Threats considered
 
 | Threat | Mitigation |
 |--------|-----------|
@@ -42,7 +42,7 @@ Distinctions between **Privacy**, **Security**, **Anonymity**, and **Compartment
 | Side-channel attacks | Not mitigated in v1 (acknowledged) |
 | Evil maid attack on USB boot | Boot integrity verification + signed recovery media |
 
-### 2.3 Non-Goals (Security)
+### 2.3 Non-Goals (security)
 
 - Protection against sophisticated nation-state actors with physical access and equipment
 - Full formal verification of the entire OS
@@ -51,18 +51,18 @@ Distinctions between **Privacy**, **Security**, **Anonymity**, and **Compartment
 
 ---
 
-## 3. Security Domains
+## 3. Security domains
 
 Mission OS separates security into four distinct domains:
 
-### 3.1 User Accounts
+### 3.1 User accounts
 
 - Standard Linux user accounts (PAM-based authentication)
 - Optional: systemd-homed for portable encrypted home directories
-- Local accounts only — no mandatory online accounts
+- Local accounts only: no mandatory online accounts
 - Password quality enforcement with configurable policy
 
-### 3.2 Privilege Separation
+### 3.2 Privilege separation
 
 Principle: Every process runs with the minimum permissions required.
 
@@ -81,8 +81,8 @@ Principle: Every process runs with the minimum permissions required.
 Supported methods:
 - Password (required for every account)
 - PIN (optional convenience, secondary authentication)
-- Biometrics (fprintd — optional, supported hardware)
-- Security keys (FIDO2/U2F — future)
+- Biometrics (fprintd: optional, supported hardware)
+- Security keys (FIDO2/U2F: future)
 - TPM-assisted unlock (LUKS2 + tpm2-cryptenroll)
 
 Authentication policies:
@@ -110,7 +110,7 @@ Action logged to audit
 
 ---
 
-## 4. Defense in Depth Layers
+## 4. Defense in depth layers
 
 ```
 Layer 1: Secure Boot (UEFI)
@@ -136,9 +136,9 @@ Layer 10: Encryption (LUKS2 + encrypted swap)
 
 ---
 
-## 5. Encryption Architecture
+## 5. Encryption architecture
 
-### 5.1 Storage Encryption
+### 5.1 Storage encryption
 
 | Partition | Encryption | Default |
 |-----------|-----------|---------|
@@ -155,15 +155,15 @@ Key management:
 - Optional: recovery key (generated during installation, printable)
 - Key slots: 1 (user passphrase) + 1 (recovery key) + 1 (TPM, optional)
 
-### 5.2 Key Management Rules
+### 5.2 Key management rules
 
-1. **Encryption keys must never be stored in plaintext on disk.**
-2. **Recovery keys must be exportable during installation (PDF, printed).**
-3. **Passphrase hint must not contain the actual password.**
-4. **Swap encryption must be enabled by default.**
-5. **Memory containing key material must be scrubbed after use (mlock() + explicit zeroing).**
+1. Encryption keys must never be stored in plaintext on disk.
+2. Recovery keys must be exportable during installation (PDF, printed).
+3. Passphrase hint must not contain the actual password.
+4. Swap encryption must be enabled by default.
+5. Memory containing key material must be scrubbed after use (mlock() + explicit zeroing).
 
-### 5.3 Secrets Storage
+### 5.3 Secrets storage
 
 - GNOME Keyring / KDE Wallet for application secrets
 - Encrypted with user login password by default
@@ -171,35 +171,35 @@ Key management:
 
 ---
 
-## 6. Network Security
+## 6. Network security
 
-### 6.1 Firewall Architecture
+### 6.1 Firewall architecture
 
 - Backend: nftables
 - Default policy: deny incoming, allow outgoing (stateful)
 - Profiles:
-  - **Public**: Only outgoing connections, no listening services
-  - **Private**: Allow LAN connections, no WAN listening
-  - **Development**: Allow selected ports
-  - **Custom**: User-defined rules
+  - Public: Only outgoing connections, no listening services
+  - Private: Allow LAN connections, no WAN listening
+  - Development: Allow selected ports
+  - Custom: User-defined rules
 - Application-level firewall: per-application network permissions
 - Mission-securityd manages dynamic rule application
 
-### 6.2 DNS Security
+### 6.2 DNS security
 
 - DNS over TLS (DoT) / DNS over HTTPS (DoH) configurable via systemd-resolved
 - Default: system DNS
 - Recommended: encrypted DNS (user-configurable)
 - DNSSEC validation enabled where supported
 
-### 6.3 VPN Integration
+### 6.3 VPN integration
 
 - First-class WireGuard support
 - OpenVPN and IKEv2 supported
 - Kill switch: block non-VPN traffic when VPN is active (optional, configurable)
 - Split tunneling: per-application VPN routing (future)
 
-### 6.4 Tor Integration
+### 6.4 Tor integration
 
 **Important:** Tor is NOT a universal anonymity solution. Mission OS does NOT claim Tor makes the system anonymous.
 
@@ -222,27 +222,27 @@ Tor integration scope:
 
 ---
 
-## 7. Package Security
+## 7. Package security
 
-### 7.1 Package Verification
+### 7.1 Package verification
 
 Every package undergoes:
-1. **Signature verification** — GPG signature checked against trusted keyring
-2. **Checksum verification** — SHA-256 of package content
-3. **Repository trust** — Package must come from trusted repository
-4. **Dependency integrity** — All dependencies must satisfy the same checks
-5. **Manifest validation** — Package manifest must match content
+1. Signature verification: GPG signature checked against trusted keyring
+2. Checksum verification: SHA-256 of package content
+3. Repository trust: Package must come from trusted repository
+4. Dependency integrity: All dependencies must satisfy the same checks
+5. Manifest validation: Package manifest must match content
 
 Verification failures abort installation with a clear error message.
 
-### 7.2 Driver Trust
+### 7.2 Driver trust
 
 - Signed kernel modules only (enforced in production mode)
 - Unsigned driver override available in Developer Mode (with warning)
 - Hardware drivers from Mission repository verified automatically
 - Third-party drivers require explicit user approval
 
-### 7.3 Update Security
+### 7.3 Update security
 
 - All updates signed with Mission OS release keys
 - Update metadata signed separately from payload
@@ -252,9 +252,9 @@ Verification failures abort installation with a clear error message.
 
 ---
 
-## 8. Audit Logging
+## 8. Audit logging
 
-### 8.1 Events Logged
+### 8.1 Events logged
 
 | Category | Events |
 |----------|--------|
@@ -266,7 +266,7 @@ Verification failures abort installation with a clear error message.
 | Drivers | Install, update, rollback, verification failure |
 | System | Boot, shutdown, crash, recovery |
 
-### 8.2 Audit Requirements
+### 8.2 Audit requirements
 
 - Logs are local by default
 - Logs are structured (JSON) and timestamped
@@ -279,7 +279,7 @@ Verification failures abort installation with a clear error message.
 
 ## 9. Sandboxing
 
-### 9.1 Application Sandbox
+### 9.1 Application sandbox
 
 Scope (pending ADR on technology choice):
 - Filesystem isolation: per-application view of filesystem
@@ -288,7 +288,7 @@ Scope (pending ADR on technology choice):
 - IPC isolation: restricted D-Bus access
 - Resource limits: memory, CPU, processes
 
-### 9.2 Default Sandbox Profiles
+### 9.2 Default sandbox profiles
 
 | Application Type | Filesystem | Network | Devices |
 |-----------------|-----------|---------|---------|
@@ -310,30 +310,30 @@ Scope (pending ADR on technology choice):
 
 ---
 
-## 11. Security Guarantees
+## 11. Security guarantees
 
-### 11.1 What Mission OS Guarantees
+### 11.1 What mission OS guarantees
 
-1. **Full disk encryption** — Data at rest is encrypted with LUKS2
-2. **Verified boot chain** — Bootloader and kernel are signed
-3. **Verified packages** — Every package signature is checked before installation
-4. **No mandatory telemetry** — No data leaves the system without user consent
-5. **Permission enforcement** — Applications cannot access protected resources without permission
-6. **Firewall** — Incoming connections blocked by default
-7. **Audit logs** — Security-relevant events are logged
+1. Full disk encryption: Data at rest is encrypted with LUKS2
+2. Verified boot chain: Bootloader and kernel are signed
+3. Verified packages: Every package signature is checked before installation
+4. No mandatory telemetry: No data leaves the system without user consent
+5. Permission enforcement: Applications cannot access protected resources without permission
+6. Firewall: Incoming connections blocked by default
+7. Audit logs: Security-relevant events are logged
 
-### 11.2 What Mission OS Cannot Guarantee
+### 11.2 What mission OS cannot Guarantee
 
 1. Protection against kernel zero-day exploits
 2. Immunity to hardware-level attacks (JTAG, bus sniffing, cold boot)
 3. Protection if user credentials are compromised
 4. Perfect side-channel resistance
-5. Anonymity — Tor usage requires user education
+5. Anonymity: Tor usage requires user education
 6. Protection against malicious peripherals (BadUSB, etc.)
 
 ---
 
-## 12. Security Compliance
+## 12. Security compliance
 
 Before each release:
 - Full security review of this architecture

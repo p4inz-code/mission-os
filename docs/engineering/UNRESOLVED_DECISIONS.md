@@ -1,8 +1,8 @@
-# Mission OS Unresolved Decisions and Gaps
+# Mission OS unresolved decisions and gaps
 
 **Document ID:** MOS-ENG-TODO-001
 **Version:** 1.0
-**Status:** Draft — Engineering Architecture Phase
+**Status:** Draft, Engineering Architecture Phase
 **Last Updated:** July 2026
 
 ---
@@ -15,14 +15,14 @@ These items must be resolved before or during their affected implementation mile
 
 ---
 
-## 2. Pending Architecture Decision Records (ADRs)
+## 2. Pending architecture decision records (ADRs)
 
 The following ADRs must be created before implementation of the affected subsystems:
 
 | ADR | Topic | Affected Milestone | Priority |
 |-----|-------|-------------------|----------|
-| ADR-0002 | System programming language for new services (Rust) | M1 | **RESOLVED** — Rust selected and implemented |
-| ADR-0003 | IPC technology confirmation (D-Bus + PolKit) | M2 | **RESOLVED** — D-Bus + PolKit implemented |
+| ADR-0002 | System programming language for new services (Rust) | M1 | RESOLVED — Rust selected and implemented |
+| ADR-0003 | IPC technology confirmation (D-Bus + PolKit) | M2 | RESOLVED — D-Bus + PolKit implemented |
 | ADR-0004 | Sandboxing technology (Bubblewrap vs Firejail vs systemd-nspawn) | M6 | High |
 | ADR-0005 | Update mechanism (APT snapshots vs OSTree vs custom) | M4 | High |
 | ADR-0006 | Package format (.mos-pkg vs .deb overlay vs hybrid) | M4 | High |
@@ -32,7 +32,7 @@ The following ADRs must be created before implementation of the affected subsyst
 
 ---
 
-## 3. Package Format Schemas Not Yet Defined
+## 3. Package format schemas not yet defined
 
 **Status:** Critical gap
 
@@ -48,13 +48,13 @@ The existing `docs/engineering/PACKAGE_FORMAT.md` is a minimal outline with no s
 - Signature and trust model for each format
 - Schema validation rules
 
-**Recommendation:** This should be Session 1.5 — Package Schema Design, or folded into ADR-0006.
+**Recommendation:** This should be Session 1.5, Package Schema Design, or folded into ADR-0006.
 
 ---
 
 ## 4. Localization / i18n Architecture
 
-**Status:** Gap — not addressed in current architecture docs
+**Status:** Gap, not addressed in current architecture docs
 
 The architecture documents do not define a localization layer. This is mentioned nowhere in the engineering documents.
 
@@ -74,13 +74,13 @@ The architecture documents do not define a localization layer. This is mentioned
 
 ---
 
-## 5. Lock Screen Security Architecture
+## 5. Lock screen security architecture
 
-**Status:** Gap — not addressed in SECURITY_ARCHITECTURE.md
+**Status:** Gap, not addressed in SECURITY_ARCHITECTURE.md
 
 The lock screen has specific security implications not yet documented:
 
-- Secure Attention Key (SAK) — how users verify the authentication dialog is genuine
+- Secure Attention Key (SAK): how users verify the authentication dialog is genuine
 - VT switching prevention while locked
 - SysRq protection while locked
 - Authentication attempt rate limiting
@@ -94,9 +94,9 @@ The lock screen has specific security implications not yet documented:
 
 ---
 
-## 6. Tor Integration Architecture
+## 6. Tor integration architecture
 
-**Status:** Vague — stated principles but no technical architecture
+**Status:** Vague, stated principles but no technical architecture
 
 Current SECURITY_ARCHITECTURE.md section 6.3 correctly states Tor limitations but does not define technical integration.
 
@@ -116,9 +116,9 @@ Current SECURITY_ARCHITECTURE.md section 6.3 correctly states Tor limitations bu
 
 ---
 
-## 7. Clipboard Security Architecture
+## 7. Clipboard security architecture
 
-**Status:** Gap — mentioned but not architecturally defined
+**Status:** Gap, mentioned but not architecturally defined
 
 Current documents mention clipboard permission but do not define:
 - Per-workspace clipboard isolation
@@ -132,9 +132,9 @@ Current documents mention clipboard permission but do not define:
 
 ---
 
-## 8. Captive Portal and Network Failure Handling
+## 8. Captive portal and network failure handling
 
-**Status:** Gap — not addressed in architecture docs (covered in reference/14_NETWORK.md)
+**Status:** Gap, not addressed in architecture docs (covered in reference/14_NETWORK.md)
 
 The architecture documents should at minimum reference the handle:
 
@@ -148,7 +148,7 @@ The architecture documents should at minimum reference the handle:
 
 ---
 
-## 9. Old Document Consolidation
+## 9. Old document consolidation
 
 **Status:** Action required
 
@@ -173,11 +173,11 @@ Each old document should receive a SUPERSEDED BY notice at the top.
 
 ---
 
-## 10. Technology Decisions Not Yet Made
+## 10. Technology decisions not yet made
 
 From ARCHITECTURE.md section 3.3:
 
-- Programming language for new system services (Rust — RESOLVED, implemented)
+- Programming language for new system services (Rust, RESOLVED, implemented)
 - Sandboxing/isolation technology
 - Package format for Mission Packs
 - Update delivery mechanism
@@ -189,7 +189,7 @@ These are recorded in ARCHITECTURE.md and must be resolved through ADRs before t
 
 ---
 
-## 11. Scoring Summary
+## 11. Scoring summary
 
 Based on code review of the 12 new engineering architecture documents:
 
@@ -206,7 +206,7 @@ Based on code review of the 12 new engineering architecture documents:
 | Engineering Standards | 9.5/10 | Thorough |
 | Implementation Roadmap | 9.5/10 | Well-structured |
 | Engineering Gates | 10/10 | Comprehensive |
-| **Overall** | **8.8/10** | Gaps identified above are fixable |
+| Overall | 8.8/10 | Gaps identified above are fixable |
 
 Target for Phase 0 completion: **9.5+/10**
 

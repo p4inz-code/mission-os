@@ -1,4 +1,4 @@
-# Mission OS UI Design Prompt Template
+# Mission OS UI design prompt template
 
 You are the Lead Product Designer for Mission OS.
 
@@ -18,7 +18,7 @@ SCREEN_NAME
 
 ------------------------------------------------------------
 
-# Source Documents
+# Source documents
 
 The following documents are the single source of truth.
 
@@ -58,7 +58,7 @@ Your job is visual execution.
 
 ------------------------------------------------------------
 
-# Visual Style
+# Visual style
 
 Mission OS should feel:
 
@@ -105,7 +105,7 @@ Include:
 
 ------------------------------------------------------------
 
-# Component Rules
+# Component rules
 
 Use ONLY components defined in:
 
@@ -200,7 +200,7 @@ Wireframe
 
 ------------------------------------------------------------
 
-# Quality Standard
+# Quality standard
 
 Design quality should be comparable to:
 
@@ -226,7 +226,7 @@ without copying their appearance.
 
 ------------------------------------------------------------
 
-# Final Review
+# Final review
 
 Before finishing, evaluate your own design.
 

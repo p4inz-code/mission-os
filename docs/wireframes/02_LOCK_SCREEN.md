@@ -1,4 +1,4 @@
-# Mission OS Lock Screen Wireframe
+# Mission OS lock screen wireframe
 
 **Document ID:** MOS-WF-002
 

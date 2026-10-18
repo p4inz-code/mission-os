@@ -1,4 +1,4 @@
-# Mission OS Navigation Model
+# Mission OS navigation model
 
 **Document ID:** MOS-DESIGN-002
 
@@ -16,7 +16,7 @@ Navigation must feel predictable, fast and consistent regardless of application.
 
 ---
 
-# 2. Navigation Philosophy
+# 2. Navigation philosophy
 
 Mission OS navigation follows these principles:
 
@@ -37,7 +37,7 @@ Users should always know:
 
 ---
 
-# 3. Global Navigation Hierarchy
+# 3. Global navigation hierarchy
 
 ```
 Mission OS
@@ -57,7 +57,7 @@ No official application may bypass this hierarchy.
 
 ---
 
-# 4. Primary Navigation
+# 4. Primary navigation
 
 Primary navigation consists of:
 
@@ -71,7 +71,7 @@ These remain consistent throughout the operating system.
 
 ---
 
-# 5. Secondary Navigation
+# 5. Secondary navigation
 
 Applications may include:
 
@@ -103,7 +103,7 @@ Search opens instantly from anywhere.
 
 ---
 
-# 7. Command Palette
+# 7. Command palette
 
 Mission OS includes a universal command palette.
 
@@ -123,7 +123,7 @@ Supported actions include:
 
 ---
 
-# 8. Breadcrumb Navigation
+# 8. Breadcrumb navigation
 
 Used in:
 
@@ -145,7 +145,7 @@ Permissions
 
 ---
 
-# 9. Back Navigation
+# 9. Back navigation
 
 Users may navigate back using:
 
@@ -158,7 +158,7 @@ Back always returns to the previous logical location.
 
 ---
 
-# 10. Forward Navigation
+# 10. Forward navigation
 
 Supports:
 
@@ -188,7 +188,7 @@ Tabs:
 
 ---
 
-# 12. Window Navigation
+# 12. Window navigation
 
 Supports:
 
@@ -203,7 +203,7 @@ All actions are keyboard accessible.
 
 ---
 
-# 13. Context Menus
+# 13. Context menus
 
 Right-click menus:
 
@@ -239,9 +239,9 @@ Notifications never interrupt critical workflows.
 
 ---
 
-# Section 2 — Navigation Rules
+# Section 2: navigation rules
 
-## Navigation Depth
+## Navigation depth
 
 Maximum recommended depth:
 
@@ -269,7 +269,7 @@ Depth beyond four levels requires redesign.
 
 ---
 
-## Keyboard Navigation
+## Keyboard navigation
 
 Every interactive element must support:
 
@@ -282,7 +282,7 @@ Every interactive element must support:
 
 ---
 
-## Focus Management
+## Focus management
 
 Visible focus indicators are mandatory.
 
@@ -290,7 +290,7 @@ Focus never becomes trapped except inside approved modal dialogs.
 
 ---
 
-## Navigation Feedback
+## Navigation feedback
 
 Every navigation action provides immediate feedback through:
 
@@ -301,7 +301,7 @@ Every navigation action provides immediate feedback through:
 
 ---
 
-## Error Navigation
+## Error navigation
 
 If navigation fails:
 
@@ -336,7 +336,7 @@ Navigation fully supports:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Navigation succeeds when:
 

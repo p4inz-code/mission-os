@@ -1,4 +1,4 @@
-# Mission OS Boot Process
+# Mission OS boot process
 
 **Document ID:** MOS-ENG-001
 
@@ -8,7 +8,7 @@ Defines the complete startup sequence of Mission OS.
 
 ---
 
-# Boot Flow
+# Boot flow
 
 Firmware (UEFI)
 
@@ -59,7 +59,7 @@ User Ready
 
 ---
 
-# Failure Handling
+# Failure handling
 
 Boot failures should:
 
@@ -69,6 +69,6 @@ Boot failures should:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 System reaches a usable desktop through a deterministic, recoverable boot sequence.

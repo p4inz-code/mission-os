@@ -1,4 +1,4 @@
-# Privacy Center Wireframe
+# Privacy center wireframe
 
 **Document ID:** MOS-WF-006
 
@@ -35,7 +35,7 @@ Detailed Permissions
 
 ---
 
-# Dashboard Sections
+# Dashboard sections
 
 - Privacy Score
 - Recent Permission Activity
@@ -67,7 +67,7 @@ Detailed Permissions
 
 ---
 
-# UX Rules
+# UX rules
 
 Every permission explains:
 

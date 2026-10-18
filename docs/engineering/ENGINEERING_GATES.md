@@ -1,4 +1,4 @@
-# Mission OS Engineering Gates
+# Mission OS engineering gates
 
 **Document ID:** MOS-ENG-GATES-001
 **Version:** 1.0
@@ -15,7 +15,7 @@ Quality gates are non-negotiable. They exist to ensure Mission OS releases are s
 
 ---
 
-## 2. Gate: Pull Request
+## 2. Gate: pull request
 
 **Applies to:** Every pull request
 
@@ -38,7 +38,7 @@ Quality gates are non-negotiable. They exist to ensure Mission OS releases are s
 
 ---
 
-## 3. Gate: Milestone Completion
+## 3. Gate: milestone completion
 
 **Applies to:** Every milestone completion
 
@@ -64,7 +64,7 @@ Quality gates are non-negotiable. They exist to ensure Mission OS releases are s
 
 ---
 
-## 4. Gate: Alpha Release
+## 4. Gate: alpha release
 
 **Applies to:** First internal release
 
@@ -88,7 +88,7 @@ Quality gates are non-negotiable. They exist to ensure Mission OS releases are s
 
 ---
 
-## 5. Gate: Beta Release
+## 5. Gate: beta release
 
 **Applies to:** First public release
 
@@ -113,7 +113,7 @@ Quality gates are non-negotiable. They exist to ensure Mission OS releases are s
 
 ---
 
-## 6. Gate: Release Candidate
+## 6. Gate: release candidate
 
 **Applies to:** Pre-stable release
 
@@ -139,7 +139,7 @@ Quality gates are non-negotiable. They exist to ensure Mission OS releases are s
 
 ---
 
-## 7. Gate: Stable Release
+## 7. Gate: stable release
 
 **Applies to:** Production release
 
@@ -165,7 +165,7 @@ Quality gates are non-negotiable. They exist to ensure Mission OS releases are s
 
 ---
 
-## 8. Gate: Post-Release
+## 8. Gate: post-release
 
 **Applies to:** After each stable release
 
@@ -183,7 +183,7 @@ Quality gates are non-negotiable. They exist to ensure Mission OS releases are s
 
 ---
 
-## 9. Emergency Release Gate
+## 9. Emergency release gate
 
 **Applies to:** Security-critical hotfix releases
 
@@ -201,7 +201,7 @@ Quality gates are non-negotiable. They exist to ensure Mission OS releases are s
 
 ---
 
-## 10. Gate Compliance
+## 10. Gate compliance
 
 - All gates are enforced via CI automation where possible.
 - Manual gates require explicit sign-off in the release checklist.
@@ -216,11 +216,11 @@ Each gate is scored:
 
 | Score | Meaning |
 |-------|---------|
-| ✅ Pass | All checks satisfied |
-| ⚠️ Conditional | Non-blocking issues documented, accepted with maintainer approval |
-| ❌ Fail | Blocking issues exist, gate not passed |
+| Pass | All checks satisfied |
+| Conditional | Non-blocking issues documented, accepted with maintainer approval |
+| Fail | Blocking issues exist, gate not passed |
 
-A milestone or release requires ✅ on all mandatory checks and ⚠️ on at most 3 non-blocking items with maintainer approval.
+A milestone or release requires on all mandatory checks and on at most 3 non-blocking items with maintainer approval.
 
 ---
 

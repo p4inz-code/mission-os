@@ -48,7 +48,7 @@ Performance improvements
 
 ---
 
-## Pre-release Tags
+## Pre-release tags
 
 -alpha
 

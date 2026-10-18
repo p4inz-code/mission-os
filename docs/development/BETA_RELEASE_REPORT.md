@@ -1,4 +1,4 @@
-# Mission OS — Open Beta Release Report
+# Mission OS: open beta release report
 
 **Release status:** OFFICIAL OPEN BETA
 **Release date:** August 9, 2026
@@ -16,64 +16,64 @@
 | Sidecar checksum | `.sha256` sidecar matches the recomputed hash (verified) |
 | Repository | `https://github.com/p4inz-code/mission-os` |
 | License | GPL-3.0 |
-| Identity | Mission OS — created by Atharva Patil (P4inz), P4inz Interactive Labs |
+| Identity | Mission OS, created by Atharva Patil (P4inz), P4inz Interactive Labs |
 
 ## USB suitability
 
-- **Recommended:** 14 GB or larger USB drive.
-- **Minimum:** 8 GB — the ISO is 1.74 GiB, so an 8 GB drive provides ~7.45 GiB usable and
+- Recommended: 14 GB or larger USB drive.
+- Minimum: 8 GB: the ISO is 1.74 GiB, so an 8 GB drive provides ~7.45 GiB usable and
   fits with ~5.7 GiB free. **An 8 GB USB is sufficient.**
-- Write the ISO in **image mode** (Rufus → "DD image mode", balenaEtcher, Ventoy, or
+- Write the ISO in image mode (Rufus → "DD image mode", balenaEtcher, Ventoy, or
   `dd` on Linux). No special setup beyond standard UEFI boot selection.
 
 ## Validation performed (actually executed)
 
 | Gate | Result | How |
 |------|--------|-----|
-| ISO structure (`validate-iso.sh`) | **15/15 PASS** | Full structural audit: ISO 9660, El Torito BIOS + EFI, MBR 0xef partition, kernel/initrd, grub.cfg, hybrid, SHA256 |
-| EFI payload (deep) | **PASS** | Appended partition = FAT16 `MISSION_OS` volume containing `EFI/BOOT/BOOTX64.EFI` (PE32+ x86-64) embedding the Debian-style `search --file /boot/grub/grub.cfg` bootstrap chain |
-| SHA256 | **PASS** | Recomputed = `a772f14d…` = shipped `.sha256` sidecar |
-| Content manifest | **30/30 PASS** | All 3 Mission Calamares modules (`mission-os`, `mission-repo`, `mission-cleanup`) + `module.desc`; all 9 standard configs; `settings.conf` 3-phase sequence; branding (`branding.desc`, `show.qml`, logo); offline repo (`Packages`, `Packages.gz`, `Release`, 4 debs); all 3 services enabled; `display-manager → sddm`; `default.target → graphical` |
-| `packages.conf` offline-safety | **PASS** | Effective copy (`/etc/calamares/modules/packages.conf`) = `update: false`; `backend: apt` |
-| Host-path / secret scan | **PASS** | Zero matches for developer paths, WSL paths, `Admin`, evidence dirs in deployed content |
-| CRLF scan | **PASS** | No CRLF in deployed Python/QML/shell/config files |
-| Dependency audit | **PASS** | `Depends: polkitd` (×2), `policykit-1` = 0; Debian 13/Trixie names correct; all debs verified with `dpkg-deb` |
-| Git hygiene | **PASS** | `git diff --check` clean; ISO + generated artifacts gitignored |
-| Python modules | **PASS** | `py_compile` on all 3 Calamares module `main.py` files |
-| YAML configs | **PASS** | `settings.conf`, `packages.conf` parse as valid YAML |
-| QEMU UEFI boot (earlier ISO cycle) | **4/4 PASS** (RC6) | Boot to login prompt; the beta ISO is the same boot construction with the EFI append completed |
+| ISO structure (`validate-iso.sh`) | 15/15 PASS | Full structural audit: ISO 9660, El Torito BIOS + EFI, MBR 0xef partition, kernel/initrd, grub.cfg, hybrid, SHA256 |
+| EFI payload (deep) | PASS | Appended partition = FAT16 `MISSION_OS` volume containing `EFI/BOOT/BOOTX64.EFI` (PE32+ x86-64) embedding the Debian-style `search --file /boot/grub/grub.cfg` bootstrap chain |
+| SHA256 | PASS | Recomputed = `a772f14d…` = shipped `.sha256` sidecar |
+| Content manifest | 30/30 PASS | All 3 Mission Calamares modules (`mission-os`, `mission-repo`, `mission-cleanup`) + `module.desc`; all 9 standard configs; `settings.conf` 3-phase sequence; branding (`branding.desc`, `show.qml`, logo); offline repo (`Packages`, `Packages.gz`, `Release`, 4 debs); all 3 services enabled; `display-manager → sddm`; `default.target → graphical` |
+| `packages.conf` offline-safety | PASS | Effective copy (`/etc/calamares/modules/packages.conf`) = `update: false`; `backend: apt` |
+| Host-path / secret scan | PASS | Zero matches for developer paths, WSL paths, `Admin`, evidence dirs in deployed content |
+| CRLF scan | PASS | No CRLF in deployed Python/QML/shell/config files |
+| Dependency audit | PASS | `Depends: polkitd` (×2), `policykit-1` = 0; Debian 13/Trixie names correct; all debs verified with `dpkg-deb` |
+| Git hygiene | PASS | `git diff --check` clean; ISO + generated artifacts gitignored |
+| Python modules | PASS | `py_compile` on all 3 Calamares module `main.py` files |
+| YAML configs | PASS | `settings.conf`, `packages.conf` parse as valid YAML |
+| QEMU UEFI boot (earlier ISO cycle) | 4/4 PASS (RC6) | Boot to login prompt; the beta ISO is the same boot construction with the EFI append completed |
 
 ## Tests NOT performed (must not be claimed)
 
-- **Real physical hardware boot/install** — to be performed by the maintainer on a
+- Real physical hardware boot/install: to be performed by the maintainer on a
   college PC and public PCs. This is the core purpose of the open beta.
-- **Calamares graphical install flow end-to-end** — the offline install path is validated
+- Calamares graphical install flow end-to-end: the offline install path is validated
   via the QEMU harness; the GUI flow itself has not been runtime-executed.
-- **Functional D-Bus/PolKit interaction** on a running system.
-- **Live-ISO desktop session** (login prompt reached in QEMU; full session not exercised).
+- Functional D-Bus/PolKit interaction on a running system.
+- Live-ISO desktop session (login prompt reached in QEMU; full session not exercised).
 - Network / audio / display / input / shutdown-reboot cycles on real hardware.
 
 ## Known issues (see `docs/development/KNOWN_ISSUES.md`)
 
 - Calamares graphical install flow not runtime-executed (KNOWN_ISSUES #2).
 - D-Bus/PolKit functional interaction pending (KNOWN_ISSUES #6, TECH_DEBT #8).
-- mission-ui is CANDIDATE — 50 QML components + 40 QtTest suites exist but are not
+- mission-ui is CANDIDATE: 50 QML components + 40 QtTest suites exist but are not
   runtime-validated in a desktop session; Mission Hub/Diagnostics/Recovery are UI
   surfaces with signal contracts, no host integration (KNOWN_ISSUES #11).
 - No AppArmor/SELinux MAC profile (TECH_DEBT #9).
-- Default Breeze SDDM/icon/GRUB themes (KNOWN_ISSUES #7–9).
+- Default Breeze SDDM/icon/GRUB themes (KNOWN_ISSUES #7-9).
 - SDDM theme / icon theme / GRUB theme not custom-branded.
 - No update mechanism, no recovery environment (deferred).
 - `usr/share/calamares/modules/packages.conf` fallback copy still carries `update: true`
-  (cosmetic — Calamares loads `/etc/calamares/modules/packages.conf` first, which is
+  (cosmetic, Calamares loads `/etc/calamares/modules/packages.conf` first, which is
   `update: false` and effective).
 
 ## Hardware testing status
 
-- **QEMU (virtual):** BIOS + UEFI boot validated (RC6, 4/4 each).
-- **Real hardware:** NOT YET TESTED. Beta testers (including the college PC) will map the
+- QEMU (virtual): BIOS + UEFI boot validated (RC6, 4/4 each).
+- Real hardware: NOT YET TESTED. Beta testers (including the college PC) will map the
   hardware matrix. The minimum documented hardware is x86-64, 8 GB RAM, 20 GB disk,
-  8 GB+ USB — see `SUPPORTED_HARDWARE.md`.
+  8 GB+ USB, see `SUPPORTED_HARDWARE.md`.
 
 ## Beta warning (must be communicated to testers)
 

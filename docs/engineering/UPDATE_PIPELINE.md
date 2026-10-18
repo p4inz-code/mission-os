@@ -1,4 +1,4 @@
-# Mission OS Update Pipeline
+# Mission OS update pipeline
 
 **Document ID:** MOS-ENG-006
 
@@ -8,7 +8,7 @@ Defines how Mission OS delivers system updates.
 
 ---
 
-# Update Flow
+# Update flow
 
 Update Check
 
@@ -60,7 +60,7 @@ Success or Rollback
 
 ---
 
-# Failure Recovery
+# Failure recovery
 
 If installation fails:
 
@@ -70,6 +70,6 @@ If installation fails:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Updates are secure, recoverable, and reliable.

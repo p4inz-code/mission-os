@@ -1,4 +1,4 @@
-# Mission OS Recovery Center
+# Mission OS recovery center
 
 **Document ID:** MOS-RECOVERY-001
 
@@ -16,7 +16,7 @@ Recovery Center must remain usable even when the primary desktop cannot boot.
 
 ---
 
-# 2. Recovery Philosophy
+# 2. Recovery philosophy
 
 Mission OS recovery follows:
 
@@ -31,7 +31,7 @@ Mission OS recovery follows:
 
 ---
 
-# 3. Entry Methods
+# 3. Entry methods
 
 Recovery Center may be launched from:
 
@@ -45,7 +45,7 @@ Recovery Center may be launched from:
 
 ---
 
-# 4. Recovery Dashboard
+# 4. Recovery dashboard
 
 Displays:
 
@@ -60,7 +60,7 @@ Displays:
 
 ---
 
-# 5. Recovery Readiness Score
+# 5. Recovery readiness score
 
 Calculated using:
 
@@ -80,7 +80,7 @@ Levels:
 
 ---
 
-# 6. Recovery Tools
+# 6. Recovery tools
 
 Available tools:
 
@@ -98,7 +98,7 @@ Available tools:
 
 ---
 
-# 7. Startup Repair
+# 7. Startup repair
 
 Automatically detects:
 
@@ -112,7 +112,7 @@ Whenever possible, repairs are automatic.
 
 ---
 
-# 8. Bootloader Repair
+# 8. Bootloader repair
 
 Supports:
 
@@ -123,7 +123,7 @@ Supports:
 
 ---
 
-# 9. Restore Points
+# 9. Restore points
 
 Mission OS creates restore points before:
 
@@ -136,7 +136,7 @@ Users may create manual restore points.
 
 ---
 
-# 10. Backup Restore
+# 10. Backup restore
 
 Supported sources:
 
@@ -149,7 +149,7 @@ Integrity is verified before restoration.
 
 ---
 
-# 11. Factory Reset
+# 11. Factory reset
 
 Options:
 
@@ -178,13 +178,13 @@ Recovery environment should launch quickly and remain responsive on supported ha
 
 ---
 
-# 14. Definition of Done
+# 14. Definition of done
 
 Recovery Center enables complete operating system recovery without requiring command-line knowledge.
 
 ---
 
-# Section 2 — Advanced Recovery & Disaster Response
+# Section 2: advanced recovery & disaster response
 
 ## Recovery USB Creator
 
@@ -194,7 +194,7 @@ Verification is mandatory after creation.
 
 ---
 
-## Recovery Partition
+## Recovery partition
 
 Displays:
 
@@ -208,7 +208,7 @@ Users may recreate the partition if missing.
 
 ---
 
-## Filesystem Repair
+## Filesystem repair
 
 Detects:
 
@@ -221,7 +221,7 @@ Every repair generates a report.
 
 ---
 
-## Partition Recovery
+## Partition recovery
 
 Supports:
 
@@ -234,7 +234,7 @@ No destructive operation occurs without confirmation.
 
 ---
 
-## Driver Rollback
+## Driver rollback
 
 Users may restore previous driver versions.
 
@@ -246,7 +246,7 @@ Rollback includes:
 
 ---
 
-## Update Rollback
+## Update rollback
 
 Rollback supported for:
 
@@ -259,7 +259,7 @@ Rollback integrity is verified before reboot.
 
 ---
 
-## Emergency Mode
+## Emergency mode
 
 Automatically activates during:
 
@@ -273,7 +273,7 @@ Emergency Mode exposes only essential recovery functions.
 
 ---
 
-## Recovery Logs
+## Recovery logs
 
 Logs include:
 
@@ -287,7 +287,7 @@ Logs are exportable.
 
 ---
 
-## Recovery Reports
+## Recovery reports
 
 Export:
 
@@ -313,7 +313,7 @@ Recovery keys are never displayed unless explicitly requested by an authenticate
 
 ---
 
-## Edge Cases
+## Edge cases
 
 Recovery Center handles:
 
@@ -331,7 +331,7 @@ Every failure includes recovery guidance.
 
 ---
 
-## Future Features
+## Future features
 
 - remote recovery
 - encrypted cloud recovery (optional)
@@ -340,7 +340,7 @@ Every failure includes recovery guidance.
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Recovery Center passes when:
 

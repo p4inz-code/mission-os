@@ -1,4 +1,4 @@
-# Mission OS Desktop
+# Mission OS desktop
 
 **Document ID:** MOS-DESKTOP-001
 
@@ -35,7 +35,7 @@ The desktop shall:
 
 ---
 
-# 3. Core Principles
+# 3. Core principles
 
 The desktop experience is built around five principles.
 
@@ -73,7 +73,7 @@ Mission OS provides sensible defaults without restricting customization.
 
 ---
 
-# 4. Desktop Architecture
+# 4. Desktop architecture
 
 The desktop consists of:
 
@@ -95,7 +95,7 @@ Each subsystem should operate independently whenever possible.
 
 ---
 
-# 5. Desktop Modes
+# 5. Desktop modes
 
 Mission OS supports multiple desktop profiles.
 
@@ -151,7 +151,7 @@ Profiles may be switched without reinstalling Mission OS.
 
 ---
 
-# 6. Adaptive Desktop
+# 6. Adaptive desktop
 
 Mission OS automatically adapts to:
 
@@ -167,7 +167,7 @@ The interface should remain consistent while adapting layouts intelligently.
 
 ---
 
-# 7. Desktop Components
+# 7. Desktop components
 
 Visible desktop components include:
 
@@ -186,7 +186,7 @@ Users may enable or disable individual components.
 
 ---
 
-# 8. Session Management
+# 8. Session management
 
 Mission OS automatically remembers:
 
@@ -202,7 +202,7 @@ Session restoration may be disabled by the user.
 
 ---
 
-# 9. Desktop Recovery
+# 9. Desktop recovery
 
 If the desktop shell fails:
 
@@ -216,7 +216,7 @@ System reboot should not be required.
 
 ---
 
-# 10. Performance Requirements
+# 10. Performance requirements
 
 Desktop startup should be fast.
 
@@ -231,7 +231,7 @@ Animations should never reduce usability.
 
 ---
 
-# 11. Accessibility Requirements
+# 11. Accessibility requirements
 
 The desktop shall support:
 
@@ -248,7 +248,7 @@ Accessibility settings should apply consistently across all desktop components.
 
 ---
 
-# 12. Security Requirements
+# 12. Security requirements
 
 The desktop shall:
 
@@ -261,7 +261,7 @@ The desktop shall:
 
 ---
 
-# 13. Privacy Requirements
+# 13. Privacy requirements
 
 The desktop shall:
 
@@ -273,7 +273,7 @@ The desktop shall:
 
 ---
 
-# 14. Acceptance Criteria
+# 14. Acceptance criteria
 
 The desktop is complete when it:
 
@@ -289,7 +289,7 @@ The desktop is complete when it:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 The desktop implementation matches this specification, passes functional, accessibility, performance, privacy and security reviews, and serves as the foundation for every user interaction within Mission OS.
 
@@ -299,7 +299,7 @@ The desktop implementation matches this specification, passes functional, access
 
 ---
 
-# Section 2 — Desktop Interface
+# Section 2: desktop interface
 
 The desktop interface is the primary workspace presented after login.
 
@@ -307,7 +307,7 @@ It shall prioritize clarity, responsiveness, and consistency while minimizing un
 
 ---
 
-# Desktop Layout
+# Desktop layout
 
 The default desktop consists of:
 
@@ -355,7 +355,7 @@ Requirements
 
 ---
 
-# Application Launcher
+# Application launcher
 
 Purpose
 
@@ -375,7 +375,7 @@ The launcher should open within a fraction of a second on supported hardware.
 
 ---
 
-# Universal Search
+# Universal search
 
 The desktop search system indexes:
 
@@ -395,7 +395,7 @@ Searching local content should never require an Internet connection.
 
 ---
 
-# Notification Center
+# Notification center
 
 Notifications are grouped by:
 
@@ -423,7 +423,7 @@ Focus Mode suppresses non-critical notifications.
 
 ---
 
-# Quick Settings
+# Quick settings
 
 Accessible from the taskbar.
 
@@ -447,7 +447,7 @@ Users can reorder, add, or remove tiles.
 
 ---
 
-# System Tray
+# System tray
 
 Displays persistent background services.
 
@@ -466,7 +466,7 @@ Applications should not add tray icons without user consent.
 
 ---
 
-# Desktop Icons
+# Desktop icons
 
 Optional.
 
@@ -482,7 +482,7 @@ Users may disable desktop icons completely.
 
 ---
 
-# Context Menus
+# Context menus
 
 Context menus should:
 
@@ -496,7 +496,7 @@ Dangerous actions should require confirmation.
 
 ---
 
-# Wallpaper System
+# Wallpaper system
 
 Supports:
 
@@ -511,13 +511,13 @@ Animated wallpapers should automatically pause on battery saver mode unless over
 
 ---
 
-# Section 3 — Window & Workspace Management
+# Section 3: window & workspace management
 
 Mission OS provides modern window management optimized for productivity.
 
 ---
 
-# Window Management
+# Window management
 
 Supported operations:
 
@@ -535,7 +535,7 @@ All operations shall be accessible via mouse and keyboard.
 
 ---
 
-# Snap Layouts
+# Snap layouts
 
 Supported layouts include:
 
@@ -550,7 +550,7 @@ Snap previews should appear before placement.
 
 ---
 
-# Virtual Workspaces
+# Virtual workspaces
 
 Workspaces separate tasks without requiring multiple user sessions.
 
@@ -573,7 +573,7 @@ Users may:
 
 ---
 
-# Multi-Monitor Support
+# Multi-Monitor support
 
 Mission OS shall support:
 
@@ -588,7 +588,7 @@ Disconnecting a monitor must not cause window loss.
 
 ---
 
-# Session Restore
+# Session restore
 
 Mission OS remembers:
 
@@ -602,7 +602,7 @@ Users may disable session restoration.
 
 ---
 
-# Desktop Profiles
+# Desktop profiles
 
 Profiles configure:
 
@@ -617,7 +617,7 @@ Switching profiles must not require logout.
 
 ---
 
-# Keyboard Navigation
+# Keyboard navigation
 
 Every desktop function shall support keyboard access.
 
@@ -651,7 +651,7 @@ Gesture support should remain optional.
 
 ---
 
-# Focus Mode
+# Focus mode
 
 Focus Mode temporarily reduces distractions.
 
@@ -666,7 +666,7 @@ Users may schedule Focus Mode.
 
 ---
 
-# Edge Cases
+# Edge cases
 
 The desktop shall gracefully handle:
 
@@ -685,7 +685,7 @@ No user data should be lost.
 
 ---
 
-# Acceptance Criteria
+# Acceptance criteria
 
 Window management is considered complete when:
 
@@ -700,7 +700,7 @@ Window management is considered complete when:
 
 ---
 
-# Section 4 — Widgets, Personalization & User Experience
+# Section 4: widgets, personalization & user experience
 
 Mission OS allows users to personalize their desktop without compromising performance or consistency.
 
@@ -708,7 +708,7 @@ Customization should improve productivity rather than introduce unnecessary comp
 
 ---
 
-# Widget System
+# Widget system
 
 Widgets provide glanceable information.
 
@@ -733,7 +733,7 @@ Future widgets may be installed through Mission Store.
 
 ---
 
-# Widget Requirements
+# Widget requirements
 
 Widgets shall:
 
@@ -789,7 +789,7 @@ without requiring logout.
 
 ---
 
-# Dynamic Appearance
+# Dynamic appearance
 
 Mission OS may optionally adapt:
 
@@ -807,7 +807,7 @@ based on:
 
 ---
 
-# Clipboard Manager
+# Clipboard manager
 
 Mission OS maintains clipboard history.
 
@@ -826,7 +826,7 @@ Passwords copied from supported applications should never be permanently stored.
 
 ---
 
-# Screenshot System
+# Screenshot system
 
 Supports:
 
@@ -851,7 +851,7 @@ Users may immediately:
 
 ---
 
-# Screen Recording
+# Screen recording
 
 Supports:
 
@@ -868,7 +868,7 @@ Recording options:
 
 ---
 
-# Desktop Overview
+# Desktop overview
 
 Mission OS includes an overview mode showing:
 
@@ -881,13 +881,13 @@ Overview should remain smooth even with many windows.
 
 ---
 
-# Section 5 — Reliability, Performance & Technical Requirements
+# Section 5: reliability, performance & technical requirements
 
 Mission OS Desktop shall remain stable under normal and heavy workloads.
 
 ---
 
-# Performance Targets
+# Performance targets
 
 Desktop startup:
 
@@ -915,7 +915,7 @@ Notification display:
 
 ---
 
-# Resource Usage
+# Resource usage
 
 Idle desktop targets:
 
@@ -987,7 +987,7 @@ Indicators must appear whenever:
 
 ---
 
-# Extension Framework
+# Extension framework
 
 Mission OS supports optional desktop extensions.
 
@@ -1017,7 +1017,7 @@ Desktop supports:
 
 ---
 
-# Testing Requirements
+# Testing requirements
 
 Desktop testing includes:
 
@@ -1033,7 +1033,7 @@ Desktop testing includes:
 
 ---
 
-# Acceptance Criteria
+# Acceptance criteria
 
 The desktop specification is accepted when:
 
@@ -1049,7 +1049,7 @@ The desktop specification is accepted when:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 The Mission OS Desktop is complete when implementation conforms to this specification, passes functional, security, accessibility, performance and UX validation, and provides a stable, privacy-first desktop environment suitable for daily professional use.
 

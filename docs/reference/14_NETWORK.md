@@ -1,4 +1,4 @@
-# Mission OS Network
+# Mission OS network
 
 **Document ID:** MOS-NETWORK-001
 
@@ -14,7 +14,7 @@ Its objective is to give users complete control over connectivity while protecti
 
 ---
 
-# 2. Design Principles
+# 2. Design principles
 
 Mission Network follows:
 
@@ -62,7 +62,7 @@ Displays:
 
 ---
 
-# 5. Supported Connections
+# 5. Supported connections
 
 Supports:
 
@@ -76,7 +76,7 @@ Supports:
 
 ---
 
-# 6. Wi-Fi Management
+# 6. Wi-Fi management
 
 Displays:
 
@@ -165,15 +165,15 @@ Supports:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Mission Network securely manages every supported network connection.
 
 ---
 
-# Section 2 — Advanced Networking
+# Section 2: advanced networking
 
-## Network Profiles
+## Network profiles
 
 Profiles store:
 
@@ -211,7 +211,7 @@ Live statistics:
 
 ---
 
-## Network Sharing
+## Network sharing
 
 Supports:
 
@@ -257,7 +257,7 @@ Targets:
 
 ---
 
-## Edge Cases
+## Edge cases
 
 Handles:
 
@@ -271,7 +271,7 @@ Handles:
 
 ---
 
-## Future Features
+## Future features
 
 - mesh networking
 - enterprise profiles
@@ -280,7 +280,7 @@ Handles:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Mission Network passes when:
 

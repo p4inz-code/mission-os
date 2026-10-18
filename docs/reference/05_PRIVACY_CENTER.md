@@ -1,4 +1,4 @@
-# Mission OS Privacy Center
+# Mission OS privacy center
 
 **Document ID:** MOS-PRIVACY-001
 
@@ -22,7 +22,7 @@ Mission OS follows a **privacy-by-default** philosophy.
 
 ---
 
-# 2. Core Principles
+# 2. Core principles
 
 - Privacy by Default
 - Explicit Consent
@@ -54,7 +54,7 @@ Displays:
 
 ---
 
-# 4. Privacy Score
+# 4. Privacy score
 
 Calculated from:
 
@@ -83,7 +83,7 @@ Every deduction explains:
 
 ---
 
-# 5. Permission Manager
+# 5. Permission manager
 
 Applications request permission for:
 
@@ -111,7 +111,7 @@ Users may:
 
 ---
 
-# 6. Live Indicators
+# 6. Live indicators
 
 Persistent indicators appear whenever:
 
@@ -124,7 +124,7 @@ Selecting the indicator shows the responsible application.
 
 ---
 
-# 7. Privacy Timeline
+# 7. Privacy timeline
 
 Shows:
 
@@ -141,7 +141,7 @@ Timeline is searchable.
 
 ---
 
-# 8. Privacy Reports
+# 8. Privacy reports
 
 Export:
 
@@ -159,7 +159,7 @@ Contains:
 
 ---
 
-# 9. Data Management
+# 9. Data management
 
 Users can clear:
 
@@ -174,7 +174,7 @@ Users can clear:
 
 ---
 
-# 10. Privacy Profiles
+# 10. Privacy profiles
 
 Profiles:
 
@@ -187,7 +187,7 @@ Profiles change only privacy-related settings.
 
 ---
 
-# 11. Privacy Recommendations
+# 11. Privacy recommendations
 
 Mission OS suggests:
 
@@ -236,7 +236,7 @@ High contrast
 
 ---
 
-# 15. Acceptance Criteria
+# 15. Acceptance criteria
 
 - every permission visible
 - every permission reversible
@@ -247,13 +247,13 @@ High contrast
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Privacy Center becomes the single trusted interface for all privacy management inside Mission OS.
 
 ---
 
-# Section 2 — Advanced Privacy Controls
+# Section 2: advanced privacy controls
 
 ## Telemetry
 
@@ -265,7 +265,7 @@ Optional diagnostics require explicit opt-in.
 
 ---
 
-## Network Privacy
+## Network privacy
 
 Configure:
 
@@ -291,7 +291,7 @@ History may be:
 
 ---
 
-## Clipboard Privacy
+## Clipboard privacy
 
 Options:
 
@@ -303,7 +303,7 @@ Options:
 
 ---
 
-## File Privacy
+## File privacy
 
 Track:
 
@@ -315,7 +315,7 @@ Users may erase all history.
 
 ---
 
-## Search Privacy
+## Search privacy
 
 Configure:
 
@@ -327,7 +327,7 @@ Web search disabled by default.
 
 ---
 
-## Browser Integration
+## Browser integration
 
 Supported browsers may integrate securely.
 
@@ -340,7 +340,7 @@ Users control:
 
 ---
 
-## Device Permissions
+## Device permissions
 
 Per-device permissions:
 
@@ -352,7 +352,7 @@ Per-device permissions:
 
 ---
 
-## Background Activity
+## Background activity
 
 Users see:
 
@@ -365,7 +365,7 @@ Applications can be suspended individually.
 
 ---
 
-## Data Export
+## Data export
 
 Export:
 
@@ -378,7 +378,7 @@ Import supported.
 
 ---
 
-## Privacy Reset
+## Privacy reset
 
 Reset:
 
@@ -389,7 +389,7 @@ Reset:
 
 ---
 
-## Security Integration
+## Security integration
 
 Privacy Center integrates with:
 
@@ -402,7 +402,7 @@ without duplicating functionality.
 
 ---
 
-## Future Features
+## Future features
 
 - anonymous network profile
 - hardware privacy switches

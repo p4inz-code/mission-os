@@ -1,4 +1,4 @@
-# Release Strategy
+# Release strategy
 
 ## Development
 
@@ -25,7 +25,7 @@ Purpose
 
 ---
 
-## Release Candidate
+## Release candidate
 
 Purpose
 
@@ -55,7 +55,7 @@ Reserved for
 
 ---
 
-## Support Policy
+## Support policy
 
 Development → No guarantees
 

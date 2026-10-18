@@ -1,4 +1,4 @@
-# Mission OS Error Handling
+# Mission OS error handling
 
 **Document ID:** MOS-DEV-005
 
@@ -22,7 +22,7 @@ Errors should be:
 
 # Categories
 
-## User Errors
+## User errors
 
 Examples:
 
@@ -34,7 +34,7 @@ Provide clear guidance for resolution.
 
 ---
 
-## Application Errors
+## Application errors
 
 Examples:
 
@@ -46,7 +46,7 @@ Log internally and expose a user-friendly message.
 
 ---
 
-## System Errors
+## System errors
 
 Examples:
 
@@ -58,7 +58,7 @@ Attempt recovery before notifying the user.
 
 ---
 
-# Error Messages
+# Error messages
 
 Every error message should include:
 
@@ -88,6 +88,6 @@ Where possible, applications should:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Errors are understandable, recoverable, and consistently logged.

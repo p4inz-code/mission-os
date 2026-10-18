@@ -1,4 +1,4 @@
-# Mission OS Coding Standards
+# Mission OS coding standards
 
 **Document ID:** MOS-DEV-001
 
@@ -8,7 +8,7 @@ Defines the mandatory coding standards for every Mission OS component.
 
 ---
 
-# Core Principles
+# Core principles
 
 - Readability over cleverness.
 - Security before convenience.
@@ -18,7 +18,7 @@ Defines the mandatory coding standards for every Mission OS component.
 
 ---
 
-# General Rules
+# General rules
 
 - Use descriptive names.
 - Keep functions focused on a single responsibility.
@@ -50,7 +50,7 @@ Every public API must include:
 
 ---
 
-# Error Handling
+# Error handling
 
 Never silently ignore errors.
 
@@ -73,7 +73,7 @@ Never:
 
 ---
 
-# Code Review
+# Code review
 
 Every merge should verify:
 
@@ -85,6 +85,6 @@ Every merge should verify:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Code is considered complete only after passing review, testing, formatting, and documentation requirements.

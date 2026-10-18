@@ -1,4 +1,4 @@
-# Mission OS Settings
+# Mission OS settings
 
 **Document ID:** MOS-SETTINGS-001
 
@@ -20,7 +20,7 @@ Settings configures.
 
 ---
 
-# 2. Design Goals
+# 2. Design goals
 
 Settings shall be:
 
@@ -61,7 +61,7 @@ Categories:
 
 ---
 
-# 4. Universal Search
+# 4. Universal search
 
 Search indexes:
 
@@ -85,7 +85,7 @@ Returns:
 
 ---
 
-# 5. Settings Pages
+# 5. Settings pages
 
 Every page contains:
 
@@ -103,7 +103,7 @@ Documentation
 
 ---
 
-# 6. User Experience
+# 6. User experience
 
 Changes apply immediately whenever safe.
 
@@ -128,7 +128,7 @@ Profiles support migration between devices.
 
 ---
 
-# 8. Configuration Validation
+# 8. Configuration validation
 
 Every input validates before saving.
 
@@ -194,13 +194,13 @@ Logical tab order
 
 ---
 
-# 14. Definition of Done
+# 14. Definition of done
 
 Settings exposes every configurable operating system feature consistently without duplication.
 
 ---
 
-# Section 2 — Individual Categories
+# Section 2: individual categories
 
 ## System
 
@@ -538,7 +538,7 @@ System Report
 
 ---
 
-# Acceptance Criteria
+# Acceptance criteria
 
 Every configurable feature exists in exactly one location.
 
@@ -552,7 +552,7 @@ Configuration remains valid after updates.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Mission OS Settings provides a complete, discoverable, validated and secure configuration interface for every operating system capability.
 

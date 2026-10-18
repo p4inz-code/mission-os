@@ -1,4 +1,4 @@
-# Mission OS Installer Wireframe
+# Mission OS installer wireframe
 
 **Document ID:** MOS-WF-001
 
@@ -48,7 +48,7 @@ Back / Continue Buttons
 
 ---
 
-# UX Rules
+# UX rules
 
 - Linear workflow
 - Resume supported

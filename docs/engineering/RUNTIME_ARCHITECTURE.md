@@ -1,4 +1,4 @@
-# Mission OS Runtime Architecture
+# Mission OS runtime architecture
 
 **Document ID:** MOS-ENG-RUNTIME-001
 **Version:** 1.0
@@ -13,9 +13,9 @@ This document defines the runtime architecture of Mission OS, including boot seq
 
 ---
 
-## 2. Boot Sequence
+## 2. Boot sequence
 
-### 2.1 Complete Boot Flow
+### 2.1 Complete boot flow
 
 ```
 Firmware (UEFI)
@@ -58,16 +58,16 @@ init (systemd)
 └──────────────────────────────────────────────────────┘
 ```
 
-### 2.2 Boot Verification
+### 2.2 Boot verification
 
 At each boot stage:
-1. **UEFI**: Secure Boot validates bootloader signature
-2. **Bootloader**: Signed kernel + initramfs verified
-3. **initramfs**: LUKS volume opened (authenticated)
-4. **systemd**: Service integrity checked (IMA/EVM — future)
-5. **Desktop**: Mission services verify their own configuration integrity
+1. UEFI: Secure Boot validates bootloader signature
+2. Bootloader: Signed kernel + initramfs verified
+3. initramfs: LUKS volume opened (authenticated)
+4. systemd: Service integrity checked (IMA/EVM, future)
+5. Desktop: Mission services verify their own configuration integrity
 
-### 2.3 Boot Failure Handling
+### 2.3 Boot failure handling
 
 | Failure Point | Behavior |
 |--------------|----------|
@@ -79,7 +79,7 @@ At each boot stage:
 | System service crash | systemd restart. If persistent: degrade functionality |
 | Display manager crash | Restart DM. If persistent: fallback to console |
 
-### 2.4 Boot Performance Targets
+### 2.4 Boot performance targets
 
 | Stage | Target |
 |-------|--------|
@@ -90,13 +90,13 @@ At each boot stage:
 | System services | < 5 seconds |
 | Display manager | < 3 seconds |
 | Desktop ready | < 5 seconds |
-| **Total cold boot (SSD)** | **< 30 seconds** |
+| Total cold boot (SSD) | < 30 seconds |
 
 ---
 
-## 3. Startup Sequence Detail
+## 3. Startup sequence detail
 
-### 3.1 System Service Startup Order
+### 3.1 System service startup order
 
 ```
 1. systemd-journald           (log always first)
@@ -112,7 +112,7 @@ At each boot stage:
 
 Dependencies are declared in systemd unit files. Services start in parallel where independent.
 
-### 3.2 User Service Startup Order
+### 3.2 User service startup order
 
 ```
 1. mission-sessiond           (session state)
@@ -125,9 +125,9 @@ Dependencies are declared in systemd unit files. Services start in parallel wher
 
 ---
 
-## 4. Session Lifecycle
+## 4. Session lifecycle
 
-### 4.1 Login Flow
+### 4.1 Login flow
 
 ```
 Display Manager (SDDM)
@@ -149,7 +149,7 @@ Desktop ready
     │ Workspaces restored, applications launching
 ```
 
-### 4.2 Session State Persistence
+### 4.2 Session state persistence
 
 Saved on logout/lock:
 - Open applications and windows
@@ -177,7 +177,7 @@ Desktop restored to pre-lock state
 
 ---
 
-## 5. Service Management
+## 5. Service management
 
 ### 5.1 systemd Integration
 
@@ -209,7 +209,7 @@ RestartSec=5s
 WantedBy=multi-user.target
 ```
 
-### 5.2 Service Recovery Policies
+### 5.2 Service recovery policies
 
 | Service Type | systemd Restart Policy | Max Restarts |
 |-------------|----------------------|--------------|
@@ -218,7 +218,7 @@ WantedBy=multi-user.target
 | Optional (driverd) | on-failure | 3 in 30s |
 | User services | on-failure | 3 in 30s |
 
-### 5.3 Resource Limits
+### 5.3 Resource limits
 
 systemd resource control for all Mission services:
 
@@ -231,9 +231,9 @@ systemd resource control for all Mission services:
 
 ---
 
-## 6. Desktop Session Integration
+## 6. Desktop session integration
 
-### 6.1 KDE Plasma Integration
+### 6.1 KDE plasma integration
 
 Mission OS session management:
 - Uses `startplasma-wayland` as session entry
@@ -241,16 +241,16 @@ Mission OS session management:
 - Custom Mission OS QML components loaded via Plasma plugin system
 - Mission OS wallpaper and theme applied on session start
 
-### 6.2 Mission OS Plasma Extensions
+### 6.2 Mission OS plasma extensions
 
-- `org.mission.plasma.panel` — Mission OS panel layout
-- `org.mission.plasma.quick-settings` — Quick settings menu
-- `org.mission.plasma.notifications` — Notification center
-- `org.mission.plasma.launcher` — Application launcher
+- `org.mission.plasma.panel`: Mission OS panel layout
+- `org.mission.plasma.quick-settings`: Quick settings menu
+- `org.mission.plasma.notifications`: Notification center
+- `org.mission.plasma.launcher`: Application launcher
 
 ---
 
-## 7. Power Management
+## 7. Power management
 
 ### 7.1 Suspend/Resume
 
@@ -281,18 +281,18 @@ Hibernate to disk:
 - Enabled by default if sufficient swap detected
 - Lock screen required before hibernate
 
-### 7.3 Power Failure Recovery
+### 7.3 Power failure recovery
 
 On power failure during:
-- **Active operation (not writing):** Resume on next boot. Temporary data may be lost.
-- **Active write:** Filesystem journal recovers. Application state may be lost.
-- **Update:** Update state machine resumes from last safe step.
+- Active operation (not writing): Resume on next boot. Temporary data may be lost.
+- Active write: Filesystem journal recovers. Application state may be lost.
+- Update: Update state machine resumes from last safe step.
 
 ---
 
-## 8. Software Update at Runtime
+## 8. Software update at runtime
 
-### 8.1 Online Updates
+### 8.1 Online updates
 
 Updates require:
 1. User approval (unless automatic security updates enabled)
@@ -301,7 +301,7 @@ Updates require:
 4. Packages downloaded and verified
 5. Applied (may require restart)
 
-### 8.2 Offline Updates
+### 8.2 Offline updates
 
 For kernel/core updates requiring restart:
 - update staged to dedicated partition
@@ -311,7 +311,7 @@ For kernel/core updates requiring restart:
 
 ---
 
-## 9. Shutdown Sequence
+## 9. Shutdown sequence
 
 ```
 User initiates shutdown
@@ -345,17 +345,17 @@ Power off
 
 ---
 
-## 10. Environment Detection
+## 10. Environment detection
 
-### 10.1 Runtime Environment
+### 10.1 Runtime environment
 
 Mission OS detects and adapts to:
-- **Installed mode:** Full feature set
-- **Portable mode (Live USB):** Reduced write cycles, persistence enabled if configured
-- **Recovery environment:** Minimal UI, repair tools
-- **Virtual machine:** Optimized display drivers, guest tools
+- Installed mode: Full feature set
+- Portable mode (Live USB): Reduced write cycles, persistence enabled if configured
+- Recovery environment: Minimal UI, repair tools
+- Virtual machine: Optimized display drivers, guest tools
 
-### 10.2 Hardware Profiles
+### 10.2 Hardware profiles
 
 Hardware detection at boot configures:
 - Display (resolution, scaling, refresh rate)

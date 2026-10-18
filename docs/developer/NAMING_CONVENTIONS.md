@@ -1,4 +1,4 @@
-# Mission OS Naming Conventions
+# Mission OS naming conventions
 
 **Document ID:** MOS-DEV-002
 
@@ -122,7 +122,7 @@ mission-store
 
 ---
 
-# UI Components
+# UI components
 
 Names should describe purpose.
 
@@ -136,6 +136,6 @@ SidebarNavigation
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Every identifier should be understandable without requiring surrounding context.

@@ -1,4 +1,4 @@
-# Mission OS Data Architecture
+# Mission OS data architecture
 
 **Document ID:** MOS-ENG-DATA-001
 **Version:** 1.0
@@ -13,7 +13,7 @@ This document defines the data architecture of Mission OS, covering data integri
 
 ---
 
-## 2. Data Categories
+## 2. Data categories
 
 ### 2.1 Data Classification
 
@@ -31,9 +31,9 @@ This document defines the data architecture of Mission OS, covering data integri
 
 ---
 
-## 3. Data Integrity Requirements
+## 3. Data integrity requirements
 
-### 3.1 Atomic Write Pattern
+### 3.1 Atomic write pattern
 
 Every persistent state change MUST follow this atomic pattern:
 
@@ -46,7 +46,7 @@ Every persistent state change MUST follow this atomic pattern:
 
 This prevents partial writes from disk-full or power-loss conditions.
 
-### 3.2 Checksum Verification
+### 3.2 Checksum verification
 
 Critical data files carry embedded checksums:
 
@@ -55,7 +55,7 @@ Critical data files carry embedded checksums:
 - Snapshots: Merkle tree of all contained files
 - Packages: SHA-256 checksum in manifest
 
-### 3.3 Corruption Detection
+### 3.3 Corruption detection
 
 - Configuration files: Format validation on read
 - User files: Silent (Mission OS does not scan user files for corruption)
@@ -64,9 +64,9 @@ Critical data files carry embedded checksums:
 
 ---
 
-## 4. Data Recovery Architecture
+## 4. Data recovery architecture
 
-### 4.1 Recovery Flow
+### 4.1 Recovery flow
 
 The frozen Recovery-flow model **Choose → Preview → Snapshot → PoNR → Apply → Verify** is the canonical workflow for all destructive operations.
 
@@ -90,7 +90,7 @@ The frozen Recovery-flow model **Choose → Preview → Snapshot → PoNR → Ap
 **Choose:** User selects operation (update, driver install, setting change, etc.)
 **Preview:** System shows what will change
 **Snapshot:** State saved before any modification
-**PoNR:** Point of No Return — explicit user confirmation
+**PoNR:** Point of No Return, explicit user confirmation
 **Apply:** Operation executed
 **Verify:** Automatic verification that the operation succeeded
 **Rollback:** On failure, snapshot is restored atomically
@@ -133,9 +133,9 @@ Rollback integrity verification:
 
 ---
 
-## 5. Backup Architecture
+## 5. Backup architecture
 
-### 5.1 Backup Types
+### 5.1 Backup types
 
 | Type | Contents | Frequency |
 |------|----------|-----------|
@@ -144,14 +144,14 @@ Rollback integrity verification:
 | System Snapshot | System state (automatic) | Before each system change |
 | Application Backup | Application data | Application-defined |
 
-### 5.2 Backup Targets
+### 5.2 Backup targets
 
 - External drive (USB, SSD)
 - Network share (SMB, NFS, SFTP)
 - Recovery media
 - Encrypted backup file (portable)
 
-### 5.3 Backup Verification
+### 5.3 Backup verification
 
 Every backup includes:
 - Integrity verification after creation
@@ -160,9 +160,9 @@ Every backup includes:
 
 ---
 
-## 6. Update Safety
+## 6. Update safety
 
-### 6.1 Update Integrity
+### 6.1 Update integrity
 
 Every update follows the atomic flow:
 
@@ -176,7 +176,7 @@ Every update follows the atomic flow:
 7. Cleanup
 ```
 
-### 6.2 Update Failure Recovery
+### 6.2 Update failure recovery
 
 If update fails:
 1. System snapshot is restored automatically
@@ -185,7 +185,7 @@ If update fails:
 4. Diagnostic log generated
 5. User notified of failure cause
 
-### 6.3 Disk-Full Protection
+### 6.3 Disk-Full protection
 
 Before update:
 1. Check available space against estimated requirement + 10% buffer
@@ -195,9 +195,9 @@ Before update:
 
 ---
 
-## 7. Power Loss Protection
+## 7. Power loss protection
 
-### 7.1 Critical Operations
+### 7.1 Critical operations
 
 During critical operations (update, driver install, backup, system change):
 1. State machine persists current step to disk before each operation
@@ -205,7 +205,7 @@ During critical operations (update, driver install, backup, system change):
 3. Idempotent operations restart from beginning
 4. Non-idempotent operations skip completed steps
 
-### 7.2 Filesystem Protection
+### 7.2 Filesystem protection
 
 - Journaling filesystem (ext4 or btrfs) for all system partitions
 - Atomic rename for all configuration writes
@@ -213,9 +213,9 @@ During critical operations (update, driver install, backup, system change):
 
 ---
 
-## 8. Version Migration
+## 8. Version migration
 
-### 8.1 Migration Rules
+### 8.1 Migration rules
 
 - Every release includes a migration script for configuration and data
 - Migration scripts are versioned (named by source version → target version)
@@ -223,7 +223,7 @@ During critical operations (update, driver install, backup, system change):
 - Migration failure triggers rollback to pre-migration state
 - Migration logs detail every change
 
-### 8.2 Configuration Migration
+### 8.2 Configuration migration
 
 - Configuration files include version field
 - Migration script reads version field and applies deltas
@@ -234,7 +234,7 @@ During critical operations (update, driver install, backup, system change):
 
 ## 9. Import/Export
 
-### 9.1 Configuration Export
+### 9.1 Configuration export
 
 Exportable items:
 - Workspace profiles
@@ -246,7 +246,7 @@ Exportable items:
 
 Format: JSON or TOML (signed optional)
 
-### 9.2 Configuration Import
+### 9.2 Configuration import
 
 Import validation:
 - Format validation
@@ -257,16 +257,16 @@ Import validation:
 
 ---
 
-## 10. Data Deletion
+## 10. Data deletion
 
-### 10.1 Secure Deletion
+### 10.1 Secure deletion
 
 - Trash: Standard delete (recoverable)
 - Permanent delete: Overwrite with zeros (single pass) + unlink
 - Secure delete: Overwrite with random data + zeros + unlink (for SSDs: TRIM after overwrite)
 - Full disk sanitization: ATA Secure Erase (SSD) / random overwrite (HDD)
 
-### 10.2 Factory Reset
+### 10.2 Factory reset
 
 | Option | Data Removed | Data Preserved |
 |--------|-------------|----------------|
@@ -278,22 +278,22 @@ Each option explains consequences before execution.
 
 ---
 
-## 11. Crash Recovery
+## 11. Crash recovery
 
-### 11.1 Application Crash
+### 11.1 Application crash
 
 - Mission OS applications save state periodically to crash-recovery files
 - On restart: user is offered to restore previous session
 - Crash recovery files are self-expiring (configurable TTL)
 
-### 11.2 System Crash
+### 11.2 System crash
 
 - Boot integrity check on next startup
 - If corruption detected: offer Recovery Center
 - Automatic fsck on filesystem errors
 - systemd-journald preserves logs across crashes
 
-### 11.3 Desktop Shell Crash
+### 11.3 Desktop shell crash
 
 - Shell restart preserves running applications
 - Application windows re-managed by new shell instance
@@ -301,7 +301,7 @@ Each option explains consequences before execution.
 
 ---
 
-## 12. Safe Mode
+## 12. Safe mode
 
 Safe Mode:
 - Loads with failsafe display settings
@@ -312,9 +312,9 @@ Safe Mode:
 
 ---
 
-## 13. Data Safety Rules Summary
+## 13. Data safety rules summary
 
-1. **User data must never be lost.**
+1. User data must never be lost.
 2. Every destructive operation must create a recoverable state before proceeding.
 3. Atomic writes prevent partial file corruption.
 4. Snapshots provide system-level rollback.

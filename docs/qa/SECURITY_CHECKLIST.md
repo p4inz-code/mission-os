@@ -1,4 +1,4 @@
-# Security Checklist
+# Security checklist
 
 ## Authentication
 
@@ -7,7 +7,7 @@
 - [ ] Privilege escalation prevented.
 - [ ] Session handling validated.
 
-## Data Protection
+## Data protection
 
 - [ ] Sensitive data encrypted.
 - [ ] Secrets not stored in source.
@@ -42,7 +42,7 @@
 - [ ] Output sanitization complete.
 - [ ] Dependency audit passed.
 
-## Supply Chain
+## Supply chain
 
 - [ ] Dependencies reviewed.
 - [ ] Licenses verified.
@@ -57,6 +57,6 @@
 
 Status:
 
-PASS ☐
+PASS
 
-FAIL ☐
+FAIL

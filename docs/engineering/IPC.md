@@ -17,7 +17,7 @@ Defines Inter-Process Communication.
 
 ---
 
-# Allowed Methods
+# Allowed methods
 
 - Local sockets
 - Named pipes
@@ -33,6 +33,6 @@ Defines Inter-Process Communication.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Processes communicate securely with minimal coupling.

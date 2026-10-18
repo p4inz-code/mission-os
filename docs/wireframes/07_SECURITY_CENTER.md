@@ -1,4 +1,4 @@
-# Security Center Wireframe
+# Security center wireframe
 
 **Document ID:** MOS-WF-007
 
@@ -35,7 +35,7 @@ Security Events
 
 ---
 
-# Dashboard Sections
+# Dashboard sections
 
 - Security Score
 - Firewall
@@ -68,7 +68,7 @@ Security Events
 
 ---
 
-# UX Rules
+# UX rules
 
 Critical actions require confirmation.
 

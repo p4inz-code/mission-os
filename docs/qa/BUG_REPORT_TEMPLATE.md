@@ -1,4 +1,4 @@
-# Bug Report
+# Bug report
 
 ## Summary
 
@@ -19,7 +19,7 @@ Short description of the issue.
 
 ---
 
-## Steps to Reproduce
+## Steps to reproduce
 
 1.
 2.
@@ -27,13 +27,13 @@ Short description of the issue.
 
 ---
 
-## Expected Behavior
+## Expected behavior
 
 Describe the expected result.
 
 ---
 
-## Actual Behavior
+## Actual behavior
 
 Describe what actually happened.
 
@@ -69,7 +69,7 @@ Attach screenshots if applicable.
 
 ---
 
-## Additional Notes
+## Additional notes
 
 Optional.
 

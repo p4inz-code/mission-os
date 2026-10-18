@@ -1,4 +1,4 @@
-# Accessibility Wireframe
+# Accessibility wireframe
 
 **Document ID:** MOS-WF-014
 
@@ -66,7 +66,7 @@ Cognitive
 
 ---
 
-# UX Rules
+# UX rules
 
 Accessibility settings should apply immediately where possible and provide a live preview before committing major visual changes.
 

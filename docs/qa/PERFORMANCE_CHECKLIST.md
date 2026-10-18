@@ -1,4 +1,4 @@
-# Performance Checklist
+# Performance checklist
 
 ## Startup
 
@@ -7,7 +7,7 @@
 - [ ] Application startup acceptable.
 - [ ] Login time acceptable.
 
-## Resource Usage
+## Resource usage
 
 - [ ] CPU usage acceptable.
 - [ ] RAM usage acceptable.
@@ -27,7 +27,7 @@
 - [ ] Cache behavior verified.
 - [ ] Temporary storage cleaned.
 
-## Background Tasks
+## Background tasks
 
 - [ ] Background services optimized.
 - [ ] Idle resource usage acceptable.
@@ -48,6 +48,6 @@
 
 Status:
 
-PASS ☐
+PASS
 
-FAIL ☐
+FAIL

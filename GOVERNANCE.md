@@ -2,7 +2,7 @@
 
 Mission OS is currently maintained by the core project maintainer.
 
-## Decision Making
+## Decision making
 
 Architecture decisions
 Design decisions

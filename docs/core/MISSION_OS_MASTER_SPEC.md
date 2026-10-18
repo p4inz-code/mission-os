@@ -1,4 +1,4 @@
-# Mission OS Master Specification
+# Mission OS master specification
 
 **Document ID:** MOS-SPEC-001  
 **Status:** Draft v1.0  
@@ -22,7 +22,7 @@ Mission OS is not intended to compete by adding unnecessary features. Instead, i
 
 ---
 
-# Mission Statement
+# Mission statement
 
 Build a portable operating system that people can trust with their work, privacy, and digital lives.
 
@@ -51,11 +51,11 @@ Mission OS measures success through user trust rather than feature count.
 
 ---
 
-# Core Objectives
+# Core objectives
 
 Mission OS is built around several long-term objectives.
 
-## 1. Privacy by Default
+## 1. Privacy by default
 
 Privacy should never require advanced technical knowledge.
 
@@ -65,7 +65,7 @@ Telemetry should never exist without explicit user consent.
 
 ---
 
-## 2. Security by Design
+## 2. Security by design
 
 Security must be integrated into every layer of the operating system rather than treated as optional software.
 
@@ -127,7 +127,7 @@ Security should never require unnecessary complexity.
 
 ---
 
-# Design Philosophy
+# Design philosophy
 
 Mission OS follows several guiding principles.
 
@@ -161,7 +161,7 @@ Error messages should educate rather than confuse.
 
 ---
 
-## Human-Centered Engineering
+## Human-Centered engineering
 
 Technology exists to assist people.
 
@@ -171,7 +171,7 @@ Advanced controls remain available without overwhelming first-time users.
 
 ---
 
-## Long-Term Maintainability
+## Long-Term maintainability
 
 Engineering decisions should favor solutions that remain understandable years later.
 
@@ -179,7 +179,7 @@ Readability, documentation, testing, and reproducibility are considered first-cl
 
 ---
 
-# Target Audience
+# Target audience
 
 Mission OS is designed for users who value:
 
@@ -221,7 +221,7 @@ The project focuses on trust, quality, portability, and user experience.
 
 ---
 
-# Project Values
+# Project values
 
 Every contribution should reinforce these values.
 
@@ -238,7 +238,7 @@ Every contribution should reinforce these values.
 
 ---
 
-# Relationship to Other Projects
+# Relationship to other projects
 
 Mission OS is inspired by many excellent open-source projects while maintaining its own identity.
 
@@ -252,7 +252,7 @@ It intentionally avoids unnecessary fragmentation and favors upstream collaborat
 
 ---
 
-# System Architecture Overview
+# System architecture overview
 
 Mission OS is designed using a modular architecture where each major subsystem has clearly defined responsibilities.
 
@@ -276,7 +276,7 @@ This separation improves maintainability, reduces unintended side effects, and s
 
 ---
 
-# Distribution Base
+# Distribution base
 
 Mission OS is built upon Debian Stable.
 
@@ -293,7 +293,7 @@ Whenever possible:
 
 ---
 
-# Desktop Environment
+# Desktop environment
 
 Mission OS ships with KDE Plasma as its primary desktop environment.
 
@@ -310,7 +310,7 @@ Mission OS applies its own design language, defaults, themes, workflows, and con
 
 ---
 
-# Portability Model
+# Portability model
 
 Portability is a defining characteristic of Mission OS.
 
@@ -328,7 +328,7 @@ The project should minimize hardware-specific assumptions whenever practical.
 
 ---
 
-# Workspace Philosophy
+# Workspace philosophy
 
 Every user interacts with Mission OS through a workspace.
 
@@ -349,7 +349,7 @@ Users should be able to recreate or migrate their preferred environment with min
 
 ---
 
-# Security Model Summary
+# Security model summary
 
 Security is implemented as a layered system rather than a single feature.
 
@@ -371,7 +371,7 @@ No single protection should be relied upon exclusively.
 
 ---
 
-# Privacy Model Summary
+# Privacy model summary
 
 Mission OS adopts privacy as a default design requirement.
 
@@ -396,7 +396,7 @@ Users should always understand:
 
 ---
 
-# Reliability Principles
+# Reliability principles
 
 Mission OS assumes that hardware failures, software bugs, and user mistakes are inevitable.
 
@@ -417,7 +417,7 @@ Every recoverable problem should provide users with a documented recovery path.
 
 ---
 
-# Error Handling Philosophy
+# Error handling philosophy
 
 Mission OS rejects cryptic error reporting.
 
@@ -439,7 +439,7 @@ A clear description of the impact.
 
 Actionable recovery steps ordered from simplest to most advanced.
 
-## Additional Information
+## Additional information
 
 Optional technical details for advanced users.
 
@@ -449,7 +449,7 @@ The operating system should never intentionally leave users without guidance.
 
 ---
 
-# Recovery Philosophy
+# Recovery philosophy
 
 Recovery is considered a first-class operating system capability.
 
@@ -471,7 +471,7 @@ Reinstallation should be considered a last resort rather than a standard solutio
 
 ---
 
-# Update Philosophy
+# Update philosophy
 
 Updates should be:
 
@@ -492,7 +492,7 @@ Users should understand:
 
 ---
 
-# Documentation Philosophy
+# Documentation philosophy
 
 Documentation is treated as a core feature of Mission OS.
 
@@ -515,7 +515,7 @@ The repository itself should serve as the project's primary knowledge base.
 
 ---
 
-# User Experience Principles
+# User experience principles
 
 Mission OS is designed around confidence rather than complexity.
 
@@ -533,7 +533,7 @@ Core UX principles include:
 
 ---
 
-# Installation Philosophy
+# Installation philosophy
 
 Installing Mission OS should be simple, predictable, and welcoming.
 
@@ -551,7 +551,7 @@ Technical terminology should always include plain-language explanations.
 
 ---
 
-# Hardware Compatibility
+# Hardware compatibility
 
 Mission OS aims to maximize compatibility across supported hardware.
 
@@ -594,7 +594,7 @@ Accessibility should be evaluated throughout development rather than added after
 
 ---
 
-# Performance Goals
+# Performance goals
 
 Mission OS should remain responsive on supported hardware.
 
@@ -611,7 +611,7 @@ Performance improvements should never compromise security or reliability without
 
 ---
 
-# Mission Applications
+# Mission applications
 
 Mission OS includes a collection of integrated applications designed specifically for the operating system.
 
@@ -636,7 +636,7 @@ Each application should:
 
 ---
 
-# Design Language
+# Design language
 
 Mission OS follows a unified design language.
 
@@ -656,7 +656,7 @@ Visual consistency is considered part of the operating system's reliability.
 
 ---
 
-# Open Source Philosophy
+# Open source philosophy
 
 Mission OS is developed as an open-source project.
 
@@ -674,7 +674,7 @@ Community contributions should improve quality rather than increase unnecessary 
 
 ---
 
-# Quality Standards
+# Quality standards
 
 Mission OS adopts high engineering standards.
 
@@ -691,7 +691,7 @@ Every accepted contribution should improve the project in measurable ways.
 
 ---
 
-# Release Philosophy
+# Release philosophy
 
 Mission OS favors quality over release frequency.
 
@@ -711,7 +711,7 @@ No release should knowingly compromise user trust.
 
 ---
 
-# Long-Term Vision
+# Long-Term vision
 
 Mission OS seeks to become a trusted operating system recognized for:
 
@@ -727,7 +727,7 @@ Success is measured not by download counts but by the confidence users place in 
 
 ---
 
-# Document Relationships
+# Document relationships
 
 This specification serves as the entry point for the Mission OS documentation.
 
@@ -746,7 +746,7 @@ Additional architectural, security, privacy, development, testing, governance, a
 
 ---
 
-# Living Document
+# Living document
 
 This document is intentionally maintained as a living specification.
 

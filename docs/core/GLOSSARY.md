@@ -15,7 +15,7 @@ Future documentation should reference these definitions whenever applicable.
 
 ---
 
-# Core Terms
+# Core terms
 
 ## Mission OS
 
@@ -31,13 +31,13 @@ Whenever possible, workspaces should remain portable across compatible systems.
 
 ---
 
-## Portable Mode
+## Portable mode
 
 Running Mission OS directly from removable media without requiring permanent installation.
 
 ---
 
-## Installed Mode
+## Installed mode
 
 Mission OS installed permanently onto internal storage.
 
@@ -63,7 +63,7 @@ Examples:
 
 ---
 
-## Mission Applications
+## Mission applications
 
 Applications developed specifically for Mission OS.
 
@@ -80,13 +80,13 @@ Examples include:
 
 ---
 
-## Mission Hub
+## Mission hub
 
 The central application used to discover, manage, and access Mission OS functionality.
 
 ---
 
-## Recovery Environment
+## Recovery environment
 
 A dedicated environment used for diagnostics, repair, rollback, and system recovery.
 
@@ -94,7 +94,7 @@ It should remain available even when the primary operating environment cannot bo
 
 ---
 
-## Recovery Point
+## Recovery point
 
 A recoverable system state created before significant system changes.
 
@@ -108,43 +108,43 @@ The process of restoring a previous known-good system state.
 
 ---
 
-## Safe Mode
+## Safe mode
 
 A restricted operating environment designed for troubleshooting and recovery.
 
 ---
 
-## Secure Default
+## Secure default
 
 A default configuration selected to minimize unnecessary security risk while remaining practical for typical users.
 
 ---
 
-## Privacy by Default
+## Privacy by default
 
 A design principle requiring privacy-protective behavior without requiring additional user configuration.
 
 ---
 
-## Security by Design
+## Security by design
 
 A design principle integrating security throughout the operating system rather than treating it as an optional feature.
 
 ---
 
-## Least Privilege
+## Least privilege
 
 The principle that software should receive only the permissions necessary to perform its intended function.
 
 ---
 
-## Defense in Depth
+## Defense in depth
 
 A layered security strategy where multiple independent protections work together to reduce overall risk.
 
 ---
 
-## Design Token
+## Design token
 
 A reusable design value such as:
 
@@ -176,19 +176,19 @@ Examples include:
 
 ---
 
-## User Flow
+## User flow
 
 The sequence of steps required for a user to complete a task.
 
 ---
 
-## Information Architecture
+## Information architecture
 
 The organization and structure of information, pages, navigation, and relationships within an application.
 
 ---
 
-## Quality Gate
+## Quality gate
 
 A required review or validation step that must be completed before progressing to the next development stage.
 
@@ -202,7 +202,7 @@ Examples include:
 
 ---
 
-## Living Document
+## Living document
 
 Documentation expected to evolve alongside the project while preserving version history.
 
@@ -216,7 +216,7 @@ A document explaining the reasoning behind important architectural decisions.
 
 ---
 
-## Definition of Done
+## Definition of done
 
 The minimum criteria that must be satisfied before work is considered complete.
 
@@ -245,7 +245,7 @@ Mission OS treats documentation as a core product feature.
 
 ---
 
-# Future Expansion
+# Future expansion
 
 This glossary will continue growing as Mission OS evolves.
 

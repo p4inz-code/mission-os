@@ -1,4 +1,4 @@
-# Mission Hub Wireframe
+# Mission hub wireframe
 
 **Document ID:** MOS-WF-004
 
@@ -53,7 +53,7 @@ Recommendations
 
 ---
 
-# Dashboard Cards
+# Dashboard cards
 
 - Privacy
 - Security

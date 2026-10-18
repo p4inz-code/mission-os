@@ -1,4 +1,4 @@
-# Mission OS Driver Manager
+# Mission OS driver manager
 
 **Document ID:** MOS-DRIVER-001
 
@@ -14,7 +14,7 @@ Its goal is to provide reliable hardware compatibility while minimizing system i
 
 ---
 
-# 2. Design Principles
+# 2. Design principles
 
 Mission Driver Manager follows:
 
@@ -63,7 +63,7 @@ Displays:
 
 ---
 
-# 5. Driver Categories
+# 5. Driver categories
 
 Categories:
 
@@ -77,7 +77,7 @@ Each category clearly explains installation risk.
 
 ---
 
-# 6. Driver Information
+# 6. Driver information
 
 Every driver displays:
 
@@ -93,7 +93,7 @@ Every driver displays:
 
 ---
 
-# 7. Installation Workflow
+# 7. Installation workflow
 
 Installation pipeline:
 
@@ -108,7 +108,7 @@ Installation pipeline:
 
 ---
 
-# 8. Signature Verification
+# 8. Signature verification
 
 Every driver must verify:
 
@@ -122,7 +122,7 @@ Unsigned drivers are blocked unless advanced override is explicitly enabled.
 
 ---
 
-# 9. Driver Updates
+# 9. Driver updates
 
 Displays:
 
@@ -146,7 +146,7 @@ Rollback is verified before reboot.
 
 ---
 
-# 11. Hardware Detection
+# 11. Hardware detection
 
 Automatically detects:
 
@@ -168,15 +168,15 @@ Supports:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Driver Manager securely manages the complete driver lifecycle.
 
 ---
 
-# Section 2 — Hardware Compatibility & Advanced Features
+# Section 2: hardware compatibility & advanced features
 
-## Hardware Database
+## Hardware database
 
 Mission OS maintains a compatibility database containing:
 
@@ -189,7 +189,7 @@ Database updates independently from OS releases.
 
 ---
 
-## Compatibility Status
+## Compatibility status
 
 Each device is classified:
 
@@ -203,7 +203,7 @@ Reasoning is always shown.
 
 ---
 
-## Driver Sources
+## Driver sources
 
 Supported sources:
 
@@ -216,7 +216,7 @@ Unknown repositories require explicit approval.
 
 ---
 
-## Driver Health
+## Driver health
 
 Continuously monitors:
 
@@ -230,7 +230,7 @@ Health status updates automatically.
 
 ---
 
-## Conflict Detection
+## Conflict detection
 
 Detects:
 
@@ -244,7 +244,7 @@ Recommended fixes are provided.
 
 ---
 
-## Device Details
+## Device details
 
 Displays:
 
@@ -257,7 +257,7 @@ Displays:
 
 ---
 
-## Offline Installation
+## Offline installation
 
 Supports installing drivers from:
 
@@ -312,7 +312,7 @@ Driver scans should:
 
 ---
 
-## Edge Cases
+## Edge cases
 
 Handles:
 
@@ -327,7 +327,7 @@ Handles:
 
 ---
 
-## Future Features
+## Future features
 
 - automatic hardware certification
 - enterprise driver approval policies
@@ -336,7 +336,7 @@ Handles:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Driver Manager passes when:
 

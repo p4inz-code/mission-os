@@ -1,4 +1,4 @@
-# Mission OS File Manager
+# Mission OS file manager
 
 **Document ID:** MOS-FILES-001
 
@@ -14,7 +14,7 @@ It is designed to be fast, predictable and secure while remaining approachable f
 
 ---
 
-# 2. Design Principles
+# 2. Design principles
 
 Mission File Manager follows:
 
@@ -90,7 +90,7 @@ Users may define default view per folder.
 
 ---
 
-# 7. File Operations
+# 7. File operations
 
 Supports:
 
@@ -143,7 +143,7 @@ Preview opens without launching external applications where possible.
 
 ---
 
-# 10. External Devices
+# 10. External devices
 
 Supports:
 
@@ -183,13 +183,13 @@ Supports:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 File Manager provides reliable, efficient and secure file management for all supported storage devices.
 
 ---
 
-# Section 2 — Advanced Features & Security
+# Section 2: advanced features & security
 
 ## Tabs
 
@@ -204,7 +204,7 @@ Users may:
 
 ---
 
-## Split View
+## Split view
 
 Supports dual-pane mode.
 
@@ -217,7 +217,7 @@ Features:
 
 ---
 
-## File Properties
+## File properties
 
 Displays:
 
@@ -273,7 +273,7 @@ Useful for integrity verification.
 
 ---
 
-## Conflict Resolution
+## Conflict resolution
 
 When file conflicts occur:
 
@@ -289,7 +289,7 @@ Users always receive a clear explanation.
 
 ---
 
-## Storage Analysis
+## Storage analysis
 
 Displays:
 
@@ -351,7 +351,7 @@ Targets:
 
 ---
 
-## Edge Cases
+## Edge cases
 
 Handles:
 
@@ -366,7 +366,7 @@ Handles:
 
 ---
 
-## Future Features
+## Future features
 
 - cloud providers (optional)
 - file version history
@@ -376,7 +376,7 @@ Handles:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 File Manager passes when:
 

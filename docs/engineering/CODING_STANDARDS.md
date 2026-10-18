@@ -1,4 +1,4 @@
-# Mission OS Coding Standards
+# Mission OS coding standards
 
 **Document ID:** MOS-ENG-CS-001
 **Version:** 1.0
@@ -13,7 +13,7 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 2. General Standards
+## 2. General standards
 
 ### 2.1 Readability
 
@@ -44,14 +44,14 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 3. Rust Standards
+## 3. Rust standards
 
 ### 3.1 Formatting
 
 - Use `rustfmt` with project configuration.
 - Use `clippy` with project configuration. All warnings must be addressed.
 
-### 3.2 Error Handling
+### 3.2 Error handling
 
 - Use `thiserror` for library error types.
 - Use `anyhow` for application-level error handling.
@@ -79,21 +79,21 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 4. C/C++ Standards
+## 4. C/C++ standards
 
 ### 4.1 Formatting
 
 - Use `clang-format` with project configuration.
 - Use `clang-tidy` for static analysis.
 
-### 4.2 Memory Safety
+### 4.2 Memory safety
 
 - Prefer smart pointers (`std::unique_ptr`, `std::shared_ptr`).
 - Raw pointers only for non-owning observer patterns.
 - No C-style memory management (malloc/free) in new code.
 - RAII for all resource management.
 
-### 4.3 Qt Guidelines
+### 4.3 Qt guidelines
 
 - Use Qt 6 API.
 - Prefer signals/slots over direct coupling.
@@ -102,7 +102,7 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 5. QML Standards
+## 5. QML standards
 
 ### 5.1 Structure
 
@@ -124,7 +124,7 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 6. Python Standards (Tooling Only)
+## 6. Python standards (tooling only)
 
 - Use Python type hints for all functions.
 - Use `black` for formatting.
@@ -134,7 +134,7 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 7. Shell Standards
+## 7. Shell standards
 
 - Use `shellcheck` for all shell scripts.
 - Scripts must have `.sh` extension.
@@ -143,25 +143,25 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 8. Error Handling
+## 8. Error handling
 
-### 8.1 Library Code
+### 8.1 Library code
 
 - Return `Result<T, E>` (Rust) or exceptions (C++) with error details.
 - Error types implement `std::error::Error` (Rust) or inherit from `std::exception` (C++).
 - Include context in all errors (what failed, why, which resource).
 
-### 8.2 Service Code
+### 8.2 Service code
 
 - Log errors with appropriate severity level.
 - Return structured error responses over IPC.
 - Never expose internal details in error messages sent over IPC.
 - Distinguish between:
-  - **User errors**: Invalid input, permission denied (clear user message)
-  - **System errors**: Disk full, network down (actionable guidance)
-  - **Internal errors**: Bug, unexpected state (log + generic message)
+  - User errors: Invalid input, permission denied (clear user message)
+  - System errors: Disk full, network down (actionable guidance)
+  - Internal errors: Bug, unexpected state (log + generic message)
 
-### 8.3 Application Code
+### 8.3 Application code
 
 - Show user-friendly error messages.
 - Include "what to do next" guidance.
@@ -172,7 +172,7 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ## 9. Logging
 
-### 9.1 Log Levels
+### 9.1 Log levels
 
 | Level | Usage |
 |-------|-------|
@@ -192,9 +192,9 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 10. Security-Sensitive Code
+## 10. Security-Sensitive code
 
-### 10.1 Handling Secrets
+### 10.1 Handling secrets
 
 - Zeroize memory after use (`zeroize` crate in Rust, explicit memset in C/C++).
 - Use `mlock()` to prevent secrets from being swapped to disk.
@@ -202,7 +202,7 @@ This document defines the engineering standards for all Mission OS code. It supe
 - Never log secrets.
 - Never serialize secrets to disk unencrypted.
 
-### 10.2 Input Validation
+### 10.2 Input validation
 
 - Validate all input at the boundary.
 - Reject unexpected input early with a clear error.
@@ -227,7 +227,7 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 12. Resource Ownership
+## 12. Resource ownership
 
 - Every resource has a clear owner.
 - Ownership is documented in comments where not obvious.
@@ -236,7 +236,7 @@ This document defines the engineering standards for all Mission OS code. It supe
 
 ---
 
-## 13. Code Review Requirements
+## 13. Code review requirements
 
 Every pull request must verify:
 
@@ -255,9 +255,9 @@ Every pull request must verify:
 
 ---
 
-## 14. Git Conventions
+## 14. Git conventions
 
-### 14.1 Commit Messages
+### 14.1 Commit messages
 
 Use Conventional Commits:
 
@@ -272,15 +272,15 @@ Use Conventional Commits:
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `security`
 Scope: module name (e.g., `securityd`, `mission-hub`, `core`)
 
-### 14.2 Branch Naming
+### 14.2 Branch naming
 
-- `feat/<short-description>` — New features
-- `fix/<short-description>` — Bug fixes
-- `docs/<short-description>` — Documentation
-- `refactor/<short-description>` — Refactoring
-- `security/<short-description>` — Security fixes
+- `feat/<short-description>`: New features
+- `fix/<short-description>`: Bug fixes
+- `docs/<short-description>`: Documentation
+- `refactor/<short-description>`: Refactoring
+- `security/<short-description>`: Security fixes
 
-### 14.3 Pull Requests
+### 14.3 Pull requests
 
 - One change per PR.
 - PR description explains what and why.

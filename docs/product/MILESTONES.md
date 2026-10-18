@@ -1,6 +1,6 @@
 # Milestones
 
-## M1 — Documentation Freeze ✅
+## M1: documentation freeze
 
 Deliverables
 
@@ -10,7 +10,7 @@ Deliverables
 
 ---
 
-## M2 — UI Freeze
+## M2: UI freeze
 
 Deliverables
 
@@ -21,7 +21,7 @@ Deliverables
 
 ---
 
-## M3 — Functional Alpha
+## M3: functional alpha
 
 Deliverables
 
@@ -31,7 +31,7 @@ Deliverables
 
 ---
 
-## M4 — Beta
+## M4: beta
 
 Deliverables
 
@@ -41,7 +41,7 @@ Deliverables
 
 ---
 
-## M5 — Release Candidate
+## M5: release candidate
 
 Deliverables
 
@@ -51,7 +51,7 @@ Deliverables
 
 ---
 
-## M6 — Stable
+## M6: stable
 
 Deliverables
 

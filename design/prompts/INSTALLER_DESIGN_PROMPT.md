@@ -1,4 +1,4 @@
-# Mission OS — Installer UI Design Prompt
+# Mission OS: installer UI design prompt
 
 You are the Lead Product Designer for Mission OS.
 

@@ -1,4 +1,4 @@
-# Mission OS Security Center
+# Mission OS security center
 
 **Document ID:** MOS-SECURITY-001
 
@@ -14,7 +14,7 @@ It provides visibility into the operating system's security posture while allowi
 
 ---
 
-# 2. Security Philosophy
+# 2. Security philosophy
 
 Mission OS follows:
 
@@ -50,7 +50,7 @@ Displays:
 
 ---
 
-# 4. Security Score
+# 4. Security score
 
 Calculated from:
 
@@ -99,7 +99,7 @@ Profiles:
 
 ---
 
-# 6. Full Disk Encryption
+# 6. Full disk encryption
 
 Displays:
 
@@ -118,7 +118,7 @@ Supports:
 
 ---
 
-# 7. Secure Boot
+# 7. Secure boot
 
 Displays:
 
@@ -167,7 +167,7 @@ Manage:
 
 ---
 
-# 11. Security Updates
+# 11. Security updates
 
 Displays:
 
@@ -178,7 +178,7 @@ Displays:
 
 ---
 
-# 12. Incident History
+# 12. Incident history
 
 Displays:
 
@@ -213,15 +213,15 @@ Monitoring should have negligible idle CPU usage.
 
 ---
 
-# 15. Definition of Done
+# 15. Definition of done
 
 Security Center provides centralized visibility and management of every core security feature.
 
 ---
 
-# Section 2 — Protection, Integrity & Incident Response
+# Section 2: protection, integrity & incident response
 
-## Boot Integrity
+## Boot integrity
 
 Verify:
 
@@ -234,7 +234,7 @@ Verification occurs automatically during boot.
 
 ---
 
-## Package Verification
+## Package verification
 
 Every package is verified before installation.
 
@@ -249,7 +249,7 @@ Unsigned packages require explicit user approval.
 
 ---
 
-## Driver Trust
+## Driver trust
 
 Displays:
 
@@ -262,7 +262,7 @@ Unsigned drivers are clearly identified.
 
 ---
 
-## Application Trust
+## Application trust
 
 Each installed application has a trust state:
 
@@ -276,7 +276,7 @@ Trust state affects warning behavior, not ownership of the application.
 
 ---
 
-## Sandbox Status
+## Sandbox status
 
 Displays:
 
@@ -289,7 +289,7 @@ Users may inspect sandbox permissions per application.
 
 ---
 
-## Security Recommendations
+## Security recommendations
 
 Examples:
 
@@ -304,7 +304,7 @@ Recommendations are prioritized by risk.
 
 ---
 
-## Incident Response
+## Incident response
 
 Mission OS supports:
 
@@ -318,7 +318,7 @@ Every action is logged.
 
 ---
 
-## Security Reports
+## Security reports
 
 Export:
 
@@ -336,7 +336,7 @@ Includes:
 
 ---
 
-## Security Policies
+## Security policies
 
 Profiles:
 
@@ -350,7 +350,7 @@ Policies change security behavior without reinstalling the OS.
 
 ---
 
-## Recovery Integration
+## Recovery integration
 
 Direct links to:
 
@@ -371,7 +371,7 @@ Direct links to:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Security Center passes when:
 

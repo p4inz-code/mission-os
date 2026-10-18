@@ -1,4 +1,4 @@
-# Mission OS Color System
+# Mission OS color system
 
 **Document ID:** MOS-DESIGN-011
 
@@ -23,7 +23,7 @@ Colors must:
 
 ---
 
-# 3. Color Categories
+# 3. Color categories
 
 Mission OS uses:
 
@@ -40,7 +40,7 @@ Mission OS uses:
 
 ---
 
-# 4. Semantic Colors
+# 4. Semantic colors
 
 Success
 
@@ -68,7 +68,7 @@ Information
 
 ---
 
-# 5. Theme Support
+# 5. Theme support
 
 Every semantic color has:
 
@@ -78,7 +78,7 @@ Every semantic color has:
 
 ---
 
-# 6. Usage Rules
+# 6. Usage rules
 
 Colors must never be used as the only indicator of state.
 
@@ -94,7 +94,7 @@ Critical interfaces target WCAG AAA where practical.
 
 ---
 
-# 8. Acceptance Criteria
+# 8. Acceptance criteria
 
 The color system remains consistent across every Mission OS application.
 

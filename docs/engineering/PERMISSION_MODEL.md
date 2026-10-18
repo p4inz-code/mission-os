@@ -1,4 +1,4 @@
-# Mission OS Permission Model
+# Mission OS permission model
 
 **Document ID:** MOS-ENG-005
 
@@ -17,7 +17,7 @@ Defines access control.
 
 ---
 
-# Permission Categories
+# Permission categories
 
 - Files
 - Camera
@@ -39,6 +39,6 @@ Permissions are:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Applications receive only the permissions they require.

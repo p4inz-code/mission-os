@@ -1,4 +1,4 @@
-# Four Pillars
+# Four pillars
 
 **Document ID:** MOS-PILLARS-001  
 **Status:** Draft v1.0
@@ -21,7 +21,7 @@ These pillars define the identity of Mission OS.
 
 ---
 
-# Pillar I — Privacy by Default
+# Pillar I: privacy by default
 
 Privacy should be the default operating condition rather than an optional feature.
 
@@ -37,7 +37,7 @@ Mission OS should minimize unnecessary data generation, collection, storage, and
 - Easy data deletion.
 - Privacy-respecting defaults.
 
-## Design Requirements
+## Design requirements
 
 Every privacy-related feature should answer:
 
@@ -52,7 +52,7 @@ Privacy should never rely on hidden behavior.
 
 ---
 
-# Pillar II — Security by Design
+# Pillar II: security by design
 
 Security is engineered into every layer of Mission OS.
 
@@ -71,7 +71,7 @@ Instead, multiple independent protections work together to reduce overall risk.
 - Responsible vulnerability disclosure.
 - Continuous security improvements.
 
-## Design Requirements
+## Design requirements
 
 Security features should remain understandable.
 
@@ -84,7 +84,7 @@ Whenever Mission OS requests elevated permissions, users should receive clear ex
 
 ---
 
-# Pillar III — Reliability Through Engineering
+# Pillar III: reliability through engineering
 
 Reliable systems inspire confidence.
 
@@ -101,7 +101,7 @@ Mission OS assumes that failures will occur and therefore prioritizes graceful r
 - Clear troubleshooting.
 - Long-term maintainability.
 
-## Design Requirements
+## Design requirements
 
 Whenever possible, Mission OS should recover from failures before recommending destructive actions.
 
@@ -116,7 +116,7 @@ Recovery mechanisms should include:
 
 ---
 
-# Pillar IV — Respect for the User
+# Pillar IV: respect for the user
 
 Mission OS exists to help people accomplish their work safely and confidently.
 
@@ -133,7 +133,7 @@ Every interaction should demonstrate respect for the user's time, attention, kno
 - Calm interface design.
 - Consistent workflows.
 
-## Design Requirements
+## Design requirements
 
 Mission OS should never intentionally confuse users through:
 
@@ -148,7 +148,7 @@ Users should remain informed and in control.
 
 ---
 
-# Relationship Between the Pillars
+# Relationship between the pillars
 
 The four pillars are interconnected.
 
@@ -168,7 +168,7 @@ Engineering decisions should balance these pillars thoughtfully.
 
 ---
 
-# Applying the Pillars
+# Applying the pillars
 
 Every significant feature proposal should identify which pillars it strengthens.
 
@@ -185,7 +185,7 @@ These questions should become part of future design reviews and pull request eva
 
 ---
 
-# Long-Term Commitment
+# Long-Term commitment
 
 Although technologies, frameworks, and implementation details will evolve, these four pillars define the long-term identity of Mission OS.
 
@@ -193,7 +193,7 @@ Every release should move the project closer to fulfilling them.
 
 ---
 
-# Pillar Statement
+# Pillar statement
 
 > **Mission OS is built upon four enduring commitments: Privacy by Default, Security by Design, Reliability Through Engineering, and Respect for the User. Every decision should strengthen these pillars and reinforce the trust users place in the operating system.**
 

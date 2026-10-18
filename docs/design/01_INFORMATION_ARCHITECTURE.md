@@ -1,4 +1,4 @@
-# Mission OS Information Architecture
+# Mission OS information architecture
 
 **Document ID:** MOS-DESIGN-001
 
@@ -22,7 +22,7 @@ This document serves as the master blueprint for all UI and UX work.
 
 ---
 
-# 2. Design Goals
+# 2. Design goals
 
 Mission OS navigation must be:
 
@@ -38,7 +38,7 @@ Users should rarely require more than three interactions to reach a destination.
 
 ---
 
-# 3. Top-Level System
+# 3. Top-Level system
 
 Mission OS consists of six primary environments.
 
@@ -55,7 +55,7 @@ Mission OS
 
 ---
 
-# 4. Desktop Structure
+# 4. Desktop structure
 
 ```
 Desktop
@@ -72,7 +72,7 @@ Desktop
 
 ---
 
-# 5. Mission Hub Structure
+# 5. Mission hub structure
 
 ```
 Mission Hub
@@ -93,7 +93,7 @@ Mission Hub
 
 ---
 
-# 6. Settings Structure
+# 6. Settings structure
 
 ```
 Settings
@@ -117,7 +117,7 @@ Settings
 
 ---
 
-# 7. Security Structure
+# 7. Security structure
 
 ```
 Security Center
@@ -135,7 +135,7 @@ Security Center
 
 ---
 
-# 8. Privacy Structure
+# 8. Privacy structure
 
 ```
 Privacy Center
@@ -152,7 +152,7 @@ Privacy Center
 
 ---
 
-# 9. Recovery Structure
+# 9. Recovery structure
 
 ```
 Recovery Center
@@ -169,7 +169,7 @@ Recovery Center
 
 ---
 
-# 10. Diagnostics Structure
+# 10. Diagnostics structure
 
 ```
 Diagnostics
@@ -188,7 +188,7 @@ Diagnostics
 
 ---
 
-# 11. Application Structure
+# 11. Application structure
 
 ```
 Applications
@@ -207,7 +207,7 @@ Applications
 
 ---
 
-# 12. Global Navigation Rules
+# 12. Global navigation rules
 
 Every official application follows the same layout:
 
@@ -233,6 +233,6 @@ Navigation placement never changes between applications.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 This document defines the complete navigation hierarchy used throughout Mission OS.

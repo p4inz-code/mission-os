@@ -1,4 +1,4 @@
-# Contributing to Mission OS
+# Contributing to mission OS
 
 Thank you for your interest in contributing to Mission OS.
 
@@ -8,7 +8,7 @@ Whether you're improving documentation, reviewing designs, fixing bugs, or contr
 
 ---
 
-# Before You Begin
+# Before you begin
 
 Please:
 
@@ -19,7 +19,7 @@ Please:
 
 ---
 
-# Ways to Contribute
+# Ways to contribute
 
 You can contribute by:
 
@@ -37,7 +37,7 @@ Every contribution matters.
 
 ---
 
-# Development Philosophy
+# Development philosophy
 
 Mission OS follows a documentation-first workflow.
 
@@ -54,7 +54,7 @@ We value:
 
 ---
 
-# Pull Requests
+# Pull requests
 
 Good pull requests are:
 
@@ -68,7 +68,7 @@ Large changes should be discussed before implementation.
 
 ---
 
-# Coding Standards
+# Coding standards
 
 Please follow:
 
@@ -82,7 +82,7 @@ If documentation must change, update it alongside the implementation.
 
 ---
 
-# Reporting Bugs
+# Reporting bugs
 
 When reporting bugs, include:
 
@@ -97,7 +97,7 @@ Clear reports help issues get resolved faster.
 
 ---
 
-# Feature Requests
+# Feature requests
 
 Feature requests should explain:
 
@@ -118,7 +118,7 @@ Please help maintain a welcoming and respectful environment for everyone.
 
 ---
 
-# Thank You
+# Thank you
 
 Mission OS exists because people choose to contribute their time, knowledge, and experience.
 

@@ -1,15 +1,15 @@
-# Building Mission OS
+# Building mission OS
 
-## Quick Start
+## Quick start
 
 ### Prerequisites
 
-- **Rust toolchain** (rustc, cargo, rustfmt, clippy):
+- Rust toolchain (rustc, cargo, rustfmt, clippy):
   ```bash
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   ```
 
-- **Nightly ISO build (Linux only)**:
+- Nightly ISO build (Linux only):
   ```bash
   # Debian/Ubuntu
   sudo apt install live-build debootstrap xorriso mtools dosfstools \
@@ -22,7 +22,7 @@
   # dpkg-buildpackage, dpkg-scanpackages and dh come with dpkg-dev/debhelper.
   ```
 
-### Build Rust Components
+### Build Rust components
 
 ```bash
 # Build all Rust components
@@ -81,7 +81,7 @@ cargo fmt --check
 cargo clippy --workspace --all-targets -- -D warnings
 ```
 
-### Security Audit
+### Security audit
 
 ```bash
 # Install cargo-audit (one-time)
@@ -112,7 +112,7 @@ cargo clean
 
 ---
 
-## Project Structure
+## Project structure
 
 ```
 mission-os/
@@ -176,14 +176,14 @@ Mission OS uses GitHub Actions for continuous integration.
 
 ---
 
-## Current Status
+## Current status
 
 **Phase:** OPEN BETA (2026-08-09). The beta ISO is `build/images/mission-os-0.1.0-nightly.20260730-amd64.hybrid.iso` (SHA256 `a772f14d…`), rebuilt and statically re-validated on 2026-08-09; see `docs/development/BETA_RELEASE_REPORT.md`.
 
 **RC6 Gate Evidence:**
-- `validate-iso.sh`: **15/15 PASS** on `build/images/mission-os-0.1.0-nightly.20260730-amd64.hybrid.iso`
-- QEMU BIOS boot: **4/4 PASS**
-- QEMU UEFI/OVMF boot: **4/4 PASS**
+- `validate-iso.sh`: 15/15 PASS on `build/images/mission-os-0.1.0-nightly.20260730-amd64.hybrid.iso`
+- QEMU BIOS boot: 4/4 PASS
+- QEMU UEFI/OVMF boot: 4/4 PASS
 - Boot timeline reached: systemd → basic.target → Mission services → login prompt
 
 **Implemented (Nightly):**
@@ -208,7 +208,7 @@ Mission OS uses GitHub Actions for continuous integration.
 - Update mechanism
 - Accessibility infrastructure
 
-**Current runtime state (2026-08-09, P15/P16):** installed-system boot, offline install, first-boot initialization and the installed desktop session are now validated (see `build/p15-p16-report.md`). **Remaining (beta-phase):** Calamares graphical install flow (never executed), functional D-Bus/PolKit interaction, live-ISO desktop session, network/audio/display/input and shutdown/reboot cycles, and real-hardware validation — see `docs/development/BETA_RELEASE_REPORT.md`. The final beta ISO (rebuilt 2026-08-09 15:22, SHA256 `a772f14d…`) includes the installer-cleanup changes (`mission-cleanup`, offline-safe `packages.conf`) and passed the static audit.
+**Current runtime state (2026-08-09, P15/P16):** installed-system boot, offline install, first-boot initialization and the installed desktop session are now validated (see `build/p15-p16-report.md`). Remaining (beta-phase): Calamares graphical install flow (never executed), functional D-Bus/PolKit interaction, live-ISO desktop session, network/audio/display/input and shutdown/reboot cycles, and real-hardware validation. See `docs/development/BETA_RELEASE_REPORT.md`. The final beta ISO (rebuilt 2026-08-09 15:22, SHA256 `a772f14d…`) includes the installer-cleanup changes (`mission-cleanup`, offline-safe `packages.conf`) and passed the static audit.
 
 ---
 

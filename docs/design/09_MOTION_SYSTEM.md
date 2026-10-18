@@ -1,4 +1,4 @@
-# Mission OS Motion System
+# Mission OS motion system
 
 **Document ID:** MOS-DESIGN-009
 
@@ -23,7 +23,7 @@ Motion should:
 
 ---
 
-# 3. Motion Principles
+# 3. Motion principles
 
 Animations are:
 
@@ -34,7 +34,7 @@ Animations are:
 
 ---
 
-# 4. Standard Animations
+# 4. Standard animations
 
 Supported animations:
 
@@ -47,7 +47,7 @@ Supported animations:
 
 ---
 
-# 5. Window Animations
+# 5. Window animations
 
 Window actions include:
 
@@ -83,7 +83,7 @@ Animations communicate:
 
 ---
 
-# 8. Reduced Motion
+# 8. Reduced motion
 
 When enabled:
 
@@ -101,7 +101,7 @@ Dropped frames should be avoided.
 
 ---
 
-# 10. Acceptance Criteria
+# 10. Acceptance criteria
 
 Motion improves usability without reducing responsiveness.
 

@@ -1,4 +1,4 @@
-# Mission OS Update Manager
+# Mission OS update manager
 
 **Document ID:** MOS-UPDATE-001
 
@@ -60,7 +60,7 @@ Displays:
 
 ---
 
-# 5. Build Channels
+# 5. Build channels
 
 Supported channels:
 
@@ -74,7 +74,7 @@ Changing channels requires confirmation.
 
 ---
 
-# 6. Update Types
+# 6. Update types
 
 - Security
 - Feature
@@ -93,7 +93,7 @@ Each update clearly displays:
 
 ---
 
-# 7. Update Workflow
+# 7. Update workflow
 
 Every update follows:
 
@@ -123,7 +123,7 @@ Verification failure aborts installation.
 
 ---
 
-# 9. Automatic Updates
+# 9. Automatic updates
 
 Modes:
 
@@ -148,7 +148,7 @@ Users may schedule:
 
 ---
 
-# 11. Restart Management
+# 11. Restart management
 
 If restart required:
 
@@ -180,13 +180,13 @@ Downloads should:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Update Manager provides secure, reliable and recoverable software updates.
 
 ---
 
-# Section 2 — Rollback, Offline Updates & Release Management
+# Section 2: rollback, offline updates & release management
 
 ## Rollback
 
@@ -203,7 +203,7 @@ Rollback integrity is verified before reboot.
 
 ---
 
-## Update History
+## Update history
 
 Displays:
 
@@ -217,7 +217,7 @@ History is searchable.
 
 ---
 
-## Offline Updates
+## Offline updates
 
 Supported through:
 
@@ -230,7 +230,7 @@ Offline packages use identical verification.
 
 ---
 
-## Delta Updates
+## Delta updates
 
 Mission OS prefers delta updates whenever possible.
 
@@ -242,7 +242,7 @@ Benefits:
 
 ---
 
-## Update Cache
+## Update cache
 
 Users may:
 
@@ -254,7 +254,7 @@ Cache management never removes installed packages.
 
 ---
 
-## Repository Management
+## Repository management
 
 Supports:
 
@@ -267,7 +267,7 @@ Third-party repositories require explicit approval.
 
 ---
 
-## Driver Updates
+## Driver updates
 
 Drivers display:
 
@@ -281,7 +281,7 @@ Optional drivers are never installed automatically.
 
 ---
 
-## Firmware Updates
+## Firmware updates
 
 Displays:
 
@@ -294,7 +294,7 @@ Firmware installation requires user confirmation.
 
 ---
 
-## Release Notes
+## Release notes
 
 Every update includes:
 
@@ -307,7 +307,7 @@ Every update includes:
 
 ---
 
-## Failure Recovery
+## Failure recovery
 
 If update fails:
 
@@ -350,7 +350,7 @@ Unsigned updates are rejected.
 
 ---
 
-## Edge Cases
+## Edge cases
 
 Handle:
 
@@ -364,7 +364,7 @@ Handle:
 
 ---
 
-## Future Features
+## Future features
 
 - peer-to-peer distribution
 - staged enterprise rollout
@@ -374,7 +374,7 @@ Handle:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Update Manager passes when:
 

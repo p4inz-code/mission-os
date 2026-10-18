@@ -1,4 +1,4 @@
-# Supported Hardware
+# Supported hardware
 
 > **Status:** Open Beta (2026-08-09). The beta ISO has been statically validated and
 > boot-tested in QEMU (BIOS + UEFI) but **not** on real hardware. Hardware compatibility
@@ -18,8 +18,8 @@ Future consideration
 
 ## Boot
 
-- UEFI (Primary) — ISO ships an appended EFI partition with `EFI/BOOT/BOOTX64.EFI`
-- BIOS (GRUB2 — supported, validated alongside UEFI)
+- UEFI (Primary): ISO ships an appended EFI partition with `EFI/BOOT/BOOTX64.EFI`
+- BIOS (GRUB2: supported, validated alongside UEFI)
 
 ---
 
@@ -34,8 +34,8 @@ Future consideration
 
 ## USB drive (installer media)
 
-- **Recommended: 14 GB or larger**
-- **Minimum: 8 GB** — the beta ISO is 1.74 GiB, so an 8 GB drive works with headroom
+- Recommended: 14 GB or larger
+- Minimum: 8 GB: the beta ISO is 1.74 GiB, so an 8 GB drive works with headroom
 
 ---
 
@@ -76,7 +76,7 @@ Supported
 ## Network
 
 - Ethernet / Wi-Fi / Bluetooth supported where drivers exist
-- **Not required** — live session and offline installation work with no network;
+- Not required: live session and offline installation work with no network;
   Mission OS packages are carried on the installation media
 
 ---

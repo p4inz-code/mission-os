@@ -1,4 +1,4 @@
-# Mission OS Diagnostics
+# Mission OS diagnostics
 
 **Document ID:** MOS-DIAG-001
 
@@ -50,7 +50,7 @@ Displays:
 
 ---
 
-# 4. Health Score
+# 4. Health score
 
 Categories:
 
@@ -78,7 +78,7 @@ Every deduction explains:
 
 ---
 
-# 5. Scan Types
+# 5. Scan types
 
 Supported scans:
 
@@ -89,7 +89,7 @@ Supported scans:
 
 ---
 
-# 6. CPU Diagnostics
+# 6. CPU diagnostics
 
 Checks:
 
@@ -103,7 +103,7 @@ Checks:
 
 ---
 
-# 7. Memory Diagnostics
+# 7. Memory diagnostics
 
 Checks:
 
@@ -118,7 +118,7 @@ Supports reboot memory testing.
 
 ---
 
-# 8. GPU Diagnostics
+# 8. GPU diagnostics
 
 Checks:
 
@@ -131,7 +131,7 @@ Checks:
 
 ---
 
-# 9. Storage Diagnostics
+# 9. Storage diagnostics
 
 Checks:
 
@@ -145,7 +145,7 @@ Checks:
 
 ---
 
-# 10. Battery Diagnostics
+# 10. Battery diagnostics
 
 Displays:
 
@@ -160,7 +160,7 @@ Laptop only.
 
 ---
 
-# 11. Network Diagnostics
+# 11. Network diagnostics
 
 Checks:
 
@@ -176,7 +176,7 @@ Internet tests remain optional.
 
 ---
 
-# 12. Driver Diagnostics
+# 12. Driver diagnostics
 
 Detects:
 
@@ -188,7 +188,7 @@ Detects:
 
 ---
 
-# 13. Boot Diagnostics
+# 13. Boot diagnostics
 
 Analyzes:
 
@@ -212,15 +212,15 @@ Large Text
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Diagnostics reliably identifies system issues without modifying user data.
 
 ---
 
-# Section 2 — Advanced Analysis & Reporting
+# Section 2: advanced analysis & reporting
 
-## Hardware Overview
+## Hardware overview
 
 Displays:
 
@@ -235,7 +235,7 @@ Displays:
 
 ---
 
-## Thermal Monitoring
+## Thermal monitoring
 
 Tracks:
 
@@ -252,7 +252,7 @@ Warnings:
 
 ---
 
-## Filesystem Diagnostics
+## Filesystem diagnostics
 
 Checks:
 
@@ -263,7 +263,7 @@ Checks:
 
 ---
 
-## Application Diagnostics
+## Application diagnostics
 
 Analyzes:
 
@@ -274,7 +274,7 @@ Analyzes:
 
 ---
 
-## Service Diagnostics
+## Service diagnostics
 
 Checks:
 
@@ -285,7 +285,7 @@ Checks:
 
 ---
 
-## Security Diagnostics
+## Security diagnostics
 
 Verifies:
 
@@ -298,7 +298,7 @@ Verifies:
 
 ---
 
-## Recovery Diagnostics
+## Recovery diagnostics
 
 Verifies:
 
@@ -309,7 +309,7 @@ Verifies:
 
 ---
 
-## Benchmark Mode
+## Benchmark mode
 
 Optional benchmarks:
 
@@ -359,7 +359,7 @@ Contains:
 
 ---
 
-## Scan History
+## Scan history
 
 Stores:
 
@@ -373,7 +373,7 @@ Users may clear history.
 
 ---
 
-## Edge Cases
+## Edge cases
 
 Diagnostics handles:
 
@@ -387,7 +387,7 @@ Diagnostics handles:
 
 ---
 
-## Future Features
+## Future features
 
 - predictive hardware failure
 - AI-assisted troubleshooting
@@ -396,7 +396,7 @@ Diagnostics handles:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Diagnostics passes when:
 

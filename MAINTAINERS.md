@@ -4,7 +4,7 @@ This document lists the current maintainers responsible for the Mission OS proje
 
 ---
 
-## Core Maintainer
+## Core maintainer
 
 ### Atharva Patil
 
@@ -20,7 +20,7 @@ Current responsibilities include:
 
 ---
 
-## Future Maintainers
+## Future maintainers
 
 As the project grows, additional maintainers may be appointed for specific areas, including:
 
@@ -42,7 +42,7 @@ Maintainers are expected to:
 
 ---
 
-## Becoming a Maintainer
+## Becoming a maintainer
 
 Maintainers are selected based on:
 

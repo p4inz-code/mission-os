@@ -1,4 +1,4 @@
-# Mission OS Accessibility
+# Mission OS accessibility
 
 **Document ID:** MOS-ACCESS-001
 
@@ -45,7 +45,7 @@ Accessibility manages:
 
 ---
 
-# 4. Accessibility Dashboard
+# 4. Accessibility dashboard
 
 Displays:
 
@@ -58,7 +58,7 @@ Displays:
 
 ---
 
-# 5. Vision Accessibility
+# 5. Vision accessibility
 
 Supports:
 
@@ -72,7 +72,7 @@ Supports:
 
 ---
 
-# 6. Hearing Accessibility
+# 6. Hearing accessibility
 
 Supports:
 
@@ -84,7 +84,7 @@ Supports:
 
 ---
 
-# 7. Motor Accessibility
+# 7. Motor accessibility
 
 Supports:
 
@@ -97,7 +97,7 @@ Supports:
 
 ---
 
-# 8. Cognitive Accessibility
+# 8. Cognitive accessibility
 
 Supports:
 
@@ -109,7 +109,7 @@ Supports:
 
 ---
 
-# 9. Screen Reader
+# 9. Screen reader
 
 Provides:
 
@@ -121,7 +121,7 @@ Provides:
 
 ---
 
-# 10. Voice Features
+# 10. Voice features
 
 Supports:
 
@@ -145,7 +145,7 @@ Built-in profiles:
 
 ---
 
-# 12. Accessibility Shortcuts
+# 12. Accessibility shortcuts
 
 Users may quickly enable:
 
@@ -157,15 +157,15 @@ Users may quickly enable:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Mission OS is fully usable without requiring standard mouse or visual interaction.
 
 ---
 
-# Section 2 — Platform Integration & Compliance
+# Section 2: platform integration & compliance
 
-## Platform Integration
+## Platform integration
 
 Accessibility integrates with:
 
@@ -179,7 +179,7 @@ Accessibility integrates with:
 
 ---
 
-## Developer Requirements
+## Developer requirements
 
 Applications should support:
 
@@ -191,7 +191,7 @@ Applications should support:
 
 ---
 
-## Accessibility Testing
+## Accessibility testing
 
 Every official application is tested for:
 
@@ -204,7 +204,7 @@ Every official application is tested for:
 
 ---
 
-## Accessibility Reports
+## Accessibility reports
 
 Reports include:
 
@@ -237,7 +237,7 @@ Targets:
 
 ---
 
-## Edge Cases
+## Edge cases
 
 Handles:
 
@@ -250,7 +250,7 @@ Handles:
 
 ---
 
-## Future Features
+## Future features
 
 - eye tracking
 - switch control
@@ -269,7 +269,7 @@ Mission OS targets compatibility with:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Mission Accessibility passes when:
 

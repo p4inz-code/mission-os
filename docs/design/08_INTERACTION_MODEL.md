@@ -1,4 +1,4 @@
-# Mission OS Interaction Model
+# Mission OS interaction model
 
 **Document ID:** MOS-DESIGN-008
 
@@ -67,7 +67,7 @@ Supports:
 
 ---
 
-# 6. Drag & Drop
+# 6. Drag & drop
 
 Supported across:
 
@@ -79,7 +79,7 @@ Supported across:
 
 ---
 
-# 7. Context Menus
+# 7. Context menus
 
 Right-click menus:
 
@@ -89,7 +89,7 @@ Right-click menus:
 
 ---
 
-# 8. Window Controls
+# 8. Window controls
 
 Every window supports:
 
@@ -110,7 +110,7 @@ Focus order always follows logical reading order.
 
 ---
 
-# 10. Acceptance Criteria
+# 10. Acceptance criteria
 
 Interactions must remain consistent across all official applications.
 

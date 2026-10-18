@@ -1,4 +1,4 @@
-# Mission OS Design System
+# Mission OS design system
 
 **Document ID:** MOS-DESIGN-006
 
@@ -14,7 +14,7 @@ It ensures a unified, premium and predictable user experience.
 
 ---
 
-# 2. Core Principles
+# 2. Core principles
 
 The design system follows:
 
@@ -29,7 +29,7 @@ The design system follows:
 
 ---
 
-# 3. Design Philosophy
+# 3. Design philosophy
 
 Mission OS avoids visual clutter.
 
@@ -55,7 +55,7 @@ The design system standardizes:
 
 ---
 
-# 5. Theme Support
+# 5. Theme support
 
 Mission OS supports:
 
@@ -67,7 +67,7 @@ All official applications automatically adapt.
 
 ---
 
-# 6. Visual Style
+# 6. Visual style
 
 Visual characteristics:
 
@@ -80,7 +80,7 @@ Visual characteristics:
 
 ---
 
-# 7. Consistency Rules
+# 7. Consistency rules
 
 Applications must never:
 
@@ -119,7 +119,7 @@ Every interactive component supports:
 
 ---
 
-# 10. Acceptance Criteria
+# 10. Acceptance criteria
 
 The Design System passes when:
 

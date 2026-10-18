@@ -1,4 +1,4 @@
-# Mission OS Shared Components Wireframe
+# Mission OS shared components wireframe
 
 **Document ID:** MOS-WF-015
 
@@ -18,7 +18,7 @@ This document serves as the implementation reference for reusable interface comp
 
 ---
 
-# Navigation Components
+# Navigation components
 
 - Top Panel
 - Sidebar
@@ -31,7 +31,7 @@ This document serves as the implementation reference for reusable interface comp
 
 ---
 
-# Form Components
+# Form components
 
 - Text Field
 - Password Field
@@ -114,7 +114,7 @@ Standard feedback components:
 
 ---
 
-# Empty States
+# Empty states
 
 Every empty state includes:
 
@@ -126,7 +126,7 @@ Every empty state includes:
 
 ---
 
-# Loading States
+# Loading states
 
 Loading interfaces should prefer:
 
@@ -138,7 +138,7 @@ Blocking full-screen spinners should only be used when unavoidable.
 
 ---
 
-# Error States
+# Error states
 
 Every error component provides:
 
@@ -160,7 +160,7 @@ Every shared component supports:
 
 ---
 
-# Acceptance Criteria
+# Acceptance criteria
 
 Shared components must behave identically across all Mission OS applications and conform to the Design System and Master UX Specification.
 

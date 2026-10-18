@@ -1,4 +1,4 @@
-# Mission OS Design Bible
+# Mission OS design bible
 
 **Document ID:** MOS-DB-001
 
@@ -16,7 +16,7 @@ When conflicts arise, this document takes precedence over stylistic preferences.
 
 ---
 
-# 2. Brand Philosophy
+# 2. Brand philosophy
 
 Mission OS is built around five principles:
 
@@ -26,11 +26,11 @@ Mission OS is built around five principles:
 - Calm Computing
 - Long-Term Consistency
 
-Mission OS should feel trustworthy, focused, and intentional—not flashy or playful.
+Mission OS should feel trustworthy, focused, and intentional, not flashy or playful.
 
 ---
 
-# 3. Visual Identity
+# 3. Visual identity
 
 Mission OS should appear:
 
@@ -48,7 +48,7 @@ Every element should have a reason to exist.
 
 ---
 
-# 4. Design Language
+# 4. Design language
 
 The design language emphasizes:
 
@@ -64,7 +64,7 @@ Interfaces should feel engineered rather than decorated.
 
 ---
 
-# 5. Color Philosophy
+# 5. Color philosophy
 
 Color is used to communicate meaning, not decoration.
 
@@ -79,7 +79,7 @@ Large areas should rely on neutral surfaces with restrained accent colors.
 
 ---
 
-# 6. Typography Philosophy
+# 6. Typography philosophy
 
 Typography is calm and highly legible.
 
@@ -93,7 +93,7 @@ Avoid excessive font variation.
 
 ---
 
-# 7. Layout Philosophy
+# 7. Layout philosophy
 
 Layouts prioritize:
 
@@ -106,7 +106,7 @@ Users should immediately understand where information belongs.
 
 ---
 
-# 8. Component Philosophy
+# 8. Component philosophy
 
 Reusable components are preferred over custom designs.
 
@@ -119,7 +119,7 @@ Every component should:
 
 ---
 
-# 9. Motion Philosophy
+# 9. Motion philosophy
 
 Motion exists only to:
 
@@ -131,7 +131,7 @@ Animations should be quick, subtle, and never distract from the task.
 
 ---
 
-# 10. Icon Philosophy
+# 10. Icon philosophy
 
 Icons should be:
 
@@ -144,7 +144,7 @@ Avoid unnecessary detail or stylistic inconsistency.
 
 ---
 
-# 11. Window Philosophy
+# 11. Window philosophy
 
 Every window follows the same structural model:
 
@@ -159,7 +159,7 @@ Window behavior remains consistent across all applications.
 
 ---
 
-# 12. Desktop Philosophy
+# 12. Desktop philosophy
 
 The desktop is a workspace, not a dashboard.
 
@@ -173,7 +173,7 @@ Frequently used actions are easy to reach without overwhelming the user.
 
 ---
 
-# 13. Accessibility Philosophy
+# 13. Accessibility philosophy
 
 Accessibility is a core design requirement.
 
@@ -189,7 +189,7 @@ Accessibility features should integrate naturally into the overall design.
 
 ---
 
-# 14. Interaction Philosophy
+# 14. Interaction philosophy
 
 Interactions should be:
 
@@ -201,7 +201,7 @@ Users should receive clear feedback for every significant action.
 
 ---
 
-# 15. Things Mission OS Never Does
+# 15. Things mission OS never does
 
 Mission OS avoids:
 
@@ -216,7 +216,7 @@ Mission OS avoids:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 All future UI designs, prototypes, and implementations must align with the principles defined in this Design Bible.
 

@@ -22,7 +22,7 @@ Saying "no" to ideas that conflict with the project's mission helps maintain lon
 
 ---
 
-# Mission Statement
+# Mission statement
 
 Mission OS will prioritize trust, privacy, security, portability, reliability, and maintainability over rapid expansion or feature quantity.
 
@@ -30,7 +30,7 @@ Not every good idea belongs in Mission OS.
 
 ---
 
-# Non-Goal 1 — Becoming a Windows Clone
+# Non-Goal 1: becoming a Windows clone
 
 Mission OS does not seek to recreate Windows.
 
@@ -40,7 +40,7 @@ Compatibility should never require sacrificing the project's principles.
 
 ---
 
-# Non-Goal 2 — Chasing Every Feature
+# Non-Goal 2: chasing every feature
 
 Mission OS will not attempt to include every possible feature.
 
@@ -50,7 +50,7 @@ Quality is preferred over quantity.
 
 ---
 
-# Non-Goal 3 — Following Short-Term Trends
+# Non-Goal 3: following Short-Term trends
 
 The project will not adopt technologies simply because they are popular.
 
@@ -65,7 +65,7 @@ New technologies should be evaluated based on:
 
 ---
 
-# Non-Goal 4 — Sacrificing Stability for Speed
+# Non-Goal 4: sacrificing stability for speed
 
 Mission OS will not prioritize rapid release cycles over reliability.
 
@@ -73,7 +73,7 @@ Stable, well-tested releases are preferred over frequent updates.
 
 ---
 
-# Non-Goal 5 — Hidden System Behavior
+# Non-Goal 5: hidden system behavior
 
 Mission OS will not intentionally hide important operating system behavior.
 
@@ -87,7 +87,7 @@ Transparency is a core value.
 
 ---
 
-# Non-Goal 6 — Mandatory Telemetry
+# Non-Goal 6: mandatory telemetry
 
 Mission OS will not include mandatory telemetry.
 
@@ -95,7 +95,7 @@ Any optional diagnostic or usage reporting should require explicit user consent 
 
 ---
 
-# Non-Goal 7 — Vendor Lock-In
+# Non-Goal 7: vendor Lock-In
 
 Mission OS should avoid unnecessary dependence on proprietary technologies when practical alternatives exist.
 
@@ -103,7 +103,7 @@ Users should remain free to inspect, modify, migrate, and control their systems.
 
 ---
 
-# Non-Goal 8 — Reinstallation as the Default Solution
+# Non-Goal 8: reinstallation as the default solution
 
 Mission OS should not encourage reinstalling the operating system as the primary solution to recoverable problems.
 
@@ -111,7 +111,7 @@ Recovery, repair, diagnostics, and rollback should always be considered first.
 
 ---
 
-# Non-Goal 9 — Complexity for Its Own Sake
+# Non-Goal 9: complexity for its own Sake
 
 Mission OS will not expose unnecessary technical complexity to users.
 
@@ -121,7 +121,7 @@ The operating system should simplify computing rather than complicate it.
 
 ---
 
-# Non-Goal 10 — Incomplete Documentation
+# Non-Goal 10: incomplete documentation
 
 Mission OS does not consider documentation optional.
 
@@ -129,7 +129,7 @@ Features lacking sufficient documentation are considered incomplete until approp
 
 ---
 
-# Non-Goal 11 — Misleading Security Claims
+# Non-Goal 11: misleading security claims
 
 Mission OS will not exaggerate security capabilities.
 
@@ -139,7 +139,7 @@ Known limitations should be acknowledged openly.
 
 ---
 
-# Non-Goal 12 — Ignoring Accessibility
+# Non-Goal 12: ignoring accessibility
 
 Accessibility should never be treated as an afterthought.
 
@@ -147,7 +147,7 @@ Major features should be designed with accessibility in mind from the beginning.
 
 ---
 
-# Decision Filter
+# Decision filter
 
 Before accepting a significant proposal, contributors should ask:
 
@@ -163,7 +163,7 @@ If the answer to any of these questions is yes, the proposal should be carefully
 
 ---
 
-# Closing Statement
+# Closing statement
 
 Mission OS succeeds by remaining focused.
 

@@ -21,7 +21,7 @@ This vision exists to ensure that the project remains focused as contributors, f
 
 ---
 
-# Our Vision
+# Our vision
 
 Mission OS exists to build one of the world's most trusted portable operating systems.
 
@@ -33,7 +33,7 @@ Instead, it seeks to become a platform that users confidently rely upon for thei
 
 ---
 
-# Why Mission OS Exists
+# Why mission OS exists
 
 Modern operating systems often force users to choose between simplicity, privacy, security, and control.
 
@@ -51,7 +51,7 @@ Mission OS exists to demonstrate that these goals can be achieved together.
 
 ---
 
-# Long-Term Direction
+# Long-Term direction
 
 Mission OS will continue evolving while remaining faithful to several long-term commitments.
 
@@ -71,7 +71,7 @@ Every major feature should strengthen these commitments rather than weaken them.
 
 ---
 
-# Our Definition of Success
+# Our Definition of success
 
 Mission OS does not define success by:
 
@@ -93,7 +93,7 @@ Instead, success is measured through:
 
 ---
 
-# The User Experience We Want
+# The user experience we Want
 
 Mission OS should feel:
 
@@ -112,7 +112,7 @@ The operating system should reduce stress rather than create it.
 
 ---
 
-# Engineering Philosophy
+# Engineering philosophy
 
 Mission OS values thoughtful engineering over rapid development.
 
@@ -131,7 +131,7 @@ Features that add complexity without meaningful benefit should generally be avoi
 
 ---
 
-# Community Vision
+# Community vision
 
 Mission OS aims to foster an open, respectful, and technically excellent community.
 
@@ -161,6 +161,6 @@ Mission OS should continue earning trust by remaining transparent, secure, priva
 
 ---
 
-# Vision Statement
+# Vision statement
 
-> **Mission OS exists to build a portable operating system that users can understand, trust, recover, and rely upon—where privacy is the default, security is built into every layer, documentation is treated as a feature, and every engineering decision ultimately serves the user.**
+> **Mission OS exists to build a portable operating system that users can understand, trust, recover, and rely upon, where privacy is the default, security is built into every layer, documentation is treated as a feature, and every engineering decision ultimately serves the user.**

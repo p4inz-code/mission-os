@@ -1,8 +1,8 @@
-# Mission OS Engineering Architecture
+# Mission OS engineering architecture
 
 **Document ID:** MOS-ENG-ARCH-001
 **Version:** 1.0
-**Status:** Draft — Engineering Architecture Phase
+**Status:** Draft, Engineering Architecture Phase
 **Last Updated:** July 2026
 
 ---
@@ -15,9 +15,9 @@ It establishes the system-level architectural decisions, layer boundaries, depen
 
 ---
 
-## 2. Architectural Principles
+## 2. Architectural principles
 
-### 2.1 Layer Isolation
+### 2.1 Layer isolation
 
 Each layer depends only on the layer directly beneath it. No layer may bypass its immediate lower layer.
 
@@ -43,15 +43,15 @@ Hardware
 
 Every system capability is a discrete service. Services communicate exclusively through defined IPC channels. No service may import another service's internal state.
 
-### 2.3 Least Privilege
+### 2.3 Least privilege
 
 Every process runs with the minimum permissions required. Privilege elevation is explicit, audited, and temporary. No GUI application runs as root.
 
-### 2.4 Defense in Depth
+### 2.4 Defense in depth
 
 Security relies on multiple independent layers. Failure of any single protection mechanism must not compromise the entire system.
 
-### 2.5 Recovery-First Design
+### 2.5 Recovery-First design
 
 Every destructive or state-changing operation must support rollback. The system must always prefer recovery over reinstallation.
 
@@ -61,9 +61,9 @@ Core functionality must never require network access. Network-dependent features
 
 ---
 
-## 3. System Architecture
+## 3. System architecture
 
-### 3.1 High-Level System Layers
+### 3.1 High-Level system layers
 
 ```
 ┌──────────────────────────────────────────────────────┐
@@ -93,42 +93,42 @@ Core functionality must never require network access. Network-dependent features
 └──────────────────────────────────────────────────────┘
 ```
 
-### 3.2 Confirmed Technology Stack
+### 3.2 Confirmed technology stack
 
 | Layer | Technology | Status |
 |-------|-----------|--------|
 | Distribution Base | Debian Stable | Decided |
 | Desktop Environment | KDE Plasma with Wayland | Decided |
 | Linux Kernel | Mainline + Mission OS hardening | Decided |
-| Boot System | GRUB2 (BIOS + UEFI) | **IMPLEMENTED** |
-| Init System | systemd | **IMPLEMENTED** |
-| Package Management | dpkg/APT base + Mission OS overlay | **IMPLEMENTED** |
-| Display Server | Wayland (KDE Wayland session) | **IMPLEMENTED** |
-| Audio | PipeWire | **IMPLEMENTED** |
-| Networking | NetworkManager | **IMPLEMENTED** |
-| Firewall | nftables backend (mission-securityd) | **IMPLEMENTED** |
+| Boot System | GRUB2 (BIOS + UEFI) | IMPLEMENTED |
+| Init System | systemd | IMPLEMENTED |
+| Package Management | dpkg/APT base + Mission OS overlay | IMPLEMENTED |
+| Display Server | Wayland (KDE Wayland session) | IMPLEMENTED |
+| Audio | PipeWire | IMPLEMENTED |
+| Networking | NetworkManager | IMPLEMENTED |
+| Firewall | nftables backend (mission-securityd) | IMPLEMENTED |
 | VPN | WireGuard, OpenVPN, IKEv2 (planned) | Deferred to Beta |
 | DNS | systemd-resolved + stubby (DoT/DoH) (planned) | Deferred to Beta |
 | Encryption | LUKS2 + systemd-homed (optional) | Deferred to Beta |
 | TPM | systemd-cryptenroll, tpm2-tools (planned) | Deferred to Beta |
 | Sandboxing | Bubblewrap / Firejail / systemd-nspawn | Undecided — Beta |
-| Language (System) | Rust (new services) | **IMPLEMENTED** |
+| Language (System) | Rust (new services) | IMPLEMENTED |
 | Language (UI) | QML/Kirigami (native KDE) | Design phase |
-| Build System | Cargo (Rust) + CMake (C++) | **IMPLEMENTED** |
-| ISO Generation | live-build + custom scripts | **IMPLEMENTED** |
-| Testing | cargo test (Rust) | **IMPLEMENTED** (622 tests) |
-| CI/CD | GitHub Actions (9 jobs) | **IMPLEMENTED** |
-| Code Analysis | clippy, rustfmt | **IMPLEMENTED** |
+| Build System | Cargo (Rust) + CMake (C++) | IMPLEMENTED |
+| ISO Generation | live-build + custom scripts | IMPLEMENTED |
+| Testing | cargo test (Rust) | IMPLEMENTED (622 tests) |
+| CI/CD | GitHub Actions (9 jobs) | IMPLEMENTED |
+| Code Analysis | clippy, rustfmt | IMPLEMENTED |
 | Container Runtime | Podman (future) | Proposed |
 
-### 3.3 Decisions Made Since Initial Architecture Draft
+### 3.3 Decisions made since initial architecture draft
 
 The following decisions from the initial draft have been resolved:
 
-- **Rust** — Selected as system services language. Implemented in mission-securityd, mission-driverd. RESOLVED.
-- **D-Bus + PolKit** — Confirmed as IPC technology. Implemented in both services. RESOLVED.
-- **GRUB2** — Selected as bootloader for both BIOS and UEFI. RESOLVED.
-- **live-build** — Selected for ISO generation with custom overlay. RESOLVED.
+- Rust: Selected as system services language. Implemented in mission-securityd, mission-driverd. RESOLVED.
+- D-Bus + PolKit: Confirmed as IPC technology. Implemented in both services. RESOLVED.
+- GRUB2: Selected as bootloader for both BIOS and UEFI. RESOLVED.
+- live-build: Selected for ISO generation with custom overlay. RESOLVED.
 
 The following remain under consideration and require explicit ADR before implementation:
 
@@ -141,9 +141,9 @@ The following remain under consideration and require explicit ADR before impleme
 
 ---
 
-## 4. Dependency Rules
+## 4. Dependency rules
 
-### 4.1 Dependency Direction
+### 4.1 Dependency direction
 
 ```
 User Interface Layer
@@ -157,23 +157,23 @@ System Layer
 Kernel Layer
 ```
 
-### 4.2 Explicit Rules
+### 4.2 Explicit rules
 
-1. **UI components must never import kernel headers or syscall directly.**
-2. **Application logic must never bypass the service layer to access hardware.**
-3. **Services must never depend on GUI toolkit libraries.**
+1. UI components must never import kernel headers or syscall directly.
+2. Application logic must never bypass the service layer to access hardware.
+3. Services must never depend on GUI toolkit libraries.
 4. **Shared libraries (libmission*) must have no circular dependencies.**
-5. **System services may only depend on:**
+5. System services may only depend on:
    - libmission-core
    - libmission-crypto
    - Linux standard libraries (glibc, libsystemd, etc.)
-6. **Applications may only depend on:**
+6. Applications may only depend on:
    - libmission-core
    - libmission-ui
    - Desktop environment libraries (Qt, KDE Frameworks)
    - Application-specific dependencies (explicitly approved)
 
-### 4.3 Forbidden Dependencies
+### 4.3 Forbidden dependencies
 
 - No GUI service may import kernel headers.
 - No app may import another app's internal modules.
@@ -182,9 +182,9 @@ Kernel Layer
 
 ---
 
-## 5. Process Architecture
+## 5. Process architecture
 
-### 5.1 Process Model
+### 5.1 Process model
 
 Mission OS uses a multi-process architecture:
 
@@ -212,7 +212,7 @@ PID 1: systemd
 └── systemd-journald          (per-user journal)
 ```
 
-### 5.2 Privilege Levels
+### 5.2 Privilege levels
 
 | Level | Process Type | Examples |
 |-------|-------------|---------|
@@ -222,7 +222,7 @@ PID 1: systemd
 | User | User session (unprivileged) | Mission Hub, Settings |
 | Sandboxed | Isolated containers | Mission Store apps |
 
-### 5.3 Privilege Escalation
+### 5.3 Privilege escalation
 
 - All privilege escalation uses PolKit (PolicyKit).
 - Elevation requests must include justification string visible to the user.
@@ -231,30 +231,30 @@ PID 1: systemd
 
 ---
 
-## 6. Architectural Boundaries
+## 6. Architectural boundaries
 
-### 6.1 System Services (Privileged)
+### 6.1 System services (privileged)
 
 - Run as systemd services (root or dedicated system users)
 - Communicate via D-Bus (system bus) with polkit authorization
 - Cannot be killed by user processes
 - Examples: mission-securityd, mission-updated, mission-driverd
 
-### 6.2 User Services (Unprivileged)
+### 6.2 User services (unprivileged)
 
 - Run within user session
 - Communicate via D-Bus (session bus)
 - Can be stopped/restarted by the user
 - Examples: mission-settingsd, mission-privacyd
 
-### 6.3 Mission Applications (Unprivileged)
+### 6.3 Mission applications (unprivileged)
 
 - Run as user processes
 - UI toolkit: QML + Kirigami
 - Communicate with services via D-Bus
 - Never run as root
 
-### 6.4 Recovery Environment
+### 6.4 Recovery environment
 
 - Separate minimal system
 - Runs from recovery partition or USB
@@ -263,7 +263,7 @@ PID 1: systemd
 
 ---
 
-## 7. Communication Architecture
+## 7. Communication architecture
 
 ```
 ┌──────────────────────────────────┐
@@ -295,7 +295,7 @@ PID 1: systemd
 
 ---
 
-## 8. Storage Architecture
+## 8. Storage architecture
 
 ### 8.1 Filesystem Layout (from MOS-ENG-004)
 
@@ -319,7 +319,7 @@ Root filesystem (/) follows Debian FHS with Mission OS overlays:
     └── /drivers/   → driver storage
 ```
 
-### 8.2 Partition Scheme (Recommended)
+### 8.2 Partition Scheme (recommended)
 
 ```
 EFI System Partition   → /boot/efi   (512 MB)
@@ -331,31 +331,31 @@ Recovery Partition     → /recovery   (8+ GB)
 
 ---
 
-## 9. Reliability Architecture
+## 9. Reliability architecture
 
-### 9.1 Failure Domains
+### 9.1 Failure domains
 
 Each subsystem is a failure domain. Failure in one domain must not cascade:
 
-- **Desktop shell crash** → Shell restarts, apps continue running
-- **Application crash** → Only that application is affected
-- **Service crash** → systemd restarts the service
-- **Disk full** → All writes return clear ENOSPC errors, no data corruption
-- **Power loss** → Filesystem journaling + atomic writes protect integrity
-- **Update failure** → Automatic rollback to previous state
+- Desktop shell crash → Shell restarts, apps continue running
+- Application crash → Only that application is affected
+- Service crash → systemd restarts the service
+- Disk full → All writes return clear ENOSPC errors, no data corruption
+- Power loss → Filesystem journaling + atomic writes protect integrity
+- Update failure → Automatic rollback to previous state
 
-### 9.2 Atomic Operations
+### 9.2 Atomic operations
 
 All system state changes follow this pattern:
 
-1. **Validate** — Verify preconditions
-2. **Snapshot** — Save current state
-3. **Apply** — Make the change
-4. **Verify** — Confirm the change succeeded
-5. **Commit** — Mark snapshot as successful
-6. **Rollback on Failure** — Restore snapshot if verification fails
+1. Validate: Verify preconditions
+2. Snapshot: Save current state
+3. Apply: Make the change
+4. Verify: Confirm the change succeeded
+5. Commit: Mark snapshot as successful
+6. Rollback on Failure: Restore snapshot if verification fails
 
-### 9.3 Recovery Points
+### 9.3 Recovery points
 
 Created automatically before:
 - System updates
@@ -366,24 +366,24 @@ Created manually by user request.
 
 ---
 
-## 10. Architecture Decisions (ADRs)
+## 10. Architecture decisions (ADRs)
 
 The following Architectural Decision Records govern this architecture:
 
 | ADR | Topic | Status |
 |-----|-------|--------|
-| ADR-0001 | Repository Architecture | **COMPLETED** |
-| ADR-0002 | System Programming Language (Rust) | **RESOLVED** — Rust selected and implemented |
-| ADR-0003 | IPC Technology (D-Bus + PolKit) | **RESOLVED** — D-Bus + PolKit implemented in services |
-| ADR-0004 | Sandboxing Technology | Pending — required before Beta |
-| ADR-0005 | Update Mechanism | Pending — required before Beta |
-| ADR-0006 | Package Format (.mos-pkg vs .deb) | Pending — required before Beta |
+| ADR-0001 | Repository Architecture | COMPLETED |
+| ADR-0002 | System Programming Language (Rust) | RESOLVED — Rust selected and implemented |
+| ADR-0003 | IPC Technology (D-Bus + PolKit) | RESOLVED — D-Bus + PolKit implemented in services |
+| ADR-0004 | Sandboxing Technology | Pending, required before Beta |
+| ADR-0005 | Update Mechanism | Pending, required before Beta |
+| ADR-0006 | Package Format (.mos-pkg vs .deb) | Pending, required before Beta |
 
 Each pending ADR must be completed before implementation of the affected subsystem begins.
 
 ---
 
-## 11. Architecture Compliance
+## 11. Architecture compliance
 
 Every implementation must be reviewed against this architecture document.
 

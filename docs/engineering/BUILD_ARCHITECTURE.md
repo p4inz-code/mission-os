@@ -1,4 +1,4 @@
-# Mission OS Build Architecture
+# Mission OS build architecture
 
 **Document ID:** MOS-ENG-BUILD-001
 **Version:** 1.0
@@ -13,7 +13,7 @@ This document defines the complete engineering path from source repository to bo
 
 ---
 
-## 2. Build Pipeline Overview
+## 2. Build pipeline overview
 
 ```
 Source Repository (GitHub)
@@ -53,7 +53,7 @@ Image Generation
 
 ---
 
-## 3. Source Repository Structure
+## 3. Source repository structure
 
 ```
 mission-os/
@@ -107,7 +107,7 @@ mission-os/
 
 ---
 
-## 4. Build System
+## 4. Build system
 
 ### 4.1 Technology
 
@@ -120,7 +120,7 @@ mission-os/
 | ISO/Image generation | Custom Python scripts + shell | Python / Bash |
 | Packaging | dpkg-deb / debuild | Metadata |
 
-### 4.2 Build Toolchain
+### 4.2 Build toolchain
 
 Required:
 - Rust toolchain (rustc, cargo, clippy, rustfmt)
@@ -132,7 +132,7 @@ Required:
 - live-build, debian-cd (for ISO generation)
 - xorriso, mtools, dosfstools (for ISO creation)
 
-### 4.3 Build Targets
+### 4.3 Build targets
 
 | Target | Description |
 |--------|-------------|
@@ -148,9 +148,9 @@ Required:
 
 ---
 
-## 5. Continuous Integration
+## 5. Continuous integration
 
-### 5.1 GitHub Actions Workflow
+### 5.1 GitHub actions workflow
 
 ```
 ┌─────────────────────┐
@@ -202,7 +202,7 @@ Required:
 └─────────────────────┘
 ```
 
-### 5.2 CI Triggers
+### 5.2 CI triggers
 
 | Event | Workflow |
 |-------|----------|
@@ -211,7 +211,7 @@ Required:
 | Tag release (v*) | Full CI + image build + signing + release |
 | Nightly schedule | Full CI + image build (unstable channel) |
 
-### 5.3 Artifact Signing
+### 5.3 Artifact signing
 
 Release artifacts are signed with Mission OS GPG key:
 - ISO: SHA-256 checksum file → GPG signed
@@ -221,9 +221,9 @@ Release artifacts are signed with Mission OS GPG key:
 
 ---
 
-## 6. ISO Generation
+## 6. ISO generation
 
-### 6.1 ISO Contents
+### 6.1 ISO contents
 
 ```
 mission-os-<version>-<arch>.iso
@@ -244,7 +244,7 @@ mission-os-<version>-<arch>.iso
 └── README.html            → Getting started guide
 ```
 
-### 6.2 Image Build Steps
+### 6.2 Image build steps
 
 ```
 1. Bootstrap base system (debootstrap Debian stable)
@@ -262,9 +262,9 @@ mission-os-<version>-<arch>.iso
 
 ---
 
-## 7. Development Builds
+## 7. Development builds
 
-### 7.1 Developer Environment
+### 7.1 Developer environment
 
 For local development:
 - Debian testing/unstable or Ubuntu LTS
@@ -282,7 +282,7 @@ For service/application developers:
 
 ---
 
-## 8. Reproducible Builds
+## 8. Reproducible builds
 
 ### 8.1 Goals
 
@@ -300,9 +300,9 @@ For service/application developers:
 
 ---
 
-## 9. Release Pipeline
+## 9. Release pipeline
 
-### 9.1 Release Channels
+### 9.1 Release channels
 
 | Channel | Frequency | Verification |
 |---------|-----------|-------------|
@@ -312,7 +312,7 @@ For service/application developers:
 | Release Preview | Per-release | Full test + security audit |
 | Stable | Per-release | Full test + security + accessibility |
 
-### 9.2 Release Artifacts
+### 9.2 Release artifacts
 
 Each release:
 - ISO (x86_64)
@@ -325,9 +325,9 @@ Each release:
 
 ---
 
-## 10. Build Verification
+## 10. Build verification
 
-### 10.1 Pre-Release Verification
+### 10.1 Pre-Release verification
 
 Before release:
 1. Clean build from tagged source
@@ -339,7 +339,7 @@ Before release:
 7. Installation completes successfully
 8. Recovery image boots and works
 
-### 10.2 Verification Artifacts
+### 10.2 Verification artifacts
 
 - Build log (anonymized)
 - Test results

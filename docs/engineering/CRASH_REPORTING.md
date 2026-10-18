@@ -1,4 +1,4 @@
-# Mission OS Crash Reporting
+# Mission OS crash reporting
 
 **Document ID:** MOS-ENG-008
 
@@ -53,6 +53,6 @@ Support:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Crashes are recoverable with useful diagnostic information.

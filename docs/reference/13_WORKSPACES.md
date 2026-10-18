@@ -1,4 +1,4 @@
-# Mission OS Workspaces
+# Mission OS workspaces
 
 **Document ID:** MOS-WORKSPACE-001
 
@@ -14,7 +14,7 @@ Workspaces improve focus, productivity and organization without duplicating user
 
 ---
 
-# 2. Design Principles
+# 2. Design principles
 
 Mission Workspaces follow:
 
@@ -44,7 +44,7 @@ Workspaces manage:
 
 ---
 
-# 4. Workspace Dashboard
+# 4. Workspace dashboard
 
 Displays:
 
@@ -57,7 +57,7 @@ Displays:
 
 ---
 
-# 5. Workspace Types
+# 5. Workspace types
 
 Supported types:
 
@@ -74,7 +74,7 @@ Templates may be customized by the user.
 
 ---
 
-# 6. Workspace Switching
+# 6. Workspace switching
 
 Users may switch using:
 
@@ -88,7 +88,7 @@ Switching should be smooth and complete in under one second on supported hardwar
 
 ---
 
-# 7. Session Persistence
+# 7. Session persistence
 
 Mission OS remembers:
 
@@ -102,7 +102,7 @@ Users may disable session restoration.
 
 ---
 
-# 8. Multi-Monitor Support
+# 8. Multi-Monitor support
 
 Supports:
 
@@ -113,7 +113,7 @@ Supports:
 
 ---
 
-# 9. Workspace Customization
+# 9. Workspace customization
 
 Each workspace may define:
 
@@ -128,7 +128,7 @@ Changes affect only that workspace.
 
 ---
 
-# 10. Workspace Templates
+# 10. Workspace templates
 
 Built-in templates include:
 
@@ -143,7 +143,7 @@ Users may create custom templates.
 
 ---
 
-# 11. Resource Management
+# 11. Resource management
 
 Displays:
 
@@ -169,15 +169,15 @@ Supports:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Workspaces provide fast, reliable and persistent environments for different tasks.
 
 ---
 
-# Section 2 — Security, Automation & Advanced Features
+# Section 2: security, automation & advanced features
 
-## Secure Workspaces
+## Secure workspaces
 
 Secure Workspaces may enforce:
 
@@ -189,7 +189,7 @@ Secure Workspaces may enforce:
 
 ---
 
-## Workspace Isolation
+## Workspace isolation
 
 Each workspace maintains independent:
 
@@ -202,7 +202,7 @@ User files remain shared unless explicitly isolated.
 
 ---
 
-## Startup Automation
+## Startup automation
 
 Each workspace may automatically launch:
 
@@ -216,7 +216,7 @@ Startup order is configurable.
 
 ---
 
-## Notification Profiles
+## Notification profiles
 
 Each workspace may define:
 
@@ -228,7 +228,7 @@ Each workspace may define:
 
 ---
 
-## Keyboard Shortcuts
+## Keyboard shortcuts
 
 Supports:
 
@@ -244,7 +244,7 @@ All shortcuts are customizable.
 
 ---
 
-## Backup & Restore
+## Backup & restore
 
 Users may export:
 
@@ -257,7 +257,7 @@ Imports verify compatibility before applying.
 
 ---
 
-## Workspace Search
+## Workspace search
 
 Search includes:
 
@@ -304,7 +304,7 @@ Targets:
 
 ---
 
-## Edge Cases
+## Edge cases
 
 Handles:
 
@@ -319,7 +319,7 @@ Recovery options are presented automatically.
 
 ---
 
-## Future Features
+## Future features
 
 - collaborative workspaces
 - encrypted workspaces
@@ -329,7 +329,7 @@ Recovery options are presented automatically.
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 Mission Workspaces pass when:
 

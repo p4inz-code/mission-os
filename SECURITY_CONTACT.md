@@ -1,14 +1,14 @@
-# Security Contact
+# Security contact
 
 If you believe you have discovered a security vulnerability in Mission OS, please report it responsibly.
 
-## Preferred Contact
+## Preferred contact
 
 Until a dedicated security address is available, please open a **private GitHub Security Advisory** if supported by the repository.
 
 If private advisories are unavailable, contact the project maintainer directly through the project's official GitHub profile.
 
-## Please Include
+## Please include
 
 - Description of the issue
 - Steps to reproduce
@@ -16,7 +16,7 @@ If private advisories are unavailable, contact the project maintainer directly t
 - Potential impact
 - Proof of concept (if safe)
 
-## Responsible Disclosure
+## Responsible disclosure
 
 Please do **not** disclose security vulnerabilities publicly until they have been investigated and addressed.
 

@@ -1,4 +1,4 @@
-# Mission OS IPC Architecture
+# Mission OS IPC architecture
 
 **Document ID:** MOS-ENG-IPC-001
 **Version:** 1.0
@@ -13,17 +13,17 @@ This document defines the Inter-Process Communication (IPC) model for Mission OS
 
 ---
 
-## 2. IPC Principles
+## 2. IPC principles
 
-1. **All IPC is explicitly defined.** No process may communicate with another without a defined IPC contract.
-2. **All IPC is authenticated.** The receiver must verify the caller's identity.
-3. **All privileged IPC is authorized.** Operations that cross privilege boundaries require PolKit authorization.
-4. **All IPC is logged.** Security-relevant IPC operations are recorded in the audit log.
-5. **IPC must never expose secrets.** IPC channels must not transmit passwords, keys, or personal content without encryption.
+1. All IPC is explicitly defined. No process may communicate with another without a defined IPC contract.
+2. All IPC is authenticated. The receiver must verify the caller's identity.
+3. All privileged IPC is authorized. Operations that cross privilege boundaries require PolKit authorization.
+4. All IPC is logged. Security-relevant IPC operations are recorded in the audit log.
+5. IPC must never expose secrets. IPC channels must not transmit passwords, keys, or personal content without encryption.
 
 ---
 
-## 3. IPC Technologies
+## 3. IPC technologies
 
 ### 3.1 Primary: D-Bus
 
@@ -34,14 +34,14 @@ D-Bus is the primary IPC mechanism for all Mission OS communication.
 | System Bus | Communication between system services and user services | PolKit authorization, SELinux/AppArmor mediation |
 | Session Bus | Communication within user session (apps ↔ user services) | Implicit trust within session |
 
-### 3.2 Secondary: Unix Sockets
+### 3.2 Secondary: unix sockets
 
 Unix sockets are used for:
 - High-throughput data transfer (file operations)
 - Streaming data (diagnostics, hardware monitoring)
 - Communication with systemd journal
 
-### 3.3 Prohibited IPC Methods
+### 3.3 Prohibited IPC methods
 
 - Shared memory between different privilege levels (forbidden)
 - Global mutable state accessible from multiple processes (forbidden)
@@ -50,9 +50,9 @@ Unix sockets are used for:
 
 ---
 
-## 4. D-Bus Interface Design
+## 4. D-Bus interface design
 
-### 4.1 Naming Convention
+### 4.1 Naming convention
 
 ```
 org.mission.<ServiceName>1
@@ -63,22 +63,22 @@ Examples:
 - `org.mission.Update1`
 - `org.mission.Privacy1`
 
-### 4.2 Interface Versioning
+### 4.2 Interface versioning
 
 - Each D-Bus interface includes a version number in the name
 - Backward-compatible changes: add new methods, mark old as deprecated
 - Breaking changes: new interface name (e.g., `org.mission.Security2`)
 - Deprecated interfaces remain available for at least one release cycle
 
-### 4.3 Method Design Rules
+### 4.3 Method design rules
 
 1. Methods must validate all inputs before performing operations.
 2. Methods must return structured error information on failure.
-3. Methods must not block indefinitely (implement timeouts — default 30s).
+3. Methods must not block indefinitely (implement timeouts, default 30s).
 4. Methods must not execute arbitrary shell commands.
 5. Methods must log authorization decisions.
 
-### 4.4 Signal Design Rules
+### 4.4 Signal design rules
 
 1. Signals must include a sequence number for ordering.
 2. Signals must include a timestamp.
@@ -86,9 +86,9 @@ Examples:
 
 ---
 
-## 5. Authorization Model
+## 5. Authorization model
 
-### 5.1 PolKit Integration
+### 5.1 PolKit integration
 
 Every privileged D-Bus method requires PolKit authorization:
 
@@ -106,7 +106,7 @@ Every privileged D-Bus method requires PolKit authorization:
 </policyconfig>
 ```
 
-### 5.2 Authorization Levels
+### 5.2 Authorization levels
 
 | Level | PolicyKit Setting | Use Case |
 |-------|------------------|----------|
@@ -116,7 +116,7 @@ Every privileged D-Bus method requires PolKit authorization:
 | Admin | `auth_admin` | System-wide changes |
 | Admin Keep | `auth_admin_keep` | System changes with session caching |
 
-### 5.3 Authorization Caching
+### 5.3 Authorization caching
 
 - Admin keep: cached for 5 minutes (configurable)
 - User keep: cached for 15 minutes (configurable)
@@ -124,9 +124,9 @@ Every privileged D-Bus method requires PolKit authorization:
 
 ---
 
-## 6. Process Boundaries
+## 6. Process boundaries
 
-### 6.1 System Services
+### 6.1 System services
 
 ```
 Process: mission-securityd
@@ -135,7 +135,7 @@ Capabilities: CAP_NET_ADMIN, CAP_SYS_ADMIN
 Systemd: Type=dbus, BusName=org.mission.Security1
 ```
 
-### 6.2 User Services
+### 6.2 User services
 
 ```
 Process: mission-settingsd
@@ -143,7 +143,7 @@ User: <logged-in-user>
 Systemd: Type=dbus, BusName=org.mission.Settings1, User=%
 ```
 
-### 6.3 User Applications
+### 6.3 User applications
 
 ```
 Process: mission-hub
@@ -151,7 +151,7 @@ User: <logged-in-user>
 No direct system bus access (except via user service proxy)
 ```
 
-### 6.4 Recovery Environment
+### 6.4 Recovery environment
 
 ```
 Process: recovery tools
@@ -161,7 +161,7 @@ No D-Bus (minimal environment)
 
 ---
 
-## 7. IPC Flow Patterns
+## 7. IPC flow patterns
 
 ### 7.1 Application → System Service (with elevation)
 
@@ -181,7 +181,7 @@ mission-settingsd
                    mission-settingsd → mission-hub
 ```
 
-### 7.2 Application → User Service
+### 7.2 Application → user service
 
 ```
 mission-settings
@@ -193,7 +193,7 @@ mission-settingsd
     [return result]
 ```
 
-### 7.3 Service → Application (Signal)
+### 7.3 Service → application (signal)
 
 ```
 mission-updated
@@ -208,9 +208,9 @@ mission-update-manager
 
 ---
 
-## 8. Error Handling
+## 8. Error handling
 
-### 8.1 Error Response Format
+### 8.1 Error response format
 
 Every D-Bus error includes:
 - Error name (e.g., `org.mission.Error.PermissionDenied`)
@@ -218,7 +218,7 @@ Every D-Bus error includes:
 - Error code (machine-parseable integer)
 - Diagnostic data (optional, expandable)
 
-### 8.2 Standard Errors
+### 8.2 Standard errors
 
 | Error | Code | Description |
 |-------|------|-------------|
@@ -242,9 +242,9 @@ Every D-Bus error includes:
 
 ---
 
-## 9. Failure Isolation
+## 9. Failure isolation
 
-### 9.1 Service Crash
+### 9.1 Service crash
 
 - systemd automatically restarts crashed services
 - Restart limit: 3 attempts within 30 seconds, then enter failed state
@@ -252,13 +252,13 @@ Every D-Bus error includes:
 - Service state is recovered from persistent storage on restart
 - In-flight operations are lost (callers receive error)
 
-### 9.2 Bus Failure
+### 9.2 Bus failure
 
 - Session bus restart: all user services reconnect automatically
 - System bus restart: critical system failure, systemd reboot policy
 - D-Bus proxy in mission-core library handles reconnection transparently
 
-### 9.3 Request Validation
+### 9.3 Request validation
 
 All D-Bus method calls undergo:
 1. Input type validation (D-Bus type system)
@@ -270,22 +270,22 @@ Invalid or unauthenticated requests are rejected before processing.
 
 ---
 
-## 10. IPC Security Requirements
+## 10. IPC security requirements
 
-1. **All system bus interfaces require PolKit authorization for privileged methods.**
-2. **Sensitive data (passwords, keys) must not appear in D-Bus message logs.**
-3. **D-Bus eavesdropping is disabled on the system bus by default.**
-4. **Session bus does not require authentication (trusted within session).**
-5. **Application must not directly connect to the system bus.**
-6. **User services serve as proxies for system bus access.**
-7. **All IPC errors must be logged.**
-8. **Authorization failures must be logged in the audit trail.**
+1. All system bus interfaces require PolKit authorization for privileged methods.
+2. Sensitive data (passwords, keys) must not appear in D-Bus message logs.
+3. D-Bus eavesdropping is disabled on the system bus by default.
+4. Session bus does not require authentication (trusted within session).
+5. Application must not directly connect to the system bus.
+6. User services serve as proxies for system bus access.
+7. All IPC errors must be logged.
+8. Authorization failures must be logged in the audit trail.
 
 ---
 
-## 11. Bus Configuration
+## 11. Bus configuration
 
-### 11.1 System Bus Configuration
+### 11.1 System bus configuration
 
 ```
 <!-- /usr/share/dbus-1/system.d/org.mission.Security.conf -->
@@ -302,13 +302,13 @@ Invalid or unauthenticated requests are rejected before processing.
 </busconfig>
 ```
 
-### 11.2 Session Bus
+### 11.2 Session bus
 
 No additional restrictions beyond standard session bus policy.
 
 ---
 
-## 12. IPC Rules Summary
+## 12. IPC rules summary
 
 | Rule | Description |
 |------|-------------|

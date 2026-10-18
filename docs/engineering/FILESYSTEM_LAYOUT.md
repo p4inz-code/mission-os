@@ -1,4 +1,4 @@
-# Mission OS Filesystem Layout
+# Mission OS filesystem layout
 
 **Document ID:** MOS-ENG-004
 
@@ -8,7 +8,7 @@ Defines filesystem organization.
 
 ---
 
-# Top Level
+# Top level
 
 - /System
 - /Users
@@ -29,12 +29,12 @@ Defines filesystem organization.
 
 ---
 
-# User Data
+# User data
 
 Never stored inside system directories.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Filesystem remains organized and recoverable.

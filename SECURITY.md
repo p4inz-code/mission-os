@@ -1,6 +1,6 @@
-# Security Policy
+# Security policy
 
-## Our Commitment
+## Our commitment
 
 Security is a core principle of Mission OS.
 
@@ -10,7 +10,7 @@ Please do not disclose security vulnerabilities publicly until they have been re
 
 ---
 
-## Reporting a Vulnerability
+## Reporting a vulnerability
 
 If you discover a potential security issue:
 
@@ -29,7 +29,7 @@ Helpful information includes:
 
 ---
 
-## Response Process
+## Response process
 
 Every report is reviewed according to the following process:
 
@@ -42,7 +42,7 @@ Every report is reviewed according to the following process:
 
 ---
 
-## Supported Versions
+## Supported versions
 
 Supported releases are listed in `SUPPORTED_VERSIONS.md`.
 
@@ -62,7 +62,7 @@ This policy applies to:
 
 ---
 
-## Thank You
+## Thank you
 
 Responsible disclosure helps make Mission OS more secure for everyone.
 

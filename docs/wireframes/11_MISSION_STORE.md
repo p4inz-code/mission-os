@@ -1,4 +1,4 @@
-# Mission Store Wireframe
+# Mission store wireframe
 
 **Document ID:** MOS-WF-011
 
@@ -53,7 +53,7 @@ Application Grid
 
 ---
 
-# UX Rules
+# UX rules
 
 Installation progress must always be visible.
 

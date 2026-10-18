@@ -1,4 +1,4 @@
-# Mission OS Spacing System
+# Mission OS spacing system
 
 **Document ID:** MOS-DESIGN-013
 
@@ -23,7 +23,7 @@ Whitespace improves:
 
 ---
 
-# 3. Spacing Scale
+# 3. Spacing scale
 
 Mission OS uses a single spacing scale.
 
@@ -63,7 +63,7 @@ Interfaces align to a consistent layout grid.
 
 ---
 
-# 8. Responsive Behavior
+# 8. Responsive behavior
 
 Spacing adapts proportionally across display sizes.
 
@@ -77,7 +77,7 @@ Touch targets remain comfortably sized.
 
 ---
 
-# 10. Acceptance Criteria
+# 10. Acceptance criteria
 
 Spacing remains visually consistent across the operating system.
 

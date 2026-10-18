@@ -1,4 +1,4 @@
-# Mission OS User Flows
+# Mission OS user flows
 
 **Document ID:** MOS-DESIGN-004
 
@@ -14,7 +14,7 @@ Every workflow should minimize friction while remaining secure, predictable and 
 
 ---
 
-# 2. Design Principles
+# 2. Design principles
 
 Every user flow must be:
 
@@ -30,7 +30,7 @@ Users should never feel lost.
 
 ---
 
-# 3. First Boot
+# 3. First boot
 
 ```
 Power On
@@ -85,7 +85,7 @@ Desktop
 
 ---
 
-# 4. Daily Startup
+# 4. Daily startup
 
 ```
 Power On
@@ -109,7 +109,7 @@ Restore Previous Session
 
 ---
 
-# 5. Launch Application
+# 5. Launch application
 
 ```
 Desktop
@@ -147,7 +147,7 @@ Launch
 
 ---
 
-# 6. Install Application
+# 6. Install application
 
 ```
 Mission Hub
@@ -179,7 +179,7 @@ Launch
 
 ---
 
-# 7. Update System
+# 7. Update system
 
 ```
 Notification
@@ -207,7 +207,7 @@ Verification
 
 ---
 
-# 8. Privacy Review
+# 8. Privacy review
 
 ```
 Mission Hub
@@ -231,7 +231,7 @@ Apply Changes
 
 ---
 
-# 9. Security Review
+# 9. Security review
 
 ```
 Mission Hub
@@ -318,15 +318,15 @@ Dismiss
 
 ---
 
-# Definition of Done
+# Definition of done
 
 All major user journeys are clearly defined.
 
 ---
 
-# Section 2 — Advanced User Flows
+# Section 2: advanced user flows
 
-## Workspace Flow
+## Workspace flow
 
 ```
 Desktop
@@ -346,7 +346,7 @@ Restore Session
 
 ---
 
-## File Management
+## File management
 
 ```
 File Manager
@@ -379,7 +379,7 @@ Supported actions:
 
 ---
 
-## Network Connection
+## Network connection
 
 ```
 Quick Settings
@@ -427,7 +427,7 @@ Verification
 
 ---
 
-## Driver Installation
+## Driver installation
 
 ```
 Mission Hub
@@ -507,7 +507,7 @@ Restart
 
 ---
 
-## Error Recovery
+## Error recovery
 
 If a workflow fails:
 
@@ -519,13 +519,13 @@ If a workflow fails:
 
 ---
 
-## Accessibility Flow
+## Accessibility flow
 
 Accessibility features should never require more than three interactions from Settings or one keyboard shortcut if configured.
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 User Flows pass when:
 

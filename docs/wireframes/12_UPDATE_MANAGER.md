@@ -1,4 +1,4 @@
-# Update Manager Wireframe
+# Update manager wireframe
 
 **Document ID:** MOS-WF-012
 
@@ -51,7 +51,7 @@ Rollback
 
 ---
 
-# UX Rules
+# UX rules
 
 Updates should clearly display:
 

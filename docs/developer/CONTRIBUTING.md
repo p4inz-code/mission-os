@@ -1,4 +1,4 @@
-# Contributing to Mission OS
+# Contributing to mission OS
 
 **Document ID:** MOS-DEV-010
 
@@ -31,7 +31,7 @@ Every contribution should include:
 
 ---
 
-# Pull Requests
+# Pull requests
 
 Describe:
 
@@ -64,6 +64,6 @@ Reviewers verify:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Contribution meets all project standards and is approved through review.

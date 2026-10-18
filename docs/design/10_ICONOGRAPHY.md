@@ -1,4 +1,4 @@
-# Mission OS Iconography
+# Mission OS iconography
 
 **Document ID:** MOS-DESIGN-010
 
@@ -79,7 +79,7 @@ Standard sizes:
 
 ---
 
-# 7. Color Rules
+# 7. Color rules
 
 Icons inherit semantic colors from the design system.
 
@@ -100,7 +100,7 @@ Icons alone should never be the only means of conveying critical information.
 
 ---
 
-# 9. Acceptance Criteria
+# 9. Acceptance criteria
 
 All official applications use the shared icon library with no custom icon styles.
 

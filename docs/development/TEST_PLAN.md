@@ -1,14 +1,14 @@
-# Test Plan
+# Test plan
 
-## Unit Tests
+## Unit tests
 
-## Integration Tests
+## Integration tests
 
-## UI Tests
+## UI tests
 
-## Accessibility Tests
+## Accessibility tests
 
-## Performance Tests
+## Performance tests
 
-## Security Tests
+## Security tests
 

@@ -1,4 +1,4 @@
-# Mission OS State Management
+# Mission OS state management
 
 **Document ID:** MOS-DEV-004
 
@@ -21,7 +21,7 @@ State should be:
 
 # Categories
 
-## Local State
+## Local state
 
 Temporary UI values.
 
@@ -33,7 +33,7 @@ Examples:
 
 ---
 
-## Screen State
+## Screen state
 
 Data shared within one screen.
 
@@ -45,7 +45,7 @@ Examples:
 
 ---
 
-## Application State
+## Application state
 
 Shared across applications.
 
@@ -57,7 +57,7 @@ Examples:
 
 ---
 
-## System State
+## System state
 
 Provided by Mission OS.
 
@@ -94,7 +94,7 @@ Temporary state should not survive restarts.
 
 ---
 
-# Error Recovery
+# Error recovery
 
 State restoration should occur after:
 
@@ -105,6 +105,6 @@ State restoration should occur after:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Application state remains deterministic, recoverable, and easy to debug.

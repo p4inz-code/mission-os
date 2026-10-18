@@ -1,4 +1,4 @@
-# Mission OS Accessibility Checklist
+# Mission OS accessibility checklist
 
 **Document ID:** MOS-DEV-009
 
@@ -16,7 +16,7 @@ Defines accessibility requirements for every Mission OS interface.
 
 ---
 
-# Screen Readers
+# Screen readers
 
 - Proper labels
 - Semantic structure
@@ -53,6 +53,6 @@ Accessibility must be verified before release.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 WCAG AA compliance achieved.

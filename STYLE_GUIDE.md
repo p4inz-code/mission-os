@@ -1,4 +1,4 @@
-# Mission OS Style Guide
+# Mission OS style guide
 
 This document defines the writing, documentation, and coding style used throughout the Mission OS project.
 
@@ -6,7 +6,7 @@ A consistent style improves readability, maintainability, and collaboration.
 
 ---
 
-# General Principles
+# General principles
 
 - Prefer clarity over cleverness.
 - Keep documentation concise and accurate.
@@ -16,7 +16,7 @@ A consistent style improves readability, maintainability, and collaboration.
 
 ---
 
-# Documentation Style
+# Documentation style
 
 Documentation should be:
 
@@ -41,7 +41,7 @@ Avoid:
 
 ---
 
-# Code Style
+# Code style
 
 Code should be:
 
@@ -60,7 +60,7 @@ Guidelines:
 
 ---
 
-# Commit Messages
+# Commit messages
 
 Use Conventional Commits where appropriate.
 
@@ -74,7 +74,7 @@ Examples:
 
 ---
 
-# Pull Requests
+# Pull requests
 
 Every pull request should:
 
@@ -86,7 +86,7 @@ Every pull request should:
 
 ---
 
-# Design Philosophy
+# Design philosophy
 
 Mission OS values consistency over novelty.
 
@@ -96,7 +96,7 @@ Every design decision should improve usability.
 
 ---
 
-# Review Standard
+# Review standard
 
 Before merging, ask:
 

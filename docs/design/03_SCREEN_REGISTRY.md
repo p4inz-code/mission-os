@@ -1,4 +1,4 @@
-# Mission OS Screen Registry
+# Mission OS screen registry
 
 **Document ID:** MOS-DESIGN-003
 
@@ -16,7 +16,7 @@ No screen may exist without appearing here.
 
 ---
 
-# 2. Screen Naming Convention
+# 2. Screen naming convention
 
 Every screen receives:
 
@@ -58,7 +58,7 @@ Settings Home
 
 ---
 
-# 4. Lock Screen
+# 4. Lock screen
 
 | ID | Screen |
 |------|----------------|
@@ -84,7 +84,7 @@ Settings Home
 
 ---
 
-# 6. Mission Hub
+# 6. Mission hub
 
 | ID | Screen |
 |------|----------------|
@@ -124,7 +124,7 @@ Settings Home
 
 ---
 
-# 8. Privacy Center
+# 8. Privacy center
 
 | ID | Screen |
 |------|----------------|
@@ -137,7 +137,7 @@ Settings Home
 
 ---
 
-# 9. Security Center
+# 9. Security center
 
 | ID | Screen |
 |------|----------------|
@@ -151,7 +151,7 @@ Settings Home
 
 ---
 
-# 10. Recovery Center
+# 10. Recovery center
 
 | ID | Screen |
 |------|----------------|
@@ -179,13 +179,13 @@ Settings Home
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Every production screen appears in this registry.
 
-# Section 2 — Core Applications
+# Section 2: core applications
 
-# 12. Mission Store
+# 12. Mission store
 
 | ID | Screen |
 |------|----------------|
@@ -199,7 +199,7 @@ Every production screen appears in this registry.
 
 ---
 
-# 13. File Manager
+# 13. File manager
 
 | ID | Screen |
 |------|----------------|
@@ -212,7 +212,7 @@ Every production screen appears in this registry.
 
 ---
 
-# 14. Update Manager
+# 14. Update manager
 
 | ID | Screen |
 |------|----------------|
@@ -224,7 +224,7 @@ Every production screen appears in this registry.
 
 ---
 
-# 15. Driver Manager
+# 15. Driver manager
 
 | ID | Screen |
 |------|----------------|
@@ -262,7 +262,7 @@ Every production screen appears in this registry.
 
 ---
 
-# 18. Common Dialogs
+# 18. Common dialogs
 
 Every application may use:
 
@@ -279,7 +279,7 @@ Every application may use:
 
 ---
 
-# 19. Global Overlays
+# 19. Global overlays
 
 Mission OS includes:
 
@@ -295,7 +295,7 @@ Mission OS includes:
 
 ---
 
-# 20. Future Screens
+# 20. Future screens
 
 Reserved IDs are maintained for future expansion.
 
@@ -303,7 +303,7 @@ Deprecated IDs are never reused.
 
 ---
 
-# Acceptance Criteria
+# Acceptance criteria
 
 The Screen Registry passes when:
 

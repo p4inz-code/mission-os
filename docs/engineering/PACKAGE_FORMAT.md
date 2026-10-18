@@ -1,4 +1,4 @@
-# Mission OS Package Format
+# Mission OS package format
 
 **Document ID:** MOS-ENG-009
 
@@ -8,7 +8,7 @@ Defines application package structure.
 
 ---
 
-# Package Contents
+# Package contents
 
 - Manifest
 - Executables
@@ -37,6 +37,6 @@ Unsigned packages are rejected unless explicitly allowed.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Packages remain secure, portable, and verifiable.

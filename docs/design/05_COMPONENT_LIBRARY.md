@@ -1,4 +1,4 @@
-# Mission OS Component Library
+# Mission OS component library
 
 **Document ID:** MOS-DESIGN-005
 
@@ -16,7 +16,7 @@ No application may invent new components unless approved through the design revi
 
 ---
 
-# 2. Design Principles
+# 2. Design principles
 
 Every component must be:
 
@@ -31,7 +31,7 @@ Every component must be:
 
 ---
 
-# 3. Component Categories
+# 3. Component categories
 
 Mission OS components are grouped into:
 
@@ -48,7 +48,7 @@ Mission OS components are grouped into:
 
 ---
 
-# 4. Navigation Components
+# 4. Navigation components
 
 Standard navigation includes:
 
@@ -88,7 +88,7 @@ States:
 
 ---
 
-# 6. Input Components
+# 6. Input components
 
 Standard inputs:
 
@@ -105,7 +105,7 @@ Standard inputs:
 
 ---
 
-# 7. Selection Components
+# 7. Selection components
 
 Selection controls include:
 
@@ -170,7 +170,7 @@ Nested dialogs are prohibited.
 
 ---
 
-# 11. Feedback Components
+# 11. Feedback components
 
 Feedback includes:
 
@@ -192,13 +192,13 @@ Icons must remain simple, recognizable and scalable.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Every reusable component is standardized.
 
 ---
 
-# Section 2 — Advanced Components
+# Section 2: advanced components
 
 ## Tables
 
@@ -213,7 +213,7 @@ Support:
 
 ---
 
-## Context Menus
+## Context menus
 
 Support:
 
@@ -247,7 +247,7 @@ Each notification includes:
 
 ---
 
-## Search Components
+## Search components
 
 Search provides:
 
@@ -259,7 +259,7 @@ Search provides:
 
 ---
 
-## Empty States
+## Empty states
 
 Every empty state includes:
 
@@ -270,7 +270,7 @@ Every empty state includes:
 
 ---
 
-## Error States
+## Error states
 
 Every error screen contains:
 
@@ -281,7 +281,7 @@ Every error screen contains:
 
 ---
 
-## Loading States
+## Loading states
 
 Loading uses:
 
@@ -306,7 +306,7 @@ Every component supports:
 
 ---
 
-## Future Components
+## Future components
 
 Reserved for:
 
@@ -317,7 +317,7 @@ Reserved for:
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
 The Component Library passes when:
 

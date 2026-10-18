@@ -1,4 +1,4 @@
-# Settings Wireframe
+# Settings wireframe
 
 **Document ID:** MOS-WF-005
 
@@ -27,7 +27,7 @@ Optional Context Panel
 
 ---
 
-# Sidebar Sections
+# Sidebar sections
 
 - Personalization
 - Display
@@ -69,7 +69,7 @@ Optional Context Panel
 
 ---
 
-# UX Rules
+# UX rules
 
 Changes should:
 

@@ -1,24 +1,24 @@
-# Release Process
+# Release process
 
 This document describes how Mission OS releases are planned and published.
 
-> **Current release: OPEN BETA (2026-08-09)** — `mission-os-0.1.0-nightly.20260730-amd64.hybrid.iso`,
+> **Current release: OPEN BETA (2026-08-09)**, `mission-os-0.1.0-nightly.20260730-amd64.hybrid.iso`,
 > SHA256 `a772f14d5e4cd26c12ae54bd4ff7f1f6111618c6a3a9a5e77af133e1b3c0f7ef`. See
 > `docs/development/BETA_RELEASE_REPORT.md` for the full release report and tester workflow.
 
 ---
 
-# Release Philosophy
+# Release philosophy
 
 Mission OS follows a quality-first release strategy.
 
-Features are released when they are ready—not according to fixed deadlines.
+Features are released when they are ready, not according to fixed deadlines.
 
 Stability, security, documentation, and maintainability always take priority over release frequency.
 
 ---
 
-# Release Stages
+# Release stages
 
 ## Development
 
@@ -52,7 +52,7 @@ Stable releases receive maintenance updates, bug fixes, and security improvement
 
 ---
 
-# Release Checklist
+# Release checklist
 
 Before publishing a release:
 

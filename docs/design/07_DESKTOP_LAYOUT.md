@@ -1,4 +1,4 @@
-# Mission OS Desktop Layout
+# Mission OS desktop layout
 
 **Document ID:** MOS-DESIGN-007
 
@@ -25,7 +25,7 @@ The desktop consists of:
 
 ---
 
-# 3. Top Panel
+# 3. Top panel
 
 Contains:
 
@@ -53,7 +53,7 @@ Supports auto-hide.
 
 ---
 
-# 5. Workspace Area
+# 5. Workspace area
 
 Primary working area for:
 
@@ -74,7 +74,7 @@ Non-intrusive by default.
 
 ---
 
-# 7. Quick Settings
+# 7. Quick settings
 
 Accessible from the top panel.
 
@@ -104,7 +104,7 @@ Supports:
 
 ---
 
-# 9. Window Management
+# 9. Window management
 
 Supports:
 
@@ -117,7 +117,7 @@ Supports:
 
 ---
 
-# 10. Desktop Guidelines
+# 10. Desktop guidelines
 
 Desktop should remain:
 
@@ -128,7 +128,7 @@ Desktop should remain:
 
 ---
 
-# Acceptance Criteria
+# Acceptance criteria
 
 Desktop Layout passes when:
 

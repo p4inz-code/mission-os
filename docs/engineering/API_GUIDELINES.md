@@ -1,4 +1,4 @@
-# Mission OS API Guidelines
+# Mission OS API guidelines
 
 **Document ID:** MOS-ENG-010
 
@@ -47,6 +47,6 @@ Authenticate privileged operations.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 APIs remain reliable, secure, and well documented.

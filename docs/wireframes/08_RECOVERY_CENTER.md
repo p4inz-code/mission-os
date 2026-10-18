@@ -1,4 +1,4 @@
-# Recovery Center Wireframe
+# Recovery center wireframe
 
 **Document ID:** MOS-WF-008
 
@@ -62,7 +62,7 @@ Advanced Recovery
 
 ---
 
-# UX Rules
+# UX rules
 
 Destructive operations require:
 

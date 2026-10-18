@@ -1,4 +1,4 @@
-# Mission OS Responsive Rules
+# Mission OS responsive rules
 
 **Document ID:** MOS-DESIGN-014
 
@@ -14,7 +14,7 @@ Mission OS is desktop-first but must remain usable on a wide range of hardware.
 
 ---
 
-# 2. Design Goals
+# 2. Design goals
 
 Responsive layouts must remain:
 
@@ -27,7 +27,7 @@ Layouts should adapt without changing user workflows.
 
 ---
 
-# 3. Supported Displays
+# 3. Supported displays
 
 Mission OS officially supports:
 
@@ -54,7 +54,7 @@ Higher scaling values remain available through accessibility settings.
 
 ---
 
-# 5. Window Sizes
+# 5. Window sizes
 
 Applications support:
 
@@ -79,7 +79,7 @@ Mission OS supports:
 
 ---
 
-# 7. Responsive Behavior
+# 7. Responsive behavior
 
 Interfaces adapt by:
 
@@ -107,7 +107,7 @@ Responsive adjustments must occur instantly without visible layout instability.
 
 ---
 
-# 10. Acceptance Criteria
+# 10. Acceptance criteria
 
 Responsive layouts remain usable, accessible and visually consistent across all supported display configurations.
 

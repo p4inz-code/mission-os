@@ -1,4 +1,4 @@
-# Mission OS Performance Guidelines
+# Mission OS performance guidelines
 
 **Document ID:** MOS-DEV-006
 
@@ -87,6 +87,6 @@ Performance should be measured using:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Applications meet performance targets without sacrificing maintainability or accessibility.

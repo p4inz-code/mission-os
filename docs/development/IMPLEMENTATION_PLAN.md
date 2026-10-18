@@ -1,28 +1,28 @@
-# Implementation Plan
+# Implementation plan
 
 ## Status
 
-Engineering Architecture Phase — COMPLETE
+Engineering Architecture Phase, COMPLETE
 
-## Architecture Documents
+## Architecture documents
 
 The complete engineering architecture is now defined in `docs/engineering/`:
 
-- **ARCHITECTURE.md** — System architecture, layers, dependency rules
-- **MODULE_MAP.md** — 25 canonical modules with definitions
-- **SECURITY_ARCHITECTURE.md** — Threat model, encryption, sandboxing
-- **DATA_ARCHITECTURE.md** — Data integrity, recovery, safety
-- **IPC_ARCHITECTURE.md** — IPC model, authorization, failure isolation
-- **RUNTIME_ARCHITECTURE.md** — Boot process, session lifecycle
-- **BUILD_ARCHITECTURE.md** — Build system, ISO generation, CI/CD
-- **TESTING_STRATEGY.md** — Test types, infrastructure, requirements
-- **DEPENDENCY_POLICY.md** — Dependency management rules
-- **CODING_STANDARDS.md** — Engineering standards
-- **IMPLEMENTATION_ROADMAP.md** — 12-milestone implementation plan
-- **ENGINEERING_GATES.md** — Quality gates for each milestone
-- **UNRESOLVED_DECISIONS.md** — Gaps and pending decisions
+- ARCHITECTURE.md: System architecture, layers, dependency rules
+- MODULE_MAP.md: 25 canonical modules with definitions
+- SECURITY_ARCHITECTURE.md: Threat model, encryption, sandboxing
+- DATA_ARCHITECTURE.md: Data integrity, recovery, safety
+- IPC_ARCHITECTURE.md: IPC model, authorization, failure isolation
+- RUNTIME_ARCHITECTURE.md: Boot process, session lifecycle
+- BUILD_ARCHITECTURE.md: Build system, ISO generation, CI/CD
+- TESTING_STRATEGY.md: Test types, infrastructure, requirements
+- DEPENDENCY_POLICY.md: Dependency management rules
+- CODING_STANDARDS.md: Engineering standards
+- IMPLEMENTATION_ROADMAP.md: 12-milestone implementation plan
+- ENGINEERING_GATES.md: Quality gates for each milestone
+- UNRESOLVED_DECISIONS.md: Gaps and pending decisions
 
-## Milestone Roadmap
+## Milestone roadmap
 
 | # | Milestone | Dependencies |
 |---|-----------|-------------|

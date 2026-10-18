@@ -1,4 +1,4 @@
-# Mission OS UI Architecture
+# Mission OS UI architecture
 
 **Document ID:** MOS-DEV-003
 
@@ -8,7 +8,7 @@ Defines the architectural principles governing all Mission OS user interfaces.
 
 ---
 
-# Architecture Goals
+# Architecture goals
 
 - Modular
 - Reusable
@@ -19,7 +19,7 @@ Defines the architectural principles governing all Mission OS user interfaces.
 
 ---
 
-# Layer Structure
+# Layer structure
 
 Presentation Layer
 
@@ -41,7 +41,7 @@ Platform Services
 
 ---
 
-# Component Rules
+# Component rules
 
 Every UI component must:
 
@@ -52,7 +52,7 @@ Every UI component must:
 
 ---
 
-# Screen Composition
+# Screen composition
 
 Each screen is built from:
 
@@ -95,6 +95,6 @@ Every UI component must comply with the Mission OS Accessibility Guidelines.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 UI architecture remains modular, predictable, and scalable.

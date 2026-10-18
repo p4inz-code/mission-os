@@ -21,7 +21,7 @@ These principles apply equally to engineering, design, documentation, community 
 
 ---
 
-# Principle 1 — User Trust Above Everything
+# Principle 1: user trust above everything
 
 Trust is Mission OS's most valuable asset.
 
@@ -31,7 +31,7 @@ Every decision should increase confidence in the operating system.
 
 ---
 
-# Principle 2 — Privacy by Default
+# Principle 2: privacy by default
 
 Privacy should never require advanced configuration.
 
@@ -41,7 +41,7 @@ Data collection should never occur without clear explanation and explicit user c
 
 ---
 
-# Principle 3 — Security by Design
+# Principle 3: security by design
 
 Security is designed into every layer of Mission OS.
 
@@ -51,7 +51,7 @@ Every subsystem should contribute to a defense-in-depth architecture.
 
 ---
 
-# Principle 4 — Explain Before Asking
+# Principle 4: explain before asking
 
 Whenever Mission OS requests user action, it should explain:
 
@@ -65,7 +65,7 @@ No dialog should assume prior technical knowledge.
 
 ---
 
-# Principle 5 — Recovery Before Reinstallation
+# Principle 5: recovery before reinstallation
 
 Every recoverable problem should include a documented recovery path.
 
@@ -73,7 +73,7 @@ Reinstalling the operating system should be considered the final option rather t
 
 ---
 
-# Principle 6 — Documentation Is Part of the Product
+# Principle 6: documentation is part of the product
 
 A feature without documentation is considered incomplete.
 
@@ -83,7 +83,7 @@ Examples and troubleshooting guidance should accompany complex features whenever
 
 ---
 
-# Principle 7 — Consistency
+# Principle 7: consistency
 
 Mission OS should maintain consistency across:
 
@@ -99,7 +99,7 @@ Consistency reduces cognitive load and improves usability.
 
 ---
 
-# Principle 8 — Accessibility by Default
+# Principle 8: accessibility by default
 
 Mission OS should remain usable by the widest possible audience.
 
@@ -107,7 +107,7 @@ Accessibility should influence design decisions from the beginning rather than b
 
 ---
 
-# Principle 9 — Simplicity Through Engineering
+# Principle 9: simplicity through engineering
 
 Internal complexity should simplify the user experience rather than expose unnecessary technical details.
 
@@ -115,7 +115,7 @@ Advanced functionality should remain available without overwhelming beginners.
 
 ---
 
-# Principle 10 — Honest Communication
+# Principle 10: honest communication
 
 Mission OS should communicate honestly.
 
@@ -125,7 +125,7 @@ Known limitations should be documented openly.
 
 ---
 
-# Principle 11 — Open Engineering
+# Principle 11: open engineering
 
 Where practical, engineering decisions should be transparent.
 
@@ -135,7 +135,7 @@ Knowledge should be documented rather than retained only by individuals.
 
 ---
 
-# Principle 12 — Maintainability
+# Principle 12: maintainability
 
 Code should be written for long-term maintenance.
 
@@ -143,7 +143,7 @@ Readable code, modular architecture, reproducible builds, testing, and documenta
 
 ---
 
-# Principle 13 — Predictability
+# Principle 13: predictability
 
 Mission OS should behave predictably.
 
@@ -153,7 +153,7 @@ Predictability builds confidence.
 
 ---
 
-# Principle 14 — Performance with Purpose
+# Principle 14: performance with purpose
 
 Performance improvements should support usability, responsiveness, and efficiency.
 
@@ -161,7 +161,7 @@ Performance should never justify reducing privacy, reliability, accessibility, o
 
 ---
 
-# Principle 15 — Quality Before Quantity
+# Principle 15: quality before quantity
 
 Mission OS values quality over feature count.
 
@@ -169,7 +169,7 @@ A smaller collection of polished, reliable features is preferable to numerous in
 
 ---
 
-# Decision Framework
+# Decision framework
 
 Before accepting any significant change, contributors should ask:
 
@@ -188,7 +188,7 @@ If several answers are negative, the proposal should be reconsidered.
 
 ---
 
-# Closing Statement
+# Closing statement
 
 These principles define the identity of Mission OS.
 

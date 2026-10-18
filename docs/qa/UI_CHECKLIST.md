@@ -1,6 +1,6 @@
-# UI Checklist
+# UI checklist
 
-## Visual Consistency
+## Visual consistency
 
 - [ ] Color palette follows the Design Bible.
 - [ ] Typography follows the Design Bible.
@@ -39,7 +39,7 @@
 - [ ] Text scaling supported.
 - [ ] High contrast mode verified.
 
-## Desktop Integration
+## Desktop integration
 
 - [ ] Window decorations correct.
 - [ ] Window controls function correctly.
@@ -62,6 +62,6 @@
 
 Status:
 
-PASS ☐
+PASS
 
-FAIL ☐
+FAIL

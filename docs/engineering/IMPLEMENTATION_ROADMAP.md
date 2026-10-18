@@ -1,4 +1,4 @@
-# Mission OS Implementation Roadmap
+# Mission OS implementation roadmap
 
 **Document ID:** MOS-ENG-ROADMAP-001
 **Version:** 1.0
@@ -13,7 +13,7 @@ This document defines the complete implementation roadmap for Mission OS, organi
 
 ---
 
-## 2. Milestone Overview
+## 2. Milestone overview
 
 ```
 Phase 0: Engineering Architecture (NOW)
@@ -57,9 +57,9 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-## 3. Milestone Details
+## 3. Milestone details
 
-### Milestone 1: Shared Libraries + Build System
+### Milestone 1: shared libraries + build system
 
 **Goal:** Establish the foundational build system and shared libraries that everything else depends on.
 
@@ -141,7 +141,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 2: Core System Services
+### Milestone 2: core system services
 
 **Goal:** Implement all system-level and user-level services.
 
@@ -151,15 +151,15 @@ Milestone 12: Release Candidate + Stable
 
 **Implementation Tasks:**
 
-2.1 **mission-securityd** — Firewall management, audit logging initial implementation
-2.2 **mission-updated** — Update check, download, verification, staging
-2.3 **mission-driverd** — Hardware detection, driver matching
-2.4 **mission-privileged** — PolKit elevation proxy
-2.5 **mission-settingsd** — Settings persistence, validation, notification
-2.6 **mission-privacyd** — Permission tracking, privacy enforcement
-2.7 **mission-sessiond** — Session state, workspace management
-2.8 **mission-networkd** — NetworkManager integration
-2.9 **mission-accessibilityd** — Accessibility service integration
+2.1 **mission-securityd**, Firewall management, audit logging initial implementation
+2.2 **mission-updated**: Update check, download, verification, staging
+2.3 **mission-driverd**, Hardware detection, driver matching
+2.4 **mission-privileged**, PolKit elevation proxy
+2.5 **mission-settingsd**: Settings persistence, validation, notification
+2.6 **mission-privacyd**, Permission tracking, privacy enforcement
+2.7 **mission-sessiond**, Session state, workspace management
+2.8 **mission-networkd**, NetworkManager integration
+2.9 **mission-accessibilityd**, Accessibility service integration
 
 **Security Requirements:**
 - All D-Bus interfaces secured with PolKit
@@ -183,7 +183,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 3: Desktop Environment Integration
+### Milestone 3: desktop environment integration
 
 **Goal:** Configure KDE Plasma with Mission OS design, extensions, and defaults.
 
@@ -215,7 +215,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 4: Installer + ISO Build
+### Milestone 4: installer + ISO build
 
 **Goal:** Create a working installer and bootable ISO.
 
@@ -248,7 +248,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 5: Mission Applications (Part 1)
+### Milestone 5: mission applications (part 1)
 
 **Goal:** Implement core Mission applications.
 
@@ -258,10 +258,10 @@ Milestone 12: Release Candidate + Stable
 
 **Implementation Tasks:**
 
-5.1 **Mission Hub** — Dashboard, health score, quick actions, navigation
-5.2 **Settings** — All configuration categories (see reference/04_SETTINGS.md)
-5.3 **Network application** — Wi-Fi, Ethernet, VPN, DNS, proxy management
-5.4 **Mission Store** — Application discovery, installation, updates, removal
+5.1 **Mission Hub**: Dashboard, health score, quick actions, navigation
+5.2 **Settings**, All configuration categories (see reference/04_SETTINGS.md)
+5.3 **Network application**: Wi-Fi, Ethernet, VPN, DNS, proxy management
+5.4 **Mission Store**: Application discovery, installation, updates, removal
 
 **Tests:**
 - Each application page tested independently
@@ -271,7 +271,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 6: Security + Privacy Architecture
+### Milestone 6: security + privacy architecture
 
 **Goal:** Implement Security Center and Privacy Center.
 
@@ -281,8 +281,8 @@ Milestone 12: Release Candidate + Stable
 
 **Implementation Tasks:**
 
-6.1 **Security Center** — Dashboard, firewall, encryption, Secure Boot, incident history
-6.2 **Privacy Center** — Dashboard, permissions, privacy score, timeline, reports
+6.1 **Security Center**: Dashboard, firewall, encryption, Secure Boot, incident history
+6.2 **Privacy Center**: Dashboard, permissions, privacy score, timeline, reports
 6.3 Security/Privacy integration with Mission Hub dashboard
 
 **Security Requirements:**
@@ -297,7 +297,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 7: Recovery + Diagnostics
+### Milestone 7: recovery + diagnostics
 
 **Goal:** Implement Recovery Center and Diagnostics.
 
@@ -307,8 +307,8 @@ Milestone 12: Release Candidate + Stable
 
 **Implementation Tasks:**
 
-7.1 **Recovery Center** — Dashboard, restore points, factory reset, recovery USB creation
-7.2 **Diagnostics** — Dashboard, hardware checks, health score, reports
+7.1 **Recovery Center**: Dashboard, restore points, factory reset, recovery USB creation
+7.2 **Diagnostics**: Dashboard, hardware checks, health score, reports
 7.3 Recovery environment bootable image
 7.4 Snapshot/rollback integration with update manager
 
@@ -324,7 +324,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 8: Mission Applications (Part 2)
+### Milestone 8: mission applications (part 2)
 
 **Goal:** Implement remaining Mission applications.
 
@@ -334,11 +334,11 @@ Milestone 12: Release Candidate + Stable
 
 **Implementation Tasks:**
 
-8.1 **File Manager** — Full implementation (see reference/11_FILE_MANAGER.md)
-8.2 **Update Manager** — Dashboard, history, rollback, scheduling
-8.3 **Driver Manager** — Hardware detection, installation, rollback
-8.4 **Accessibility** — Vision, hearing, motor, cognitive support
-8.5 **Workspaces** — Full workspace management
+8.1 **File Manager**, Full implementation (see reference/11_FILE_MANAGER.md)
+8.2 **Update Manager**: Dashboard, history, rollback, scheduling
+8.3 **Driver Manager**: Hardware detection, installation, rollback
+8.4 **Accessibility**: Vision, hearing, motor, cognitive support
+8.5 **Workspaces**, Full workspace management
 
 **Tests:**
 - File operations (copy, move, delete, search)
@@ -349,7 +349,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 9: Integration + Polish
+### Milestone 9: integration + polish
 
 **Goal:** Full system integration testing and UI polish.
 
@@ -374,7 +374,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 10: Alpha Release
+### Milestone 10: alpha release
 
 **Goal:** Internal alpha release for testing.
 
@@ -396,7 +396,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 11: Beta Release
+### Milestone 11: beta release
 
 **Goal:** Public beta release.
 
@@ -419,7 +419,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-### Milestone 12: Release Candidate + Stable
+### Milestone 12: release candidate + stable
 
 **Goal:** First stable release.
 
@@ -442,7 +442,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-## 4. Implementation Order Rationale
+## 4. Implementation order rationale
 
 **Why Milestone 1 first:**
 - Every other component depends on the shared libraries
@@ -456,7 +456,7 @@ Milestone 12: Release Candidate + Stable
 
 **Why Desktop before Installer:**
 - The desktop is the primary user experience
-- Installer configures the desktop — it needs to know what it's installing
+- Installer configures the desktop: it needs to know what it's installing
 - Desktop can be developed and tested in the existing Debian environment
 
 **Why Installer at Milestone 4:**
@@ -479,7 +479,7 @@ Milestone 12: Release Candidate + Stable
 
 ---
 
-## 6. What Must NOT Be Implemented Yet
+## 6. What must NOT be implemented yet
 
 - Cloud synchronization service
 - Remote attestation

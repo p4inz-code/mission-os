@@ -1,4 +1,4 @@
-# Mission OS Service Architecture
+# Mission OS service architecture
 
 **Document ID:** MOS-ENG-002
 
@@ -8,7 +8,7 @@ Defines background service organization.
 
 ---
 
-# Service Types
+# Service types
 
 - System
 - Security
@@ -36,6 +36,6 @@ Services communicate through defined IPC channels only.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Services remain modular, isolated, and fault tolerant.

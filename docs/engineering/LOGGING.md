@@ -1,4 +1,4 @@
-# Mission OS Logging
+# Mission OS logging
 
 **Document ID:** MOS-ENG-007
 
@@ -19,7 +19,7 @@ Logs must be:
 
 ---
 
-# Log Levels
+# Log levels
 
 - Debug
 - Info
@@ -39,6 +39,6 @@ Logs must be:
 
 ---
 
-# Definition of Done
+# Definition of done
 
 Logs provide actionable diagnostics without exposing sensitive information.

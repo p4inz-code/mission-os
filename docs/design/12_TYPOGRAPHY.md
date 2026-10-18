@@ -1,4 +1,4 @@
-# Mission OS Typography
+# Mission OS typography
 
 **Document ID:** MOS-DESIGN-012
 
@@ -24,7 +24,7 @@ Typography should be:
 
 ---
 
-# 3. Text Styles
+# 3. Text styles
 
 Standard hierarchy:
 
@@ -50,7 +50,7 @@ Typography must maintain:
 
 ---
 
-# 5. Code Typography
+# 5. Code typography
 
 Monospaced font for:
 
@@ -83,7 +83,7 @@ Avoid:
 
 ---
 
-# 8. Acceptance Criteria
+# 8. Acceptance criteria
 
 Typography remains consistent throughout Mission OS.
 

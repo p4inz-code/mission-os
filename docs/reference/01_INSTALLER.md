@@ -1,4 +1,4 @@
-# Mission OS Installer
+# Mission OS installer
 
 **Document ID:** MOS-INSTALLER-001
 
@@ -57,11 +57,11 @@ The installer should:
 
 ---
 
-# Primary Installation Modes
+# Primary installation modes
 
 Mission OS supports two primary operating modes.
 
-## Portable Mode
+## Portable mode
 
 Runs directly from removable media.
 
@@ -77,7 +77,7 @@ Portable mode is a first-class experience and should never feel like a reduced v
 
 ---
 
-## Installed Mode
+## Installed mode
 
 Mission OS installs directly onto internal storage.
 
@@ -91,7 +91,7 @@ Characteristics:
 
 ---
 
-# Supported Installation Types
+# Supported installation types
 
 The installer should support:
 
@@ -106,7 +106,7 @@ Every option should include clear explanations before changes are made.
 
 ---
 
-# Design Principles
+# Design principles
 
 The installer should always be:
 
@@ -135,7 +135,7 @@ Users should never need external documentation to begin installation.
 
 ---
 
-# Installation Philosophy
+# Installation philosophy
 
 Mission OS prefers preventing mistakes over recovering from mistakes.
 
@@ -150,7 +150,7 @@ No irreversible action should occur without explicit confirmation.
 
 ---
 
-# Core Objectives
+# Core objectives
 
 1. Maximum compatibility
 2. Maximum reliability
@@ -165,7 +165,7 @@ No irreversible action should occur without explicit confirmation.
 
 ---
 
-# Success Criteria
+# Success criteria
 
 The installer is considered successful when users can complete installation confidently without needing third-party tutorials, forums, or guesswork.
 
@@ -175,7 +175,7 @@ The installer is considered successful when users can complete installation conf
 
 ---
 
-# Section 2 — Complete Installation Flow
+# Section 2: complete installation flow
 
 The Mission OS installer follows a guided workflow.
 
@@ -187,7 +187,7 @@ The workflow should minimize cognitive load by presenting only the information n
 
 ---
 
-# Screen 01 — Welcome
+# Screen 01: welcome
 
 Purpose
 
@@ -216,7 +216,7 @@ Available Actions
 
 ---
 
-# Screen 02 — Accessibility
+# Screen 02: accessibility
 
 Purpose
 
@@ -237,7 +237,7 @@ Changes should immediately preview.
 
 ---
 
-# Screen 03 — Hardware Compatibility
+# Screen 03: hardware compatibility
 
 Purpose
 
@@ -269,11 +269,11 @@ Users may export the report.
 
 ---
 
-# Screen 04 — Installation Mode
+# Screen 04: installation mode
 
 The installer presents two primary choices.
 
-## Portable Mode
+## Portable mode
 
 Runs entirely from removable media.
 
@@ -286,7 +286,7 @@ Recommended for:
 
 ---
 
-## Install Mission OS
+## Install mission OS
 
 Installs Mission OS permanently.
 
@@ -305,7 +305,7 @@ Each option explains:
 
 ---
 
-# Screen 05 — Installation Type
+# Screen 05: installation type
 
 Available options:
 
@@ -326,7 +326,7 @@ Each option includes:
 
 ---
 
-# Screen 06 — Disk Selection
+# Screen 06: disk selection
 
 Display:
 
@@ -352,7 +352,7 @@ instead of
 
 ---
 
-# Screen 07 — Partition Review
+# Screen 07: partition review
 
 Display:
 
@@ -367,7 +367,7 @@ Every destructive action should be clearly highlighted.
 
 ---
 
-# Section Summary
+# Section summary
 
 By this stage the user has:
 
@@ -385,7 +385,7 @@ The next section begins configuration before installation starts.
 
 ---
 
-# Section 3 — System Configuration
+# Section 3: system configuration
 
 After storage configuration has been confirmed, the installer begins collecting the information required to personalize the operating system.
 
@@ -397,7 +397,7 @@ Mission OS should never hide important configuration decisions.
 
 ---
 
-# Screen 08 — Region & Language
+# Screen 08: region & language
 
 Purpose
 
@@ -423,7 +423,7 @@ Features:
 
 ---
 
-# Screen 09 — Keyboard & Input
+# Screen 09: keyboard & input
 
 Purpose
 
@@ -431,7 +431,7 @@ Configure keyboard layout and platform familiarity.
 
 Mission OS supports multiple keyboard presets to reduce friction for users migrating from other operating systems.
 
-## Keyboard Layout
+## Keyboard layout
 
 Examples:
 
@@ -447,17 +447,17 @@ Users can test their keyboard before continuing.
 
 ---
 
-## Platform Presets
+## Platform presets
 
 Mission OS includes optional shortcut profiles.
 
-### Linux (Default)
+### Linux (default)
 
 Standard Linux shortcuts.
 
 ---
 
-### Windows Preset
+### Windows preset
 
 Optimized for users coming from Windows.
 
@@ -488,7 +488,7 @@ Users may switch presets at any time after installation.
 
 ---
 
-# Screen 10 — User Account
+# Screen 10: user account
 
 Purpose
 
@@ -514,7 +514,7 @@ Weak passwords should generate warnings.
 
 ---
 
-# Screen 11 — Workspace Profile
+# Screen 11: workspace profile
 
 Mission OS allows users to optimize the environment for their workflow during installation.
 
@@ -542,7 +542,7 @@ Profiles may be changed later without reinstalling Mission OS.
 
 ---
 
-# Screen 12 — Privacy Preferences
+# Screen 12: privacy preferences
 
 Mission OS prioritizes privacy by default.
 
@@ -566,7 +566,7 @@ No option should use misleading wording or dark patterns.
 
 ---
 
-# Screen 13 — Security Options
+# Screen 13: security options
 
 Available options include:
 
@@ -588,7 +588,7 @@ Users should understand the trade-offs before enabling advanced security feature
 
 ---
 
-# Configuration Summary
+# Configuration summary
 
 Before installation begins, Mission OS displays a complete summary.
 
@@ -614,7 +614,7 @@ No system changes occur until the user explicitly approves the final summary.
 
 ---
 
-# Section 4 — Installation Engine
+# Section 4: installation Engine
 
 Mission OS should clearly communicate installation progress at all times.
 
@@ -624,7 +624,7 @@ The installer should report meaningful progress, estimated time remaining, and t
 
 ---
 
-# Screen 14 — Installation Progress
+# Screen 14: installation progress
 
 Display:
 
@@ -654,7 +654,7 @@ The interface should remain responsive throughout the process.
 
 ---
 
-# Background Tasks
+# Background tasks
 
 During installation, Mission OS performs:
 
@@ -673,7 +673,7 @@ Where possible, independent tasks should execute in parallel to reduce installat
 
 ---
 
-# Live Installation Log
+# Live installation log
 
 Users may expand an optional technical log.
 
@@ -688,7 +688,7 @@ Normal users never need to open it, but advanced users and support personnel sho
 
 ---
 
-# Error Recovery
+# Error recovery
 
 Mission OS should attempt automatic recovery whenever possible.
 
@@ -704,7 +704,7 @@ When recovery succeeds, installation should continue automatically.
 
 ---
 
-# Non-Recoverable Errors
+# Non-Recoverable errors
 
 If installation cannot continue safely, the installer should:
 
@@ -719,7 +719,7 @@ Users should never be presented with unexplained error codes alone.
 
 ---
 
-# Installation Verification
+# Installation verification
 
 Before completion, Mission OS verifies:
 
@@ -735,7 +735,7 @@ If verification fails, the installer should explain the issue before rebooting.
 
 ---
 
-# Rollback Strategy
+# Rollback strategy
 
 If a failure occurs before completion:
 
@@ -748,7 +748,7 @@ Mission OS should avoid leaving the computer in an unusable state whenever techn
 
 ---
 
-# Screen 15 — Installation Complete
+# Screen 15: installation complete
 
 Display:
 
@@ -770,7 +770,7 @@ If installation media must be removed before reboot, the user should receive a c
 
 ---
 
-# Installation Report
+# Installation report
 
 Mission OS generates a summary containing:
 
@@ -789,7 +789,7 @@ Users may save this report for troubleshooting or future reference.
 
 ---
 
-# Section 5 — First Boot Experience
+# Section 5: first boot experience
 
 The first boot should immediately reinforce that Mission OS is ready to use.
 
@@ -799,7 +799,7 @@ Mission OS should guide users through a concise onboarding experience that can b
 
 ---
 
-# Screen 16 — First Boot Welcome
+# Screen 16: first boot welcome
 
 Display:
 
@@ -813,7 +813,7 @@ Display:
 
 ---
 
-# Hardware Initialization
+# Hardware initialization
 
 Before the desktop becomes interactive, Mission OS performs:
 
@@ -830,7 +830,7 @@ Problems detected during startup should be reported with clear explanations and 
 
 ---
 
-# Screen 17 — Workspace Confirmation
+# Screen 17: workspace confirmation
 
 Users may review or change the selected workspace profile.
 
@@ -855,7 +855,7 @@ No reinstall is required.
 
 ---
 
-# Screen 18 — Optional Account Connections
+# Screen 18: optional account connections
 
 Mission OS operates fully without online accounts.
 
@@ -871,7 +871,7 @@ These are optional conveniences and should never be required to use the operatin
 
 ---
 
-# Screen 19 — System Ready
+# Screen 19: system ready
 
 Display:
 
@@ -888,7 +888,7 @@ After completion, the user enters the Mission OS desktop.
 
 ---
 
-# First Boot Principles
+# First boot principles
 
 The first boot should:
 
@@ -901,7 +901,7 @@ The first boot should:
 
 ---
 
-# Section 6 — Advanced Installation Features
+# Section 6: advanced installation features
 
 Mission OS provides advanced options for experienced users while keeping the default workflow simple.
 
@@ -909,7 +909,7 @@ Advanced options should remain discoverable but never overwhelm beginners.
 
 ---
 
-# Manual Partitioning
+# Manual partitioning
 
 Advanced users may:
 
@@ -943,7 +943,7 @@ Users receive clear explanations of:
 
 ---
 
-# Boot Configuration
+# Boot configuration
 
 Advanced users may configure:
 
@@ -958,7 +958,7 @@ Mission OS should recommend UEFI whenever available.
 
 ---
 
-# Network Configuration
+# Network configuration
 
 Options include:
 
@@ -973,7 +973,7 @@ Installation should remain possible without an Internet connection whenever prac
 
 ---
 
-# Driver Strategy
+# Driver strategy
 
 Users may choose:
 
@@ -985,7 +985,7 @@ The installer clearly explains compatibility and licensing implications.
 
 ---
 
-# Workspace Package Preview
+# Workspace package preview
 
 Before installation, users may preview:
 
@@ -998,7 +998,7 @@ This allows informed decisions before packages are installed.
 
 ---
 
-# Expert Mode
+# Expert mode
 
 An optional Expert Mode exposes:
 
@@ -1013,7 +1013,7 @@ Expert Mode should clearly indicate when unsupported or experimental configurati
 
 ---
 
-# Advanced Principles
+# Advanced principles
 
 Advanced functionality should:
 
@@ -1029,7 +1029,7 @@ Mission OS should empower experienced users without making the standard installa
 
 ---
 
-# Section 7 — Security, Privacy, Accessibility & Recovery Requirements
+# Section 7: security, privacy, accessibility & recovery requirements
 
 Mission OS treats the installer as a security-critical application.
 
@@ -1037,7 +1037,7 @@ Every decision made during installation should prioritize user safety, privacy, 
 
 ---
 
-# Security Requirements
+# Security requirements
 
 The installer shall:
 
@@ -1055,7 +1055,7 @@ Whenever verification fails, installation shall stop with a clear explanation.
 
 ---
 
-# Privacy Requirements
+# Privacy requirements
 
 The installer shall:
 
@@ -1075,7 +1075,7 @@ The installer should collect only the information required to complete installat
 
 ---
 
-# Accessibility Requirements
+# Accessibility requirements
 
 Every installer screen shall support:
 
@@ -1093,7 +1093,7 @@ Accessibility settings selected during installation should automatically carry o
 
 ---
 
-# Recovery Requirements
+# Recovery requirements
 
 Before modifying storage, Mission OS should create a recoverable plan whenever technically feasible.
 
@@ -1110,7 +1110,7 @@ Users should always know how to recover from failures.
 
 ---
 
-# Compatibility Requirements
+# Compatibility requirements
 
 Mission OS aims for broad hardware compatibility.
 
@@ -1130,7 +1130,7 @@ Mission OS should adapt to the hardware rather than expecting users to adapt to 
 
 ---
 
-# Performance Requirements
+# Performance requirements
 
 The installer should:
 
@@ -1144,7 +1144,7 @@ Performance optimizations should never compromise reliability.
 
 ---
 
-# Documentation Integration
+# Documentation integration
 
 Every screen should provide contextual help.
 
@@ -1159,7 +1159,7 @@ Users should never need to search random websites to understand installer functi
 
 ---
 
-# Section 8 — Quality Gates, Testing & Definition of Done
+# Section 8: quality gates, testing & Definition of done
 
 The installer is considered complete only after satisfying all quality requirements.
 
@@ -1167,7 +1167,7 @@ Feature completeness alone is insufficient.
 
 ---
 
-# Functional Testing
+# Functional testing
 
 Every supported workflow shall be tested.
 
@@ -1185,7 +1185,7 @@ Examples include:
 
 ---
 
-# Hardware Testing
+# Hardware testing
 
 Testing should include:
 
@@ -1205,7 +1205,7 @@ Mission OS should maximize compatibility across supported hardware.
 
 ---
 
-# Accessibility Testing
+# Accessibility testing
 
 Verify:
 
@@ -1221,7 +1221,7 @@ Accessibility regressions should block release.
 
 ---
 
-# Security Review
+# Security review
 
 Every release requires review of:
 
@@ -1236,7 +1236,7 @@ Security findings should be documented before release.
 
 ---
 
-# Privacy Review
+# Privacy review
 
 Confirm that:
 
@@ -1247,7 +1247,7 @@ Confirm that:
 
 ---
 
-# User Experience Review
+# User experience review
 
 Representative users should complete installation without external assistance.
 
@@ -1263,7 +1263,7 @@ Feedback should drive continuous improvement.
 
 ---
 
-# Acceptance Criteria
+# Acceptance criteria
 
 The installer is accepted when it:
 
@@ -1297,7 +1297,7 @@ Future features must remain consistent with Mission OS principles.
 
 ---
 
-# Definition of Done
+# Definition of done
 
 The Mission OS Installer is complete when:
 

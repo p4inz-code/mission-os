@@ -1,4 +1,4 @@
-# Driver Manager Wireframe
+# Driver manager wireframe
 
 **Document ID:** MOS-WF-013
 
@@ -51,7 +51,7 @@ History
 
 ---
 
-# UX Rules
+# UX rules
 
 Users must always know:
 

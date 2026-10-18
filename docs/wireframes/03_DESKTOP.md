@@ -1,4 +1,4 @@
-# Mission OS Desktop Wireframe
+# Mission OS desktop wireframe
 
 **Document ID:** MOS-WF-003
 
@@ -20,7 +20,7 @@ References:
 
 ---
 
-# Window Behavior
+# Window behavior
 
 Supports:
 
